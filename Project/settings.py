@@ -26,6 +26,7 @@ SECRET_KEY = 'nonm_!ndp^7q4-ys=dqj=y$wv3#*obb160eyu(8v1^7fz0g_ad'
 DEBUG = True
 
 ALLOWED_HOSTS = []
+AUTH_USER_MODEL = 'accounts.Account'
 
 
 # Application definition
@@ -37,7 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'SMakeUp.apps.SmakeupConfig',
+
+    # local apps
+    'apps.accounts',
 ]
 
 MIDDLEWARE = [
