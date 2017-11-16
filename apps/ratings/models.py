@@ -8,4 +8,4 @@ from apps.sellers.models import Seller
 class Rating(models.Model):
     buyer = models.ForeignKey(Buyer)
     seller = models.ForeignKey(Seller)
-    rating = models.IntegerField(default=0)
+    rating = models.IntegerField(verbose_name="Rating", default=0)

@@ -15,5 +15,5 @@ class Category(models.Model):
         (tag, "Tags"),
     ]
 
-    name = models.CharField(max_length=500)
+    name = models.CharField(verbose_name="Category Name", max_length=500)
     category_type = models.IntegerField(verbose_name="Type", choices=type_choices, default=normal)
