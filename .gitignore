@@ -1,0 +1,4 @@
+# pycharm stuff
+*.idea/
+
+db.sqlite3
