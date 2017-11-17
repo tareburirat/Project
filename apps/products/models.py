@@ -21,6 +21,25 @@ class Product (models.Model):
         (sold, "Sold"),
     ]
 
+    reg = 0
+    ems = 1
+    kerry = 2
+
+    freight_detail_choices =[
+        (reg, "Register"),
+        (ems, "EMS"),
+        (kerry, "Kerry Express"),
+    ]
+
     status = models.IntegerField(verbose_name="Status", choices=status_choices, default=draft)
-    date_of_sale = models.DateField(verbose_name="Date of Sale",auto_now=True)
+    date_of_sale = models.DateField(verbose_name="Date of Sale", auto_now=True)
     seller = models.ForeignKey(Seller)
+    price = models.DecimalField(max_digits=8, decimal_places=2, default=0)
+    name = models.CharField(verbose_name="Name", max_length="200")
+    freight = models.DecimalField(max_digits=8, decimal_places=2, default=0)
+    freight_detail_choices = models.IntegerField(verbose_name="Freight Detail", choices=freight_detail_choices, default=reg)
+
+
+
+
+

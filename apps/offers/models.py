@@ -18,7 +18,7 @@ class Offer (models.Model):
 
     ]
 
-    offer_price = models.DecimalField(verbose_name="Offer Price",max_digits=8,decimal_places=2,)
+    offer_price = models.DecimalField(verbose_name="Offer Price", max_digits=8, decimal_places=2, default=0)
     status = models.IntegerField(verbose_name="Status", choices=status_choices,default=pending)
     buyer = models.ForeignKey(Buyer)
     product = models.ForeignKey(Product)
