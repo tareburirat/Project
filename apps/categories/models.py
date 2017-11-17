@@ -17,3 +17,6 @@ class Category(models.Model):
 
     name = models.CharField(verbose_name="Category Name", max_length=255)
     category_type = models.IntegerField(verbose_name="Type", choices=type_choices, default=normal)
+
+    def __str__(self):
+        return self.name

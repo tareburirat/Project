@@ -39,6 +39,8 @@ class Product (models.Model):
     freight = models.DecimalField(max_digits=8, decimal_places=2, default=0)
     freight_detail_choices = models.IntegerField(verbose_name="Freight Detail", choices=freight_detail_choices, default=reg)
 
+    def __str__(self):
+        return self.na
 
 
 
