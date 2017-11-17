@@ -40,7 +40,7 @@ class Product (models.Model):
     freight_detail_choices = models.IntegerField(verbose_name="Freight Detail", choices=freight_detail_choices, default=reg)
 
     def __str__(self):
-        return self.na
+        return self.name
 
 
 
