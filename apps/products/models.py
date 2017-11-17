@@ -1,6 +1,8 @@
 from django.db import models
 
 # Create your models here.
+from django.utils.safestring import mark_safe
+
 from apps.sellers.models import Seller
 
 
@@ -21,6 +23,7 @@ class Product (models.Model):
         (sold, "Sold"),
     ]
 
+    other = -1
     reg = 0
     ems = 1
     kerry = 2
@@ -29,6 +32,7 @@ class Product (models.Model):
         (reg, "Register"),
         (ems, "EMS"),
         (kerry, "Kerry Express"),
+
     ]
 
     status = models.IntegerField(verbose_name="Status", choices=status_choices, default=draft)
@@ -36,12 +40,22 @@ class Product (models.Model):
     seller = models.ForeignKey(Seller)
     price = models.DecimalField(max_digits=8, decimal_places=2, default=0)
     name = models.CharField(verbose_name="Name", max_length=200)
-    freight = models.DecimalField(max_digits=8, decimal_places=2, default=0)
-    freight_detail_choices = models.IntegerField(verbose_name="Freight Detail", choices=freight_detail_choices, default=reg)
+    freight_fee = models.DecimalField(verbose_name="Freight Fee", max_digits=8, decimal_places=2, default=0)
+    freight = models.IntegerField(verbose_name="Freight", choices=freight_detail_choices, default=reg)
 
     def __str__(self):
-        return self.na
+        return self.name
 
 
+class ProductImage(models.Model):
+    product = models.ForeignKey(Product, related_name="images")
+    image = models.ImageField(upload_to="product_images")
+    sequence = models.PositiveSmallIntegerField(default=0)
 
+    def __str__(self):
+        return "{} - {}".format(self.product, self.sequence)
 
+    def image_tag(self):
+        return mark_safe('<img src="/images/{}" width="200" height="150" />'.format(self.image.name))
+
+    image_tag.short_description = 'Image'
