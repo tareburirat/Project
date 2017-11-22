@@ -6,7 +6,7 @@ from apps.products.models import Product, ProductImage
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('id','status','date_of_sale','seller', 'freight', 'freight_detail_choices')
+    list_display = ('id', 'name', 'status', 'date_of_sale', 'seller', 'price', 'freight_fee', 'freight')
 
 
 @admin.register(ProductImage)
