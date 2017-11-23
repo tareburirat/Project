@@ -1,7 +1,7 @@
 from rest_framework import viewsets
 
-from apps.Transactions.models import Transaction
-from apps.Transactions.serializers import TransactionSerializer
+from apps.transactions.models import Transaction
+from apps.transactions.serializers import TransactionSerializer
 
 
 class TransactionViewSet(viewsets.ModelViewSet):
