@@ -25,7 +25,7 @@ SECRET_KEY = 'nonm_!ndp^7q4-ys=dqj=y$wv3#*obb160eyu(8v1^7fz0g_ad'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 AUTH_USER_MODEL = 'accounts.Account'
 
 
@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 
     # third party app
     'django_extensions',
+    'rest_framework',
 
     # local apps
     'apps.accounts',
