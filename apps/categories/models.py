@@ -15,6 +15,7 @@ class Category(models.Model):
         (tag, "Tags"),
     ]
 
+    parent = models.ForeignKey('self', related_name='child')
     name = models.CharField(verbose_name="Category Name", max_length=255)
     category_type = models.IntegerField(verbose_name="Type", choices=type_choices, default=normal)
 
