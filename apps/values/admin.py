@@ -6,4 +6,4 @@ from apps.values.models import Value
 
 @admin.register(Value)
 class ValueAdmin(admin.ModelAdmin):
-    list_display = ('id','product','properties_string','value_product')
+    list_display = ('id', 'product', 'properties', 'value_product', 'properties_string')
