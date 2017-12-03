@@ -7,3 +7,5 @@ from apps.properties.models import Property
 @admin.register(Property)
 class PropertyAdmin(admin.ModelAdmin):
     list_display = ['id', 'category', 'text']
+    list_filter = ['category']
+    search_fields = ['id']
