@@ -25,7 +25,7 @@ SECRET_KEY = 'nonm_!ndp^7q4-ys=dqj=y$wv3#*obb160eyu(8v1^7fz0g_ad'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 AUTH_USER_MODEL = 'accounts.Account'
 
 
@@ -39,8 +39,24 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # third party app
+    'django_extensions',
+    'rest_framework',
+
     # local apps
     'apps.accounts',
+    'apps.buyers',
+    'apps.sellers',
+    'apps.products',
+    'apps.offers',
+    'apps.ratings',
+    'apps.addresses',
+    'apps.transactions',
+    'apps.categories',
+    'apps.category_product',
+    'apps.values',
+    'apps.properties',
+    'apps.orders',
 ]
 
 MIDDLEWARE = [
@@ -90,18 +106,7 @@ DATABASES = {
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+
 ]
 
 
@@ -123,3 +128,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'images/upload')
+MEDIA_URL = 'images/'

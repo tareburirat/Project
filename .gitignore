@@ -1,4 +1,9 @@
 # pycharm stuff
-*.idea/
+.idea/*
 
 db.sqlite3
+
+*.pyc
+**.pyc
+
+images/*

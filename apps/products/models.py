@@ -1,0 +1,61 @@
+from django.db import models
+
+# Create your models here.
+from django.utils.safestring import mark_safe
+
+from apps.sellers.models import Seller
+
+
+class Product (models.Model):
+    banned = -2
+    expired = -1
+    draft = 0
+    sale = 1
+    booked = 2
+    sold = 3
+
+    status_choices = [
+        (banned, "Banned"),
+        (expired, "Expired"),
+        (draft, "Draft"),
+        (sale, "Sale"),
+        (booked, "Booked"),
+        (sold, "Sold"),
+    ]
+
+    other = -1
+    reg = 0
+    ems = 1
+    kerry = 2
+
+    freight_detail_choices =[
+        (reg, "Register"),
+        (ems, "EMS"),
+        (kerry, "Kerry Express"),
+
+    ]
+
+    status = models.IntegerField(verbose_name="Status", choices=status_choices, default=draft)
+    date_of_sale = models.DateField(verbose_name="Date of Sale", auto_now=True)
+    seller = models.ForeignKey(Seller)
+    price = models.DecimalField(max_digits=8, decimal_places=2, default=0)
+    name = models.CharField(verbose_name="Name", max_length=200)
+    freight_fee = models.DecimalField(verbose_name="Freight Fee", max_digits=8, decimal_places=2, default=0)
+    freight = models.IntegerField(verbose_name="Freight", choices=freight_detail_choices, default=reg)
+
+    def __str__(self):
+        return self.name
+
+
+class ProductImage(models.Model):
+    product = models.ForeignKey(Product, related_name="images")
+    image = models.ImageField(upload_to="product_images")
+    sequence = models.PositiveSmallIntegerField(default=0)
+
+    def __str__(self):
+        return "{} - {}".format(self.product, self.sequence)
+
+    def image_tag(self):
+        return mark_safe('<img src="/images/{}" width="200" height="150" />'.format(self.image.name))
+
+    image_tag.short_description = 'Image'
