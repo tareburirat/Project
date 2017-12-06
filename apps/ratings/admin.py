@@ -6,5 +6,5 @@ from apps.ratings.models import Rating
 
 @admin.register(Rating)
 class RatingAdmin(admin.ModelAdmin):
-    list_display = ["buyer","seller","rating"]
-    search_fields = ["seller__phone_number","rating"]
+    list_display = ["buyer", "seller", "rating"]
+    search_fields = ["seller__phone_number", "rating"]
