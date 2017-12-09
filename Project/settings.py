@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     # third party app
     'django_extensions',
     'rest_framework',
+    'crispy_forms',
 
     # local apps
     'apps.accounts',
@@ -95,11 +96,27 @@ WSGI_APPLICATION = 'Project.wsgi.application'
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'banco1',
+        'USER': 'root',
+        'PASSWORD': '123',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
+
+# DATABASES = {
+# 'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'makeup',
+#         'USER': 'postgres',
+#         'PASSWORD': 'postgres',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
+
 
 
 # Password validation
