@@ -8,6 +8,7 @@ class Seller (models.Model):
     phone_number = models.CharField(verbose_name="Tel", max_length=20)
     expire_date = models.IntegerField(verbose_name="Date Expiredate", default=0)
     account = models.OneToOneField(Account)
+    address = models.CharField(verbose_name="Address", max_length=225, blank=True)
 
     def __str__(self):
         return "Seller: {}".format(self.account.display_name)
