@@ -18,11 +18,14 @@ from django.conf.urls import url, include
 from django.conf.urls.static import static
 from django.contrib import admin
 
-from apps.login.views import log_in_user
+from apps.login.views import log_in_user, LoginView
 from .api_urls import router
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^api/', include(router.urls)),
-    url(r'^authenticate_user/', log_in_user)
+
+
+    url(r'^login/', LoginView.as_view()),
+    url(r'^authenticate_user/', log_in_user),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
