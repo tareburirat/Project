@@ -37,6 +37,12 @@ body a:hover{
 .logo-nav{
 	padding:2em 0;
 }
+.btn-outline-success {
+    color: #ff766d;
+    background-color: transparent;
+    background-image: none;
+    border-color: #ff766d;
+}
 .header-grid-right{
 	float: right;
 }
@@ -165,6 +171,13 @@ ul.social-icons li a.instagram:hover{
 }
 .nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
     color: #FF766D;
+}
+.navbar-light .navbar-nav .show > .nav-link,
+.navbar-light .navbar-nav .active > .nav-link,
+.navbar-light .navbar-nav .nav-link.show,
+.navbar-light .navbar-nav .nav-link.active,
+.navbar-light .navbar-nav .nav-link:hover{
+  color: #FF766D;
 }
 .navbar-default {
     background: none;
@@ -1177,6 +1190,7 @@ p.est{
 .breadcrumb1{
 	padding:0;
 	margin:0;
+    background:#f5f5f5;
 }
 .breadcrumb1 li{
 	font-size:1em;
@@ -2092,7 +2106,7 @@ label.radio {
 .login-form-grids input[type="email"],.login-form-grids input[type="password"],.login-form-grids input[type="text"]{
 	outline: none;
     border: 1px solid #DBDBDB;
-    padding: 10px 10px 10px 45px;
+    padding: 10px 10px 10px 20px;
     font-size: 14px;
     color: #999;
     display: block;
@@ -2164,14 +2178,14 @@ label.radio {
 /*-- //login --*/
 /*-- register --*/
 .register h3:before{
-	left:20%;
+	left:15%;
 }
 .register h3:after{
-	right:20%;
+	right:15%;
 }
 .login-form-grids h5,.login-form-grids h6{
 	font-size:1em;
-	color:#212121;
+	color:#FF766D;
 	text-transform:uppercase;
 	margin:0 0 2em;
 }
@@ -2181,6 +2195,16 @@ label.radio {
 .login-form-grids input[type="text"]:nth-child(2){
 	background:url(../images/img-sp.png) no-repeat 0px -298px #fff;
 	margin:1em 0;
+}
+small,
+.small {
+  font-size: 60%;
+  font-weight: 400;
+}
+.btn-link {
+    font-weight: 400;
+    color: #FF766D;
+    background-color: transparent;
 }
 .register-check-box label{
 	font-size:14px;
