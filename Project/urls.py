@@ -19,6 +19,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 
 from apps.login.views import log_in_user, LoginView
+from apps.sellers.views import RegisterSellerView
 from .api_urls import router
 
 urlpatterns = [
@@ -28,4 +29,5 @@ urlpatterns = [
 
     url(r'^login/', LoginView.as_view()),
     url(r'^authenticate_user/', log_in_user),
+    url(r'^register_seller/', RegisterSellerView.as_view()),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
