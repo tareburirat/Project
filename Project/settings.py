@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'apps.properties',
     'apps.orders',
     'apps.login',
+    'apps.home',
 ]
 
 MIDDLEWARE = [
