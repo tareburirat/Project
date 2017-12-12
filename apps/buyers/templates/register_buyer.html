@@ -1,0 +1,290 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<script src="{% static 'js/components/angular.min.js' %}"></script>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Registration</title>
+</head>
+<body>
+    <!-- header -->
+	<div class="header">
+		<div class="container">
+			<div class="header-grid">
+				<div class="header-grid-right">
+					<ul>
+						<li><i class="fa fa-sign-in" aria-hidden="true"></i><a href="login.html"> เข้าสู่ระบบ</a></li>
+						<li class="active"><i class="fa fa-user-plus" aria-hidden="true"></i><a href="register.html"> ลงทะเบียน</a></li>
+					</ul>
+				</div>
+				<div class="header-grid-left">
+					<ul>
+						<li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:info@example.com"> info@2ndMakeUp.com</a></li>
+						<li><i class="fa fa-phone" aria-hidden="true"></i> +1234 567 892</li>
+					</ul>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+            <nav class="navbar navbar-expand-lg navbar-light ">
+              <a class="navbar-brand" href="#"><img src="{% static 'image/logo.png' %}"></a>
+                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                  <li class="nav-item active">
+                    <a class="nav-link" href="#">หน้าแรก <span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      หมวดหมู่
+                    </a>
+                    <ul class="dropdown-menu multi-column columns-3">
+									<div class="row">
+										<div class="col-sm-3">
+											<ul class="multi-column-dropdown">
+												<h6>ผลิตภัณฑ์ดูแลผิวหน้า&nbsp;&nbsp;&nbsp;</h6>
+												<li><a href="products.html">ทำความสะอาดผิวหน้า</a></li>
+												<li><a href="products.html">โทนเนอร์</a></li>
+												<li><a href="products.html">ล้างเครื่องสำอาง</a></li>
+												<li><a href="products.html">บำรุงผิวหน้า</a></li>
+												<li><a href="products.html">บำรุงดวงตา</a></li>
+												<li><a href="products.html">ทรีทเม้น&เซรั่ม</a></li>
+												<li><a href="products.html">มาร์กหน้า</a></li>
+												<li><a href="products.html">กันแดด</a></li>
+												<li><a href="products.html">อื่นๆ</a></li>
+											</ul>
+										</div>
+										<div class="col-sm-3">
+											<ul class="multi-column-dropdown">
+												<h6>เครื่องสำอางสำหรับผิวหน้า</h6>
+												<li><a href="furniture.html">แป้งฝุ่นและแป้งอัดแข็ง</a></li>
+												<li><a href="furniture.html">รองพื้น</a></li>
+												<li><a href="furniture.html">บลัชออน</a></li>
+												<li><a href="furniture.html">คอนซีลเลอร์</a></li>
+												<li><a href="furniture.html">ไพรเมอร์</a></li>
+												<li><a href="furniture.html">เฉดดิ้ง&ไฮไลท์</a></li>
+												<li><a href="furniture.html">อื่นๆ</a></li>
+											</ul>
+										</div>
+										<div class="col-sm-3">
+											<ul class="multi-column-dropdown">
+												<h6>เครื่องสำอางสำหรับดวงตา</h6>
+												<li><a href="furniture.html">อายแชโดว์</a></li>
+												<li><a href="furniture.html">อายไลเนอร์</a></li>
+												<li><a href="furniture.html">ที่เขียนคิ้ว</a></li>
+												<li><a href="furniture.html">มาสคาร่า</a></li>
+												<li><a href="furniture.html">ขนตาปลอม</a></li>
+												<li><a href="furniture.html">เทปกาวตาสองชั้น</a></li>
+												<li><a href="furniture.html">อื่นๆ</a></li>
+											</ul>
+										</div>
+
+										<div class="col-sm-3">
+											<ul class="multi-column-dropdown">
+												<h6>ผลิตภัณฑ์สำหรับริมฝีปาก</h6>
+												<li><a href="products.html">ลิปสติก</a></li>
+												<li><a href="products.html">ลิปบาล์ม</a></li>
+												<li><a href="products.html">ลิปกลอส</a></li>
+												<li><a href="products.html">ลิปทินท์</a></li>
+												<li><a href="products.html">ดินสอเขียนขอบปาก</a></li>
+												<li><a href="products.html">อื่นๆ</a></li>
+											</ul>
+										</div></div>
+										<div class="row">
+										<div class="col-sm-3">
+											<ul class="multi-column-dropdown">
+												<h6>อุปกรณ์เสริมความงาม</h6>
+												<li><a href="products.html">อุปกรณ์ทำผม</a></li>
+												<li><a href="products.html">อุปกรณ์แต่งหน้า</a></li>
+												<li><a href="products.html">อุปกรณ์กำจัดขน</a></li>
+												<li><a href="products.html">กล่องกระเป๋าเครื่องสำอาง</a></li>
+												<li><a href="products.html">อื่นๆ</a></li>
+											</ul>
+										</div>
+
+										<div class="col-sm-3">
+											<ul class="multi-column-dropdown">
+												<h6>น้ำหอม</h6>
+												<li><a href="products.html">น้ำหอมผู้หญิง</a></li>
+												<li><a href="products.html">อื่นๆ</a></li>
+											</ul>
+										</div>
+
+										<div class="col-sm-3">
+											<ul class="multi-column-dropdown">
+												<h6>ผลิตภัณฑ์สำหรับผู้ชาย</h6>
+												<li><a href="products.html">ผลิตภัณฑ์ดูแลผิวหน้า</a></li>
+												<li><a href="products.html">น้ำหอมสำหรับผู้ชาย</a></li>
+												<li><a href="products.html">อื่นๆ</a></li>
+											</ul>
+										</div>
+
+										<div class="col-sm-3">
+											<ul class="multi-column-dropdown">
+												<h6>อื่นๆ</h6>
+												<li><a href="products.html">อื่นๆ</a></li>
+											</ul>
+										</div>
+										<div class="clearfix"></div>
+									</div>
+								</ul>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">โปรโมชัน</a>
+                  </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="#">ติดต่อ</a>
+                  </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+              </div>
+            </nav>
+
+		</div>
+	</div>
+<!-- //header -->
+<!-- breadcrumbs -->
+    <div class="breadcrumbs">
+		<div class="container">
+              <ol class="breadcrumb breadcrumb1">
+                <li class="breadcrumb-item"><a href="index.html"><span class="fa fa-home" aria-hidden="true"></span>หน้าแรก</a></li>
+				<li class="breadcrumb-item active">ลงทะเบียน</li>
+              </ol>
+		</div>
+    </div>
+<!-- //breadcrumbs -->
+    <!-- register -->
+	<div class="register">
+		<div class="container">
+			<h3>Buyer Registration</h3>
+			<div class="login-form-grids">
+                <form name="form" ng-submit="vm.register()" role="form">
+				<h5>ข้อมูลส่วนตัว</h5>
+				<form>
+					<div class="form-group" ng-class="{ 'has-error': form.firstName.$dirty && form.firstName.$error.required }">
+                        <input type="text" placeholder="Enter Firstname" name="firstName" id="firstName" class="form-control" ng-model="vm.user.firstName" required />
+                        <small ng-show="form.firstName.$dirty && form.firstName.$error.required" class="help-block">Firstname is required</small>
+                    </div>
+					<div class="form-group" ng-class="{ 'has-error': form.lastName.$dirty && form.lastName.$error.required }">
+                        <input type="text" placeholder="Enter Lastname" name="lastName" id="lastName" class="form-control" ng-model="vm.user.lastName" required />
+                        <small ng-show="form.lastName.$dirty && form.lastName.$error.required" class="help-block">Lasttname is required</small>
+                    </div>
+                    <div class="form-group" ng-class="{ 'has-error': form.telephone.$dirty && form.telephone.$error.required }">
+                        <input type="text" placeholder="Enter Telephone Number" name="telephone" id="telephone" class="form-control" ng-model="vm.user.telephone" required />
+                        <small ng-show="form.telephone.$dirty && form.telephone.$error.required" class="help-block">Telephone number is required</small>
+                    </div>
+                   <div class="form-group" ng-class="{ 'has-error': form.displayName.$dirty && form.displayName.$error.required }">
+                        <input type="text" placeholder="Enter Displayname" name="displayName" id="displayName" class="form-control" ng-model="vm.user.displayName" required />
+                        <small ng-show="form.displayName.$dirty && form.displayName.$error.required" class="help-block">Displayname is required</small>
+                    </div>
+				</form>
+				<h6>ข้อมูลเข้าสู่ระบบ</h6>
+				<form>
+					<div class="form-group" ng-class="{ 'has-error': form.username.$dirty && form.username.$error.required }">
+                        <input type="text" placeholder="Enter Username" name="username" id="username" class="form-control" ng-model="vm.user.username" required />
+                        <small ng-show="form.username.$dirty && form.username.$error.required" class="help-block">Username is required</small>
+                    </div>
+					<div class="form-group" ng-class="{ 'has-error': form.password.$dirty && form.password.$error.required }">
+                        <input type="password" placeholder="Enter Password" name="password" id="password" class="form-control" ng-model="vm.user.password" required />
+                        <small ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Password is required</small>
+                    </div>
+					<input type="submit" value="ลงทะเบียน" ng-disabled="form.$invalid || vm.dataLoading">
+                    <img ng-if="vm.dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+                    <a href="#!/login" class="btn btn-link">Cancel</a>
+				</form>
+			    </form>
+            </div>
+			<div class="register-home">
+				<a href="index.html">หน้าแรก</a>
+			</div>
+		</div>
+	</div>
+<!-- //register -->
+            <!-- footer -->
+            <div class="footer">
+                <div class="container">
+                    <div class="row footer-grid">
+                        <div class="clearfix"> </div>
+                        <div class="col-md-3">
+                            <h3>เกี่ยวกับเรา</h3>
+                            <p>“เรื่องเครื่องสำอางมือสองไว้ใจเรา 2nd MakeUp เพราะเราคือสังคมการแชร์ส่งต่อเครื่องอำสางของคุณให้ถึงมือคนที่ต้องการ
+                                เหมาะสำหรับการซื้อ-ขาย เครื่องสำอางมือสอง 2nd MakeUp จะรวบรวมเครื่องสำอางมือสองจากทุกคนไว้วางจำหน่าย และคุณสามารถร่วมเป็นส่วนหนึ่งกับเรา
+                                โดยนำเครื่องสำอางบนโต๊ะเครื่องแป้งมาส่งต่อให้กับเพื่อนๆในนี้ได้เลย”</p>
+                        </div>
+                        <div class="col-md-3">
+                            <h3>ติดต่อ</h3>
+                            <ul>
+                                <li><i class="fa fa-map-marker" aria-hidden="true"></i>1234k Avenue, 4th block,<span>Bangkok City.</span></li>
+                                <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:info@example.com">info@2ndMakeUp.com</a></li>
+                                <li><i class="fa fa-phone" aria-hidden="true"></i>+1234 567 567</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h3>หมวดหมู่</h3>
+                                <a href="index.html"><b>ผลิตภัณฑ์ดูแลผิวหน้า</b></a>
+                                <p><a href="index.html">ทำความสะอาดผิวหน้า</a><a> | </a><a href="index.html">โทนเนอร์</a>
+                                <a> | </a><a href="index.html">ล้างเครื่องสำอาง</a><a> | </a><a href="index.html">บำรุงผิวหน้า</a>
+                                <a> | </a><a href="index.html">บำรุงดวงตา</a><a> | </a><a href="index.html">ทรีทเม้น&เซรั่ม</a>
+                                <a> | </a><a href="index.html">มาร์กหน้า</a><a> | </a><a href="index.html">กันแดด</a>
+                                <a> | </a><a href="index.html">อื่นๆ</a></p>
+
+                                <a href="index.html"><b>เครื่องสำอางสำหรับผิวหน้า</b></a>
+                                <p><a href="index.html">แป้งฝุ่นและแป้งอัดแข็ง</a><a> | </a><a href="index.html">รองพื้น</a>
+                                <a> | </a><a href="index.html">บลัชออน</a><a> | </a><a href="index.html">คอนซีลเลอร์</a>
+                                <a> | </a><a href="index.html">ไพรเมอร์</a><a> | </a><a href="index.html">เฉดดิ้ง&ไฮไลท์</a>
+                                <a> | </a><a href="index.html">อื่นๆ</a></p>
+
+                                <a href="index.html"><b>เครื่องสำอางสำหรับดวงตา</b></a>
+                                <p><a href="index.html">อายแชโดว์</a><a> | </a><a href="index.html">อายไลเนอร์</a>
+                                <a> | </a><a href="index.html">ที่เขียนคิ้ว</a><a> | </a><a href="index.html">มาสคาร่า</a>
+                                <a> | </a><a href="index.html">ขนตาปลอม</a><a> | </a><a href="index.html">เทปกาวตาสองชั้น</a>
+                                <a> | </a><a href="index.html">อื่นๆ</a></p>
+
+                                <a href="index.html"><b>ผลิตภัณฑ์สำหรับริมฝีปาก</b></a>
+                                <p><a href="index.html">ลิปสติก</a><a> | </a><a href="index.html">ลิปบาล์ม</a>
+                                <a> | </a><a href="index.html">ลิปกลอส</a><a> | </a><a href="index.html">ดินสอเขียนขอบปาก</a>
+                                <a> | </a><a href="index.html">ลิปทินท์</a><a> | </a><a href="index.html">อื่นๆ</a></p>
+
+                                <a href="index.html"><b>อุปกรณ์เสริมความงาม</b></a>
+                                <p><a href="index.html">อุปกรณ์ทำผม</a><a> | </a><a href="index.html">อุปกรณ์แต่งหน้า</a>
+                                <a> | </a><a href="index.html">อุปกรณ์กำจัดขน</a><a> | </a><a href="index.html">กล่องกระเป๋าเครื่องสำอาง</a>
+                                <a> | </a><a href="index.html">อื่นๆ</a></p>
+
+                                <a href="index.html"><b>น้ำหอม</b></a>
+                                <p><a href="index.html">น้ำหอมผู้หญิง</a><a> | </a><a href="index.html">อื่นๆ</a></p>
+
+                                <a href="index.html"><b>ผลิตภัณฑ์สำหรับผู้ชาย</b></a>
+                                <p><a href="index.html">ผลิตภัณฑ์ดูแลผิวหน้า</a><a> | </a><a href="index.html">น้ำหอมสำหรับผู้ชาย</a>
+                                <a> | </a><a href="index.html">อื่นๆ</a></p>
+
+                                <a href="index.html"><b>อื่นๆ</b></a>
+                                <p><a href="index.html">อื่นๆ</a></p>
+
+                        </div>
+                            <div class="clearfix"> </div>
+                        </div>
+                    <div class="footer-logo">
+                        <h2><a href="index.html">2nd MakeUp <span>shop anywhere</span></a></h2>
+                    </div>
+                    <div class="copy-right">
+                        <p>&copy 2017 2ndMakeUp. All rights reserved.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- //footer -->
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -20,6 +20,19 @@ from django.contrib import admin
 
 from apps.login.views import log_in_user, LoginView
 from apps.sellers.views import RegisterSellerView
+from apps.buyers.views import RegisterBuyerView
+from apps.addresses.views import AddressBuyerView
+from apps.categories.views import CategoryView
+from apps.transactions.views import TransactionView
+from apps.category_product.views import CategoryProductView
+from apps.offers.views import OfferView
+from apps.orders.views import OrderView
+from apps.products.views import ProductView
+from apps.properties.views import PropertyView
+from apps.ratings.views import RatingView
+from apps.accounts.views import AccountRegisterView
+from apps.values.views import ValueView
+from apps.home.views import HomeView
 from .api_urls import router
 
 urlpatterns = [
@@ -30,4 +43,17 @@ urlpatterns = [
     url(r'^login/', LoginView.as_view()),
     url(r'^authenticate_user/', log_in_user),
     url(r'^register_seller/', RegisterSellerView.as_view()),
+    url(r'^register_buyer/', RegisterBuyerView.as_view()),
+    url(r'^address_buyer/', AddressBuyerView.as_view()),
+    url(r'^category/', CategoryView.as_view()),
+    url(r'^transaction/', TransactionView.as_view()),
+    url(r'^rating/', RatingView.as_view()),
+    url(r'^property/', PropertyView.as_view()),
+    url(r'^product/', ProductView.as_view()),
+    url(r'^order/', OrderView.as_view()),
+    url(r'^offer/', OfferView.as_view()),
+    url(r'^category_product/', CategoryProductView.as_view()),
+    url(r'^account_register/', AccountRegisterView.as_view()),
+    url(r'^value/', ValueView.as_view()),
+    url(r'^$', HomeView.as_view()),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
