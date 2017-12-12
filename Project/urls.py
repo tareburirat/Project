@@ -37,7 +37,7 @@ from .api_urls import router
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^api/', include(router.urls)),
+    url(r'^api/', include('Project.api_urls')),
 
 
     url(r'^login/', LoginView.as_view()),
