@@ -6,7 +6,7 @@ from django.utils.safestring import mark_safe
 from apps.sellers.models import Seller
 
 
-class Product (models.Model):
+class Product(models.Model):
     banned = -2
     expired = -1
     draft = 0
@@ -35,7 +35,7 @@ class Product (models.Model):
 
     ]
 
-    status = models.IntegerField(verbose_name="Status", choices=status_choices, default=draft)
+    product_status = models.IntegerField(verbose_name="Status", choices=status_choices, default=draft)
     date_of_sale = models.DateField(verbose_name="Date of Sale", auto_now=True)
     seller = models.ForeignKey(Seller)
     price = models.DecimalField(max_digits=8, decimal_places=2, default=0)
@@ -45,6 +45,12 @@ class Product (models.Model):
 
     def __str__(self):
         return self.name
+
+    @property
+    def properties(self):
+        values = self.value_set.all()
+        properties_and_values = dict([(x.properties_string, x.value_product) for x in values])
+        return properties_and_values
 
 
 class ProductImage(models.Model):

@@ -44,7 +44,6 @@ class SellerSerializer(serializers.ModelSerializer):
                 detail_address_data = validated_data.pop('detail_address')
                 validated_data['address'] = "{}, {}, {}, {}".format(detail_address_data, city_data, country_data, zip_code_data)
 
-                print(validated_data)
                 seller = Seller.objects.create(
                     account=account,
                     **validated_data
