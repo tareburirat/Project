@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <script src="{% static 'js/components/angular.min.js' %}"></script>
+<script src="{% static 'js/components/simpleCart.min.js'%}"></script>
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -24,48 +25,23 @@
 		</div>
     </div>
 <!-- //breadcrumbs -->
-   <TABLE align="center">
-            <TR>
-                     <TH> Link Page </TH>
-            </TR>
-            <TR>
-                     <TD><a href="/address_buyer">address buyer</a></TD>
-             </TR>
-             <TR>
-                     <TD><a href="/category">category</a></TD>
-             </TR>
-
-            <TR>
-                     <TD><a href="/category_product">category product</a></TD>
-             </TR>
-             <TR>
-                     <TD><a href="/property">property</a></TD>
-             </TR>
-        <TR>
-                     <TD><a href="/product">product</a></TD>
-             </TR>
-             <TR>
-                     <TD><a href="/order">order</a></TD>
-             </TR>
-        <TR>
-                     <TD><a href="/offer">offer</a></TD>
-             </TR>
-             <TR>
-                     <TD><a href="/address_buyer">address buyer </a></TD>
-             </TR>
-        <TR>
-                     <TD> <a href="/rating">rating</a></TD>
-             </TR>
-             <TR>
-                     <TD><a href="/value">value</a></TD>
-             </TR>
-        <TR>
-                     <TD><a href="/transaction">transaction</a></TD>
-             </TR>
-  </TABLE>
-            <!-- footer -->
-           <div>{% include "footer.html" %}</div>
-            <!-- //footer -->
+    <table align="center">
+        <tr><th> Link Page </th></tr>
+        <tr><td><a href="/address_buyer">address buyer</a></td></tr>
+        <tr><td><a href="/category">category</a></td></tr>
+        <tr><td><a href="/category_product">category product</a></td></tr>
+        <tr><td><a href="/property">property</a></td></tr>
+        <tr><td><a href="/product">product</a></td></tr>
+        <tr><td><a href="/order">order</a></td></tr>
+        <tr><td><a href="/offer">offer</a></td></tr>
+        <tr><td><a href="/address_buyer">address buyer</a></td></tr>
+        <tr><td><a href="/rating">rating</a></td></tr>
+        <tr><td><a href="/value">value</a></td></tr>
+        <tr><td><a href="/transaction">transaction</a></td></tr>
+    </table>
+<!-- footer -->
+    <div>{% include "footer.html" %}</div>
+<!-- //footer -->
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
