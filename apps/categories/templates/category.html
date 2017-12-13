@@ -11,153 +11,15 @@
     <title>Catepories</title>
 </head>
 <body>
-    <!-- header -->
-	<div class="header">
-		<div class="container">
-			<div class="header-grid">
-				<div class="header-grid-right">
-					<ul>
-						<li><i class="fa fa-sign-in" aria-hidden="true"></i><a href="login.html"> เข้าสู่ระบบ</a></li>
-						<li class="active"><i class="fa fa-user-plus" aria-hidden="true"></i><a href="register.html"> ลงทะเบียน</a></li>
-					</ul>
-				</div>
-				<div class="header-grid-left">
-					<ul>
-						<li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:info@example.com"> info@2ndMakeUp.com</a></li>
-						<li><i class="fa fa-phone" aria-hidden="true"></i> +1234 567 892</li>
-					</ul>
-				</div>
-				<div class="clearfix"> </div>
-			</div>
-            <nav class="navbar navbar-expand-lg navbar-light ">
-              <a class="navbar-brand" href="#"><img src="{% static 'image/logo.png' %}"></a>
-                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                  </button>
-
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                  <li class="nav-item active">
-                    <a class="nav-link" href="#">หน้าแรก <span class="sr-only">(current)</span></a>
-                  </li>
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      หมวดหมู่
-                    </a>
-                    <ul class="dropdown-menu multi-column columns-3">
-									<div class="row">
-										<div class="col-sm-3">
-											<ul class="multi-column-dropdown">
-												<h6>ผลิตภัณฑ์ดูแลผิวหน้า&nbsp;&nbsp;&nbsp;</h6>
-												<li><a href="products.html">ทำความสะอาดผิวหน้า</a></li>
-												<li><a href="products.html">โทนเนอร์</a></li>
-												<li><a href="products.html">ล้างเครื่องสำอาง</a></li>
-												<li><a href="products.html">บำรุงผิวหน้า</a></li>
-												<li><a href="products.html">บำรุงดวงตา</a></li>
-												<li><a href="products.html">ทรีทเม้น&เซรั่ม</a></li>
-												<li><a href="products.html">มาร์กหน้า</a></li>
-												<li><a href="products.html">กันแดด</a></li>
-												<li><a href="products.html">อื่นๆ</a></li>
-											</ul>
-										</div>
-										<div class="col-sm-3">
-											<ul class="multi-column-dropdown">
-												<h6>เครื่องสำอางสำหรับผิวหน้า</h6>
-												<li><a href="furniture.html">แป้งฝุ่นและแป้งอัดแข็ง</a></li>
-												<li><a href="furniture.html">รองพื้น</a></li>
-												<li><a href="furniture.html">บลัชออน</a></li>
-												<li><a href="furniture.html">คอนซีลเลอร์</a></li>
-												<li><a href="furniture.html">ไพรเมอร์</a></li>
-												<li><a href="furniture.html">เฉดดิ้ง&ไฮไลท์</a></li>
-												<li><a href="furniture.html">อื่นๆ</a></li>
-											</ul>
-										</div>
-										<div class="col-sm-3">
-											<ul class="multi-column-dropdown">
-												<h6>เครื่องสำอางสำหรับดวงตา</h6>
-												<li><a href="furniture.html">อายแชโดว์</a></li>
-												<li><a href="furniture.html">อายไลเนอร์</a></li>
-												<li><a href="furniture.html">ที่เขียนคิ้ว</a></li>
-												<li><a href="furniture.html">มาสคาร่า</a></li>
-												<li><a href="furniture.html">ขนตาปลอม</a></li>
-												<li><a href="furniture.html">เทปกาวตาสองชั้น</a></li>
-												<li><a href="furniture.html">อื่นๆ</a></li>
-											</ul>
-										</div>
-
-										<div class="col-sm-3">
-											<ul class="multi-column-dropdown">
-												<h6>ผลิตภัณฑ์สำหรับริมฝีปาก</h6>
-												<li><a href="products.html">ลิปสติก</a></li>
-												<li><a href="products.html">ลิปบาล์ม</a></li>
-												<li><a href="products.html">ลิปกลอส</a></li>
-												<li><a href="products.html">ลิปทินท์</a></li>
-												<li><a href="products.html">ดินสอเขียนขอบปาก</a></li>
-												<li><a href="products.html">อื่นๆ</a></li>
-											</ul>
-										</div></div>
-										<div class="row">
-										<div class="col-sm-3">
-											<ul class="multi-column-dropdown">
-												<h6>อุปกรณ์เสริมความงาม</h6>
-												<li><a href="products.html">อุปกรณ์ทำผม</a></li>
-												<li><a href="products.html">อุปกรณ์แต่งหน้า</a></li>
-												<li><a href="products.html">อุปกรณ์กำจัดขน</a></li>
-												<li><a href="products.html">กล่องกระเป๋าเครื่องสำอาง</a></li>
-												<li><a href="products.html">อื่นๆ</a></li>
-											</ul>
-										</div>
-
-										<div class="col-sm-3">
-											<ul class="multi-column-dropdown">
-												<h6>น้ำหอม</h6>
-												<li><a href="products.html">น้ำหอมผู้หญิง</a></li>
-												<li><a href="products.html">อื่นๆ</a></li>
-											</ul>
-										</div>
-
-										<div class="col-sm-3">
-											<ul class="multi-column-dropdown">
-												<h6>ผลิตภัณฑ์สำหรับผู้ชาย</h6>
-												<li><a href="products.html">ผลิตภัณฑ์ดูแลผิวหน้า</a></li>
-												<li><a href="products.html">น้ำหอมสำหรับผู้ชาย</a></li>
-												<li><a href="products.html">อื่นๆ</a></li>
-											</ul>
-										</div>
-
-										<div class="col-sm-3">
-											<ul class="multi-column-dropdown">
-												<h6>อื่นๆ</h6>
-												<li><a href="products.html">อื่นๆ</a></li>
-											</ul>
-										</div>
-										<div class="clearfix"></div>
-									</div>
-								</ul>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">โปรโมชัน</a>
-                  </li>
-                    <li class="nav-item">
-                    <a class="nav-link" href="#">ติดต่อ</a>
-                  </li>
-                </ul>
-                <form class="form-inline my-2 my-lg-0">
-                  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
-              </div>
-            </nav>
-
-		</div>
-	</div>
+<!-- header -->
+    <div>{% include "header.html" %}</div>
 <!-- //header -->
 <!-- breadcrumbs -->
     <div class="breadcrumbs">
 		<div class="container">
               <ol class="breadcrumb breadcrumb1">
-                <li class="breadcrumb-item"><a href="index.html"><span class="fa fa-home" aria-hidden="true"></span>หน้าแรก</a></li>
-				<li class="breadcrumb-item active">ลงทะเบียน</li>
+                <li class="breadcrumb-item"><a href="/"><span class="fa fa-home" aria-hidden="true"></span>หน้าแรก</a></li>
+				<li class="breadcrumb-item active">category</li>
               </ol>
 		</div>
     </div>
@@ -166,76 +28,7 @@
     hi category
 
             <!-- footer -->
-            <div class="footer">
-                <div class="container">
-                    <div class="row footer-grid">
-                        <div class="clearfix"> </div>
-                        <div class="col-md-3">
-                            <h3>เกี่ยวกับเรา</h3>
-                            <p>“เรื่องเครื่องสำอางมือสองไว้ใจเรา 2nd MakeUp เพราะเราคือสังคมการแชร์ส่งต่อเครื่องอำสางของคุณให้ถึงมือคนที่ต้องการ
-                                เหมาะสำหรับการซื้อ-ขาย เครื่องสำอางมือสอง 2nd MakeUp จะรวบรวมเครื่องสำอางมือสองจากทุกคนไว้วางจำหน่าย และคุณสามารถร่วมเป็นส่วนหนึ่งกับเรา
-                                โดยนำเครื่องสำอางบนโต๊ะเครื่องแป้งมาส่งต่อให้กับเพื่อนๆในนี้ได้เลย”</p>
-                        </div>
-                        <div class="col-md-3">
-                            <h3>ติดต่อ</h3>
-                            <ul>
-                                <li><i class="fa fa-map-marker" aria-hidden="true"></i>1234k Avenue, 4th block,<span>Bangkok City.</span></li>
-                                <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:info@example.com">info@2ndMakeUp.com</a></li>
-                                <li><i class="fa fa-phone" aria-hidden="true"></i>+1234 567 567</li>
-                            </ul>
-                        </div>
-                        <div class="col-md-6">
-                            <h3>หมวดหมู่</h3>
-                                <a href="index.html"><b>ผลิตภัณฑ์ดูแลผิวหน้า</b></a>
-                                <p><a href="index.html">ทำความสะอาดผิวหน้า</a><a> | </a><a href="index.html">โทนเนอร์</a>
-                                <a> | </a><a href="index.html">ล้างเครื่องสำอาง</a><a> | </a><a href="index.html">บำรุงผิวหน้า</a>
-                                <a> | </a><a href="index.html">บำรุงดวงตา</a><a> | </a><a href="index.html">ทรีทเม้น&เซรั่ม</a>
-                                <a> | </a><a href="index.html">มาร์กหน้า</a><a> | </a><a href="index.html">กันแดด</a>
-                                <a> | </a><a href="index.html">อื่นๆ</a></p>
-
-                                <a href="index.html"><b>เครื่องสำอางสำหรับผิวหน้า</b></a>
-                                <p><a href="index.html">แป้งฝุ่นและแป้งอัดแข็ง</a><a> | </a><a href="index.html">รองพื้น</a>
-                                <a> | </a><a href="index.html">บลัชออน</a><a> | </a><a href="index.html">คอนซีลเลอร์</a>
-                                <a> | </a><a href="index.html">ไพรเมอร์</a><a> | </a><a href="index.html">เฉดดิ้ง&ไฮไลท์</a>
-                                <a> | </a><a href="index.html">อื่นๆ</a></p>
-
-                                <a href="index.html"><b>เครื่องสำอางสำหรับดวงตา</b></a>
-                                <p><a href="index.html">อายแชโดว์</a><a> | </a><a href="index.html">อายไลเนอร์</a>
-                                <a> | </a><a href="index.html">ที่เขียนคิ้ว</a><a> | </a><a href="index.html">มาสคาร่า</a>
-                                <a> | </a><a href="index.html">ขนตาปลอม</a><a> | </a><a href="index.html">เทปกาวตาสองชั้น</a>
-                                <a> | </a><a href="index.html">อื่นๆ</a></p>
-
-                                <a href="index.html"><b>ผลิตภัณฑ์สำหรับริมฝีปาก</b></a>
-                                <p><a href="index.html">ลิปสติก</a><a> | </a><a href="index.html">ลิปบาล์ม</a>
-                                <a> | </a><a href="index.html">ลิปกลอส</a><a> | </a><a href="index.html">ดินสอเขียนขอบปาก</a>
-                                <a> | </a><a href="index.html">ลิปทินท์</a><a> | </a><a href="index.html">อื่นๆ</a></p>
-
-                                <a href="index.html"><b>อุปกรณ์เสริมความงาม</b></a>
-                                <p><a href="index.html">อุปกรณ์ทำผม</a><a> | </a><a href="index.html">อุปกรณ์แต่งหน้า</a>
-                                <a> | </a><a href="index.html">อุปกรณ์กำจัดขน</a><a> | </a><a href="index.html">กล่องกระเป๋าเครื่องสำอาง</a>
-                                <a> | </a><a href="index.html">อื่นๆ</a></p>
-
-                                <a href="index.html"><b>น้ำหอม</b></a>
-                                <p><a href="index.html">น้ำหอมผู้หญิง</a><a> | </a><a href="index.html">อื่นๆ</a></p>
-
-                                <a href="index.html"><b>ผลิตภัณฑ์สำหรับผู้ชาย</b></a>
-                                <p><a href="index.html">ผลิตภัณฑ์ดูแลผิวหน้า</a><a> | </a><a href="index.html">น้ำหอมสำหรับผู้ชาย</a>
-                                <a> | </a><a href="index.html">อื่นๆ</a></p>
-
-                                <a href="index.html"><b>อื่นๆ</b></a>
-                                <p><a href="index.html">อื่นๆ</a></p>
-
-                        </div>
-                            <div class="clearfix"> </div>
-                        </div>
-                    <div class="footer-logo">
-                        <h2><a href="index.html">2nd MakeUp <span>shop anywhere</span></a></h2>
-                    </div>
-                    <div class="copy-right">
-                        <p>&copy 2017 2ndMakeUp. All rights reserved.</p>
-                    </div>
-                </div>
-            </div>
+            <div>{% include "footer.html" %}</div>
             <!-- //footer -->
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
