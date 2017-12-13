@@ -5,9 +5,9 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 
+
 class LoginView(TemplateView):
     template_name = 'login.html'
-
 
 @api_view(['post', ])
 def log_in_user(request):
