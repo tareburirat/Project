@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <script src="{% static 'js/components/angular.min.js' %}"></script>
+<script src="{% static 'js/controllers/productCtrl.js' %}"></script>
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -25,8 +26,10 @@
     </div>
 <!-- //breadcrumbs -->
     <div class="container">
-       <div ng-model="app" ng-controller="productCtrl">
-           <li>[[ product ]]</li>
+       <div ng-app="app" ng-controller="productCtrl">
+           <div ng-repeat="product in products">
+              <p>[[ product.name ]]</p> <img ng-repeat="image in product.images" src="[[image.image]]">
+           </div>
        </div>
     </div>
     <!-- footer -->
