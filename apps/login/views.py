@@ -16,7 +16,7 @@ def log_in_user(request):
     password = data['password']
     authenticated_user = authenticate(
         username=username,
-        password=password
+        password=password,
     )
 
     # wrong username and password, user not logged in
