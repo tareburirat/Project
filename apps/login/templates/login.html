@@ -25,6 +25,7 @@
 		</div>
     </div>
 <!-- //breadcrumbs -->
+<<<<<<< HEAD
    <!-- login -->
 <<<<<<< HEAD
 	<div class="login">
@@ -88,15 +89,25 @@
 {#		</div>#}
 {#	</div>#}
 <!-- //login -->
+=======
+>>>>>>> origin/master
    <!-- login old -->
-{{ request.user }}
-    <div ng-app="app" ng-controller="logInCtrl">
-        <p>Sign In</p>
-        <p>Username: <input type="text" ng-model="username"></p>
-        <p>Password: <input type="text" ng-model="password"></p>
-        <button ng-click="clicker()">Login</button>
-        <button ng-click="logout()">LogOut(user logged in: [[ userLoggedIn ]])</button>
-        [[ mama ]]
+
+    <div class="login" ng-app="app" ng-controller="logInCtrl">
+        <div class="container">
+        <h3>เข้าสู่ระบบ</h3>
+            <div class="login-form-grids">
+                <form>
+                    <label>Username:{{ request.user }}</label>
+                    <input type="text" ng-model="username" placeholder="Enter Username">
+                    <label>Password: </label>
+                    <input type="password" ng-model="password" placeholder="Enter Password">
+                    <button class="btn btn-primary" type="submit" ng-click="clicker()">Login</button>
+                    <button class="btn btn-primary" type="submit" ng-click="logout()">LogOut(user logged in: [[ userLoggedIn ]])</button>
+                    [[ mama ]]
+                </form>
+            </div>
+        </div>
     </div>
    <!-- login old -->
 >>>>>>> origin/master
