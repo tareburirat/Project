@@ -26,9 +26,17 @@
     </div>
 <!-- //breadcrumbs -->
     <div class="container">
-       <div ng-app="app" ng-controller="productCtrl">
-           <div ng-repeat="product in products">
-              <p>[[ product.name ]]</p> <img ng-repeat="image in product.images" src="[[image.image]]">
+       <div ng-app="app" ng-controller="productCtrl" >
+           <div class="card-deck" >
+               <div class="card" 6ng-repeat="product in products" style="max-width: 20rem;">
+                    <img class="card-img-top" ng-repeat="image in product.images" src="[[image.image]]" alt="Card image cap">
+                    <div class="card-body">
+                      <h4 class="card-title">[[product.name]]</h4>
+                      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    </div>
+               </div>
+{#              <p>[[ product.name ]]</p> <img ng-repeat="image in product.images" src="[[image.image]]">#}
            </div>
        </div>
     </div>
