@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from rest_framework import serializers
 
@@ -17,3 +18,9 @@ class AccountSerializer(serializers.ModelSerializer):
             'last_name',
             'display_name',
         ]
+
+    def create(self, validated_data):
+        username = validated_data.pop('username')
+        password = validated_data.pop('password')
+        User.objects.create_user(username, password=password)
+        return super(AccountSerializer, self).create(**validated_data)

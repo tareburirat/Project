@@ -27,40 +27,41 @@
     </div>
 <!-- //breadcrumbs -->
    <!-- login -->
-	<div class="login">
-		<div class="container">
-			<h3>เข้าสู่ระบบ</h3>
-			<div class="login-form-grids">
-				<form>
+{#	<div class="login">#}
+{#		<div class="container">#}
+{#			<h3>เข้าสู่ระบบ</h3>#}
+{#			<div class="login-form-grids">#}
+{#				<form>#}
                 {#{{ request.user }}#}
-                <div ng-app="app" ng-controller="logInCtrl">
-                    <small>Username :</small>
-                    <input type="text" placeholder="Username" ng-model="username">
-                    <small>Password :</small>
-                    <input type="password" placeholder="Password" ng-model="password">
+{#                <div ng-app="app" ng-controller="logInCtrl">#}
+{#                    <small>Username :</small>#}
+{#                    <input type="text" placeholder="Username" ng-model="username">#}
+{#                    <small>Password :</small>#}
+{#                    <input type="password" placeholder="Password" ng-model="password">#}
                     {#<button ng-click="clicker()">Login</button>#}
                     {#<button ng-click="logout()">LogOut(user logged in: [[ userLoggedIn ]])</button>#}
                     {#[[ mama ]]#}
-                </div>
-					<div class="forgot"><a href="#">ลืมรหัสผ่าน?</a></div>
-                    <input type="submit" ng-click="clicker()" value="เข้าสู่ระบบ">
-				</form>
-			</div>
-			<h4 class="animated wow slideInUp" data-wow-delay=".5s"></h4>
-			<p class="animated wow slideInUp" data-wow-delay=".5s"><a href="/account_register">ลงทะเบียน</a> กลับสู่ <a href="/">หน้าแรก<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a></p>
-		</div>
-	</div>
+{#                </div>#}
+{#					<div class="forgot"><a href="#">ลืมรหัสผ่าน?</a></div>#}
+{#                    <input type="submit" ng-click="clicker()" value="เข้าสู่ระบบ">#}
+{#                    <button ng-click="clicker()">CLICK!!</button>#}
+{#				</form>#}
+{#			</div>#}
+{#			<h4 class="animated wow slideInUp" data-wow-delay=".5s"></h4>#}
+{#			<p class="animated wow slideInUp" data-wow-delay=".5s"><a href="/account_register">ลงทะเบียน</a> กลับสู่ <a href="/">หน้าแรก<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a></p>#}
+{#		</div>#}
+{#	</div>#}
 <!-- //login -->
    <!-- login old -->
-{#{{ request.user }}#}
-{#    <div ng-app="app" ng-controller="logInCtrl">#}
-{#        <p>Sign In</p>#}
-{#        <p>Username: <input type="text" ng-model="username"></p>#}
-{#        <p>Password: <input type="text" ng-model="password"></p>#}
-{#        <button ng-click="clicker()">Login</button>#}
-{#        <button ng-click="logout()">LogOut(user logged in: [[ userLoggedIn ]])</button>#}
-{#        [[ mama ]]#}
-{#    </div>#}
+{{ request.user }}
+    <div ng-app="app" ng-controller="logInCtrl">
+        <p>Sign In</p>
+        <p>Username: <input type="text" ng-model="username"></p>
+        <p>Password: <input type="text" ng-model="password"></p>
+        <button ng-click="clicker()">Login</button>
+        <button ng-click="logout()">LogOut(user logged in: [[ userLoggedIn ]])</button>
+        [[ mama ]]
+    </div>
    <!-- login old -->
     <!-- footer -->
     <div>{% include "footer.html" %}</div>

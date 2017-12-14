@@ -19,6 +19,7 @@ class ProductImageSerializer(serializers.ModelSerializer):
 class ProductSerializer(serializers.ModelSerializer):
     images = ProductImageSerializer(many=True, read_only=True)
     property = serializers.SerializerMethodField()
+    first_image_url = serializers.SerializerMethodField()
 
     class Meta:
         model = Product
@@ -27,3 +28,11 @@ class ProductSerializer(serializers.ModelSerializer):
     @staticmethod
     def get_property(obj):
         return obj.properties
+
+    @staticmethod
+    def get_first_image_url(obj):
+        first_image = obj.images.first()
+        if first_image is None:
+            return ""
+        else:
+            return "http://localhost:8000/" + first_image.image.url

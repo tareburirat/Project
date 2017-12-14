@@ -26,7 +26,6 @@ SECRET_KEY = 'nonm_!ndp^7q4-ys=dqj=y$wv3#*obb160eyu(8v1^7fz0g_ad'
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-AUTH_USER_MODEL = 'accounts.Account'
 
 
 # Application definition
@@ -34,6 +33,8 @@ AUTH_USER_MODEL = 'accounts.Account'
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
+    'django.contrib.sites',
+    'django.contrib.redirects',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
