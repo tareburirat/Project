@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.db import IntegrityError, transaction
 from rest_framework import serializers
@@ -11,6 +12,7 @@ from apps.sellers.models import Seller
 
 class SellerSerializer(serializers.ModelSerializer):
     account = AccountSerializer(many=False)
+
     address = serializers.CharField(read_only=True)
     country = serializers.CharField(label='Country', write_only=True)
     city = serializers.CharField(label='City', write_only=True)
@@ -29,14 +31,18 @@ class SellerSerializer(serializers.ModelSerializer):
             'city',
             'zip_code',
             'detail_address',
-
         ]
 
     def create(self, validated_data):
         try:
             with transaction.atomic():
                 account_data = validated_data.pop('account')
-                account = Account.objects.create(**account_data)
+                user = account_data.pop('user')
+                user_obj = User.objects.create(**user)
+                account = Account.objects.create(
+                    user=user_obj,
+                    **account_data
+                )
 
                 country_data = validated_data.pop('country')
                 city_data = validated_data.pop('city')

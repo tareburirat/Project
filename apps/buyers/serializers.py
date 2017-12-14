@@ -1,12 +1,11 @@
+from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.db import transaction, IntegrityError
 from rest_framework import serializers
 
 from apps.accounts.models import Account
 from apps.accounts.serializers import AccountSerializer
-from apps.addresses.serializers import AddressSerializer
 from apps.buyers.models import Buyer
-
 
 
 class BuyerSerializer(serializers.ModelSerializer):
@@ -23,10 +22,15 @@ class BuyerSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         try:
             with transaction.atomic():
-                account_data = validated_data.pop('account')
-                account = Account.objects.create(**account_data)
-
                 print(validated_data)
+                account_data = validated_data.pop('account')
+                user = account_data.pop('user')
+                user_obj = User.objects.create(**user)
+                account = Account.objects.create(
+                    user=user_obj,
+                    **account_data
+                )
+
                 buyer = Buyer.objects.create(
                     account=account,
                     **validated_data
