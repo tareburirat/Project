@@ -2113,10 +2113,10 @@ label.radio {
     width: 100%;
 }
 .login-form-grids input[type="email"]{
-	background:url(../images/img-sp.png) no-repeat 5px -182px #fff;
+	background:#fff;
 }
 .login-form-grids input[type="password"]{
-	background:url(../images/img-sp.png) no-repeat 5px -220px #fff;
+	background:#fff;
 	margin:1em 0 0;
 }
 .forgot {
@@ -2190,10 +2190,10 @@ label.radio {
 	margin:0 0 2em;
 }
 .login-form-grids input[type="text"]{
-	background:url(../images/img-sp.png) no-repeat 5px -259px #fff;
+	background:#fff;
 }
-.login-form-grids input[type="text"]:nth-child(2){
-	background:url(../images/img-sp.png) no-repeat 0px -298px #fff;
+.login-form-grids input[type="password"]:nth-child(2){
+	background:#fff;
 	margin:1em 0;
 }
 small,
