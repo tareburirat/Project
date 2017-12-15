@@ -30,18 +30,24 @@
            <li>[[ product ]]</li>
 =======
        <div ng-app="app" ng-controller="productCtrl" >
+
            <div class="card-deck" >
-               <div class="card" ng-repeat="product in products" style="max-width: 20rem; max-height: 50rem;">
+               <div class="card " ng-repeat="product in products" style="max-width: 20rem; ">
                     <img class="card-img-top" src="[[product.first_image_url]]" alt="[[product.first_image_url]]" style="overflow: scroll;">
                     <div class="card-body">
                       <h4 class="card-title">[[product.name]]</h4>
-                      <p class="card-text">[[product.first_image_url]]</p>
-                      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        <p class="card-text"><b>Freight:</b> [[product.freight_fee]] ฿</p>
+                        <p class="card-text"><b>Price:</b> [[product.price]] ฿</p>
+                      <p class="card-text"><small class="text-muted">[[product.date_of_sale]]</small></p>
                     </div>
                </div>
 {#              <p>[[ product.name ]]</p> <img ng-repeat="image in product.images" src="[[image.image]]">#}
            </div>
+<<<<<<< HEAD
 >>>>>>> tare
+=======
+           
+>>>>>>> 09e8c01a597ffb557101ba99f17ffd18ddd76c00
        </div>
     </div>
     <!-- footer -->
