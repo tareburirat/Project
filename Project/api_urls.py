@@ -1,4 +1,4 @@
-from django.conf.urls import url
+from django.conf.urls import url, include
 from rest_framework.routers import DefaultRouter
 
 from apps.accounts.viewsets import AccountViewSet
@@ -24,7 +24,7 @@ router.register('orders', OrderViewSet, base_name='order')
 router.register('products', ProductViewSet, base_name='product')
 router.register('properties', PropertyViewSet, base_name='property')
 router.register('ratings', RatingViewSet, base_name='rating')
-router.register('seller', SellerViewSet, base_name='seller')
+router.register('sellers', SellerViewSet, base_name='seller')
 router.register('transactions', TransactionViewSet, base_name='transaction')
 router.register('values', ValueViewSet, base_name='value')
 

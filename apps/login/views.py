@@ -1,4 +1,6 @@
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
+from django.shortcuts import redirect
+from django.urls import reverse_lazy
 from django.views.generic import TemplateView
 from rest_framework import status
 from rest_framework.decorators import api_view
@@ -16,7 +18,7 @@ def log_in_user(request):
     password = data['password']
     authenticated_user = authenticate(
         username=username,
-        password=password
+        password=password,
     )
 
     # wrong username and password, user not logged in
@@ -27,3 +29,8 @@ def log_in_user(request):
         response_data = {"message": "Success!!!!"}
         login(request, authenticated_user)
     return Response(status=status.HTTP_200_OK, data=response_data)
+
+
+def log_out(request):
+    logout(request)
+    return redirect(reverse_lazy('home'))

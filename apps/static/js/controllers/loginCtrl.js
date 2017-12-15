@@ -4,6 +4,7 @@ app.controller("logInCtrl", function($scope, $http) {
     $scope.userLoggedIn = false;
 
     $scope.clicker = function () {
+        console.log("Entered!!!");
         var data = {
             username: $scope.username,
             password: $scope.password
