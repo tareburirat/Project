@@ -1,4 +1,5 @@
 from django.contrib.auth import authenticate, login, logout
+from django.http import HttpResponseRedirect
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView
@@ -24,11 +25,12 @@ def log_in_user(request):
     # wrong username and password, user not logged in
     if authenticated_user is None:
         response_data = {"message": "Failed!!!!"}
+
     # user logged in
     else:
         response_data = {"message": "Success!!!!"}
         login(request, authenticated_user)
-    return Response(status=status.HTTP_200_OK, data=response_data)
+        return Response(status=status.HTTP_200_OK, data=response_data)
 
 
 def log_out(request):

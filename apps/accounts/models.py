@@ -9,3 +9,5 @@ class Account(models.Model):
     email = models.EmailField(verbose_name="Email", null=True, blank=True)
     display_name = models.CharField(verbose_name="Display Name", max_length=100, unique=True)
 
+    def __str__(self):
+        return self.display_name

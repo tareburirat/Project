@@ -16,6 +16,7 @@ app.controller("logInCtrl", function($scope, $http) {
 
     };
 
+
 }).config(function($interpolateProvider) {
   $interpolateProvider.startSymbol('[[');
   $interpolateProvider.endSymbol(']]');
