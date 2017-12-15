@@ -11,7 +11,11 @@
         $scope.products = response.data;
         console.log($scope.products)
     })
+<<<<<<< HEAD
 >>>>>>> origin/master
+=======
+>>>>>>> 09e8c01a597ffb557101ba99f17ffd18ddd76c00
+>>>>>>> tare
 
         MyService.getProduct().then(function (data) {
             $scope.product = data;
