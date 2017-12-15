@@ -1,0 +1,143 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<script src="{% static 'js/components/angular.min.js' %}"></script>
+<script src="{% static 'js/controllers/productCreateCtrl.js' %}"></script>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Add Product</title>
+</head>
+<body>
+ <!-- header -->
+    <div>{% include "header.html" %}</div>
+    <!-- //header -->
+<!-- breadcrumbs -->
+    <div class="breadcrumbs">
+		<div class="container">
+              <ol class="breadcrumb breadcrumb1">
+                <li class="breadcrumb-item"><a href="/"><span class="fa fa-home" aria-hidden="true"></span>หน้าแรก</a></li>
+				<li class="breadcrumb-item active">Add product</li>
+              </ol>
+		</div>
+    </div>
+<!-- //breadcrumbs -->
+    <div class="wrapper content" ng-app="productCreateApp" ng-controller="productCreateCtrl">
+						<h2>ข้อมูลทั่วไป</h2>
+						<div class="add">
+								<div class="container">
+
+										<div class="form-group row">
+												<label for="input" class="col-sm-2 col-form-label">ชื่อสินค้า : </label>
+												<div class="col-sm-6">
+												  <input type="name_product" class="form-control" id="name_product" placeholder="" ng-model="name">
+												</div>
+											  </div>
+											  <div class="form-group row">
+												<label for="inputPassword3" class="col-sm-2 col-form-label">รายละเอียด : </label>
+												<div class="col-sm-6" >
+												<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+												</div>
+											  </div>
+											  <div class="form-group row">
+													<label for="inputPassword3" class="col-sm-2 col-form-label">หมวดหมู่ : </label>
+													<div class="col-sm-6" >
+															<select class="form-control" id="exampleFormControlSelect1">
+																	<option value="">กรุณาเลือกหมวดหมู่</option>
+																	<option value="1">ผลิตภัณฑ์ดูแลผิวหน้า</option>
+																	<option value="2">เครื่องสำอางสำหรับผิวหน้า</option>
+																	<option value="3">เครื่องสำอางสำหรับดวงตา</option>
+																	<option value="4">ผลิตภัณฑ์สำหรับริมฝีปาก</option>
+																	<option value="5">อุปกรณ์เสริมความงาม</option>
+																	<option value="6">น้ำหอม</option>
+																	<option value="7">ผลิตภัณฑ์สำหรับผู้ชาย</option>
+																	<option value="8">อื่นๆ</option>
+																  </select>
+													</div>
+												  </div>
+													</div>
+												  </div>
+												  <h2>ราคา</h2>
+												  <div class="add">
+												  <div class="container">
+												  <div class="form-group row">
+														<label for="inputEmail3" class="col-sm-2 col-form-label">ราคา : </label>
+														<div class="col-sm-6">
+														  <input type="price" class="form-control" id="price" placeholder="">
+														</div>
+													  </div>
+													</div>
+												</div>
+
+												<h2>การจัดส่ง</h2>
+												<div class="add">
+												<div class="container">
+														<div class="form-group row">
+																<label for="inputPassword3" class="col-sm-2 col-form-label">การจัดส่ง : </label>
+																<div class="col-sm-6" >
+																		<select ng-model="freight" ng-init="freight='register'" ng-options="f for f in fTypes"></select>
+																</div>
+															  </div>
+												<div class="form-group row">
+													  <label for="input" class="col-sm-2 col-form-label">ราคาส่ง : </label>
+													  <div class="col-sm-6">
+														<input type="price_send" class="form-control" id="price_send" placeholder="">
+													  </div>
+													</div>
+												  </div>
+											  </div>
+
+											  <h2>อื่นๆ</h2>
+											  <div class="add">
+											  <div class="container">
+													  <div class="form-group row">
+															  <label for="inputPassword3" class="col-sm-2 col-form-label">สภาพ : </label>
+															  <div class="col-sm-6" >
+																	  <select class="form-control" id="exampleFormControlSelect1">
+																			<option value="">กรุณาเลือกสภาพ</option>
+																			<option value="1">ของใหม่</option>
+																			<option value="2">มือสอง</option>
+
+																			</select>
+															  </div>
+															</div>
+											  <div class="form-group row">
+													<label for="input" class="col-sm-2 col-form-label">Batch Code : </label>
+													<div class="col-sm-6">
+													  <input type="price_send" class="form-control" id="price_send" placeholder="">
+													</div>
+												  </div>
+												</div>
+											</div>
+
+											<h2>รูปภาพ</h2>
+											<div class="add">
+											<div class="container">
+											<div class="form-group row">
+												  <label for="input" class="col-sm-2 col-form-label">รูปภาพสินค้า : </label>
+												  <div class="col-sm-6">
+														<input type="file" multiple ng-file-model="images">
+												  </div>
+												</div>
+											  </div>
+											  <div class="add-review ">
+													<input type="submit" value="บันทึก" ng-click="clicky()">
+													<button type="button" class="btn btn-secondary btn-lg">ยกเลิก</button>
+											</div>
+
+										  </div>
+
+				</div>
+            <!-- footer -->
+            <div>{% include "footer.html" %}</div>
+            <!-- //footer -->
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+</body>
+</html>
