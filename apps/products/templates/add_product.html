@@ -25,8 +25,117 @@
     </div>
 <!-- //breadcrumbs -->
     <div class="wrapper content">
-    <h2>แก้ไขรูปภาพสินค้า</h2>
-    </div>
+						<h2>ข้อมูลทั่วไป</h2>
+						<div class="add">
+								<div class="container">
+
+										<div class="form-group row">
+												<label for="input" class="col-sm-2 col-form-label">ชื่อสินค้า : </label>
+												<div class="col-sm-6">
+												  <input type="name_product" class="form-control" id="name_product" placeholder="">
+												</div>
+											  </div>
+											  <div class="form-group row">
+												<label for="inputPassword3" class="col-sm-2 col-form-label">รายละเอียด : </label>
+												<div class="col-sm-6" >
+												<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+												</div>
+											  </div>
+											  <div class="form-group row">
+													<label for="inputPassword3" class="col-sm-2 col-form-label">หมวดหมู่ : </label>
+													<div class="col-sm-6" >
+															<select class="form-control" id="exampleFormControlSelect1">
+																	<option value="">กรุณาเลือกหมวดหมู่</option>
+																	<option value="1">ผลิตภัณฑ์ดูแลผิวหน้า</option>
+																	<option value="2">เครื่องสำอางสำหรับผิวหน้า</option>
+																	<option value="3">เครื่องสำอางสำหรับดวงตา</option>
+																	<option value="4">ผลิตภัณฑ์สำหรับริมฝีปาก</option>
+																	<option value="5">อุปกรณ์เสริมความงาม</option>
+																	<option value="6">น้ำหอม</option>
+																	<option value="7">ผลิตภัณฑ์สำหรับผู้ชาย</option>
+																	<option value="8">อื่นๆ</option>
+																  </select>
+													</div>
+												  </div>
+													</div>
+												  </div>
+												  <h2>ราคา</h2>
+												  <div class="add">
+												  <div class="container">
+												  <div class="form-group row">
+														<label for="inputEmail3" class="col-sm-2 col-form-label">ราคา : </label>
+														<div class="col-sm-6">
+														  <input type="price" class="form-control" id="price" placeholder="">
+														</div>
+													  </div>
+													</div>
+												</div>
+
+												<h2>การจัดส่ง</h2>
+												<div class="add">
+												<div class="container">
+														<div class="form-group row">
+																<label for="inputPassword3" class="col-sm-2 col-form-label">การจัดส่ง : </label>
+																<div class="col-sm-6" >
+																		<select class="form-control" id="exampleFormControlSelect1">
+																				<option value="">กรุณาเลือกการจัดส่ง</option>
+																				<option value="1">Regiter</option>
+																				<option value="2">EMS</option>
+																				<option value="3">Kerry</option>
+
+																			  </select>
+																</div>
+															  </div>
+												<div class="form-group row">
+													  <label for="inputEmail3" class="col-sm-2 col-form-label">ราคาส่ง : </label>
+													  <div class="col-sm-6">
+														<input type="price_send" class="form-control" id="price_send" placeholder="">
+													  </div>
+													</div>
+												  </div>
+											  </div>
+
+											  <h2>อื่นๆ</h2>
+											  <div class="add">
+											  <div class="container">
+													  <div class="form-group row">
+															  <label for="inputPassword3" class="col-sm-2 col-form-label">สภาพ : </label>
+															  <div class="col-sm-6" >
+																	  <select class="form-control" id="exampleFormControlSelect1">
+																			<option value="">กรุณาเลือกสภาพ</option>
+																			<option value="1">ของใหม่</option>
+																			<option value="2">มือสอง</option>
+
+																			</select>
+															  </div>
+															</div>
+											  <div class="form-group row">
+													<label for="inputEmail3" class="col-sm-2 col-form-label">Batch Code : </label>
+													<div class="col-sm-6">
+													  <input type="price_send" class="form-control" id="price_send" placeholder="">
+													</div>
+												  </div>
+												</div>
+											</div>
+
+											<h2>รูปภาพ</h2>
+											<div class="add">
+											<div class="container">
+											<div class="form-group row">
+												  <label for="inputEmail3" class="col-sm-2 col-form-label">รูปภาพสินค้า : </label>
+												  <div class="col-sm-6">
+														<input name="pro_img" type="file" required="required" id="pro_img" size="40" />
+												  </div>
+												</div>
+											  </div>
+											  <div class="add-review ">
+													<input type="submit" value="บันทึก">
+													<button type="button" class="btn btn-secondary btn-lg">ยกเลิก</button>
+											</div>
+
+										  </div>
+
+				</div>
             <!-- footer -->
             <div>{% include "footer.html" %}</div>
             <!-- //footer -->

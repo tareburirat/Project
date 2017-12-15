@@ -4,6 +4,38 @@ Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 --*/
+.wrapper.content {
+    background-color: #fff;
+    box-shadow: 0 0.2rem 0.4rem rgba(0,0,0,.09);
+    padding: 20px 48px;
+}
+.wrapper {
+	width: 1200px;
+	height: auto;
+    margin: 0 auto;
+}
+:not(input):not(textarea) {
+    -webkit-tap-highlight-color: transparent;
+}
+h2 {
+    font-size: 18px;
+    font-weight: 400;
+    color: #000;
+    margin: 30px 0 15px;
+}
+form {
+    display: block;
+    margin-top: 0em;
+}
+.wrapper.content .container {
+    display: block;
+    width: 100%;
+}
+.add {
+    padding: 2em 0;
+    color: #999;
+}
+
 html, body{
     font-size: 100%;
 	background:	#fff;
@@ -346,6 +378,7 @@ a.simpleCart_empty {
 }
 /*-- //header --*/
 /*-- banner --*/
+
 .banner{
 	background:url(../images/bn.jpg) no-repeat 0px 0px;
 	background-size:cover;
