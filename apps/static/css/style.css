@@ -3909,3 +3909,6 @@ td.invert-image a img {
 		text-align: left;
 	}
 }
+.card-deck{
+    column-count: 3;
+}
