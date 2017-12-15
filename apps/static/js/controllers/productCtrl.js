@@ -1,9 +1,17 @@
 (function () {
     'use strict';
 
+<<<<<<< HEAD
     var app = angular.module("app", []);
     app.controller("productCtrl", function($scope, MyService) {
         $scope.product = [];
+=======
+
+    $http.get('http://localhost:8000/api/products/').then(function (response) {
+        $scope.products = response.data;
+        console.log($scope.products)
+    })
+>>>>>>> origin/master
 
         MyService.getProduct().then(function (data) {
             $scope.product = data;

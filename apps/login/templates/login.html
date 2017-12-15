@@ -1,6 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+<script src="{% static 'js/components/jquery-3.2.1.min.js' %}"></script>
 <script src="{% static 'js/components/angular.min.js' %}"></script>
 <script src="{% static 'js/controllers/loginCtrl.js' %}"></script>
 <head>
@@ -97,7 +98,7 @@
 >>>>>>> master
    <!-- login old -->
 
-    <div class="login" ng-app="app" ng-controller="logInCtrl">
+    <div class="login" ng-app="app" ng-controller="logInCtrl" >
         <div class="container">
         <h3>เข้าสู่ระบบ</h3>
             <div class="login-form-grids">
@@ -106,9 +107,7 @@
                     <input type="text" ng-model="username" placeholder="Enter Username">
                     <label>Password: </label>
                     <input type="password" ng-model="password" placeholder="Enter Password">
-                    <button class="btn btn-primary" type="submit" ng-click="clicker()">Login</button>
-                    <button class="btn btn-primary" type="submit" ng-click="logout()">LogOut(user logged in: [[ userLoggedIn ]])</button>
-                    [[ mama ]]
+                    <button class="btn btn-primary" type="submit" ng-click="clicker()">Login(user logged in: [[userLoggedIn]])</button>
                 </form>
             </div>
         </div>
