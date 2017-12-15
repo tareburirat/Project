@@ -3,6 +3,9 @@
 <html lang="en">
 <script src="{% static 'js/components/angular.min.js' %}"></script>
 <script src="{% static 'js/components/simpleCart.min.js'%}"></script>
+<script src="{% static 'js/controllers/loginCtrl.js' %}"></script>
+<script src="{% static 'js/components/jquery.wmuSlider.js'%}"></script>
+<script src="{% static 'js/components/jquery.flexslider.js'%}"></script>
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -20,31 +23,111 @@
 		<div class="container">
               <ol class="breadcrumb breadcrumb1">
                 <li class="breadcrumb-item"><a href="/"><span class="fa fa-home" aria-hidden="true"></span>หน้าแรก</a></li>
+                  {{ request.user }}
 				<!--<li class="breadcrumb-item active"></li>-->
               </ol>
 		</div>
     </div>
 <!-- //breadcrumbs -->
-    <table align="center">
-        <tr><th> Link Page </th></tr>
-        <tr><td><a href="/address_buyer">address buyer</a></td></tr>
-        <tr><td><a href="/category">category</a></td></tr>
-        <tr><td><a href="/category_product">category product</a></td></tr>
-        <tr><td><a href="/property">property</a></td></tr>
-        <tr><td><a href="/product">product</a></td></tr>
-        <tr><td><a href="/order">order</a></td></tr>
-        <tr><td><a href="/offer">offer</a></td></tr>
-        <tr><td><a href="/address_buyer">address buyer</a></td></tr>
-        <tr><td><a href="/rating">rating</a></td></tr>
-        <tr><td><a href="/value">value</a></td></tr>
-        <tr><td><a href="/transaction">transaction</a></td></tr>
-    </table>
+
+<!-- banner -->
+	<div class="banner">
+		<div class="container">
+			<div class="banner-info">
+				<h3>2nd MakeUp</h3>
+				<h4>มอบสิทธิพิเศษ <span>ลด <i>10%</i></span></h4>
+				<div class="wmuSlider example1">
+					<div class="wmuSliderWrapper">
+						<article style="position: absolute; width: 100%; opacity: 0;">
+							<div class="banner-wrap">
+								<div class="banner-info1">
+									<p>*สำหรับการสั่งซื้อสินค้าครั้งแรก</p>
+								</div>
+							</div>
+						</article>
+						<article style="position: absolute; width: 100%; opacity: 0;">
+							<div class="banner-wrap">
+								<div class="banner-info1">
+									<p>*สำหรับการสมัครครั้งแรก</p>
+								</div>
+							</div>
+						</article>
+						<article style="position: absolute; width: 100%; opacity: 0;">
+							<div class="banner-wrap">
+								<div class="banner-info1">
+									<p>*สำหรับเดือนมกราคมนี้</p>
+								</div>
+							</div>
+						</article>
+					</div>
+				</div>
+					<script>
+						$('.example1').wmuSlider();
+					</script>
+			</div>
+		</div>
+	</div>
+<!-- //banner -->
+<!-- banner-bottom -->
+	<div class="banner-bottom">
+		<div class="container">
+			<div class="banner-bottom-grids">
+				<div class="banner-bottom-grid-left">
+					<div class="grid">
+						<figure class="effect-julia">
+							<img src="{% static 'image/4.jpg' %}" alt=" " class="img-responsive" />
+							<figcaption>
+								<h3>2nd <span>MakeUp</span><i> in online shopping</i></h3>
+								<div>
+									<p>ช่องทางการซื้อและขายเครื่องสำอางมือสอง</p>
+									<p>แหล่งรวมของเครื่องสำอางมือสอง</p>
+									<p>เชื่อถือได้ ไว้ใจเรา</p>
+								</div>
+							</figcaption>
+						</figure>
+					</div>
+				</div>
+				<div class="banner-bottom-grid-left1">
+					<div class="banner-bottom-grid-left-grid left1-grid grid-left-grid1">
+						<div class="banner-bottom-grid-left-grid1">
+							<img src="{% static 'image/1.jpg' %}" alt=" " class="img-responsive" />
+						</div>
+						<div class="banner-bottom-grid-left1-pos">
+							<p>ส่วนลด 45%</p>
+						</div>
+					</div>
+					<div class="banner-bottom-grid-left-grid left1-grid grid-left-grid1">
+						<div class="banner-bottom-grid-left-grid1">
+							<img src="{% static 'image/2.jpg' %}" alt=" " class="img-responsive" />
+						</div>
+						<div class="banner-bottom-grid-left1-position">
+							<div class="banner-bottom-grid-left1-pos1">
+								<p>สินค้ามาใหม่ในเดือนนี้</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="banner-bottom-grid-right">
+					<div class="banner-bottom-grid-left-grid grid-left-grid1">
+						<div class="banner-bottom-grid-left-grid1">
+							<img src="{% static 'image/3.jpg' %}" alt=" " class="img-responsive" />
+						</div>
+						<div class="grid-left-grid1-pos">
+							<p>น้ำหอมยอดนิยม<span>ในปี2017</span></p>
+						</div>
+					</div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+<!-- //banner-bottom -->
 <!-- footer -->
     <div>{% include "footer.html" %}</div>
 <!-- //footer -->
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 </body>

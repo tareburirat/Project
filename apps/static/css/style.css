@@ -380,7 +380,7 @@ a.simpleCart_empty {
 /*-- banner --*/
 
 .banner{
-	background:url(../images/bn.jpg) no-repeat 0px 0px;
+	background:url(../image/bn.jpg) no-repeat 0px 0px;
 	background-size:cover;
 	-webkit-background-size:cover;
 	-moz-background-size:cover;
@@ -391,10 +391,10 @@ a.simpleCart_empty {
 .banner-info h3{
 	font-size:5em;
 	color:#353535;
-	margin:0;
+    margin: 20px 0 0;
 }
 .banner-info {
-    margin: 9em 0 0;
+    margin-top: 10px ;
     text-align: center;
 }
 .banner-info h4{
@@ -2146,10 +2146,10 @@ label.radio {
     width: 100%;
 }
 .login-form-grids input[type="email"]{
-	background:url(../images/img-sp.png) no-repeat 5px -182px #fff;
+	background:#fff;
 }
 .login-form-grids input[type="password"]{
-	background:url(../images/img-sp.png) no-repeat 5px -220px #fff;
+	background:#fff;
 	margin:1em 0 0;
 }
 .forgot {
@@ -2223,10 +2223,10 @@ label.radio {
 	margin:0 0 2em;
 }
 .login-form-grids input[type="text"]{
-	background:url(../images/img-sp.png) no-repeat 5px -259px #fff;
+	background:#fff;
 }
-.login-form-grids input[type="text"]:nth-child(2){
-	background:url(../images/img-sp.png) no-repeat 0px -298px #fff;
+.login-form-grids input[type="password"]:nth-child(2){
+	background:#fff;
 	margin:1em 0;
 }
 small,

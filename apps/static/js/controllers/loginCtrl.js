@@ -13,7 +13,9 @@ app.controller("logInCtrl", function($scope, $http) {
             console.log(response.data);
             $scope.userLoggedIn = true;
         });
+
     };
+
 
 }).config(function($interpolateProvider) {
   $interpolateProvider.startSymbol('[[');
