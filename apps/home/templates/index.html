@@ -4,6 +4,7 @@
 <script src="{% static 'js/components/angular.min.js' %}"></script>
 <script src="{% static 'js/components/simpleCart.min.js'%}"></script>
 <script src="{% static 'js/controllers/loginCtrl.js' %}"></script>
+<script src="{% static 'js/controllers/productCtrl.js' %}"></script>
 <script src="{% static 'js/components/jquery.wmuSlider.js'%}"></script>
 <script src="{% static 'js/components/jquery.flexslider.js'%}"></script>
 <head>
@@ -23,14 +24,15 @@
 		<div class="container">
               <ol class="breadcrumb breadcrumb1">
                 <li class="breadcrumb-item"><a href="/"><span class="fa fa-home" aria-hidden="true"></span>หน้าแรก </a></li>
-                  {{ request.user }}
-                  <a class="btn btn-primary" href="http://localhost:8000/logout/" role="button">LogOut</a>
+
+
 				<!--<li class="breadcrumb-item active"></li>-->
               </ol>
 		</div>
     </div>
 <!-- //breadcrumbs -->
 <!-- banner -->
+ {{ request.user }}<a class="btn btn-primary" href="http://localhost:8000/logout/" role="button">LogOut</a>
 	<div class="banner">
 		<div class="container">
 			<div class="banner-info">
@@ -123,15 +125,15 @@
 	</div>
 <!-- //banner-bottom -->
 <!-- collections -->
-	<div class="new-collections">
+	<div class="new-collections" >
 		<div class="container">
-			<h3 class="animated wow zoomIn" >สินค้าแนะนำ</h3>
+			<h3>สินค้าแนะนำ</h3>
 
-			<div class="new-collections-grids">
+			<div class="new-collections-grids" ng-app="app" ng-controller="productCtrl">
 				<div class="col-md-3 new-collections-grid">
 					<div class="new-collections-grid1 ">
 						<div class="new-collections-grid1-image">
-							<a href="single.html" class="product-image"><img src="{% static 'image/7.jpg' %}" alt=" " class="img-responsive" /></a>
+							<a href="product/" class="product-image"><img src="[[products[0].first_image_url]]" alt=" " class="img-responsive" /></a>
 							<div class="new-collections-grid1-image-pos">
 								<a href="single.html">ดูรายละเอียด</a>
 							</div>
@@ -156,15 +158,15 @@
 								</div>
 							</div>
 						</div>
-						<h4><a href="single.html">L'Oreal ลอรีอัล ปารีส ไวท์เพอร์เฟ็คท์ เลเซอร์ วอเทอร์</a></h4>
+						<h4><a href="single.html">[[products[0].name]]</a></h4>
 
 						<div class="new-collections-grid1-left simpleCart_shelfItem">
-							<p><i>599฿</i> <span class="item_price">299฿</span><a class="item_add" href="#">เพิ่มลงในตะกร้า</a></p>
+							<p><i>599฿</i> <span class="item_price">[[products[0].price]]</span><a class="item_add" href="#">เพิ่มลงในตะกร้า</a></p>
 						</div>
 					</div>
 					<div class="new-collections-grid1">
 						<div class="new-collections-grid1-image">
-							<a href="single.html" class="product-image"><img src="{% static 'image/8.jpg' %}" alt=" " class="img-responsive" /></a>
+							<a href="single.html" class="product-image"><img src="[[products[1].first_image_url]]" alt=" " class="img-responsive" /></a>
 							<div class="new-collections-grid1-image-pos">
 								<a href="single.html">ดูรายละเอียด</a>
 							</div>
@@ -189,17 +191,17 @@
 								</div>
 							</div>
 						</div>
-						<h4><a href="single.html">e.l.f. studio hd blush diva</a></h4>
+						<h4><a href="single.html">[[products[1].name]]</a></h4>
 
 						<div class="new-collections-grid1-left simpleCart_shelfItem">
-							<p><i>250฿</i> <span class="item_price">100฿</span><a class="item_add" href="#">เพิ่มลงในตะกร้า</a></p>
+							<p><i>250฿</i> <span class="item_price">[[products[1].price]] ฿</span><a class="item_add" href="#">เพิ่มลงในตะกร้า</a></p>
 						</div>
 					</div>
 				</div>
 				<div class="col-md-6 new-collections-grid">
 					<div class="new-collections-grid1 new-collections-grid1-image-width ">
 						<div class="new-collections-grid1-image">
-							<a href="single.html" class="product-image"><img src="{% static 'image/5.jpg' %}" alt=" " class="img-responsive" /></a>
+							<a href="single.html" class="product-image"><img src="[[products[2].first_image_url]]" alt=" " class="img-responsive" /></a>
 							<div class="new-collections-grid1-image-pos new-collections-grid1-image-pos1">
 								<a href="single.html">ดูรายละเอียด</a>
 							</div>
@@ -227,48 +229,48 @@
 								<p>ใหม่</p>
 							</div>
 						</div>
-						<h4><a href="single.html">Dior Addict, the new lipstick</a></h4>
+						<h4><a href="single.html">[[products[2].name]]</a></h4>
 
 						<div class="new-collections-grid1-left simpleCart_shelfItem">
-							<p><i>1,350฿</i> <span class="item_price">1,000฿</span><a class="item_add" href="#">เพิ่มลงในตะกร้า</a></p>
+							<p><i>279฿</i> <span class="item_price">[[products[2].price]] ฿</span><a class="item_add" href="#">เพิ่มลงในตะกร้า</a></p>
 						</div>
 					</div>
-					<div class="new-collections-grid-sub-grids">
-						<div class="new-collections-grid1-sub">
-							<div class="new-collections-grid1 ">
-								<div class="new-collections-grid1-image">
-									<a href="single.html" class="product-image"><img src="{% static 'image/6.jpg' %}" alt=" " class="img-responsive" /></a>
-									<div class="new-collections-grid1-image-pos">
-										<a href="single.html">ดูรายละเอียด</a>
-									</div>
-									<div class="new-collections-grid1-right">
-										<div class="rating">
-											<div class="rating-left">
-												<img src="{% static 'image/2.png' %}" alt=" " class="img-responsive" />
-											</div>
-											<div class="rating-left">
-												<img src="{% static 'image/2.png' %}" alt=" " class="img-responsive" />
-											</div>
-											<div class="rating-left">
-												<img src="{% static 'image/2.png' %}" alt=" " class="img-responsive" />
-											</div>
-											<div class="rating-left">
-												<img src="{% static 'image/1.png' %}" alt=" " class="img-responsive" />
-											</div>
-											<div class="rating-left">
-												<img src="{% static 'image/1.png' %}" alt=" " class="img-responsive" />
-											</div>
-											<div class="clearfix"> </div>
-										</div>
-									</div>
-								</div>
-								<h4><a href="single.html">Banana Boat Ultra Protect Sun SPF50</a></h4>
-
-								<div class="new-collections-grid1-left simpleCart_shelfItem">
-									<p><i>435฿</i> <span class="item_price">217฿</span><a class="item_add" href="#">เพิ่มลงในตะกร้า</a></p>
-								</div>
-							</div>
-						</div>
+{#					<div class="new-collections-grid-sub-grids">#}
+{#						<div class="new-collections-grid1-sub">#}
+{#							<div class="new-collections-grid1 ">#}
+{#								<div class="new-collections-grid1-image">#}
+{#									<a href="single.html" class="product-image"><img src="[[products[3].first_image_url]]" alt=" " class="img-responsive" /></a>#}
+{#									<div class="new-collections-grid1-image-pos">#}
+{#										<a href="single.html">ดูรายละเอียด</a>#}
+{#									</div>#}
+{#									<div class="new-collections-grid1-right">#}
+{#										<div class="rating">#}
+{#											<div class="rating-left">#}
+{#												<img src="{% static 'image/2.png' %}" alt=" " class="img-responsive" />#}
+{#											</div>#}
+{#											<div class="rating-left">#}
+{#												<img src="{% static 'image/2.png' %}" alt=" " class="img-responsive" />#}
+{#											</div>#}
+{#											<div class="rating-left">#}
+{#												<img src="{% static 'image/2.png' %}" alt=" " class="img-responsive" />#}
+{#											</div>#}
+{#											<div class="rating-left">#}
+{#												<img src="{% static 'image/1.png' %}" alt=" " class="img-responsive" />#}
+{#											</div>#}
+{#											<div class="rating-left">#}
+{#												<img src="{% static 'image/1.png' %}" alt=" " class="img-responsive" />#}
+{#											</div>#}
+{#											<div class="clearfix"> </div>#}
+{#										</div>#}
+{#									</div>#}
+{#								</div>#}
+{#								<h4><a href="single.html">[[products[3].name]]</a></h4>#}
+{##}
+{#								<div class="new-collections-grid1-left simpleCart_shelfItem">#}
+{#									<p><i>435฿</i> <span class="item_price">[[products[3].price]] ฿</span><a class="item_add" href="#">เพิ่มลงในตะกร้า</a></p>#}
+{#								</div>#}
+{#							</div>#}
+{#						</div>#}
 						<div class="new-collections-grid1-sub">
 							<div class="new-collections-grid1">
 								<div class="new-collections-grid1-image">

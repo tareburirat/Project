@@ -30,7 +30,8 @@ def log_in_user(request):
     else:
         response_data = {"message": "Success!!!!"}
         login(request, authenticated_user)
-        return Response(status=status.HTTP_200_OK, data=response_data)
+
+    return Response(status=status.HTTP_200_OK, data=response_data)
 
 
 def log_out(request):

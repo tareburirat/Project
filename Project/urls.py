@@ -18,7 +18,7 @@ from django.conf.urls import url, include
 from django.conf.urls.static import static
 from django.contrib import admin
 
-from apps.login.views import log_in_user, LoginView
+from apps.login.views import log_in_user, LoginView, log_out
 from apps.sellers.views import RegisterSellerView
 from apps.buyers.views import RegisterBuyerView
 from apps.addresses.views import AddressBuyerView
@@ -27,7 +27,7 @@ from apps.transactions.views import TransactionView
 from apps.category_product.views import CategoryProductView
 from apps.offers.views import OfferView
 from apps.orders.views import OrderView
-from apps.products.views import ProductView, AddProductView
+from apps.products.views import ProductView, CreateProductView
 from apps.properties.views import PropertyView
 from apps.ratings.views import RatingView
 from apps.accounts.views import AccountRegisterView
@@ -43,7 +43,7 @@ urlpatterns = [
 
 
     url(r'^login/', LoginView.as_view()),
-    # url(r'^logout/', log_out, name='logout'),
+    url(r'^logout/', log_out, name='logout'),
     url(r'^authenticate_user/', log_in_user),
     url(r'^register_seller/', RegisterSellerView.as_view()),
     url(r'^register_buyer/', RegisterBuyerView.as_view()),
@@ -59,7 +59,7 @@ urlpatterns = [
     url(r'^account_register/', AccountRegisterView.as_view()),
     url(r'^value/', ValueView.as_view()),
     url(r'^$', HomeView.as_view(), name='home'),
-    url(r'^add_product/', AddProductView.as_view()),
+    url(r'^add_product/', CreateProductView.as_view()),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 

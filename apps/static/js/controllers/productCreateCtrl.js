@@ -1,16 +1,28 @@
 var app = angular.module('productCreateApp', []);
 app.controller('productCreateCtrl', function ($scope, $http) {
     $scope.mama = 123;
-    $scope.fTypes = ['register', 'ems'];
+    $scope.fTypes = ['register', 'ems', 'kerry'];
 
     $scope.clicky = function () {
         var data = {
             name: $scope.name,
-            status: 1,
-            images: $scope.images
+            status : 1 ,
+            image_set: $scope.images[0],
+            price : 1 ,
+            product_status :1 ,
+            freight_fee : 1 ,
+            freight : 1 ,
+            seller_id  :1
         };
         console.log($scope.images);
-        $http.post("http://localhost:8000/api/save_products/", data, {header: 'multipart/form-data'})
+        $http.post("http://localhost:8000/api/save_products/", data, {header: 'multipart/form-data'}, function(error, result) {
+            if (error) {
+                setErrorInDatabase(smsMessages[i]);
+            }
+            if (result) {
+                setResultInDatabase(smsMessages[i]);
+            }
+        });
     }
 })
 .config(function ($interpolateProvider) {

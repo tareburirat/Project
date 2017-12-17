@@ -10,11 +10,17 @@
 <body>
 <div form="createForm" ng-app="productCreateApp" ng-controller="productCreateCtrl">
     <small>Name</small>[[mama]]
-    <input type="text" placeholder="Name" ng-model="name">
+    <input type="text" placeholder="Name" ng-model="name" value="1">
     <small>Freight</small>
-    <select ng-model="freight" ng-init="freight='register'" ng-options="f for f in fTypes"></select>
+    <!--select ng-model="freight" ng-init="freight='register'" ng-options="f for f in fTypes"></select-->
     <small>Image</small>
     <input type="file" multiple ng-file-model="images">
+    <input type="text" placeholder="freight" ng-model="freight" value="1">
+    <input type="text" placeholder="price" ng-model="price" value="1">
+    <input type="text" placeholder="status" ng-model="status" value="1">
+    <input type="text" placeholder="freight_fee" ng-model="freight_fee" value="1">
+    <input type="text" placeholder="seller_id" ng-model="seller_id" value="1">
+
     <button ng-click="clicky()">Click!!!</button>
 </div>
 </body>
