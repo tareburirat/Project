@@ -1,6 +1,6 @@
-from django.shortcuts import render
 from django.views.generic import TemplateView
 
 # Create your views here.
-class AccountRegisterView(TemplateView):
-    template_name = 'account_register.html'
+
+class SignUpView(TemplateView):
+    template_name = 'signup.html'

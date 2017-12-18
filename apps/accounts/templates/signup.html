@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<script src="{% static 'js/components/angular.min.js' %}"></script>
+<script src="{% static 'js/controllers/accountCreateCtrl.js' %}"></script>
+<head>
+    <meta charset="UTF-8">
+    <title>Signup</title>
+</head>
+<body>
+<div form="createForm" ng-app="accountCreateApp" ng-controller="accountCreateCtrl">
+    [[mama]]
+    <input type="text" placeholder="username" ng-model="username" >
+    <input type="text" placeholder="password" ng-model="password" >
+    <input type="text" placeholder="firstname" ng-model="first_name" >
+    <input type="text" placeholder="lastname" ng-model="last_name" >
+    <input type="text" placeholder="email" ng-model="email" >
+    <input type="text" placeholder="displayname" ng-model="display_name">
+    <input type="text" placeholder="telephone" ng-model="telephone">
+
+    <button ng-click="clickSignup()">Click!!!</button>
+</div>
+</body>
+</html>

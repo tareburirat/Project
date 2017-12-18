@@ -6,10 +6,6 @@ class ProductView(TemplateView):
     template_name = 'product.html'
 
 class AddProductView(TemplateView):
-        template_name = 'add_product.html'
-
-
-class CreateProductView(TemplateView):
     template_name = 'create_product.html'
 
 

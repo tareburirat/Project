@@ -1,7 +1,7 @@
 from django.conf.urls import url, include
 from rest_framework.routers import DefaultRouter
 
-from apps.accounts.viewsets import AccountViewSet
+from apps.accounts.viewsets import AccountViewSet, create_account
 from apps.addresses.viewsets import AddressViewSet
 from apps.buyers.viewsets import BuyerViewSet
 from apps.categories.viewsets import CategoryViewSet
@@ -31,5 +31,6 @@ router.register('values', ValueViewSet, base_name='value')
 
 urlpatterns = [
     url(r'^save_products/', save_product),
+    url(r'^create_account/', create_account),
 ]
 urlpatterns += router.urls

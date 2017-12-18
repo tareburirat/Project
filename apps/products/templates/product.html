@@ -27,9 +27,8 @@
 <!-- //breadcrumbs -->
     <div class="container">
        <div ng-app="app" ng-controller="productCtrl" >
-
-           <div class="card-deck" >
-               <div class="card " ng-repeat="product in products" style="max-width: 20rem; ">
+           <div class="card-deck " ng-repeat="product in products" style="max-width: 20rem; " >
+               <div class="card " >
                     <img class="card-img-top" src="[[product.first_image_url]]" alt="[[product.first_image_url]]" style="overflow: scroll;">
                     <div class="card-body">
                       <h4 class="card-title">[[product.name]]</h4>
@@ -40,7 +39,6 @@
                </div>
 {#              <p>[[ product.name ]]</p> <img ng-repeat="image in product.images" src="[[image.image]]">#}
            </div>
-
        </div>
     </div>
     <!-- footer -->
