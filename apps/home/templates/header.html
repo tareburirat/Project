@@ -4,14 +4,20 @@
 			<div class="header-grid">
 				<div class="header-grid-right">
 					<ul>
-						<li><i class="fa fa-sign-in" aria-hidden="true"></i><a href="/login"> เข้าสู่ระบบ</a></li>
-						<li class="active"><i class="fa fa-user-plus" aria-hidden="true"></i><a href="/account_register/"> ลงทะเบียน</a></li>
+                        {% if user.is_authenticated %}
+						    <li><i class="fa fa-sign-in" aria-hidden="true"></i><a href="/logout"> no เข้าสู่ระบบ!!</a></li>
+                        {% else %}
+                            <li><i class="fa fa-sign-in" aria-hidden="true"></i><a href="/login"> เข้าสู่ระบบ</a></li>
+                            <li class="active"><i class="fa fa-user-plus" aria-hidden="true"></i><a href="/account_register/"> ลงทะเบียน</a></li>
+
+                        {% endif %}
 					</ul>
 				</div>
 				<div class="header-grid-left">
 					<ul>
-						<li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:info@example.com"> info@2ndMakeUp.com</a></li>
-						<li><i class="fa fa-phone" aria-hidden="true"></i> +1234 567 892</li>
+                        {% if user.is_authenticated %}
+                            <li><i class="fa fa-user" aria-hidden="true"></i>{{ request.user}}</li>
+                        {% endif %}
 					</ul>
 				</div>
 				<div class="clearfix"> </div>
