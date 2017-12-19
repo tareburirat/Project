@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 from django.utils.safestring import mark_safe
 
-from apps.sellers.models import Seller
+from apps.accounts.models import Account
 
 
 class Product(models.Model):
@@ -37,7 +37,7 @@ class Product(models.Model):
 
     product_status = models.IntegerField(verbose_name="Status", choices=status_choices, default=draft)
     date_of_sale = models.DateField(verbose_name="Date of Sale", auto_now=True)
-    seller = models.ForeignKey(Seller)
+    seller = models.ForeignKey(Account)
     price = models.DecimalField(max_digits=8, decimal_places=2, default=0)
     name = models.CharField(verbose_name="Name", max_length=200)
     freight_fee = models.DecimalField(verbose_name="Freight Fee", max_digits=8, decimal_places=2, default=0)

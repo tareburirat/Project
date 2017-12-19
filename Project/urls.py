@@ -20,8 +20,6 @@ from django.conf.urls.static import static
 from django.contrib import admin
 
 from apps.login.views import log_in_user, LoginView, log_out
-from apps.sellers.views import RegisterSellerView
-from apps.buyers.views import RegisterBuyerView
 from apps.addresses.views import AddressBuyerView
 from apps.categories.views import CategoryView
 from apps.transactions.views import TransactionView
