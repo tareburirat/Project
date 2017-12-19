@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-from apps.buyers.models import Buyer
+from apps.accounts.models import Account
 from apps.products.models import Product
 
 
@@ -23,5 +23,5 @@ class Offer (models.Model):
 
     offer_price = models.DecimalField(verbose_name="Offer Price", max_digits=8, decimal_places=2, default=0)
     status = models.IntegerField(verbose_name="Status", choices=status_choices, default=pending)
-    buyer = models.ForeignKey(Buyer)
+    buyer = models.ForeignKey(Account)
     product = models.ForeignKey(Product)
