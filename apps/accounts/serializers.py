@@ -29,7 +29,7 @@ class AccountSerializer(serializers.ModelSerializer):
             with transaction.atomic():
                 user = validated_data.pop('user')
                 print(validated_data)
-                user_obj = User.objects.create(**user)
+                user_obj = User.objects.create_user(**user)
                 account = Account.objects.create(
                     user=user_obj,
                     **validated_data
