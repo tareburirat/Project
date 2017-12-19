@@ -1,5 +1,5 @@
 var app = angular.module("app", []);
-app.controller("logInCtrl", function($scope, $http) {
+app.controller("logInCtrl", function($scope, $http, $window) {
     $scope.mama = 123;
     $scope.userLoggedIn = false;
 
@@ -12,7 +12,15 @@ app.controller("logInCtrl", function($scope, $http) {
         $http.post("http://localhost:8000/authenticate_user/", data).then(function (response) {
             console.log(response.data);
             $scope.userLoggedIn = true;
-        });
+            alert('success!!');
+            $window.location.href = '/';
+        },
+            function (response) {
+                console.log(response.data);
+                alert('failed');
+                $scope.username = '';
+                $scope.password = '';
+            });
 
     };
 
