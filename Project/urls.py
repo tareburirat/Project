@@ -32,13 +32,12 @@ from apps.ratings.views import RatingView
 from apps.accounts.views import SignUpView
 from apps.values.views import ValueView
 from apps.home.views import HomeView
-from .api_urls import router
-
 
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^api/', include('Project.api_urls')),
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 
     url(r'^$', HomeView.as_view(), name='home'),
     url(r'^signup/', SignUpView.as_view(), name='signup'),
