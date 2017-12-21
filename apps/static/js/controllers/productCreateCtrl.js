@@ -4,6 +4,7 @@ app.controller('productCreateCtrl', function ($scope, $http) {
     $scope.fTypes = ['register', 'ems', 'kerry'];
 
     $scope.clicky = function () {
+        var a = new FormData();
         var data = {
             name: $scope.name,
             status : 1 ,
@@ -14,6 +15,7 @@ app.controller('productCreateCtrl', function ($scope, $http) {
             freight : 1 ,
             seller_id  :1
         };
+        a.append('images', images.files[0]);
         console.log($scope.images);
         $http.post("http://localhost:8000/api/save_products/", data, {header: 'multipart/form-data'}, function(error, result) {
             if (error) {
