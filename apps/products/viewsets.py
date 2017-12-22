@@ -18,7 +18,7 @@ class ProductViewSet(viewsets.ModelViewSet):
 def save_product(request):
     data = request.data
 
-    images = data.pop('image_set')
+    images = data.getlist('images[]')
     with transaction.atomic():
         name = data['name']
         price = int(data['price'])

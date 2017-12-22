@@ -1,66 +1,51 @@
 var app = angular.module('productCreateApp', []);
 app.controller('productCreateCtrl', function ($scope, $http) {
     $scope.mama = 123;
+    $scope.product = {};
     $scope.fTypes = ['register', 'ems', 'kerry'];
+    var formData = new FormData();
+
+    $scope.getTheFiles = function ($files) {
+                angular.forEach($files, function (value, key) {
+                    formData.append('images[]', value);
+                });
+            };
 
     $scope.clicky = function () {
-        var a = new FormData();
-        var data = {
-            name: $scope.name,
-            status : 1 ,
-            image_set: $scope.images[0],
-            price : 1 ,
-            product_status :1 ,
-            freight_fee : 1 ,
-            freight : 1 ,
-            seller_id  :1
-        };
-        a.append('images', images.files[0]);
-        console.log($scope.images);
-        $http.post("http://localhost:8000/api/save_products/", data, {header: 'multipart/form-data'}, function(error, result) {
-            if (error) {
-                setErrorInDatabase(smsMessages[i]);
-            }
-            if (result) {
-                setResultInDatabase(smsMessages[i]);
-            }
+        Object.keys($scope.product).forEach(function (k) {
+            formData.append(k, $scope.product[k])
         });
+        var request = {
+                    method: 'POST',
+                    url: "http://localhost:8000/api/save_products/",
+                    data: formData,
+                    headers: {
+                        'Content-Type': undefined
+                    }
+                };
+        $http(request).then(function () {
+            alert('success');
+        },
+        function () {
+            alert('failure');
+        });
+
     }
 })
 .config(function ($interpolateProvider) {
    $interpolateProvider.startSymbol('[[');
    $interpolateProvider.endSymbol(']]');
 })
-.directive('ngFileModel', ['$parse', function ($parse) {
-    return {
-        restrict: 'A',
-        link: function (scope, element, attrs) {
-            var model = $parse(attrs.ngFileModel);
-            var isMultiple = attrs.multiple;
-            var modelSetter = model.assign;
-            element.bind('change', function () {
-                var values = [];
-                angular.forEach(element[0].files, function (item) {
-                    var value = {
-                       // File Name
-                        name: item.name,
-                        //File Size
-                        size: item.size,
-                        //File URL to view
-                        url: URL.createObjectURL(item),
-                        // File Input Value
-                        _file: item
-                    };
-                    values.push(value);
+.directive('ngFiles', ['$parse', function ($parse) {
+
+            function fn_link(scope, element, attrs) {
+                var onChange = $parse(attrs.ngFiles);
+                element.on('change', function (event) {
+                    onChange(scope, { $files: event.target.files });
                 });
-                scope.$apply(function () {
-                    if (isMultiple) {
-                        modelSetter(scope, values);
-                    } else {
-                        modelSetter(scope, values[0]);
-                    }
-                });
-            });
-        }
-    };
-}]);
+            };
+
+            return {
+                link: fn_link
+            }
+        } ]);
