@@ -9,6 +9,7 @@ from rest_framework.response import Response
 from apps.products.models import Product, ProductImage
 from apps.products.serializers import ProductSerializer
 from apps.properties.models import Property
+from apps.values.models import Value
 
 
 class ProductViewSet(viewsets.ModelViewSet):
@@ -40,6 +41,9 @@ def save_product(request):
 
         for image in images:
             ProductImage.objects.create(product=product, image=image)
+
+        for p_id, p_value in zip(request.data.getlist('propertyId[]'), request.data.getlist('propertyValue[]')):
+            Value.objects.create(properties_id=p_id, value_product=p_value, product=product)
 
     return Response(status=status.HTTP_200_OK, data={'message': "success!"})
 
