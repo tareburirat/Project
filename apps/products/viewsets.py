@@ -15,7 +15,7 @@ class ProductViewSet(viewsets.ModelViewSet):
     serializer_class = ProductSerializer
     queryset = Product.objects.all()
 
-
+@csrf_exempt
 @api_view(['post'])
 def save_product(request):
     data = request.data

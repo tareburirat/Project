@@ -5,7 +5,8 @@ app.controller('productCreateCtrl', function ($scope, $http) {
     $scope.product = {};
     $scope.prod = ['a', 'b'];
     $scope.prod_value = $scope.prod.slice();
-    $scope.fTypes = ['register', 'ems', 'kerry'];
+    $scope.fTypes = ['Register', 'EMS', 'Kerry'];
+    $scope.freight = $scope.fTypes[0];
     var formData = new FormData();
 
     $scope.getTheFiles = function ($files) {
@@ -18,10 +19,12 @@ app.controller('productCreateCtrl', function ($scope, $http) {
         Object.keys($scope.product).forEach(function (k) {
             formData.append(k, $scope.product[k])
         });
+
+        formData.append('freight', get_freight($scope.freight));
         debugger;
         var request = {
                     method: 'POST',
-                    url: "http://localhost:8000/api/save_products/",
+                    url: "/api/save_products/",
                     data: formData,
                     headers: {
                         'Content-Type': undefined
@@ -34,22 +37,28 @@ app.controller('productCreateCtrl', function ($scope, $http) {
             alert('failure');
         });
 
+    };
+
+    var get_freight = function (freight) {
+        return $scope.fTypes.indexOf(freight);
     }
 })
-.config(function ($interpolateProvider) {
-   $interpolateProvider.startSymbol('[[');
-   $interpolateProvider.endSymbol(']]');
+.config(function ($interpolateProvider, $httpProvider) {
+    $interpolateProvider.startSymbol('[[');
+    $interpolateProvider.endSymbol(']]');
+    $httpProvider.defaults.xsrfCookieName = 'csrftoken';
+    $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
 })
 .directive('ngFiles', ['$parse', function ($parse) {
 
-            function fn_link(scope, element, attrs) {
-                var onChange = $parse(attrs.ngFiles);
-                element.on('change', function (event) {
-                    onChange(scope, { $files: event.target.files });
-                });
-            };
+    function fn_link(scope, element, attrs) {
+        var onChange = $parse(attrs.ngFiles);
+        element.on('change', function (event) {
+            onChange(scope, { $files: event.target.files });
+        });
+    };
 
-            return {
-                link: fn_link
-            }
-        } ]);
+    return {
+        link: fn_link
+    }
+} ]);
