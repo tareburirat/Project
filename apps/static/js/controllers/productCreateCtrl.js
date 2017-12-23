@@ -1,7 +1,10 @@
 var app = angular.module('productCreateApp', []);
 app.controller('productCreateCtrl', function ($scope, $http) {
     $scope.mama = 123;
+    $scope.momo = "hello";
     $scope.product = {};
+    $scope.prod = ['a', 'b'];
+    $scope.prod_value = $scope.prod.slice();
     $scope.fTypes = ['register', 'ems', 'kerry'];
     var formData = new FormData();
 
@@ -15,6 +18,7 @@ app.controller('productCreateCtrl', function ($scope, $http) {
         Object.keys($scope.product).forEach(function (k) {
             formData.append(k, $scope.product[k])
         });
+        debugger;
         var request = {
                     method: 'POST',
                     url: "http://localhost:8000/api/save_products/",

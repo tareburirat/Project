@@ -20,6 +20,10 @@
     <input type="text" placeholder="status" ng-model="product.status" value="1">
     <input type="text" placeholder="freight_fee" ng-model="product.freight_fee" value="1">
     <input type="text" placeholder="seller_id" ng-model="product.seller_id" value="1">
+    <div ng-repeat="(i, name) in prod track by $index">
+        <input type="text" ng-model="prod_value[i]">
+    </div>
+
 
     <button ng-click="clicky()">Click!!!</button>
 </div>
