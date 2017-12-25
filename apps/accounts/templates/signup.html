@@ -3,22 +3,50 @@
 <html lang="en">
 <script src="{% static 'js/components/angular.min.js' %}"></script>
 <script src="{% static 'js/controllers/accountCreateCtrl.js' %}"></script>
+
 <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta charset="UTF-8">
     <title>Signup</title>
 </head>
 <body>
-<div form="createForm" ng-app="accountCreateApp" ng-controller="accountCreateCtrl">
-    [[mama]]
-    <input type="text" placeholder="username" ng-model="username" >
-    <input type="text" placeholder="password" ng-model="password" >
-    <input type="text" placeholder="firstname" ng-model="first_name" >
-    <input type="text" placeholder="lastname" ng-model="last_name" >
-    <input type="text" placeholder="email" ng-model="email" >
-    <input type="text" placeholder="displayname" ng-model="display_name">
-    <input type="text" placeholder="telephone" ng-model="telephone">
+    <!-- header -->
+        <div>{% include "header.html" %}</div>
+    <!-- //header -->
 
-    <button ng-click="clickSignup()">Click!!!</button>
-</div>
+    <!-- breadcrumbs -->
+        <div class="breadcrumbs">
+            <div class="container">
+                  <ol class="breadcrumb breadcrumb1">
+                    <li class="breadcrumb-item"><a href="/"><span class="fa fa-home" aria-hidden="true"></span>หน้าแรก</a></li>
+                    <li class="breadcrumb-item active">ละทะเบียน</li>
+                  </ol>
+            </div>
+        </div>
+    <!-- //breadcrumbs -->
+    <div class="register">
+        <div class="container">
+            <h3>ลงทะเบียน</h3>
+            <div class="login-form-grids" form="createForm" ng-app="accountCreateApp" ng-controller="accountCreateCtrl">
+                <h5>ข้อมูลเข้าสู่ระบบ</h5>
+                <form>
+                <input type="text" placeholder="username" ng-model="username" >
+                <input type="text" placeholder="password" ng-model="password" >
+
+                <h5>ข้อมูลส่วนตัว</h5>
+
+                <input type="text" placeholder="firstname" ng-model="first_name" >
+                <input type="text" placeholder="lastname" ng-model="last_name" >
+                <input type="text" placeholder="email" ng-model="email" >
+                <input type="text" placeholder="displayname" ng-model="display_name">
+                <input type="text" placeholder="telephone" ng-model="phone">
+                <input type="submit" value="ลงทะเบียน" ng-click="clickSignup()">
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

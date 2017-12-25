@@ -20,6 +20,7 @@ class ProductSerializer(serializers.ModelSerializer):
     images = ProductImageSerializer(many=True, read_only=True)
     property = serializers.SerializerMethodField()
     first_image_url = serializers.SerializerMethodField()
+    freight_detail = serializers.SerializerMethodField()
 
     class Meta:
         model = Product
@@ -36,3 +37,7 @@ class ProductSerializer(serializers.ModelSerializer):
             return ""
         else:
             return "http://localhost:8000/" + first_image.image.url
+
+    @staticmethod
+    def get_freight_detail(obj):
+        return obj.get_freight_display()

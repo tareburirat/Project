@@ -2137,7 +2137,7 @@ label.radio {
 	background:#F7F7F9;
 	margin:3em auto 0;
 }
-.login-form-grids input[type="email"],.login-form-grids input[type="password"],.login-form-grids input[type="text"]{
+.login-form-grids input[type="password"],.login-form-grids input[type="text"]{
 	outline: none;
     border: 1px solid #DBDBDB;
     padding: 10px 10px 10px 20px;
@@ -2146,8 +2146,9 @@ label.radio {
     display: block;
     width: 100%;
 }
-.login-form-grids input[type="email"]{
+.login-form-grids input[type="text"]{
 	background:#fff;
+    margin:1em 0 0;
 }
 .login-form-grids input[type="password"]{
 	background:#fff;

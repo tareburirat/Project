@@ -7,7 +7,7 @@
                         {% if user.is_authenticated %}
 						    <li><i class="fa fa-sign-in" aria-hidden="true"></i><a href="/logout"> ออกจากระบบ</a></li>
                         {% else %}
-                            <li><i class="fa fa-sign-in" aria-hidden="true"></i><a href="/login"> เข้าสู่ระบบ</a></li>
+                            <li class="active"><i class="fa fa-sign-in" aria-hidden="true"></i><a href="/login"> เข้าสู่ระบบ</a></li>
                             <li class="active"><i class="fa fa-user-plus" aria-hidden="true"></i><a href="/signup"> ลงทะเบียน</a></li>
 
                         {% endif %}
@@ -16,7 +16,7 @@
 				<div class="header-grid-left">
 					<ul>
                         {% if user.is_authenticated %}
-                            <li><i class="fa fa-user" aria-hidden="true"></i> {{ request.user}}</li>
+                            <li class="active"><i class="fa fa-user" aria-hidden="true"></i> {{ request.user}}</li>
                         {% endif %}
 					</ul>
 				</div>
