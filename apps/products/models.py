@@ -35,7 +35,7 @@ class Product(models.Model):
 
     ]
 
-    product_status = models.IntegerField(verbose_name="Status", choices=status_choices, default=draft)
+    product_status = models.IntegerField(verbose_name="Status", choices=status_choices, default=sale)
     date_of_sale = models.DateField(verbose_name="Date of Sale", auto_now=True)
     seller = models.ForeignKey(Account)
     price = models.DecimalField(max_digits=8, decimal_places=2, default=0)

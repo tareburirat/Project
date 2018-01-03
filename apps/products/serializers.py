@@ -26,6 +26,7 @@ class ProductSerializer(serializers.ModelSerializer):
         model = Product
         exclude = []
 
+
     @staticmethod
     def get_property(obj):
         return obj.properties

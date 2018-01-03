@@ -26,7 +26,7 @@ from apps.transactions.views import TransactionView
 from apps.category_product.views import CategoryProductView
 from apps.offers.views import OfferView
 from apps.orders.views import OrderView
-from apps.products.views import ProductView, AddProductView
+from apps.products.views import ProductView, AddProductView, SingleProductView
 from apps.properties.views import PropertyView
 from apps.ratings.views import RatingView
 from apps.accounts.views import SignUpView
@@ -55,6 +55,7 @@ urlpatterns = [
     url(r'^category_product/', CategoryProductView.as_view()),
     url(r'^value/', ValueView.as_view()),
     url(r'^create_product/', AddProductView.as_view()),
+    url(r'^single/', SingleProductView.as_view()),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
