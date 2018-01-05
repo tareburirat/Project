@@ -25,7 +25,7 @@ def log_in_user(request):
     # wrong username and password, user not logged in
     if authenticated_user is None:
         response_data = {"message": "Failed!!!!"}
-
+        return Response(status=status.HTTP_400_BAD_REQUEST, data=response_data)
     # user logged in
     else:
         response_data = {"message": "Success!!!!"}

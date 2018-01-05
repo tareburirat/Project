@@ -44,11 +44,10 @@ INSTALLED_APPS = [
     'django_extensions',
     'rest_framework',
     'crispy_forms',
+    'django_filters',
 
     # local apps
     'apps.accounts',
-    'apps.buyers',
-    'apps.sellers',
     'apps.products',
     'apps.offers',
     'apps.ratings',
@@ -112,10 +111,20 @@ DATABASES = {
     }
 }
 
-
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',)
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
+PASSWORD_HASHERS = [
+    'django.contrib.auth.hashers.PBKDF2PasswordHasher',
+    'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
+    'django.contrib.auth.hashers.Argon2PasswordHasher',
+    'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
+    'django.contrib.auth.hashers.BCryptPasswordHasher',
+]
+
 
 AUTH_PASSWORD_VALIDATORS = [
     # {

@@ -4,14 +4,20 @@
 			<div class="header-grid">
 				<div class="header-grid-right">
 					<ul>
-						<li><i class="fa fa-sign-in" aria-hidden="true"></i><a href="/login"> เข้าสู่ระบบ</a></li>
-						<li class="active"><i class="fa fa-user-plus" aria-hidden="true"></i><a href="/account_register/"> ลงทะเบียน</a></li>
+                        {% if user.is_authenticated %}
+						    <li><i class="fa fa-sign-in" aria-hidden="true"></i><a href="/logout"> ออกจากระบบ</a></li>
+                        {% else %}
+                            <li class="active"><i class="fa fa-sign-in" aria-hidden="true"></i><a href="/login"> เข้าสู่ระบบ</a></li>
+                            <li class="active"><i class="fa fa-user-plus" aria-hidden="true"></i><a href="/signup"> ลงทะเบียน</a></li>
+
+                        {% endif %}
 					</ul>
 				</div>
 				<div class="header-grid-left">
 					<ul>
-						<li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:info@example.com"> info@2ndMakeUp.com</a></li>
-						<li><i class="fa fa-phone" aria-hidden="true"></i> +1234 567 892</li>
+                        {% if user.is_authenticated %}
+                            <li class="active"><i class="fa fa-user" aria-hidden="true"></i> {{ request.user}}</li>
+                        {% endif %}
 					</ul>
 				</div>
 				<div class="clearfix"> </div>
@@ -36,86 +42,86 @@
 										<div class="col-sm-3">
 											<ul class="multi-column-dropdown">
 												<h6>ผลิตภัณฑ์ดูแลผิวหน้า&nbsp;&nbsp;&nbsp;</h6>
-												<li><a href="products.html">ทำความสะอาดผิวหน้า</a></li>
-												<li><a href="products.html">โทนเนอร์</a></li>
-												<li><a href="products.html">ล้างเครื่องสำอาง</a></li>
-												<li><a href="products.html">บำรุงผิวหน้า</a></li>
-												<li><a href="products.html">บำรุงดวงตา</a></li>
-												<li><a href="products.html">ทรีทเม้น&เซรั่ม</a></li>
-												<li><a href="products.html">มาร์กหน้า</a></li>
-												<li><a href="products.html">กันแดด</a></li>
-												<li><a href="products.html">อื่นๆ</a></li>
+												<li><a href="product/">ทำความสะอาดผิวหน้า</a></li>
+												<li><a href="product/">โทนเนอร์</a></li>
+												<li><a href="product/">ล้างเครื่องสำอาง</a></li>
+												<li><a href="product/">บำรุงผิวหน้า</a></li>
+												<li><a href="product/">บำรุงดวงตา</a></li>
+												<li><a href="product/">ทรีทเม้น&เซรั่ม</a></li>
+												<li><a href="product/">มาร์กหน้า</a></li>
+												<li><a href="product/">กันแดด</a></li>
+												<li><a href="product/">อื่นๆ</a></li>
 											</ul>
 										</div>
 										<div class="col-sm-3">
 											<ul class="multi-column-dropdown">
 												<h6>เครื่องสำอางสำหรับผิวหน้า</h6>
-												<li><a href="furniture.html">แป้งฝุ่นและแป้งอัดแข็ง</a></li>
-												<li><a href="furniture.html">รองพื้น</a></li>
-												<li><a href="furniture.html">บลัชออน</a></li>
-												<li><a href="furniture.html">คอนซีลเลอร์</a></li>
-												<li><a href="furniture.html">ไพรเมอร์</a></li>
-												<li><a href="furniture.html">เฉดดิ้ง&ไฮไลท์</a></li>
-												<li><a href="furniture.html">อื่นๆ</a></li>
+												<li><a href="product/">แป้งฝุ่นและแป้งอัดแข็ง</a></li>
+												<li><a href="product/">รองพื้น</a></li>
+												<li><a href="product/">บลัชออน</a></li>
+												<li><a href="product/">คอนซีลเลอร์</a></li>
+												<li><a href="product/">ไพรเมอร์</a></li>
+												<li><a href="product/">เฉดดิ้ง&ไฮไลท์</a></li>
+												<li><a href="product/">อื่นๆ</a></li>
 											</ul>
 										</div>
 										<div class="col-sm-3">
 											<ul class="multi-column-dropdown">
 												<h6>เครื่องสำอางสำหรับดวงตา</h6>
-												<li><a href="furniture.html">อายแชโดว์</a></li>
-												<li><a href="furniture.html">อายไลเนอร์</a></li>
-												<li><a href="furniture.html">ที่เขียนคิ้ว</a></li>
-												<li><a href="furniture.html">มาสคาร่า</a></li>
-												<li><a href="furniture.html">ขนตาปลอม</a></li>
-												<li><a href="furniture.html">เทปกาวตาสองชั้น</a></li>
-												<li><a href="furniture.html">อื่นๆ</a></li>
+												<li><a href="product/">อายแชโดว์</a></li>
+												<li><a href="product/">อายไลเนอร์</a></li>
+												<li><a href="product/">ที่เขียนคิ้ว</a></li>
+												<li><a href="product/">มาสคาร่า</a></li>
+												<li><a href="product/">ขนตาปลอม</a></li>
+												<li><a href="product/">เทปกาวตาสองชั้น</a></li>
+												<li><a href="product/">อื่นๆ</a></li>
 											</ul>
 										</div>
 
 										<div class="col-sm-3">
 											<ul class="multi-column-dropdown">
 												<h6>ผลิตภัณฑ์สำหรับริมฝีปาก</h6>
-												<li><a href="products.html">ลิปสติก</a></li>
-												<li><a href="products.html">ลิปบาล์ม</a></li>
-												<li><a href="products.html">ลิปกลอส</a></li>
-												<li><a href="products.html">ลิปทินท์</a></li>
-												<li><a href="products.html">ดินสอเขียนขอบปาก</a></li>
-												<li><a href="products.html">อื่นๆ</a></li>
+												<li><a href="product/">ลิปสติก</a></li>
+												<li><a href="product/">ลิปบาล์ม</a></li>
+												<li><a href="product/">ลิปกลอส</a></li>
+												<li><a href="product/">ลิปทินท์</a></li>
+												<li><a href="product/">ดินสอเขียนขอบปาก</a></li>
+												<li><a href="product/">อื่นๆ</a></li>
 											</ul>
 										</div></div>
 										<div class="row">
 										<div class="col-sm-3">
 											<ul class="multi-column-dropdown">
 												<h6>อุปกรณ์เสริมความงาม</h6>
-												<li><a href="products.html">อุปกรณ์ทำผม</a></li>
-												<li><a href="products.html">อุปกรณ์แต่งหน้า</a></li>
-												<li><a href="products.html">อุปกรณ์กำจัดขน</a></li>
-												<li><a href="products.html">กล่องกระเป๋าเครื่องสำอาง</a></li>
-												<li><a href="products.html">อื่นๆ</a></li>
+												<li><a href="product/">อุปกรณ์ทำผม</a></li>
+												<li><a href="product/">อุปกรณ์แต่งหน้า</a></li>
+												<li><a href="product/">อุปกรณ์กำจัดขน</a></li>
+												<li><a href="product/">กล่องกระเป๋าเครื่องสำอาง</a></li>
+												<li><a href="product/">อื่นๆ</a></li>
 											</ul>
 										</div>
 
 										<div class="col-sm-3">
 											<ul class="multi-column-dropdown">
 												<h6>น้ำหอม</h6>
-												<li><a href="products.html">น้ำหอมผู้หญิง</a></li>
-												<li><a href="products.html">อื่นๆ</a></li>
+												<li><a href="product/">น้ำหอมผู้หญิง</a></li>
+												<li><a href="product/">อื่นๆ</a></li>
 											</ul>
 										</div>
 
 										<div class="col-sm-3">
 											<ul class="multi-column-dropdown">
 												<h6>ผลิตภัณฑ์สำหรับผู้ชาย</h6>
-												<li><a href="products.html">ผลิตภัณฑ์ดูแลผิวหน้า</a></li>
-												<li><a href="products.html">น้ำหอมสำหรับผู้ชาย</a></li>
-												<li><a href="products.html">อื่นๆ</a></li>
+												<li><a href="product/">ผลิตภัณฑ์ดูแลผิวหน้า</a></li>
+												<li><a href="product/">น้ำหอมสำหรับผู้ชาย</a></li>
+												<li><a href="product/">อื่นๆ</a></li>
 											</ul>
 										</div>
 
 										<div class="col-sm-3">
 											<ul class="multi-column-dropdown">
 												<h6>อื่นๆ</h6>
-												<li><a href="products.html">อื่นๆ</a></li>
+												<li><a href="product/">อื่นๆ</a></li>
 											</ul>
 										</div>
 										<div class="clearfix"></div>

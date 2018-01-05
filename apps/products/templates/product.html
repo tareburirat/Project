@@ -30,13 +30,13 @@
            <li>[[ product ]]</li>
 =======
        <div ng-app="app" ng-controller="productCtrl" >
-
-           <div class="card-deck" >
-               <div class="card " ng-repeat="product in products" style="max-width: 20rem; ">
+           <div class="card-deck " ng-repeat="product in products" style="max-width: 20rem; " >
+               <div class="card " >
                     <img class="card-img-top" src="[[product.first_image_url]]" alt="[[product.first_image_url]]" style="overflow: scroll;">
                     <div class="card-body">
                       <h4 class="card-title">[[product.name]]</h4>
-                        <p class="card-text"><b>Freight:</b> [[product.freight_fee]] ฿</p>
+                        <p class="card-text"><b>Freight:</b> [[product.freight_detail]]</p>
+                        <p class="card-text"><b>Freight Fee:</b> [[product.freight_fee]] ฿</p>
                         <p class="card-text"><b>Price:</b> [[product.price]] ฿</p>
                       <p class="card-text"><small class="text-muted">[[product.date_of_sale]]</small></p>
                     </div>
@@ -44,10 +44,13 @@
 {#              <p>[[ product.name ]]</p> <img ng-repeat="image in product.images" src="[[image.image]]">#}
            </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> tare
 =======
            
 >>>>>>> 09e8c01a597ffb557101ba99f17ffd18ddd76c00
+=======
+>>>>>>> 42543b110b5dd43f89275bc5aef35a95d8688beb
        </div>
     </div>
     <!-- footer -->

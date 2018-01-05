@@ -1,5 +1,12 @@
+<<<<<<< HEAD
 (function () {
     'use strict';
+=======
+var app = angular.module("app", []);
+app.controller("productCtrl", function($scope, $http) {
+    $scope.products = [];
+    $scope.mama = 123;
+>>>>>>> 42543b110b5dd43f89275bc5aef35a95d8688beb
 
 <<<<<<< HEAD
     var app = angular.module("app", []);
