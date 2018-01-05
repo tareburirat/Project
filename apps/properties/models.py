@@ -9,4 +9,4 @@ class Property(models.Model):
     text = models.CharField(verbose_name="Detail", max_length=255)
 
     def __str__(self):
-        return self.text
+        return self.category.name + ' - ' + self.text

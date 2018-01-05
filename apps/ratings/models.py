@@ -1,11 +1,10 @@
 from django.db import models
 
 # Create your models here.
-from apps.buyers.models import Buyer
-from apps.sellers.models import Seller
+from apps.accounts.models import Account
 
 
 class Rating(models.Model):
-    buyer = models.ForeignKey(Buyer)
-    seller = models.ForeignKey(Seller)
-    rating = models.IntegerField(verbose_name="Rating", default=0)
+    buyer = models.ForeignKey(Account, related_name='ratings', related_query_name='ratings')
+    seller = models.ForeignKey(Account, related_name='shop_ratings', related_query_name='shop_ratings')
+    rating = models.PositiveSmallIntegerField(verbose_name="Rating", default=0)
