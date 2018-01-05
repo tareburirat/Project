@@ -25,13 +25,14 @@
 		</div>
     </div>
 <!-- //breadcrumbs -->
-    <div class="container" ng-app="app" ng-controller="productCtrl">
+    <div class="container" ng-app="app" ng-controller="productCtrl" ng-init="getId({{ product_id }})" >
+
         <table width="80%" height="1101" border="0" align="center" cellpadding="2" cellspacing="2">
   <tr>
     <td width="479" height="1097">
       <table width="372" border="0" cellpadding="2" cellspacing="2">
       <tr>
-        <td height="541" colspan="5"><img src="[[products[2].first_image_url]]" name="i0" width="466" height="534" id="i0" /></td>
+        <td height="541" colspan="5"><img src="[[product.first_image_url]]" name="i0" width="466" height="534" id="i0" /></td>
       </tr>
 {#      <tr>#}
 {#        <td width="86" height="124"><img src="../Documents/web_project/images/si.jpg" name="i1" width="86" height="120" id="i1" onmouseover="MM_swapImage('i0','','../Documents/web_project/images/si.jpg',1)" /></td>#}
