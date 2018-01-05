@@ -13,7 +13,7 @@ app.controller("productCtrl", function($scope, $http, $window) {
     var getProduct = function() {
         $http.get('http://localhost:8000/api/products/' + $scope.productId).then(function (response) {
             $scope.product = response.data;
-            console.log($scope.product)
+            $scope.properties = Object.keys($scope.product.property)
         })
     }
 

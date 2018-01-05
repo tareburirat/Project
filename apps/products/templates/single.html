@@ -4,174 +4,160 @@
 <script src="{% static 'js/components/angular.min.js' %}"></script>
 <script src="{% static 'js/controllers/productCtrl.js' %}"></script>
 <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+          integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta charset="UTF-8">
     <title>Single</title>
 </head>
 <body>
 <!-- header -->
-    <div>{% include "header.html" %}</div>
-    <!-- //header -->
+<div>{% include "header.html" %}</div>
+<!-- //header -->
 <!-- breadcrumbs -->
-    <div class="breadcrumbs">
-		<div class="container">
-              <ol class="breadcrumb breadcrumb1">
-                <li class="breadcrumb-item"><a href="/"><span class="fa fa-home" aria-hidden="true"></span>หน้าแรก</a></li>
-				<li class="breadcrumb-item active">product</li>
-              </ol>
-		</div>
+<div class="breadcrumbs">
+    <div class="container">
+        <ol class="breadcrumb breadcrumb1">
+            <li class="breadcrumb-item"><a href="/"><span class="fa fa-home" aria-hidden="true"></span>หน้าแรก</a></li>
+            <li class="breadcrumb-item active">product</li>
+        </ol>
     </div>
+</div>
 <!-- //breadcrumbs -->
-    <div class="container" ng-app="app" ng-controller="productCtrl" ng-init="getId({{ product_id }})" >
+<div class="container" ng-app="app" ng-controller="productCtrl" ng-init="getId({{ product_id }})">
 
-        <table width="80%" height="1101" border="0" align="center" cellpadding="2" cellspacing="2">
-  <tr>
-    <td width="479" height="1097">
-      <table width="372" border="0" cellpadding="2" cellspacing="2">
-      <tr>
-        <td height="541" colspan="5"><img src="[[product.first_image_url]]" name="i0" width="466" height="534" id="i0" /></td>
-      </tr>
-{#      <tr>#}
-{#        <td width="86" height="124"><img src="../Documents/web_project/images/si.jpg" name="i1" width="86" height="120" id="i1" onmouseover="MM_swapImage('i0','','../Documents/web_project/images/si.jpg',1)" /></td>#}
-{#        <td width="86"><img src="../Documents/web_project/images/si1.jpg" name="i2" width="86" height="120" id="i2" onmouseover="MM_swapImage('i0','','../Documents/web_project/images/si1.jpg',1)" /></td>#}
-{#        <td width="87"><img src="../Documents/web_project/images/si2.jpg" name="i3" width="86" height="120" id="i3" onmouseover="MM_swapImage('i0','','../Documents/web_project/images/si2.jpg',1)" /></td>#}
-{#        <td width="48"><img src="../Documents/web_project/images/si.jpg" name="i4" width="86" height="120" id="i4" onmouseover="MM_swapImage('i0','','../Documents/web_project/images/si.jpg',1)" /></td>#}
-{#        <td width="21"><img src="../Documents/web_project/images/si2.jpg" name="i5" width="86" height="120" id="i5" onmouseover="MM_swapImage('i0','','../Documents/web_project/images/si2.jpg',1)" /></td>#}
-{#      </tr>#}
-      </table>
-      <table width="474" height="367" border="0" align="center" cellpadding="2" cellspacing="2">
+    <table width="80%" height="1101" border="0" align="center" cellpadding="2" cellspacing="2">
         <tr>
-          <td>&nbsp;</td>
-        </tr>
-      </table>
-    <p>&nbsp;</p>
-    </td>
+            <td width="479" height="1097">
+                <table width="372" border="0" cellpadding="2" cellspacing="2">
+                    <tr>
+                        <td height="541" colspan="5"><img src="[[product.first_image_url]]" name="i0" width="466"
+                                                          height="534" id="i0"/></td>
+                    </tr>
+                    {#      <tr>#}
+                    {#        <td width="86" height="124"><img src="../Documents/web_project/images/si.jpg" name="i1" width="86" height="120" id="i1" onmouseover="MM_swapImage('i0','','../Documents/web_project/images/si.jpg',1)" /></td>#}
+                    {#        <td width="86"><img src="../Documents/web_project/images/si1.jpg" name="i2" width="86" height="120" id="i2" onmouseover="MM_swapImage('i0','','../Documents/web_project/images/si1.jpg',1)" /></td>#}
+                    {#        <td width="87"><img src="../Documents/web_project/images/si2.jpg" name="i3" width="86" height="120" id="i3" onmouseover="MM_swapImage('i0','','../Documents/web_project/images/si2.jpg',1)" /></td>#}
+                    {#        <td width="48"><img src="../Documents/web_project/images/si.jpg" name="i4" width="86" height="120" id="i4" onmouseover="MM_swapImage('i0','','../Documents/web_project/images/si.jpg',1)" /></td>#}
+                    {#        <td width="21"><img src="../Documents/web_project/images/si2.jpg" name="i5" width="86" height="120" id="i5" onmouseover="MM_swapImage('i0','','../Documents/web_project/images/si2.jpg',1)" /></td>#}
+                    {#      </tr>#}
+                </table>
+                <table width="474" height="367" border="0" align="center" cellpadding="2" cellspacing="2">
+                    <tr>
+                        <td>&nbsp;</td>
+                    </tr>
+                </table>
+                <p>&nbsp;</p>
+            </td>
 
-    <td width="593"><table width="500" height="1074" border="0" align="center" cellpadding="0" cellspacing="5">
-      <tr>
-        <td height="71" valign="top"><div class="single-right-left"><h3>[[products[2].name]]</h3></div></td>
-      </tr>
-      <tr>
-        <td height="81" valign="top">
-            <div class="new-collections-grid1-left simpleCart_shelfItem"><h4><p><i>1,350฿</i></p></h4></div>
-            <div class="single-right-left"><h4>[[products[2].price]] ฿</h4></div>
-        </td>
-      </tr>
-      <tr>
-          <td height="56" valign="top">
-              <div class="occasional">
-          <h5>การจัดส่ง :</h5>
+            <td width="593">
+                <table width="500" height="1074" border="0" align="center" cellpadding="0" cellspacing="5">
+                    <tr>
+                        <td height="71" valign="top">
+                            <div class="single-right-left"><h3>[[products[2].name]]</h3></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td height="81" valign="top">
+                            <div class="new-collections-grid1-left simpleCart_shelfItem">
+                                <h4><p><i>1,350฿</i></p></h4>
+                            </div>
+                            <div class="single-right-left"><h4>[[products[2].price]] ฿</h4></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td height="56" valign="top">
+                            <div class="occasional">
+                                <h5>การจัดส่ง :</h5>
 
-            <p><b>Freight:</b> [[products[2].freight_detail]]</p>
-              <p><b>Freight Fee:</b> [[products[2].freight_fee]] ฿</p>
-          <div class="clearfix"> </div>
-          </div></td>
-      </tr>
+                                <p><b>Freight:</b> [[products[2].freight_detail]]</p>
+                                <p><b>Freight Fee:</b> [[products[2].freight_fee]] ฿</p>
+                                <div class="clearfix"></div>
+                            </div>
+                        </td>
+                    </tr>
 
-      <tr>
-        <td height="54">
-            <div class="occasion-cart">
-              <a class="item_add" href="#">เพิ่มลงในตะกร้า</a>
-              <a class="item_add" href="checkout.html">ซื้อสินค้า</a>
-            </div>
-        </td>
-      </tr>
+                    <tr>
+                        <td height="54">
+                            <div class="occasion-cart">
+                                <a class="item_add" href="#">เพิ่มลงในตะกร้า</a>
+                                <a class="item_add" href="checkout.html">ซื้อสินค้า</a>
+                            </div>
+                        </td>
+                    </tr>
 
-      <tr>
-        <td valign="top">&nbsp;</td>
-      </tr>
-      <tr>
-        <td valign="top">
-            <div class="social">
-                <div class="social-left">
-                    <p>เสนอราคา :</p>
-                </div>
-                <div class="add-review">
-                    <form>
-                        <input type="text" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'offer';}" required="">
-                        <input type="submit" value="เสนอ">
-                    </form>
-                </div>
-            <div class="clearfix"> </div>
-            </div>
-        </td>
-      </tr>
+                    <tr>
+                        <td valign="top">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td valign="top">
+                            <div class="social">
+                                <div class="social-left">
+                                    <p>เสนอราคา :</p>
+                                </div>
+                                <div class="add-review">
+                                    <form>
+                                        <input type="text" value="" onfocus="this.value = '';"
+                                               onblur="if (this.value == '') {this.value = 'offer';}" required="">
+                                        <input type="submit" value="เสนอ">
+                                    </form>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </td>
+                    </tr>
 
-      <tr>
-        <td valign="top">
-          <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
-          <ul id="myTab" class="nav nav-tabs" role="tablist">
-            <li role="presentation" class="nav-item active">
-                <a class="nav-link" href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">รายละเอียด</a>
-            </li>
-            <li role="presentation" class="nav-item">
-                <a class="nav-link" href="#profile" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile">ร้านค้า</a>
-            </li>
-          </ul>
-          <div id="myTabContent" class="tab-content">
-          <div role="tabpanel" class="tab-pane fade in active bootstrap-tab-text" id="home" aria-labelledby="home-tab">
-            <!--<h5>Dior Addict, the new lipstick</h5>-->
-            <p>[[products[2].property]]
-            </p>
-            <table class="table table-bordered">
-              <tbody>
-                <tr>
-                  <th scope="row">หมวดหมู่ : </th>
-                  <td>ผลิตภัณฑ์สำหรับริมฝีปาก > ลิปสติก</td>
-                  </tr>
-                <tr>
-                  <th scope="row">ยี่ห้อ : </th>
-                  <td>Dior</td>
-                  </tr>
-                <tr>
-                  <th scope="row">คุณสมบัติ : </th>
-                  <td>อวบอิ่ม</td>
-                  </tr>
-                <tr>
-                  <th scope="row">ฟินิชลุค : </th>
-                  <td>เงาวาว</td>
-                  </tr>
-                <tr>
-                  <th scope="row">สี : </th>
-                  <td>ชมพู</td>
-                  </tr>
-                <tr>
-                  <th scope="row">กันแดด : </th>
-                  <td>ไม่มี SPF</td>
-                  </tr>
-                <th scope="row">สภาพ : </th>
-                  <td>มือสอง</td>
-                  </tr>
-                <tr>
-                    <th scope="row">Batch Code : </th>
-                    <td>1N03</td>
-                </tr>
-              </tbody>
-              </table>
-            </div>
+                    <tr>
+                        <td valign="top">
+                            <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
+                                <ul id="myTab" class="nav nav-tabs" role="tablist">
+                                    <li role="presentation" class="nav-item active">
+                                        <a class="nav-link" href="#home" id="home-tab" role="tab" data-toggle="tab"
+                                           aria-controls="home" aria-expanded="true">รายละเอียด</a>
+                                    </li>
+                                    <li role="presentation" class="nav-item">
+                                        <a class="nav-link" href="#profile" role="tab" id="profile-tab"
+                                           data-toggle="tab" aria-controls="profile">ร้านค้า</a>
+                                    </li>
+                                </ul>
+                                <div id="myTabContent" class="tab-content">
+                                    <div role="tabpanel" class="tab-pane fade in active bootstrap-tab-text" id="home"
+                                         aria-labelledby="home-tab">
+                                        <!--<h5>Dior Addict, the new lipstick</h5>-->
+                                        <p>[[product.property]]
+                                        </p>
+                                        <table class="table table-bordered">
+                                            <tbody>
+                                            <tr ng-repeat="x in properties">
+                                                <th scope="row">[[ x ]] :</th>
+                                                <td>[[ product.property[x] ]]</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
 
-          <div role="tabpanel" class="tab-pane fade bootstrap-tab-text" id="profile" aria-labelledby="profile-tab">
-            <div class="bootstrap-tab-text-grids">
-              <div class="bootstrap-tab-text-grid">
-                <div class="bootstrap-tab-text-grid-left">
-                    <div class="bootstrap-tab-text-grid-right">
-                      <table class="table table-bordered">
-                        <tbody>
-                          <tr>
-                            <ul>
-                              <th scope="row">ชื่อร้าน : </th>
-                              <td>
-                                <a href="#">Beauty</a>
-                                </td>
-                              </ul>
-                            </tr>
-                          <tr>
-                            <th scope="row">คะแนนร้าน : </th>
-                            <td>
-                              <div class="rating1">
+                                    <div role="tabpanel" class="tab-pane fade bootstrap-tab-text" id="profile"
+                                         aria-labelledby="profile-tab">
+                                        <div class="bootstrap-tab-text-grids">
+                                            <div class="bootstrap-tab-text-grid">
+                                                <div class="bootstrap-tab-text-grid-left">
+                                                    <div class="bootstrap-tab-text-grid-right">
+                                                        <table class="table table-bordered">
+                                                            <tbody>
+                                                            <tr>
+                                                                <ul>
+                                                                    <th scope="row">ชื่อร้าน :</th>
+                                                                    <td>
+                                                                        <a href="#">Beauty</a>
+                                                                    </td>
+                                                                </ul>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">คะแนนร้าน :</th>
+                                                                <td>
+                                                                    <div class="rating1">
                                 <span class="starRating">
                                   <input id="rating5" type="radio" name="rating" value="5">
                                   <label for="rating5">5</label>
@@ -184,36 +170,42 @@
                                   <input id="rating1" type="radio" name="rating" value="1">
                                   <label for="rating1">1</label>
                                   </span>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div class="clearfix"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                      </table>
-                    </div>
-                    <div class="clearfix"> </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          </div>
-          </div>
+                            </div>
 
-        </td>
-      </tr>
+                        </td>
+                    </tr>
+                </table>
+            </td>
     </table>
-    </td>
-</table>
 
-    </div>
+</div>
 
 <!-- footer -->
-        <div>{% include "footer.html" %}</div>
+<div>{% include "footer.html" %}</div>
 <!-- //footer -->
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+        integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+        integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+        crossorigin="anonymous"></script>
 
 
 </body>
