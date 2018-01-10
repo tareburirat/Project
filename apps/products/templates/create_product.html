@@ -27,7 +27,7 @@
 <!-- //breadcrumbs -->
 
 
-        <div class="wrapper content" form="createForm" ng-app="productCreateApp" ng-controller="productCreateCtrl">
+        <div class="wrapper content" form="createForm" ng-app="productCreateApp" ng-controller="productCreateCtrl" ng-init="getId({{ account_id }})">
             <div class="container">
                 <h2>ข้อมูลทั่วไป</h2>
                 <div class="add">
@@ -75,11 +75,6 @@
                     </div>
                 </div>
 
-
-
-            <input type="text" placeholder="status" ng-model="product.status">
-
-            <input type="text" placeholder="seller_id" ng-model="product.seller_id">
             <div class="form-group">
             <button class="btn-primary" ng-click="submitProduct()">บันทึก</button>
             </div>
