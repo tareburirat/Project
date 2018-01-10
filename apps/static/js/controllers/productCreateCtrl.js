@@ -9,6 +9,10 @@ app.controller('productCreateCtrl', function ($scope, $http) {
     $scope.properties = [];
     var formData = new FormData();
 
+    $scope.getAccountId = function (accountId) {
+        $scope.accountId = accountId;
+    };
+
     $scope.getTheFiles = function ($files) {
                 angular.forEach($files, function (value, key) {
                     formData.append('images[]', value);
@@ -23,6 +27,7 @@ app.controller('productCreateCtrl', function ($scope, $http) {
 
         // get freight option
         formData.append('freight', get_freight($scope.freight));
+        formData.append('seller_id', $scope.accountId);
 
         // get property values
         angular.forEach($scope.properties, function (property) {

@@ -25,7 +25,6 @@ def save_product(request):
     with transaction.atomic():
         name = data['name']
         price = int(data['price'])
-        product_status = int(data['status'])
         freight_fee = int(data['freight_fee'])
         freight = int(data['freight'])
         seller_id = int(data['seller_id'])
@@ -33,7 +32,6 @@ def save_product(request):
         product = Product.objects.create(
             name=name,
             price=price,
-            product_status=product_status,
             freight_fee=freight_fee,
             freight=freight,
             seller_id=seller_id

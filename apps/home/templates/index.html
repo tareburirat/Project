@@ -4,7 +4,7 @@
 <script src="{% static 'js/components/angular.min.js' %}"></script>
 <script src="{% static 'js/components/simpleCart.min.js'%}"></script>
 <script src="{% static 'js/controllers/loginCtrl.js' %}"></script>
-<script src="{% static 'js/controllers/productCtrl.js' %}"></script>
+<script src="{% static 'js/controllers/homeCtrl.js' %}"></script>
 <script src="{% static 'js/components/jquery.wmuSlider.js'%}"></script>
 <script src="{% static 'js/components/jquery.flexslider.js'%}"></script>
 <head>
@@ -134,6 +134,7 @@
 		<div class="container">
 			<h3>สินค้าแนะนำ</h3>
 
+<<<<<<< HEAD
 			<div class="new-collections-grids" ng-app="app" ng-controller="productCtrl">
 				<div class="col-md-3 new-collections-grid">
 					<div class="new-collections-grid1 ">
@@ -197,6 +198,25 @@
 							</div>
 						</div>
 						<h4><a href="single.html">[[products[1].name]]</a></h4>
+=======
+			<div class="container">
+            <div ng-app="app" ng-controller="homeCtrl" >[[mama]]
+               <div class="card-deck"  ng-repeat="product in products" style="max-width: 20rem; " >
+                   <div class="card " >
+                        <img class="card-img-top" src="[[product.first_image_url]]" alt="[[product.first_image_url]]">
+                        <div class="card-body">
+                          <h4 class="card-title">[[product.name]]</h4>
+                            <p class="card-text"><b>Freight:</b> [[product.freight_detail]]</p>
+                            <p class="card-text"><b>Freight Fee:</b> [[product.freight_fee]] ฿</p>
+                            <p class="card-text"><b>Price:</b> [[product.price]] ฿</p>
+                          <p class="card-text"><small class="text-muted">[[product.date_of_sale]]</small></p>
+                        </div>
+                   </div>
+    {#              <p>[[ product.name ]]</p> <img ng-repeat="image in product.images" src="[[image.image]]">#}
+               </div>
+       </div>
+    </div>
+>>>>>>> origin/products
 
 						<div class="new-collections-grid1-left simpleCart_shelfItem">
 							<p><i>250฿</i> <span class="item_price">[[products[1].price]] ฿</span><a class="item_add" href="#">เพิ่มลงในตะกร้า</a></p>
@@ -387,68 +407,7 @@
 		</div>
 	</div>
 <!-- //collections -->
-<!-- new-timer -->
-	<div class="timer">
-		<div class="container">
-			<div class="timer-grids">
-				<div class="col-md-8 timer-grid-left">
-					<h3><a href="products.html">Purevivi Cleansing Lotion</a></h3>
-					<div class="rating">
-						<div class="rating-left">
-							<img src="{% static 'image/2.png' %}" alt=" " class="img-responsive" />
-						</div>
-						<div class="rating-left">
-							<img src="{% static 'image/2.png' %}" alt=" " class="img-responsive" />
-						</div>
-						<div class="rating-left">
-							<img src="{% static 'image/2.png' %}" alt=" " class="img-responsive" />
-						</div>
-						<div class="rating-left">
-							<img src="{% static 'image/2.png' %}" alt=" " class="img-responsive" />
-						</div>
-						<div class="rating-left">
-							<img src="{% static 'image/1.png' %}" alt=" " class="img-responsive" />
-						</div>
-						<div class="clearfix"> </div>
-					</div>
-					<div class="new-collections-grid1-left simpleCart_shelfItem timer-grid-left-price">
-						<p><i>490฿</i> <span class="item_price">390฿</span></p>
-						<h4>เพียววีวี่ คลีนซิ่งโลชั่น ผลิตภัณฑ์ทำความสะอาดผิวหน้าและรอบดวงตาน้องใหม่จากญี่ปุ่นที่กำลังได้รับความนิยมเป็นอย่างมาก
-							จากสาวๆทั้งในญี่ปุ่น ไต้หวันและอเมริกา  ด้วยส่วนประกอบหลักที่เป็นน้ำมากกว่า 80% ปราศจากน้ำมัน ไม่มีแอลกอฮอล์ ไม่ใส่สี
-							ไม่มีน้ำหอม ไม่มีสารลดแรงตึง และไม่ผสมพาราเบน จึงทำให้ เพียววีวี่ อ่อนโยนต่อใบหน้า แม้ผิวบอบบางแพ้ง่าย  ซึมซาบเร็ว
-							ไม่เหนียวเหนอะหนะ ทั้งยังอุดมไปด้วยสารสกัดจากผลไม้หลากหลายชนิด เช่น แอปเปิ้ล ส้ม และมะนาวเป็นต้น
-							ที่ช่วยดูแลผิวหน้าให้สะอาด กระจ่างใส พร้อมคืนความชุ่มชื้นให้ผิวหน้าด้วยสารสกัดจากว่านหางจระเข้และไฮยารูรอนอีกด้วย
-							เพียววีวี่ คลีนซิ่งโลชั่น ผลิตภัณฑ์ล้างเครื่องสำอาง ที่ทำความสะอาดผิวหน้าและรอบดวงตา พร้อมคืนความชุ่มชื้นให้แก่คุณ
-							โดยไม่จำเป็นต้องล้างออก ด้วยคุณสมบัติพิเศษสามารถล้างมาสคาร่าออกได้ เพียงแปะทิ้งไว้ไม่กี่วินาที</h4>
-						<p><a class="item_add timer_add" href="#">เพิ่มลงในตะกร้า</a></p>
-					</div>
-					<div id="counter"> </div>
-					<script src="js/jquery.countdown.js"></script>
-					<script src="js/script.js"></script>
-				</div>
-				<div class="col-md-4 timer-grid-right" >
-					<div class="timer-grid-right1">
-						<img src="{% static 'image/17.jpg' %}" alt=" " class="img-responsive" />
-						<div class="timer-grid-right-pos">
-							<h4>ลดราคาพิเศษ</h4>
-						</div>
-					</div>
-				</div>
-				<div class="clearfix"> </div>
-			</div>
-		</div>
-	</div>
-<!-- //new-timer -->
-<!-- collections-bottom -->
-	<div class="collections-bottom">
-		<div class="container">
-			<div class="collections-bottom-grids">
-				<div class="collections-bottom-grid "  >
-					<h3>ลดราคาพิเศษ 20%<span>สำหรับน้ำหอมผู้หญิง</span></h3>
-				</div>
-			</div>
-            </div>
-	</div>
+
 <!-- footer -->
     <div>{% include "footer.html" %}</div>
 <!-- //footer -->
