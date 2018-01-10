@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <script src="{% static 'js/components/angular.min.js' %}"></script>
-<script src="{% static 'js/controllers/homeCtrl.js' %}"></script>
+<script src="{% static 'js/controllers/productCtrl.js' %}"></script>
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -25,16 +25,10 @@
 		</div>
     </div>
 <!-- //breadcrumbs -->
-    <div class="container">
-<<<<<<< HEAD
+     <div class="container">
        <div ng-app="app" ng-controller="productCtrl" >
            <div class="card-deck " ng-repeat="product in products" style="max-width: 20rem; " >
                <div class="card " >
-=======
-       <div ng-app="app" ng-controller="homeCtrl" >[[mama]]
-           <div class="card-deck" ng-repeat="product in products" style="max-width: 20rem; " >
-               <div class="card ">
->>>>>>> origin/products
                     <img class="card-img-top" src="[[product.first_image_url]]" alt="[[product.first_image_url]]" style="overflow: scroll;">
                     <div class="card-body">
                       <h4 class="card-title">[[product.name]]</h4>
