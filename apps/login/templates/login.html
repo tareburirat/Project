@@ -4,6 +4,7 @@
 <script src="{% static 'js/components/jquery-3.2.1.min.js' %}"></script>
 <script src="{% static 'js/components/angular.min.js' %}"></script>
 <script src="{% static 'js/controllers/loginCtrl.js' %}"></script>
+
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -26,85 +27,7 @@
 		</div>
     </div>
 <!-- //breadcrumbs -->
-<<<<<<< HEAD
-<<<<<<< HEAD
    <!-- login -->
-<<<<<<< HEAD
-	<div class="login">
-		<div class="container">
-			<h3>เข้าสู่ระบบ</h3>
-			<div class="login-form-grids">
-				<form>
-                {{ request.user }}
-                <div ng-app="app" ng-controller="logInCtrl">
-                    <small>Username :</small>
-                    <input type="text" placeholder="Username" ng-model="username">
-                    <small>Password :</small>
-                    <input type="password" placeholder="Password" ng-model="password"><br>
-                    <button ng-click="clicker()">Login</button>
-                    <button ng-click="logout()">LogOut(user logged in: [[ userLoggedIn ]])</button>
-                    [[ mama ]]
-                </div>
-					<div class="forgot"><a href="#">ลืมรหัสผ่าน?</a></div>
-{#                    <input type="submit" ng-click="clicker()" value="เข้าสู่ระบบ">#}
-				</form>
-			</div>
-			<h4 class="animated wow slideInUp" data-wow-delay=".5s"></h4>
-			<p class="animated wow slideInUp" data-wow-delay=".5s"><a href="/account_register">ลงทะเบียน</a> กลับสู่ <a href="/">หน้าแรก<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a></p>
-		</div>
-	</div>
-<!-- //login -->
-{#   <!-- login old -->#}
-{#{{ request.user }}#}
-{#    <div ng-app="app" ng-controller="logInCtrl">#}
-{#        <p>Sign In</p>#}
-{#        <p>Username: <input type="text" ng-model="username"></p>#}
-{#        <p>Password: <input type="text" ng-model="password"></p>#}
-{#        <button ng-click="clicker()">Login</button>#}
-{#        <button ng-click="logout()">LogOut(user logged in: [[ userLoggedIn ]])</button>#}
-{#        [[ mama ]]#}
-{#    </div>#}
-{#   <!-- login old -->#}
-=======
-{#	<div class="login">#}
-{#		<div class="container">#}
-{#			<h3>เข้าสู่ระบบ</h3>#}
-{#			<div class="login-form-grids">#}
-{#				<form>#}
-                {#{{ request.user }}#}
-{#                <div ng-app="app" ng-controller="logInCtrl">#}
-{#                    <small>Username :</small>#}
-{#                    <input type="text" placeholder="Username" ng-model="username">#}
-{#                    <small>Password :</small>#}
-{#                    <input type="password" placeholder="Password" ng-model="password">#}
-                    {#<button ng-click="clicker()">Login</button>#}
-                    {#<button ng-click="logout()">LogOut(user logged in: [[ userLoggedIn ]])</button>#}
-                    {#[[ mama ]]#}
-{#                </div>#}
-{#					<div class="forgot"><a href="#">ลืมรหัสผ่าน?</a></div>#}
-{#                    <input type="submit" ng-click="clicker()" value="เข้าสู่ระบบ">#}
-{#                    <button ng-click="clicker()">CLICK!!</button>#}
-{#				</form>#}
-{#			</div>#}
-{#			<h4 class="animated wow slideInUp" data-wow-delay=".5s"></h4>#}
-{#			<p class="animated wow slideInUp" data-wow-delay=".5s"><a href="/account_register">ลงทะเบียน</a> กลับสู่ <a href="/">หน้าแรก<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a></p>#}
-{#		</div>#}
-{#	</div>#}
-<!-- //login -->
-=======
-<<<<<<< HEAD
->>>>>>> 0bcbbebfa065e4d1b1c2604b09b37122138bafff
-=======
->>>>>>> origin/master
->>>>>>> master
-   <!-- login old -->
-=======
-   <!-- login -->
-<<<<<<< HEAD
->>>>>>> origin/master
-=======
->>>>>>> 42543b110b5dd43f89275bc5aef35a95d8688beb
->>>>>>> tare
 
     <div class="login" ng-app="app" ng-controller="logInCtrl" >
         <div class="container">
@@ -118,16 +41,7 @@
                 </div>
         </div>
     </div>
-<<<<<<< HEAD
-   <!-- login old -->
->>>>>>> origin/master
-=======
    <!-- login -->
-<<<<<<< HEAD
->>>>>>> origin/master
-=======
->>>>>>> 42543b110b5dd43f89275bc5aef35a95d8688beb
->>>>>>> tare
     <!-- footer -->
     <div>{% include "footer.html" %}</div>
     <!-- //footer -->
