@@ -2,419 +2,414 @@
 <!DOCTYPE html>
 <html lang="en">
 <script src="{% static 'js/components/angular.min.js' %}"></script>
-<script src="{% static 'js/components/simpleCart.min.js'%}"></script>
+<script src="{% static 'js/components/simpleCart.min.js' %}"></script>
 <script src="{% static 'js/controllers/loginCtrl.js' %}"></script>
 <script src="{% static 'js/controllers/homeCtrl.js' %}"></script>
-<script src="{% static 'js/components/jquery.wmuSlider.js'%}"></script>
-<script src="{% static 'js/components/jquery.flexslider.js'%}"></script>
+<script src="{% static 'js/components/jquery.wmuSlider.js' %}"></script>
+<script src="{% static 'js/components/jquery.flexslider.js' %}"></script>
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- script banner -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+    <!-- script banner -->
     <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>2nd MakeUp</title>
-    <!-- script banner -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <!-- script banner -->
 </head>
 <body>
 <!-- header -->
-    <div>{% include "header.html" %}</div>
+<div>{% include "header.html" %}</div>
 <!-- //header -->
 <!-- breadcrumbs -->
-    <div class="breadcrumbs">
-		<div class="container">
-              <ol class="breadcrumb breadcrumb1">
-                <li class="breadcrumb-item"><a href="/"><span class="fa fa-home" aria-hidden="true"></span>หน้าแรก </a></li>
-
-
-				<!--<li class="breadcrumb-item active"></li>-->
-              </ol>
-		</div>
+<div class="breadcrumbs">
+    <div class="container">
+        <ol class="breadcrumb breadcrumb1">
+            <li class="breadcrumb-item"><a href="/"><span class="fa fa-home" aria-hidden="true"></span>หน้าแรก </a></li>
+        </ol>
     </div>
+</div>
 <!-- //breadcrumbs -->
 <!-- banner -->
-	<div id="img-carousel" data-ride="carousel" class="carousel slide">
-    <!-- Indicators-->
-    <ol class="carousel-indicators">
-      <li data-target="#img-carousel" data-slide-to="0" class="active"></li>
-      <li data-target="#img-carousel" data-slide-to="1"></li>
-      <li data-target="#img-carousel" data-slide-to="2"></li>
-      <li data-target="#img-carousel" data-slide-to="3"></li>
-    </ol>
-    <!-- Wrapper for slides-->
-    <div role="listbox" class="carousel-inner">
-      <div class="item active"><img src="{% static 'image/bn.png' %}" alt="">
-        <div class="carousel-caption">
-
-
+<div class="container">
+<div id="img-carousel-slide" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#img-carousel-slide" data-slide-to="0" class="active"></li>
+            <li data-target="#img-carousel-slide" data-slide-to="1"></li>
+            <li data-target="#cimg-carousel-slide" data-slide-to="2"></li>
+            <li data-target="#img-carousel-slide" data-slide-to="3"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class="d-block w-100" src="{% static 'image/bn.png' %}" alt="First slide">
+                <div class="carousel-caption">
+                    {#                <h3>สิทธิพิเศษสำหรับคุณ</h3>#}
+                    {#                <p>เมื่อซื้อสินค้า</p>#}
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="{% static 'image/bn1.png' %}" alt="Second slide">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="{% static 'image/bn2.png' %}" alt="Third slide">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="{% static 'image/bn3.png' %}" alt="Four slide">
+            </div>
         </div>
-      </div>
-      <div class="item"><img src="{% static 'image/bn1.png' %}" alt="">
-        <div class="carousel-caption">
-
-
-        </div>
-      </div>
-      <div class="item"><img src="{% static 'image/bn2.png' %}" alt="">
-        <div class="carousel-caption">
-
-
-        </div>
-      </div>
-      <div class="item"><img src="{% static 'image/bn3.png' %}" alt="">
-        <div class="carousel-caption">
-
-
-        </div>
-      </div>
+        <a class="carousel-control-prev" href="#img-carousel-slide" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#img-carousel-slide" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
     </div>
-    <!-- Controls--><a href="#img-carousel" role="button" data-slide="prev" class="left carousel-control"><i aria-hidden="true" class="fa fa-chevron-left"></i><span class="sr-only">Previous</span></a><a href="#img-carousel" role="button" data-slide="next" class="right carousel-control"><i aria-hidden="true" class="fa fa-chevron-right"></i><span class="sr-only">Next</span></a>
-  </div>
+</div>
 <!-- //banner -->
+</div>
 <!-- banner-bottom -->
-	<div class="banner-bottom">
-		<div class="container">
-			<div class="banner-bottom-grids">
-				<div class="banner-bottom-grid-left">
-					<div class="grid">
-						<figure class="effect-julia">
-							<img src="{% static 'image/4.jpg' %}" alt=" " class="img-responsive" />
-							<figcaption>
-								<h3>2nd <span>MakeUp</span><i> in online shopping</i></h3>
-								<div>
-									<p>ช่องทางการซื้อและขายเครื่องสำอางมือสอง</p>
-									<p>แหล่งรวมของเครื่องสำอางมือสอง</p>
-									<p>เชื่อถือได้ ไว้ใจเรา</p>
-								</div>
-							</figcaption>
-						</figure>
-					</div>
-				</div>
-				<div class="banner-bottom-grid-left1">
-					<div class="banner-bottom-grid-left-grid left1-grid grid-left-grid1">
-						<div class="banner-bottom-grid-left-grid1">
-							<img src="{% static 'image/1.jpg' %}" alt=" " class="img-responsive" />
-						</div>
-						<div class="banner-bottom-grid-left1-pos">
-							<p>ส่วนลด 45%</p>
-						</div>
-					</div>
-					<div class="banner-bottom-grid-left-grid left1-grid grid-left-grid1">
-						<div class="banner-bottom-grid-left-grid1">
-							<img src="{% static 'image/2.jpg' %}" alt=" " class="img-responsive" />
-						</div>
-						<div class="banner-bottom-grid-left1-position">
-							<div class="banner-bottom-grid-left1-pos1">
-								<p>สินค้ามาใหม่ในเดือนนี้</p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="banner-bottom-grid-right">
-					<div class="banner-bottom-grid-left-grid grid-left-grid1">
-						<div class="banner-bottom-grid-left-grid1">
-							<img src="{% static 'image/3.jpg' %}" alt=" " class="img-responsive" />
-						</div>
-						<div class="grid-left-grid1-pos">
-							<p>น้ำหอมยอดนิยม<span>ในปี2017</span></p>
-						</div>
-					</div>
-				</div>
-				<div class="clearfix"> </div>
-			</div>
-		</div>
-	</div>
-<!-- //banner-bottom -->
-<!-- collections -->
-	<div class="new-collections" >
-		<div class="container">
-			<h3>สินค้าแนะนำ</h3>
-
-<<<<<<< HEAD
-			<div class="new-collections-grids" ng-app="app" ng-controller="productCtrl">
-				<div class="col-md-3 new-collections-grid">
-					<div class="new-collections-grid1 ">
-						<div class="new-collections-grid1-image">
-							<a href="product/" class="product-image"><img src="[[products[0].first_image_url]]" alt=" " class="img-responsive" /></a>
-							<div class="new-collections-grid1-image-pos">
-								<a href="single.html">ดูรายละเอียด</a>
-							</div>
-							<div class="new-collections-grid1-right">
-								<div class="rating">
-									<div class="rating-left">
-										<img src="{% static 'image/2.png' %}" alt=" " class="img-responsive" />
-									</div>
-									<div class="rating-left">
-										<img src="{% static 'image/2.png' %}" alt=" " class="img-responsive" />
-									</div>
-									<div class="rating-left">
-										<img src="{% static 'image/2.png' %}" alt=" " class="img-responsive" />
-									</div>
-									<div class="rating-left">
-										<img src="{% static 'image/2.png' %}" alt=" " class="img-responsive" />
-									</div>
-									<div class="rating-left">
-										<img src="{% static 'image/2.png' %}" alt=" " class="img-responsive" />
-									</div>
-									<div class="clearfix"> </div>
-								</div>
-							</div>
-						</div>
-						<h4><a href="single.html">[[products[0].name]]</a></h4>
-
-						<div class="new-collections-grid1-left simpleCart_shelfItem">
-							<p><i>599฿</i> <span class="item_price">[[products[0].price]]</span><a class="item_add" href="#">เพิ่มลงในตะกร้า</a></p>
-						</div>
-					</div>
-					<div class="new-collections-grid1">
-						<div class="new-collections-grid1-image">
-							<a href="single.html" class="product-image"><img src="[[products[1].first_image_url]]" alt=" " class="img-responsive" /></a>
-							<div class="new-collections-grid1-image-pos">
-								<a href="single.html">ดูรายละเอียด</a>
-							</div>
-							<div class="new-collections-grid1-right">
-								<div class="rating">
-									<div class="rating-left">
-										<img src="{% static 'image/2.png' %}" alt=" " class="img-responsive" />
-									</div>
-									<div class="rating-left">
-										<img src="{% static 'image/2.png' %}" alt=" " class="img-responsive" />
-									</div>
-									<div class="rating-left">
-										<img src="{% static 'image/1.png' %}" alt=" " class="img-responsive" />
-									</div>
-									<div class="rating-left">
-										<img src="{% static 'image/1.png' %}" alt=" " class="img-responsive" />
-									</div>
-									<div class="rating-left">
-										<img src="{% static 'image/1.png' %}" alt=" " class="img-responsive" />
-									</div>
-									<div class="clearfix"> </div>
-								</div>
-							</div>
-						</div>
-						<h4><a href="single.html">[[products[1].name]]</a></h4>
-=======
-			<div class="container">
-            <div ng-app="app" ng-controller="homeCtrl" >[[mama]]
-               <div class="card-deck"  ng-repeat="product in products" style="max-width: 20rem; " >
-                   <div class="card " >
-                        <img class="card-img-top" src="[[product.first_image_url]]" alt="[[product.first_image_url]]">
-                        <div class="card-body">
-                          <h4 class="card-title">[[product.name]]</h4>
-                            <p class="card-text"><b>Freight:</b> [[product.freight_detail]]</p>
-                            <p class="card-text"><b>Freight Fee:</b> [[product.freight_fee]] ฿</p>
-                            <p class="card-text"><b>Price:</b> [[product.price]] ฿</p>
-                          <p class="card-text"><small class="text-muted">[[product.date_of_sale]]</small></p>
+<div class="banner-bottom">
+    <div class="container">
+        <div class="banner-bottom-grids">
+            <div class="banner-bottom-grid-left">
+                <div class="grid">
+                    <figure class="effect-julia">
+                        <img src="{% static 'image/4.jpg' %}" alt=" " class="img-responsive" />
+                        <figcaption>
+                            <h3>2nd <span>MakeUp</span><i> in online shopping</i></h3>
+                            <div>
+                                <p>ช่องทางการซื้อและขายเครื่องสำอางมือสอง</p>
+                                <p>แหล่งรวมของเครื่องสำอางมือสอง</p>
+                                <p>เชื่อถือได้ ไว้ใจเรา</p>
+                            </div>
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+            <div class="banner-bottom-grid-left1">
+                <div class="banner-bottom-grid-left-grid left1-grid grid-left-grid1">
+                    <div class="banner-bottom-grid-left-grid1">
+                        <img src="{% static 'image/1.jpg' %}" alt=" " class="img-responsive" />
+                    </div>
+                    <div class="banner-bottom-grid-left1-pos">
+                        <p>ส่วนลด 45%</p>
+                    </div>
+                </div>
+                <div class="banner-bottom-grid-left-grid left1-grid grid-left-grid1">
+                    <div class="banner-bottom-grid-left-grid1">
+                        <img src="{% static 'image/2.jpg' %}" alt=" " class="img-responsive" />
+                    </div>
+                    <div class="banner-bottom-grid-left1-position">
+                        <div class="banner-bottom-grid-left1-pos1">
+                            <p>สินค้ามาใหม่ในเดือนนี้</p>
                         </div>
-                   </div>
-    {#              <p>[[ product.name ]]</p> <img ng-repeat="image in product.images" src="[[image.image]]">#}
-               </div>
-       </div>
+                    </div>
+                </div>
+            </div>
+            <div class="banner-bottom-grid-right">
+                <div class="banner-bottom-grid-left-grid grid-left-grid1">
+                    <div class="banner-bottom-grid-left-grid1">
+                        <img src="{% static 'image/3.jpg' %}" alt=" " class="img-responsive" />
+                    </div>
+                    <div class="grid-left-grid1-pos">
+                        <p>น้ำหอมยอดนิยม<span>ในปี2017</span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
     </div>
->>>>>>> origin/products
+</div>
+<!-- //banner-bottom -->
 
-						<div class="new-collections-grid1-left simpleCart_shelfItem">
-							<p><i>250฿</i> <span class="item_price">[[products[1].price]] ฿</span><a class="item_add" href="#">เพิ่มลงในตะกร้า</a></p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-6 new-collections-grid">
-					<div class="new-collections-grid1 new-collections-grid1-image-width ">
-						<div class="new-collections-grid1-image">
-							<a href="single.html" class="product-image"><img src="[[products[2].first_image_url]]" alt=" " class="img-responsive" /></a>
-							<div class="new-collections-grid1-image-pos new-collections-grid1-image-pos1">
-								<a href="single.html">ดูรายละเอียด</a>
-							</div>
-							<div class="new-collections-grid1-right new-collections-grid1-right-rate">
-								<div class="rating">
-									<div class="rating-left">
-										<img src="{% static 'image/2.png' %}" alt=" " class="img-responsive" />
-									</div>
-									<div class="rating-left">
-										<img src="{% static 'image/2.png' %}" alt=" " class="img-responsive" />
-									</div>
-									<div class="rating-left">
-										<img src="{% static 'image/2.png' %}" alt=" " class="img-responsive" />
-									</div>
-									<div class="rating-left">
-										<img src="{% static 'image/1.png' %}" alt=" " class="img-responsive" />
-									</div>
-									<div class="rating-left">
-										<img src="{% static 'image/1.png' %}" alt=" " class="img-responsive" />
-									</div>
-									<div class="clearfix"> </div>
-								</div>
-							</div>
-							<div class="new-one">
-								<p>ใหม่</p>
-							</div>
-						</div>
-						<h4><a href="single.html">[[products[2].name]]</a></h4>
+<!-- collections -->
+<div class="new-collections" >
+    <div class="container">
+        <h3>สินค้าแนะนำ</h3>
+        <div class="new-collections-grids" ng-app="app" ng-controller="productCtrl">
+            <div class="col-md-3 new-collections-grid">
+                <div class="new-collections-grid1 ">
+                    <div class="new-collections-grid1-image">
+                        <a href="product/" class="product-image"><img src="[[products[0].first_image_url]]" alt=" " class="img-responsive" /></a>
+                        <div class="new-collections-grid1-image-pos">
+                            <a href="single.html">ดูรายละเอียด</a>
+                        </div>
+                        <div class="new-collections-grid1-right">
+                            <div class="rating">
+                                <div class="rating-left">
+                                    <img src="{% static 'image/2.png' %}" alt=" " class="img-responsive" />
+                                </div>
+                                <div class="rating-left">
+                                    <img src="{% static 'image/2.png' %}" alt=" " class="img-responsive" />
+                                </div>
+                                <div class="rating-left">
+                                    <img src="{% static 'image/2.png' %}" alt=" " class="img-responsive" />
+                                </div>
+                                <div class="rating-left">
+                                    <img src="{% static 'image/2.png' %}" alt=" " class="img-responsive" />
+                                </div>
+                                <div class="rating-left">
+                                    <img src="{% static 'image/2.png' %}" alt=" " class="img-responsive" />
+                                </div>
+                                <div class="clearfix"> </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h4><a href="single.html">[[products[0].name]]</a></h4>
 
-						<div class="new-collections-grid1-left simpleCart_shelfItem">
-							<p><i>279฿</i> <span class="item_price">[[products[2].price]] ฿</span><a class="item_add" href="#">เพิ่มลงในตะกร้า</a></p>
-						</div>
-					</div>
-{#					<div class="new-collections-grid-sub-grids">#}
-{#						<div class="new-collections-grid1-sub">#}
-{#							<div class="new-collections-grid1 ">#}
-{#								<div class="new-collections-grid1-image">#}
-{#									<a href="single.html" class="product-image"><img src="[[products[3].first_image_url]]" alt=" " class="img-responsive" /></a>#}
-{#									<div class="new-collections-grid1-image-pos">#}
-{#										<a href="single.html">ดูรายละเอียด</a>#}
-{#									</div>#}
-{#									<div class="new-collections-grid1-right">#}
-{#										<div class="rating">#}
-{#											<div class="rating-left">#}
-{#												<img src="{% static 'image/2.png' %}" alt=" " class="img-responsive" />#}
-{#											</div>#}
-{#											<div class="rating-left">#}
-{#												<img src="{% static 'image/2.png' %}" alt=" " class="img-responsive" />#}
-{#											</div>#}
-{#											<div class="rating-left">#}
-{#												<img src="{% static 'image/2.png' %}" alt=" " class="img-responsive" />#}
-{#											</div>#}
-{#											<div class="rating-left">#}
-{#												<img src="{% static 'image/1.png' %}" alt=" " class="img-responsive" />#}
-{#											</div>#}
-{#											<div class="rating-left">#}
-{#												<img src="{% static 'image/1.png' %}" alt=" " class="img-responsive" />#}
-{#											</div>#}
-{#											<div class="clearfix"> </div>#}
-{#										</div>#}
-{#									</div>#}
-{#								</div>#}
-{#								<h4><a href="single.html">[[products[3].name]]</a></h4>#}
-{##}
-{#								<div class="new-collections-grid1-left simpleCart_shelfItem">#}
-{#									<p><i>435฿</i> <span class="item_price">[[products[3].price]] ฿</span><a class="item_add" href="#">เพิ่มลงในตะกร้า</a></p>#}
-{#								</div>#}
-{#							</div>#}
-{#						</div>#}
-						<div class="new-collections-grid1-sub">
-							<div class="new-collections-grid1">
-								<div class="new-collections-grid1-image">
-									<a href="single.html" class="product-image"><img src="{% static 'image/9.jpg' %}" alt=" " class="img-responsive" /></a>
-									<div class="new-collections-grid1-image-pos">
-										<a href="single.html">ดูรายละเอียด</a>
-									</div>
-									<div class="new-collections-grid1-right">
-										<div class="rating">
-											<div class="rating-left">
-												<img src="{% static 'image/2.png' %}" alt=" " class="img-responsive" />
-											</div>
-											<div class="rating-left">
-												<img src="{% static 'image/1.png' %}" alt=" " class="img-responsive" />
-											</div>
-											<div class="rating-left">
-												<img src="{% static 'image/1.png' %}" alt=" " class="img-responsive" />
-											</div>
-											<div class="rating-left">
-												<img src="{% static 'image/1.png' %}" alt=" " class="img-responsive" />
-											</div>
-											<div class="rating-left">
-												<img src="{% static 'image/1.png' %}" alt=" " class="img-responsive" />
-											</div>
-											<div class="clearfix"> </div>
-										</div>
-									</div>
-								</div>
-								<h4><a href="single.html">Lucas Papaw Ointment 25g บาล์มสารพัดประโยชน์</a></h4>
+                    <div class="new-collections-grid1-left simpleCart_shelfItem">
+                        <p><i>599฿</i> <span class="item_price">[[products[0].price]]</span><a class="item_add" href="#">เพิ่มลงในตะกร้า</a></p>
+                    </div>
+                </div>
+                <div class="new-collections-grid1">
+                    <div class="new-collections-grid1-image">
+                        <a href="single.html" class="product-image"><img src="[[products[1].first_image_url]]" alt=" " class="img-responsive" /></a>
+                        <div class="new-collections-grid1-image-pos">
+                            <a href="single.html">ดูรายละเอียด</a>
+                        </div>
+                        <div class="new-collections-grid1-right">
+                            <div class="rating">
+                                <div class="rating-left">
+                                    <img src="{% static 'image/2.png' %}" alt=" " class="img-responsive" />
+                                </div>
+                                <div class="rating-left">
+                                    <img src="{% static 'image/2.png' %}" alt=" " class="img-responsive" />
+                                </div>
+                                <div class="rating-left">
+                                    <img src="{% static 'image/1.png' %}" alt=" " class="img-responsive" />
+                                </div>
+                                <div class="rating-left">
+                                    <img src="{% static 'image/1.png' %}" alt=" " class="img-responsive" />
+                                </div>
+                                <div class="rating-left">
+                                    <img src="{% static 'image/1.png' %}" alt=" " class="img-responsive" />
+                                </div>
+                                <div class="clearfix"> </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h4><a href="single.html">[[products[1].name]]</a></h4>
+                    <div class="container">
+                        <div ng-app="app" ng-controller="homeCtrl" >[[mama]]
+                            <div class="card-deck"  ng-repeat="product in products" style="max-width: 20rem; " >
+                                <div class="card " >
+                                    <img class="card-img-top" src="[[product.first_image_url]]" alt="[[product.first_image_url]]">
+                                    <div class="card-body">
+                                        <h4 class="card-title">[[product.name]]</h4>
+                                        <p class="card-text"><b>Freight:</b> [[product.freight_detail]]</p>
+                                        <p class="card-text"><b>Freight Fee:</b> [[product.freight_fee]] ฿</p>
+                                        <p class="card-text"><b>Price:</b> [[product.price]] ฿</p>
+                                        <p class="card-text"><small class="text-muted">[[product.date_of_sale]]</small></p>
+                                    </div>
+                                </div>
+                                {#              <p>[[ product.name ]]</p> <img ng-repeat="image in product.images" src="[[image.image]]">#}
+                            </div>
+                        </div>
+                    </div>
+                    >>>>>>> origin/products
 
-								<div class="new-collections-grid1-left simpleCart_shelfItem">
-									<p><i>230฿</i> <span class="item_price">100฿</span><a class="item_add" href="#">เพิ่มลงในตะกร้า</a></p>
-								</div>
-							</div>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
-				</div>
-				<div class="col-md-3 new-collections-grid">
-					<div class="new-collections-grid1 ">
-						<div class="new-collections-grid1-image">
-							<a href="single.html" class="product-image"><img src="{% static 'image/10.jpg' %}" alt=" " class="img-responsive" /></a>
-							<div class="new-collections-grid1-image-pos">
-								<a href="single.html">ดูรายละเอียด</a>
-							</div>
-							<div class="new-collections-grid1-right">
-								<div class="rating">
-									<div class="rating-left">
-										<img src="{% static 'image/2.png' %}" alt=" " class="img-responsive" />
-									</div>
-									<div class="rating-left">
-										<img src="{% static 'image/2.png' %}" alt=" " class="img-responsive" />
-									</div>
-									<div class="rating-left">
-										<img src="{% static 'image/2.png' %}" alt=" " class="img-responsive" />
-									</div>
-									<div class="rating-left">
-										<img src="{% static 'image/1.png' %}" alt=" " class="img-responsive" />
-									</div>
-									<div class="rating-left">
-										<img src="{% static 'image/1.png' %}" alt=" " class="img-responsive" />
-									</div>
-									<div class="clearfix"> </div>
-								</div>
-							</div>
-						</div>
-						<h4><a href="single.html">Collection Perfectingconcealer4G N1Fair</a></h4>
+                    <div class="new-collections-grid1-left simpleCart_shelfItem">
+                        <p><i>250฿</i> <span class="item_price">[[products[1].price]] ฿</span><a class="item_add" href="#">เพิ่มลงในตะกร้า</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 new-collections-grid">
+                <div class="new-collections-grid1 new-collections-grid1-image-width ">
+                    <div class="new-collections-grid1-image">
+                        <a href="single.html" class="product-image"><img src="[[products[2].first_image_url]]" alt=" " class="img-responsive" /></a>
+                        <div class="new-collections-grid1-image-pos new-collections-grid1-image-pos1">
+                            <a href="single.html">ดูรายละเอียด</a>
+                        </div>
+                        <div class="new-collections-grid1-right new-collections-grid1-right-rate">
+                            <div class="rating">
+                                <div class="rating-left">
+                                    <img src="{% static 'image/2.png' %}" alt=" " class="img-responsive" />
+                                </div>
+                                <div class="rating-left">
+                                    <img src="{% static 'image/2.png' %}" alt=" " class="img-responsive" />
+                                </div>
+                                <div class="rating-left">
+                                    <img src="{% static 'image/2.png' %}" alt=" " class="img-responsive" />
+                                </div>
+                                <div class="rating-left">
+                                    <img src="{% static 'image/1.png' %}" alt=" " class="img-responsive" />
+                                </div>
+                                <div class="rating-left">
+                                    <img src="{% static 'image/1.png' %}" alt=" " class="img-responsive" />
+                                </div>
+                                <div class="clearfix"> </div>
+                            </div>
+                        </div>
+                        <div class="new-one">
+                            <p>ใหม่</p>
+                        </div>
+                    </div>
+                    <h4><a href="single.html">[[products[2].name]]</a></h4>
 
-						<div class="new-collections-grid1-left simpleCart_shelfItem">
-							<p><i>279฿</i> <span class="item_price">139฿</span><a class="item_add" href="#">เพิ่มลงในตะกร้า</a></p>
-						</div>
-					</div>
-					<div class="new-collections-grid1">
-						<div class="new-collections-grid1-image">
-							<a href="single.html" class="product-image"><img src="{% static 'image/11.jpg' %}" alt=" " class="img-responsive" /></a>
-							<div class="new-collections-grid1-image-pos">
-								<a href="single.html">ดูรายละเอียด</a>
-							</div>
-							<div class="new-collections-grid1-right">
-								<div class="rating">
-									<div class="rating-left">
-										<img src="{% static 'image/2.png' %}" alt=" " class="img-responsive" />
-									</div>
-									<div class="rating-left">
-										<img src="{% static 'image/2.png' %}" alt=" " class="img-responsive" />
-									</div>
-									<div class="rating-left">
-										<img src="{% static 'image/2.png' %}" alt=" " class="img-responsive" />
-									</div>
-									<div class="rating-left">
-										<img src="{% static 'image/2.png' %}" alt=" " class="img-responsive" />
-									</div>
-									<div class="rating-left">
-										<img src="{% static 'image/1.png' %}" alt=" " class="img-responsive" />
-									</div>
-									<div class="clearfix"> </div>
-								</div>
-							</div>
-						</div>
-						<h4><a href="single.html">Revlon Colorstay Makeup Foundation</a></h4>
+                    <div class="new-collections-grid1-left simpleCart_shelfItem">
+                        <p><i>279฿</i> <span class="item_price">[[products[2].price]] ฿</span><a class="item_add" href="#">เพิ่มลงในตะกร้า</a></p>
+                    </div>
+                </div>
+                {#					<div class="new-collections-grid-sub-grids">#}
+                {#						<div class="new-collections-grid1-sub">#}
+                {#							<div class="new-collections-grid1 ">#}
+                {#								<div class="new-collections-grid1-image">#}
+                {#									<a href="single.html" class="product-image"><img src="[[products[3].first_image_url]]" alt=" " class="img-responsive" /></a>#}
+                {#									<div class="new-collections-grid1-image-pos">#}
+                {#										<a href="single.html">ดูรายละเอียด</a>#}
+                {#									</div>#}
+                {#									<div class="new-collections-grid1-right">#}
+                {#										<div class="rating">#}
+                {#											<div class="rating-left">#}
+                {#												<img src="{% static 'image/2.png' %}" alt=" " class="img-responsive" />#}
+                {#											</div>#}
+                {#											<div class="rating-left">#}
+                {#												<img src="{% static 'image/2.png' %}" alt=" " class="img-responsive" />#}
+                {#											</div>#}
+                {#											<div class="rating-left">#}
+                {#												<img src="{% static 'image/2.png' %}" alt=" " class="img-responsive" />#}
+                {#											</div>#}
+                {#											<div class="rating-left">#}
+                {#												<img src="{% static 'image/1.png' %}" alt=" " class="img-responsive" />#}
+                {#											</div>#}
+                {#											<div class="rating-left">#}
+                {#												<img src="{% static 'image/1.png' %}" alt=" " class="img-responsive" />#}
+                {#											</div>#}
+                {#											<div class="clearfix"> </div>#}
+                {#										</div>#}
+                {#									</div>#}
+                {#								</div>#}
+                {#								<h4><a href="single.html">[[products[3].name]]</a></h4>#}
+                {##}
+                {#								<div class="new-collections-grid1-left simpleCart_shelfItem">#}
+                {#									<p><i>435฿</i> <span class="item_price">[[products[3].price]] ฿</span><a class="item_add" href="#">เพิ่มลงในตะกร้า</a></p>#}
+                {#								</div>#}
+                {#							</div>#}
+                {#						</div>#}
+                <div class="new-collections-grid1-sub">
+                    <div class="new-collections-grid1">
+                        <div class="new-collections-grid1-image">
+                            <a href="single.html" class="product-image"><img src="{% static 'image/9.jpg' %}" alt=" " class="img-responsive" /></a>
+                            <div class="new-collections-grid1-image-pos">
+                                <a href="single.html">ดูรายละเอียด</a>
+                            </div>
+                            <div class="new-collections-grid1-right">
+                                <div class="rating">
+                                    <div class="rating-left">
+                                        <img src="{% static 'image/2.png' %}" alt=" " class="img-responsive" />
+                                    </div>
+                                    <div class="rating-left">
+                                        <img src="{% static 'image/1.png' %}" alt=" " class="img-responsive" />
+                                    </div>
+                                    <div class="rating-left">
+                                        <img src="{% static 'image/1.png' %}" alt=" " class="img-responsive" />
+                                    </div>
+                                    <div class="rating-left">
+                                        <img src="{% static 'image/1.png' %}" alt=" " class="img-responsive" />
+                                    </div>
+                                    <div class="rating-left">
+                                        <img src="{% static 'image/1.png' %}" alt=" " class="img-responsive" />
+                                    </div>
+                                    <div class="clearfix"> </div>
+                                </div>
+                            </div>
+                        </div>
+                        <h4><a href="single.html">Lucas Papaw Ointment 25g บาล์มสารพัดประโยชน์</a></h4>
 
-						<div class="new-collections-grid1-left simpleCart_shelfItem">
-							<p><i>580฿</i> <span class="item_price">435฿</span><a class="item_add" href="#">เพิ่มลงในตะกร้า</a></p>
-						</div>
-					</div>
-				</div>
-				<div class="clearfix"> </div>
-			</div>
-		</div>
-	</div>
+                        <div class="new-collections-grid1-left simpleCart_shelfItem">
+                            <p><i>230฿</i> <span class="item_price">100฿</span><a class="item_add" href="#">เพิ่มลงในตะกร้า</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+        <div class="col-md-3 new-collections-grid">
+            <div class="new-collections-grid1 ">
+                <div class="new-collections-grid1-image">
+                    <a href="single.html" class="product-image"><img src="{% static 'image/10.jpg' %}" alt=" " class="img-responsive" /></a>
+                    <div class="new-collections-grid1-image-pos">
+                        <a href="single.html">ดูรายละเอียด</a>
+                    </div>
+                    <div class="new-collections-grid1-right">
+                        <div class="rating">
+                            <div class="rating-left">
+                                <img src="{% static 'image/2.png' %}" alt=" " class="img-responsive" />
+                            </div>
+                            <div class="rating-left">
+                                <img src="{% static 'image/2.png' %}" alt=" " class="img-responsive" />
+                            </div>
+                            <div class="rating-left">
+                                <img src="{% static 'image/2.png' %}" alt=" " class="img-responsive" />
+                            </div>
+                            <div class="rating-left">
+                                <img src="{% static 'image/1.png' %}" alt=" " class="img-responsive" />
+                            </div>
+                            <div class="rating-left">
+                                <img src="{% static 'image/1.png' %}" alt=" " class="img-responsive" />
+                            </div>
+                            <div class="clearfix"> </div>
+                        </div>
+                    </div>
+                </div>
+                <h4><a href="single.html">Collection Perfectingconcealer4G N1Fair</a></h4>
+
+                <div class="new-collections-grid1-left simpleCart_shelfItem">
+                    <p><i>279฿</i> <span class="item_price">139฿</span><a class="item_add" href="#">เพิ่มลงในตะกร้า</a></p>
+                </div>
+            </div>
+            <div class="new-collections-grid1">
+                <div class="new-collections-grid1-image">
+                    <a href="single.html" class="product-image"><img src="{% static 'image/11.jpg' %}" alt=" " class="img-responsive" /></a>
+                    <div class="new-collections-grid1-image-pos">
+                        <a href="single.html">ดูรายละเอียด</a>
+                    </div>
+                    <div class="new-collections-grid1-right">
+                        <div class="rating">
+                            <div class="rating-left">
+                                <img src="{% static 'image/2.png' %}" alt=" " class="img-responsive" />
+                            </div>
+                            <div class="rating-left">
+                                <img src="{% static 'image/2.png' %}" alt=" " class="img-responsive" />
+                            </div>
+                            <div class="rating-left">
+                                <img src="{% static 'image/2.png' %}" alt=" " class="img-responsive" />
+                            </div>
+                            <div class="rating-left">
+                                <img src="{% static 'image/2.png' %}" alt=" " class="img-responsive" />
+                            </div>
+                            <div class="rating-left">
+                                <img src="{% static 'image/1.png' %}" alt=" " class="img-responsive" />
+                            </div>
+                            <div class="clearfix"> </div>
+                        </div>
+                    </div>
+                </div>
+                <h4><a href="single.html">Revlon Colorstay Makeup Foundation</a></h4>
+
+                <div class="new-collections-grid1-left simpleCart_shelfItem">
+                    <p><i>580฿</i> <span class="item_price">435฿</span><a class="item_add" href="#">เพิ่มลงในตะกร้า</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+</div>
+</div>
 <!-- //collections -->
 
 <!-- footer -->
-    <div>{% include "footer.html" %}</div>
+<div>{% include "footer.html" %}</div>
 <!-- //footer -->
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 </body>
 </html>
