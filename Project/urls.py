@@ -32,7 +32,7 @@ from apps.ratings.views import RatingView
 from apps.accounts.views import SignUpView
 from apps.values.views import ValueView
 from apps.home.views import HomeView
-
+from apps.my_profile.views import MyProfileView, ProfileView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -56,6 +56,9 @@ urlpatterns = [
     url(r'^value/', ValueView.as_view()),
     url(r'^create_product/', AddProductView.as_view()),
     url(r'^single/', SingleProductView.as_view()),
+    url(r'^profile/', MyProfileView.as_view()),
+    url(r'^profile_user/', ProfileView.as_view()),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
