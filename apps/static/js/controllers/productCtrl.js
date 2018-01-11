@@ -21,3 +21,4 @@ app.controller("productCtrl", function($scope, $http, $window) {
   $interpolateProvider.startSymbol('[[');
   $interpolateProvider.endSymbol(']]');
 });
+
