@@ -13,26 +13,26 @@
     <title>Signup</title>
 </head>
 <body>
-    <!-- header -->
-        <div>{% include "header.html" %}</div>
-    <!-- //header -->
+<!-- header -->
+<div>{% include "header.html" %}</div>
+<!-- //header -->
 
-    <!-- breadcrumbs -->
-        <div class="breadcrumbs">
-            <div class="container">
-                  <ol class="breadcrumb breadcrumb1">
-                    <li class="breadcrumb-item"><a href="/"><span class="fa fa-home" aria-hidden="true"></span>หน้าแรก</a></li>
-                    <li class="breadcrumb-item active">ละทะเบียน</li>
-                  </ol>
-            </div>
-        </div>
-    <!-- //breadcrumbs -->
-    <div class="register">
-        <div class="container">
-            <h3>ลงทะเบียน</h3>
-            <div class="login-form-grids" form="createForm" ng-app="accountCreateApp" ng-controller="accountCreateCtrl">
-                <h5>ข้อมูลเข้าสู่ระบบ</h5>
-                <form>
+<!-- breadcrumbs -->
+<div class="breadcrumbs">
+    <div class="container">
+        <ol class="breadcrumb breadcrumb1">
+            <li class="breadcrumb-item"><a href="/"><span class="fa fa-home" aria-hidden="true"></span>หน้าแรก</a></li>
+            <li class="breadcrumb-item active">ละทะเบียน</li>
+        </ol>
+    </div>
+</div>
+<!-- //breadcrumbs -->
+<div class="register">
+    <div class="container">
+        <h3>ลงทะเบียน</h3>
+        <div class="login-form-grids" form="createForm" ng-app="accountCreateApp" ng-controller="accountCreateCtrl">
+            <h5>ข้อมูลเข้าสู่ระบบ</h5>
+            <form>
                 <input type="text" placeholder="username" ng-model="username" >
                 <input type="text" placeholder="password" ng-model="password" >
 
@@ -44,9 +44,15 @@
                 <input type="text" placeholder="displayname" ng-model="display_name">
                 <input type="text" placeholder="telephone" ng-model="phone">
                 <input type="submit" value="ลงทะเบียน" ng-click="clickSignup()">
-                </form>
-            </div>
+            </form>
         </div>
     </div>
+</div>
+<!-- footer -->
+<div>{% include "footer.html" %}</div>
+<!-- //footer -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 </body>
 </html>

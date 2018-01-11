@@ -37,8 +37,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.admindocs',
-
 
     # third party app
     'django_extensions',
@@ -60,6 +58,7 @@ INSTALLED_APPS = [
     'apps.orders',
     'apps.login',
     'apps.home',
+    'apps.my_profile',
 ]
 
 MIDDLEWARE = [
