@@ -6,6 +6,7 @@ from rest_framework import viewsets
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
+from apps.category_product.models import CategoryProduct
 from apps.products.models import Product, ProductImage
 from apps.products.serializers import ProductSerializer
 from apps.properties.models import Property
@@ -28,6 +29,7 @@ def save_product(request):
         freight_fee = int(data['freight_fee'])
         freight = int(data['freight'])
         seller_id = int(data['seller_id'])
+        cat_id = data['category_id']
 
         product = Product.objects.create(
             name=name,
@@ -39,6 +41,8 @@ def save_product(request):
 
         for image in images:
             ProductImage.objects.create(product=product, image=image)
+
+        CategoryProduct.objects.create(category_id=cat_id, product_id=product.id)
 
         for p_id, p_value in zip(request.data.getlist('propertyId[]'), request.data.getlist('propertyValue[]')):
             Value.objects.create(properties_id=p_id, value_product=p_value, product=product)
