@@ -48,7 +48,7 @@ class ProductSerializer(serializers.ModelSerializer):
 
     @staticmethod
     def get_category(obj):
-        categories = CategoryProduct.objects.filter(product_id=1, category__category_type=Category.normal)
+        categories = CategoryProduct.objects.filter(product_id=obj.id, category__category_type=Category.normal)
         if categories.count() > 0:
             return categories[0].category.name
         else:

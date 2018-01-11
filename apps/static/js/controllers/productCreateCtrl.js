@@ -25,6 +25,9 @@ app.controller('productCreateCtrl', function ($scope, $http) {
             formData.append(k, $scope.product[k])
         });
 
+        // get category
+        formData.append('category_id', $scope.selectedCategory.id);
+
         // get freight option
         formData.append('freight', get_freight($scope.freight));
         formData.append('seller_id', $scope.accountId);
