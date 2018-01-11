@@ -26,7 +26,6 @@
     </div>
 <!-- //breadcrumbs -->
 
-
         <div class="wrapper content" form="createForm" ng-app="productCreateApp" ng-controller="productCreateCtrl" ng-init="getAccountId({{ request.user.account.id }})">
             <div class="container">
                 <h2>ข้อมูลทั่วไป</h2>
@@ -74,9 +73,6 @@
                         <input class="form-control col-sm-10" type="file" multiple ng-files="getTheFiles($files)">
                     </div>
                 </div>
-
-
-            <input type="text" placeholder="seller_id" ng-model="product.seller_id">
             [[ accountId ]]
             <div class="form-group">
             <button class="btn-primary" ng-click="submitProduct()">บันทึก</button>

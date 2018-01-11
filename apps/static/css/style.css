@@ -3947,3 +3947,17 @@ td.invert-image a img {
 .card-deck{
     column-count: 3;
 }
+.background table tr td p {
+	color: #FF766D;
+}
+.background{
+	background-color: #F2F2F2;
+	width: 100%;
+	height: 100%;
+}
+.background table tr td table tr td {
+	color: #000;
+}
+.background table tr td table {
+	color: #FFF;
+}
