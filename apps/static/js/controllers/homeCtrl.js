@@ -4,8 +4,8 @@ app.controller("homeCtrl", function ($scope, $http) {
     $scope.mama = 123;
 
     $http.get('http://localhost:8000/api/products/').then(function (response) {
-        $scope.product = response.data;
-        console.log($scope.product);
+        $scope.products = response.data;
+        console.log($scope.products);
     })
 
 }).config(function($interpolateProvider) {
