@@ -1,0 +1,40 @@
+{% load static %}
+
+<script src="{% static 'js/components/angular.min.js' %}"></script>
+<script src="{% static 'js/controllers/account/editCtrl.js' %}"></script>
+
+
+<div ng-app="app" ng-controller="accountEditCtrl" ng-init="getAccountInfo({{ request.user.account.id }})">
+    [[mama]]
+
+
+    <div class="row col">
+        <div class="col-md-3">
+            Display Name :
+        </div>
+        <div>
+            <input type="text" disabled ng-model="accountData.display_name">
+            <br>
+            [[accountData.display_name]]
+        </div>
+        <div class="col-md-3">
+            First Name :
+            <input type="text" ng-model="accountData.first_name">
+        </div>
+        <div >
+            Last Name :
+            <input type="text" ng-model="accountData.last_name">
+        </div>
+        <div>
+             Email :
+            <input type="text" ng-model="accountData.email">
+        </div>
+         <div>
+             Phone :
+            <input type="text" ng-model="accountData.phone">
+        </div>
+        <div>
+            <button ng-click="saveProduct()">SAVE ME!</button>
+        </div>
+    </div>
+</div>

@@ -58,6 +58,7 @@ urlpatterns = [
     url(r'^single/', SingleProductView.as_view()),
     url(r'^profile/', MyProfileView.as_view()),
     url(r'^profile_user/', ProfileView.as_view()),
+    url(r'^account/', include('apps.accounts.urls')),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
