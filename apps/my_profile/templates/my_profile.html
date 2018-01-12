@@ -3,7 +3,7 @@
 <html lang="en">
 <script src="{% static 'js/components/jquery-3.2.1.min.js' %}"></script>
 <script src="{% static 'js/components/angular.min.js' %}"></script>
-<script src="{% static 'js/controllers/account/editCtrl.js' %}"></script>
+<script src="{% static 'js/controllers/loginCtrl.js' %}"></script>
 
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
@@ -29,70 +29,87 @@
 <!-- //breadcrumbs -->
 <!-- profile -->
 <div class="container">
-    <div class="row profile">
-        <div class="col-md-3">
-
-            <table width="307" border="0" cellspacing="0" cellpadding="10">
+<div class="background">
+    <p>&nbsp;</p>
+    <table width="1098" height="280" border="00" align="center" cellpadding="10" cellspacing="2">
+        <tr></tr>
+        <tr></tr>
+        <tr></tr>
+        <tr>
+            <td width="238" height="281"><table width="307" border="0" cellspacing="0" cellpadding="10">
                 <tr>
                     <td width="60" rowspan="2"><img src="{% static 'image/user.png' %}" width="80" height="120" /></td>
                     <td width="207" height="57" align="left" valign="bottom">{{ request.user}}</td>
                 </tr>
                 <tr>
-                    <td height="61" valign="top" style="color: #666" >
-                        <div class="profile-tab"><p style="color: #666" class="tablinks" onclick="openCity(event, 'edit')">แก้ไขข้อมูลส่วนตัว</p>
-                        </div> </td>
+                    <td height="61" valign="top" style="color: #666">แก้ไขข้อมูลส่วนตัว</td>
                 </tr>
                 <tr>
                     <td colspan="2" style="color: #999">-----------------------------------------------</td>
                 </tr>
+                 <tr>
+                    <td colspan="2" style="color: #000"><a href="/profile_user">ข้อมูลส่วนตัว</a></td>
+                </tr>
                 <tr>
-                    <td colspan="2" style="color: #000"><a href="/create_product">เพิ่มสินค้า</a></td>
+                    <td colspan="2" style="color: #000"><a href="/create_product
+">เพิ่มสินค้า</a></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="color: #000">ร้านค้าของฉัน</td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="color: #000">ประวัติการซื้อ</td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="color: #000">ประวัติการขาย</td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="color: #000">ประวัติการซื้อเหรียญ</td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="color: #000">ซื้อเหรียญ</td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="color: #000">ซื้อโปรโมท</td>
+                </tr>
+            </table></td>
+            <td width="840"><table width="779" height="84" border="2" cellpadding="2" cellspacing="0">
+                <tr>
+                    <td width="152" align="center" bgcolor="#FFFFFF">รายการสินค้าทั้งหมด :</td>
+                    <td width="607" bgcolor="#FFFFFF">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td align="center" bgcolor="#FFFFFF">คะแนนร้านค้า :</td>
+                    <td bgcolor="#FFFFFF">&nbsp;</td>
                 </tr>
             </table>
-            <div class="profile-tab">
-                <button class="tablinks" onclick="openCity(event, 'tab1')" id="defaultOpen">ข้อมูลของฉัน</button>
-                <button class="tablinks" onclick="openCity(event, 'tab2')">ประวัติการซื้อ</button>
-                <button class="tablinks" onclick="openCity(event, 'tab3')">ประวัติการขาย</button>
-            </div>
-        </div>
-
-        <div class="col-md-9">
-            <div id="tab1" class="tabcontent">
-                &nbsp;
-                <h3>ข้อมูลของฉัน</h3>
-                <p>__________________________________________</p>
-                <div>{% include "profile.html" %}</div>
-            </div>
-
-            <div id="tab2" class="tabcontent">
-                &nbsp;
-                <h3>ประวัติการซื้อ</h3>
-                <p>__________________________________________</p>
-            </div>
-
-            <div id="tab3" class="tabcontent">
-                &nbsp;
-                <h3>ประวัติการขาย</h3>
-                <p>__________________________________________</p>
-            </div>
-
-            <div id="edit" class="tabcontent">
-                &nbsp;
-                <h3>แก้ไขข้อมูลส่วนตัว</h3>
-                <p>__________________________________________</p>
-            </div>
-        </div>
-    </div>
+                <p>สินค้าของฉัน</p>
+                <table width="778" height="219" border="2" cellpadding="10" cellspacing="0">
+                    <tr>
+                        <td width="760" bgcolor="#FFFFFF"><table width="178" height="205" border="1" cellpadding="5" cellspacing="0">
+                            <tr>
+                                <td width="166"><table width="168" height="262" border="0" cellpadding="2" cellspacing="2">
+                                    <tr>
+                                        <td width="162" height="163"><img src="../Documents/web_project/images/7.jpg" width="158" height="200" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>&nbsp;</td>
+                                    </tr>
+                                </table></td>
+                            </tr>
+                        </table></td>
+                    </tr>
+                </table></td>
+        </tr>
+    </table>
+    <p>&nbsp;</p>
 </div>
-    <!-- footer -->
-    <div>{% include "footer.html" %}</div>
-    <!-- //footer -->
-    <script src="{% static 'js/components/profileTab.js' %}"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
-
-
-
+</div>
+<!-- footer -->
+<div>{% include "footer.html" %}</div>
+<!-- //footer -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 </body>
 </html>

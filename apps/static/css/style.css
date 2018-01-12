@@ -70,11 +70,13 @@ body a:hover{
 .logo-nav{
 	padding:2em 0;
 }
-.btn-outline-success {
-    color: #ff766d;
-    background-color: transparent;
+.btn{
+    color: white;
+    background-color: #ff766d;
     background-image: none;
-    border-color: #ff766d;
+}
+.btn:hover{
+    background-color: #ffc229;
 }
 .header-grid-right{
 	float: right;
@@ -212,6 +214,9 @@ ul.social-icons li a.instagram:hover{
 .navbar-light .navbar-nav .nav-link:hover{
   color: #FF766D;
 }
+li a.nav-link{
+    color: #999;
+}
 .navbar-default {
     background: none;
     border: none;
@@ -219,6 +224,7 @@ ul.social-icons li a.instagram:hover{
 .navbar-collapse {
     padding: 0;
 }
+
 ul.multi-column-dropdown h6 {
     font-size: 1em;
     color:#222222;
@@ -797,7 +803,8 @@ p.est{
 	float:left;
 }
 .new-collections-grid1-left p a:hover,.occasion-cart a:hover,.products-right-grid1-add-cart p a:hover,.new-products-grid-right-add-cart p a:hover{
-	color: #222;
+	background-color: #999;
+    color: white;
     border: 1px solid;
 }
 .new-collections-grid1-left {
@@ -3947,6 +3954,24 @@ td.invert-image a img {
 .card-deck{
     column-count: 3;
 }
+.card-deck {
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap;
+    margin-right: -15px;
+    margin-left: 15px;
+    margin-bottom: 15px;
+    margin-top: 10px;
+}
+.card-title {
+    margin-bottom: .75rem;
+    color: #FF766D;
+}
+p.card-text b{
+    color: #999;
+}
+p.card-text{
+    color: #999;
+}
 .background table tr td p {
 	color: #FF766D;
 }
@@ -3961,55 +3986,15 @@ td.invert-image a img {
 .background table tr td table {
 	color: #FFF;
 }
-/*-- profile --*/
-.profile tr {
-    color: #FF766D;
-}
-.profile tr b {
+td {
     color: #999;
 }
-.profile h1,h2,h3,h4,h5,p {
-    color: #212121;
+td p{
+    color: #FF766D;
 }
-/* my profile*/
-
-.profile-tab {
-    background-color: #ffffff;
+td p b {
+    color: #999;
 }
-
-/* Style the buttons inside the tab */
-.profile-tab button {
-    display: block;
-    background-color: inherit;
-    color: black;
-    padding: 22px 16px;
-    width: 100%;
-    border: none;
-    outline: none;
-    text-align: left;
-    cursor: pointer;
-    transition: 0.3s;
-    font-size: 17px;
-}
-/* Change background color of buttons on hover */
-.profile-tab button:hover {
-    background-color: #ffe5f1;
-}
-/* Create an active/current "tab button" class */
-.profile-tab button.active {
-    background-color: #FF766D;
-}
-/* Style the tab content */
-.tabcontent{
-    float: left;
-    padding: 0px 12px;
-    width: 100%;
-    border-left: none;
-}
-.profile-tab p:hover {
-    background-color: #ffe5f1;
-}
-/* Create an active/current "tab button" class */
-.profile-tab p.active {
-    background-color: #FF766D;
+.table tbody tr td{
+    color: #ff766d;
 }

@@ -6,6 +6,3 @@ class MyProfileView(TemplateView):
 
 class ProfileView(TemplateView):
     template_name = 'profile.html'
-
-class TestTextView(TemplateView):
-    template_name = 'test.html'
