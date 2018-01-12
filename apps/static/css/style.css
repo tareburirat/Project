@@ -3974,7 +3974,7 @@ td.invert-image a img {
 /* my profile*/
 
 .profile-tab {
-    background-color: #ffffff;
+    background-color: #F5F5F5;
 }
 
 /* Style the buttons inside the tab */
@@ -3982,7 +3982,7 @@ td.invert-image a img {
     display: block;
     background-color: inherit;
     color: black;
-    padding: 22px 16px;
+    padding: 12px 6px;
     width: 100%;
     border: none;
     outline: none;
@@ -4007,9 +4007,11 @@ td.invert-image a img {
     border-left: none;
 }
 .profile-tab p:hover {
-    background-color: #ffe5f1;
+    background-color: #F5F5F5;
+    width: 80%;
 }
 /* Create an active/current "tab button" class */
 .profile-tab p.active {
     background-color: #FF766D;
+    width: 80%;
 }
