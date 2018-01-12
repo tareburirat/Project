@@ -29,7 +29,7 @@ from apps.orders.views import OrderView
 from apps.products.views import ProductView, AddProductView, SingleProductView
 from apps.properties.views import PropertyView
 from apps.ratings.views import RatingView
-from apps.accounts.views import SignUpView
+from apps.accounts.views import SignUpView, EditProfileView
 from apps.values.views import ValueView
 from apps.home.views import HomeView
 from apps.my_profile.views import MyProfileView, ProfileView
@@ -58,6 +58,7 @@ urlpatterns = [
     url(r'^single/(?P<pk>\d+)', SingleProductView.as_view()),
     url(r'^profile/', MyProfileView.as_view()),
     url(r'^profile_user/', ProfileView.as_view()),
+    url(r'^edit_profile/', EditProfileView.as_view()),
     url(r'^account/', include('apps.accounts.urls')),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
