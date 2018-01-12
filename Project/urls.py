@@ -55,7 +55,7 @@ urlpatterns = [
     url(r'^category_product/', CategoryProductView.as_view()),
     url(r'^value/', ValueView.as_view()),
     url(r'^create_product/', AddProductView.as_view()),
-    url(r'^single/', SingleProductView.as_view()),
+    url(r'^single/(?P<pk>\d+)', SingleProductView.as_view()),
     url(r'^profile/', MyProfileView.as_view()),
     url(r'^profile_user/', ProfileView.as_view()),
     url(r'^account/', include('apps.accounts.urls')),
