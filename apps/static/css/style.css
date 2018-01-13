@@ -1495,6 +1495,7 @@ input#amount {
 .list-group-item {
     font-weight: 300;
     font-size: 14px;
+    border: none;
 }
 li.list-group-item1 {
     font-size: 14px;
@@ -1629,7 +1630,7 @@ li.list-group-item1 {
     margin-bottom: 20px;
 }
 .list-group {
-    margin-bottom: 48px;
+    margin-left: 185px;
 }
 ol {
     margin-bottom: 44px;
