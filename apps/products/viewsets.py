@@ -1,6 +1,7 @@
 from django.core.exceptions import ValidationError
 from django.db import transaction
 from django.views.decorators.csrf import csrf_exempt
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import status
 from rest_framework import viewsets
 from rest_framework.decorators import api_view
@@ -16,6 +17,8 @@ from apps.values.models import Value
 class ProductViewSet(viewsets.ModelViewSet):
     serializer_class = ProductSerializer
     queryset = Product.objects.all()
+    filter_backends = (DjangoFilterBackend,)
+    filter_fields = ['seller_id']
 
 @csrf_exempt
 @api_view(['post'])
