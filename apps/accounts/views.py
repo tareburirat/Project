@@ -9,3 +9,6 @@ class SignUpView(TemplateView):
 
 class EditProfileView(TemplateView):
     template_name = "edit_profile.html"
+
+class ChangePassWordView(TemplateView):
+    template_name = "change_password.html"
