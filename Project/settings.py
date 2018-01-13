@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'apps.login',
     'apps.home',
     'apps.my_profile',
+    'apps.carts',
 ]
 
 MIDDLEWARE = [
