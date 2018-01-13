@@ -3955,6 +3955,10 @@ td.invert-image a img {
 .card-deck{
     column-count: 3;
 }
+.card-body {
+    margin-top: 15px;
+    padding: 0rem;
+}
 .card-deck {
     -ms-flex-flow: row wrap;
     flex-flow: row wrap;
