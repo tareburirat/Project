@@ -19,6 +19,7 @@ from django.conf.urls import url, include
 from django.conf.urls.static import static
 from django.contrib import admin
 
+from apps.carts.views import CartView
 from apps.login.views import log_in_user, LoginView, log_out
 from apps.addresses.views import AddressBuyerView
 from apps.categories.views import CategoryView
@@ -57,6 +58,7 @@ urlpatterns = [
     url(r'^single/(?P<pk>\d+)', SingleProductView.as_view()),
     url(r'^edit_profile/', EditProfileView.as_view()),
     url(r'^account/', include('apps.accounts.urls')),
+    url(r'^cart/', CartView.as_view()),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
