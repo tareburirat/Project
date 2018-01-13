@@ -5,6 +5,7 @@ from apps.accounts.viewsets import AccountViewSet, create_account, password_chan
 from apps.addresses.viewsets import AddressViewSet
 from apps.carts.viewsets import CartViewSet
 from apps.categories.viewsets import CategoryViewSet
+from apps.category_product.viewset import CategoryProductViewSet
 from apps.offers.viewsets import OfferViewSet
 from apps.orders.viewsets import OrderViewSet
 from apps.products import viewsets as product_viewsets
@@ -25,6 +26,7 @@ router.register('properties', PropertyViewSet, base_name='property')
 router.register('ratings', RatingViewSet, base_name='rating')
 router.register('transactions', TransactionViewSet, base_name='transaction')
 router.register('values', ValueViewSet, base_name='value')
+router.register('categoryProducts', CategoryProductViewSet, base_name='categoryProduct')
 
 
 urlpatterns = [
