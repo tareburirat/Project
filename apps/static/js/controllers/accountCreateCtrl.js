@@ -21,13 +21,7 @@ app.controller('accountCreateCtrl', function ($scope, $http, $window) {
             function (response) {
                 console.log(response.data);
                 alert('failed!!');
-                $scope.username = '';
-                $scope.password = '';
-                $scope.first_name = '';
-                $scope.last_name = '';
-                $scope.email = '';
-                $scope.display_name = '';
-                $scope.phone = '';
+
             });
     };
 })
