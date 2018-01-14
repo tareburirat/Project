@@ -2,6 +2,12 @@ var app = angular.module('accountCreateApp', []);
 app.controller('accountCreateCtrl', function ($scope, $http, $window) {
 
     $scope.clickSignup = function () {
+        if ($scope.password !== $scope.passwordAgain) {
+            alert("Passwords do no match");
+            $scope.password = "";
+            $scope.passwordAgain = "";
+            return;
+        }
         var data = {
             user :{
                 username: $scope.username,
@@ -19,8 +25,8 @@ app.controller('accountCreateCtrl', function ($scope, $http, $window) {
             $window.location.href = '/login';
         },
             function (response) {
-                console.log(response.data);
-                alert('failed!!');
+                // console.log(response.data);
+                alert("failed: " + response.data.message)
 
             });
     };

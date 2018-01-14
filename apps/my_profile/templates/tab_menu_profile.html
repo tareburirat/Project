@@ -1,21 +1,22 @@
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<script src="{% static 'js/components/jquery-3.2.1.min.js' %}"></script>
-<script src="{% static 'js/components/angular.min.js' %}"></script>
-<script src="{% static 'js/controllers/account/editCtrl.js' %}"></script>
+{% load i18n static %}{% get_static_prefix as STATIC_PREFIX %}
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<script src="{% static 'js/components/jquery-3.2.1.min.js' %}"></script>#}
 {#<script src="{% static 'js/components/angular.min.js' %}"></script>#}
-<script src="{% static 'js/controllers/account/editCtrl.js' %}"></script>
-
-<head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>My Profile</title>
-</head>
-<body>
+{#<script src="{% static 'js/controllers/account/editCtrl.js' %}"></script>#}
+{#<script src="{% static 'js/components/angular.min.js' %}"></script>#}
+{#<script src="{% static 'js/controllers/account/editCtrl.js' %}"></script>#}
+{##}
+{#<head>#}
+{#    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">#}
+{#    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">#}
+{#    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />#}
+{#    <meta charset="UTF-8">#}
+{#    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">#}
+{#    <title>My Profile</title>#}
+{#</head>#}
+{#<body>#}
 <!-- header -->
 {#<div>{% include "header.html" %}</div>#}
 {#<!-- //header -->#}
@@ -31,36 +32,37 @@
 <!-- //breadcrumbs -->
 <!-- profile -->
 <div class="container">
-    &nbsp;
+    <p>&nbsp;</p>
     <table width="307" border="0" cellspacing="0" cellpadding="10">
         <tr>
-            <td width="60" rowspan="2"><img src="{% static 'image/user.png' %}" width="80" height="120" /></td>
-            <td width="207" height="57" align="left" valign="bottom"><b style="color: #ff766d">{{ request.user}}</b></td>
+            <td width="60" rowspan="2"><img src="{% static 'image/user.png' %}" width="50" height="50" /></td>
+            <td width="207" height="57" align="left" valign="bottom"><b style="color: #ff766d">{{ request.user.account.display_name }}</b></td>
         </tr>
         <tr>
             <td height="61" valign="top">
-                <p><a href="/account/edit" style="color: #666"">แก้ไขข้อมูลส่วนตัว</p>
+                <p><a href="/account/edit" style="color: #666"><span class="fa fa-pencil"></span>แก้ไขข้อมูลส่วนตัว</a></p>
             </td>
         </tr>
-        <tr>
-            <td colspan="2" align="top" style="color: #999">________________________</td>
-        </tr>
-    </table>
+        {#        <tr>#}
+        {#            <td colspan="2" align="top" style="color: #999"></td>#}
+        {#        </tr>#}
+    </table><hr>
     <div class="profile-tab">
+        <p class="fa fa-user" style="color: #999"> บัญชีของฉัน</p>
+        <button class="tablinks" onclick="openCity(event, 'tab1')"><a href="/account/profile/">ข้อมูลของฉัน</a></button>
+        <button class="tablinks" onclick="openCity(event, 'tab4')"><a href="/account/change_password/">ตั้งค่ารหัสผ่าน</a></button>
+        <p class="fa fa-eye" style="color: #999"> สินค้า</p>
         <button class="tablinks" onclick="openCity(event, 'tab')"><a href="/create_product/">เพิ่มสินค้า</a></button>
         <button class="tablinks" onclick="openCity(event, 'tab4')"><a href="/account/my_product/">สินค้าของฉัน</a></button>
-        <button class="tablinks" onclick="openCity(event, 'tab1')"><a href="/account/profile/">ข้อมูลของฉัน</a></button>
+        <p class="fa fa-list" style="color: #999"> ประวัติ</p>
         <button class="tablinks" onclick="openCity(event, 'tab2')">ประวัติการซื้อ</button>
         <button class="tablinks" onclick="openCity(event, 'tab3')">ประวัติการขาย</button>
     </div>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-
-
     &nbsp;
 </div>
 <!-- footer -->
 {#    <div>{% include "footer.html" %}</div>#}
 <!-- //footer -->
-</body>
-</html>
+{#</body>#}
+{#</html>#}

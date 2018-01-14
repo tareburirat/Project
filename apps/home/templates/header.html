@@ -5,6 +5,7 @@
 				<div class="header-grid-right">
 					<ul>
                         {% if user.is_authenticated %}
+                            <li><i class="fa fa-plus-square" aria-hidden="true"></i><a href="/create_product/"> เพิ่มสินค้า</a></li>
 						    <li><i class="fa fa-sign-in" aria-hidden="true"></i><a href="/logout"> ออกจากระบบ</a></li>
                         {% else %}
                             <li class="active"><i class="fa fa-sign-in" aria-hidden="true"></i><a href="/login"> เข้าสู่ระบบ</a></li>

@@ -1226,12 +1226,12 @@ p.est{
 /*-- products --*/
 .breadcrumbs{
     padding:1.5em 0;
-    background:#f5f5f5;
+    background: #2e2e2e;
 }
 .breadcrumb1{
     padding:0;
     margin:0;
-    background:#f5f5f5;
+    background: #2e2e2e;
 }
 .breadcrumb1 li{
     font-size:1em;
@@ -4020,6 +4020,9 @@ td p b {
 }
 .profile h1,h2,h3,h4,h5,p {
     color: #212121;
+}
+.profile label{
+    color: #999;
 }
 /* my profile*/
 
