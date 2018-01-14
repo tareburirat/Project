@@ -28,31 +28,33 @@
     </div>
 </div>
 <!-- //breadcrumbs -->
-<div class="container">
-    &nbsp;
-    <div class="row profile">
-        <div class="col-md-3 shadows"  style="background: #F5F5F5">
-            <div>{% include "tab_menu_profile.html" %}</div>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        </div>
+<div style="background: #F7F7F9">
+    <div class="container">
+        &nbsp;
+        <div class="row profile">
+            <div class="col-md-3 shadows"  style="background: #F5F5F5">
+                <div>{% include "tab_menu_profile.html" %}</div>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </div>
 
-        <div class="col-md-9 shadows" >
-            <div class="add">
-                <div class="container">
-                    <h3>สินค้าของฉัน</h3>
-                    <p>__________________________________________</p><br>
-                    <div ng-app="myProductApp" ng-controller="myProductCtrl" ng-init="getId({{ request.user.account.id }})">
-                        <table id="cart" class="table table-hover table-condensed">
-                            <thead>
+            <div class="col-md-9 shadows" >
+                <div class="add">
+                    <div class="container">
+                        <h3>สินค้าของฉัน</h3>
+                        <br>
+                        <hr color="#212121">
+                        <div ng-app="myProductApp" ng-controller="myProductCtrl" ng-init="getId({{ request.user.account.id }})">
+                            <table id="cart" class="table table-hover table-condensed">
+                                <thead>
                                 <tr>
                                     <th style="width:50%">Product</th>
                                     <th style="width:10%">Price</th>
                                     <th style="width:8%">Quantity</th>
-{#                                    <th style="width:22%" class="text-center">Subtotal</th>#}
+                                    {#                                    <th style="width:22%" class="text-center">Subtotal</th>#}
                                     <th style="width:10%"></th>
                                 </tr>
-                            </thead>
-                            <tbody>
+                                </thead>
+                                <tbody>
                                 <tr ng-repeat="product in products">
                                     <td data-th="Product">
                                         <div class="row">
@@ -68,20 +70,21 @@
                                     <td data-th="Quantity">
                                         <input type="number" class="form-control text-center" value="1">
                                     </td>
-{#                                    <td data-th="Subtotal" class="text-center">1.99</td>#}
+                                    {#                                    <td data-th="Subtotal" class="text-center">1.99</td>#}
                                     <td class="actions" data-th="">
                                         <button class="btn btn-danger btn-sm" ng-click="delProduct(product.id)"><i class="fa fa-trash-o"></i></button>
                                     </td>
                                 </tr>
-                            </tbody>
-                        </table>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    &nbsp;
 </div>
-&nbsp;
 <!-- footer -->
 <div>{% include "footer.html" %}</div>
 <!-- //footer -->
