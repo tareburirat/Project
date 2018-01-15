@@ -26,7 +26,7 @@ router.register('properties', PropertyViewSet, base_name='property')
 router.register('ratings', RatingViewSet, base_name='rating')
 router.register('transactions', TransactionViewSet, base_name='transaction')
 router.register('values', ValueViewSet, base_name='value')
-router.register('categoryProducts', CategoryProductViewSet, base_name='categoryProduct')
+router.register('category_products', CategoryProductViewSet, base_name='categoryProduct')
 
 
 urlpatterns = [

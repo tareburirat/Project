@@ -27,7 +27,7 @@ from apps.transactions.views import TransactionView
 from apps.category_product.views import CategoryProductView
 from apps.offers.views import OfferView
 from apps.orders.views import OrderView
-from apps.products.views import ProductView, AddProductView, SingleProductView
+from apps.products.views import ProductView, AddProductView, SingleProductView, ProductSearchView
 from apps.properties.views import PropertyView
 from apps.ratings.views import RatingView
 from apps.accounts.views import SignUpView, EditProfileView
@@ -59,6 +59,7 @@ urlpatterns = [
     url(r'^edit_profile/', EditProfileView.as_view()),
     url(r'^account/', include('apps.accounts.urls')),
     url(r'^cart/', CartView.as_view()),
+    url(r'^product_search/', ProductSearchView.as_view()),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
