@@ -13,23 +13,23 @@
                             <li class="active"><i class="fa fa-sign-in" aria-hidden="true"></i><a href="/login"> เข้าสู่ระบบ</a></li>
                             <li class="active"><i class="fa fa-user-plus" aria-hidden="true"></i><a href="/signup"> ลงทะเบียน</a></li>
 
-                        {% endif %}
-					</ul>
-				</div>
-				<div class="header-grid-left">
-					<ul>
-                        {% if user.is_authenticated %}
-                            <li class="active"><i class="fa fa-user" aria-hidden="true"></i> <a href="/account/profile/">{{ request.user.account.display_name }}</a></li>
-                        {% endif %}
-					</ul>
-				</div>
-				<div class="clearfix"> </div>
-			</div>
-            <nav class="navbar navbar-expand-lg navbar-light ">
-              <a class="navbar-brand" href="/"><img src="{% static 'image/logo.png' %}"></a>
-                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                  </button>
+                    {% endif %}
+                </ul>
+            </div>
+            <div class="header-grid-left">
+                <ul>
+                    {% if user.is_authenticated %}
+                        <li class="active"><i class="fa fa-user" aria-hidden="true"></i> <a href="/account/profile/">{{ request.user.account.display_name }}</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+        <nav class="navbar navbar-expand-lg navbar-light ">
+            <a class="navbar-brand" href="/"><img src="{% static 'image/logo.png' %}"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
