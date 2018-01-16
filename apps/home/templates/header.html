@@ -1,33 +1,33 @@
 {% load i18n static %}{% get_static_prefix as STATIC_PREFIX %}
 <div class="header">
-		<div class="container">
-			<div class="header-grid">
-				<div class="header-grid-right">
-					<ul>
-                        {% if user.is_authenticated %}
-                            <li><i class="fa fa-plus-square" aria-hidden="true"></i><a href="/create_product/"> เพิ่มสินค้า</a></li>
-						    <li><i class="fa fa-sign-in" aria-hidden="true"></i><a href="/logout"> ออกจากระบบ</a></li>
-                        {% else %}
-                            <li class="active"><i class="fa fa-sign-in" aria-hidden="true"></i><a href="/login"> เข้าสู่ระบบ</a></li>
-                            <li class="active"><i class="fa fa-user-plus" aria-hidden="true"></i><a href="/signup"> ลงทะเบียน</a></li>
+    <div class="container">
+        <div class="header-grid">
+            <div class="header-grid-right">
+                <ul>
+                    {% if user.is_authenticated %}
+                        <li><i class="fa fa-plus-square" aria-hidden="true"></i><a href="/create_product/"> เพิ่มสินค้า</a></li>
+                        <li><i class="fa fa-sign-in" aria-hidden="true"></i><a href="/logout"> ออกจากระบบ</a></li>
+                    {% else %}
+                        <li class="active"><i class="fa fa-sign-in" aria-hidden="true"></i><a href="/login"> เข้าสู่ระบบ</a></li>
+                        <li class="active"><i class="fa fa-user-plus" aria-hidden="true"></i><a href="/signup"> ลงทะเบียน</a></li>
 
-                        {% endif %}
-					</ul>
-				</div>
-				<div class="header-grid-left">
-					<ul>
-                        {% if user.is_authenticated %}
-                            <li class="active"><i class="fa fa-user" aria-hidden="true"></i> <a href="/account/profile/">{{ request.user.account.display_name }}</a></li>
-                        {% endif %}
-					</ul>
-				</div>
-				<div class="clearfix"> </div>
-			</div>
-            <nav class="navbar navbar-expand-lg navbar-light ">
-              <a class="navbar-brand" href="/"><img src="{% static 'image/logo.png' %}"></a>
-                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                  </button>
+                    {% endif %}
+                </ul>
+            </div>
+            <div class="header-grid-left">
+                <ul>
+                    {% if user.is_authenticated %}
+                        <li class="active"><i class="fa fa-user" aria-hidden="true"></i> <a href="/account/profile/">{{ request.user.account.display_name }}</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+        <nav class="navbar navbar-expand-lg navbar-light ">
+            <a class="navbar-brand" href="/"><img src="{% static 'image/logo.png' %}"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
@@ -106,27 +106,34 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">โปรโมชัน</a>
                     </li>
-                    <li class="nav-item">
-                    <a class="nav-link" href="#">ติดต่อ</a>
-                  </li>
+{#                    <section >#}
+                    <li class="nav-item" id="section01" class="demo">
+
+                        <a class="nav-link" href="#section02">ติดต่อ</a>
+{#                            <h1>Scroll Down Button #1</h1>#}
+{#                            <a href="#section02"><span></span>ติดต่อ</a>#}
+
+                    </li>
+
+
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
-                  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                 </form>
-              </div>
-            </nav>
-            <div class="header-right">
-                <div class="cart box_1">
-						<a href="checkout.html">
-							<h3> <div class="total">
-								<span class="simpleCart_total">฿</span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
-								<img src="{% static 'image/bag.png' %}" alt="" />
-							</h3>
-						</a>
-						<div class="clearfix"> </div>
-					</div>
             </div>
-		</div>
-	</div>
+        </nav>
+        <div class="header-right">
+            <div class="cart box_1">
+                <a href="checkout.html">
+                    <h3> <div class="total">
+                        <span class="simpleCart_total">฿</span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
+                        <img src="{% static 'image/bag.png' %}" alt="" />
+                    </h3>
+                </a>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+    </div>
+</div>
 
