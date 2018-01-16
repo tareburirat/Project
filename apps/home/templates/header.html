@@ -1,15 +1,17 @@
 {% load i18n static %}{% get_static_prefix as STATIC_PREFIX %}
-<div class="header">
-    <div class="container">
-        <div class="header-grid">
-            <div class="header-grid-right">
-                <ul>
-                    {% if user.is_authenticated %}
-                        <li><i class="fa fa-plus-square" aria-hidden="true"></i><a href="/create_product/"> เพิ่มสินค้า</a></li>
-                        <li><i class="fa fa-sign-in" aria-hidden="true"></i><a href="/logout"> ออกจากระบบ</a></li>
-                    {% else %}
-                        <li class="active"><i class="fa fa-sign-in" aria-hidden="true"></i><a href="/login"> เข้าสู่ระบบ</a></li>
-                        <li class="active"><i class="fa fa-user-plus" aria-hidden="true"></i><a href="/signup"> ลงทะเบียน</a></li>
+<script src="{% static 'js/controllers/hearderCtrl.js' %}"></script>
+
+<div class="header" ng-app="app" ng-controller="headerCtrl">
+		<div class="container">
+			<div class="header-grid">
+				<div class="header-grid-right">
+					<ul>
+                        {% if user.is_authenticated %}
+                            <li><i class="fa fa-plus-square" aria-hidden="true"></i><a href="/create_product/"> เพิ่มสินค้า</a></li>
+						    <li><i class="fa fa-sign-in" aria-hidden="true"></i><a href="/logout"> ออกจากระบบ</a></li>
+                        {% else %}
+                            <li class="active"><i class="fa fa-sign-in" aria-hidden="true"></i><a href="/login"> เข้าสู่ระบบ</a></li>
+                            <li class="active"><i class="fa fa-user-plus" aria-hidden="true"></i><a href="/signup"> ลงทะเบียน</a></li>
 
                     {% endif %}
                 </ul>
@@ -42,97 +44,41 @@
                             <div class="row">
                                 <div class="col-sm-12">
                                     <ul class="multi-column-dropdown">
-                                        <h6><a href="/product/">ผลิตภัณฑ์ดูแลผิวหน้า&nbsp;&nbsp;&nbsp;</a></h6>
-                                        <h6><a href="/product/">เครื่องสำอางสำหรับผิวหน้า</a></h6>
-                                        <h6><a href="/product/">เครื่องสำอางสำหรับดวงตา</a></h6>
-                                        <h6><a href="/product/">ผลิตภัณฑ์สำหรับริมฝีปาก</a></h6>
-                                        <h6><a href="/product/">อุปกรณ์เสริมความงาม</a></h6>
-                                        <h6><a href="/product/">น้ำหอม</a></h6>
-                                        <h6><a href="/product/">ผลิตภัณฑ์สำหรับผู้ชาย</a></h6>
-                                        <h6><a href="/product/">อื่นๆ</a></h6>
+                                        <h6 ng-repeat="category in categories">
+                                            <a href="/product_search/?id=[[category.id]]">[[category.name]]</a>
+                                        </h6>
                                     </ul>
+                                    <div class="clearfix"></div>
                                 </div>
-                                {#										<div class="col-sm-3">#}
-                                {#											<ul class="multi-column-dropdown">#}
-                                {#                                                <h6><a href="/product/">เครื่องสำอางสำหรับผิวหน้า</a></h6>#}
-                                {##}
-                                {#											</ul>#}
-                                {#										</div>#}
-                                {#										<div class="col-sm-3">#}
-                                {#											<ul class="multi-column-dropdown">#}
-                                {#                                                <h6><a href="/product/">เครื่องสำอางสำหรับดวงตา</a></h6>#}
-                                {##}
-                                {#											</ul>#}
-                                {#										</div>#}
-                                {##}
-                                {#										<div class="col-sm-3">#}
-                                {#											<ul class="multi-column-dropdown">#}
-                                {#                                                <h6><a href="/product/">ผลิตภัณฑ์สำหรับริมฝีปาก</a></h6>#}
-                                {##}
-                                {#											</ul>#}
-                                {#										</div></div>#}
-                                {#										<div class="row">#}
-                                {#										<div class="col-sm-3">#}
-                                {#											<ul class="multi-column-dropdown">#}
-                                {#                                                <h6><a href="/product/">อุปกรณ์เสริมความงาม</a></h6>#}
-                                {##}
-                                {#											</ul>#}
-                                {#										</div>#}
-                                {##}
-                                {#										<div class="col-sm-3">#}
-                                {#											<ul class="multi-column-dropdown">#}
-                                {#                                                <h6><a href="/product/">น้ำหอม</a></h6>#}
-                                {##}
-                                {#											</ul>#}
-                                {#										</div>#}
-                                {##}
-                                {#										<div class="col-sm-3">#}
-                                {#											<ul class="multi-column-dropdown">#}
-                                {#                                                <h6><a href="/product/">ผลิตภัณฑ์สำหรับผู้ชาย</a></h6>#}
-                                {##}
-                                {#											</ul>#}
-                                {#										</div>#}
-                                {##}
-                                {#										<div class="col-sm-3">#}
-                                {#											<ul class="multi-column-dropdown">#}
-                                {#                                                <h6><a href="/product/">อื่นๆ</a></h6>#}
-                                {##}
-                                {#											</ul>#}
-                                {#										</div>#}
-                                <div class="clearfix"></div>
                             </div>
                         </ul>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">โปรโมชัน</a>
                     </li>
-{#                    <section >#}
                     <li class="nav-item">
-                        <a class="nav-link" href="#">ติดต่อ</a>
-{#                            <h1>Scroll Down Button #1</h1>#}
-{#                            <a href="#section02"><span></span>ติดต่อ</a>#}
-
-                    </li>
-
-
+                    <a class="nav-link" href="#">ติดต่อ</a>
+                  </li>
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"  ng-model="searchKeyWord">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" ng-click="search()">
+                            Search [[searchKeyWord]]
+                    </button>
                 </form>
+              </div>
+            </nav>
+            <div class="header-right">
+                <div class="cart box_1">
+						<a href="checkout.html">
+							<h3> <div class="total">
+								<span class="simpleCart_total">฿</span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
+								<img src="{% static 'image/bag.png' %}" alt="" />
+							</h3>
+						</a>
+						<div class="clearfix"> </div>
+					</div>
             </div>
-        </nav>
-        <div class="header-right">
-            <div class="cart box_1">
-                <a href="checkout.html">
-                    <h3> <div class="total">
-                        <span class="simpleCart_total">฿</span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
-                        <img src="{% static 'image/bag.png' %}" alt="" />
-                    </h3>
-                </a>
-                <div class="clearfix"> </div>
-            </div>
-        </div>
-    </div>
-</div>
+		</div>
+	</div>
 

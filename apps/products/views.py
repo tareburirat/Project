@@ -24,3 +24,12 @@ class SingleProductView(TemplateView):
         context['product_id'] = pk
         context['product'] = Product.objects.get(id=pk)
         return context
+
+
+class ProductSearchView(TemplateView):
+    template_name = 'search_product.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(ProductSearchView, self).get_context_data(**kwargs)
+        context['query_string'] = dict(self.request.GET)
+        return context
