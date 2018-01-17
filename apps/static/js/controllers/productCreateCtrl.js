@@ -1,4 +1,3 @@
-var app = angular.module('productCreateApp', []);
 app.controller('productCreateCtrl', function ($scope, $http) {
     $scope.mama = 123;
     $scope.product = {};
@@ -80,14 +79,7 @@ app.controller('productCreateCtrl', function ($scope, $http) {
              $scope.properties = response.data;
         })
     }
-})
-.config(function ($interpolateProvider, $httpProvider) {
-    $interpolateProvider.startSymbol('[[');
-    $interpolateProvider.endSymbol(']]');
-    $httpProvider.defaults.xsrfCookieName = 'csrftoken';
-    $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
-})
-.directive('ngFiles', ['$parse', function ($parse) {
+}).directive('ngFiles', ['$parse', function ($parse) {
 
     function fn_link(scope, element, attrs) {
         var onChange = $parse(attrs.ngFiles);

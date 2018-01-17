@@ -1,4 +1,3 @@
-var app = angular.module("app", []);
 app.controller("passwordChangeCtrl", function ($scope, $http, $window) {
     $scope.mama = 123;
 
@@ -39,9 +38,4 @@ app.controller("passwordChangeCtrl", function ($scope, $http, $window) {
         )
     }
 
-}).config(function ($interpolateProvider, $httpProvider) {
-    $interpolateProvider.startSymbol('[[');
-    $interpolateProvider.endSymbol(']]');
-    $httpProvider.defaults.xsrfCookieName = 'csrftoken';
-    $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
 });

@@ -1,6 +1,6 @@
 app.controller("headerCtrl", function($scope, $http, $window, $location) {
     $scope.mama = 123;
-    $scope.searchKeyWord = '1234';
+    $scope.searchKeyWord = '';
 
     console.log('sauhfiuyawhfiuahwelfiuhwlifuhawiufhliweuhflwehliuwehfiu');
     $http.get('http://localhost:8000/api/categories/?category_type=0')
@@ -14,10 +14,7 @@ app.controller("headerCtrl", function($scope, $http, $window, $location) {
         );
 
     $scope.search = function () {
-        $location.path('/product_search/?product_name=' + $scope.searchKeyWord)
+        $window.location.href = '/product_search/?product_name=' + $scope.searchKeyWord;
     }
-}).config(function($interpolateProvider) {
-  $interpolateProvider.startSymbol('[[');
-  $interpolateProvider.endSymbol(']]');
 });
 

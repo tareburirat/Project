@@ -1,4 +1,3 @@
-var app = angular.module('accountCreateApp', []);
 app.controller('accountCreateCtrl', function ($scope, $http, $window) {
 
     $scope.clickSignup = function () {
@@ -30,8 +29,4 @@ app.controller('accountCreateCtrl', function ($scope, $http, $window) {
 
             });
     };
-})
-.config(function ($interpolateProvider) {
-   $interpolateProvider.startSymbol('[[');
-   $interpolateProvider.endSymbol(']]');
 });

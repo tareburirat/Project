@@ -1,4 +1,3 @@
-var app = angular.module("app", []);
 app.controller("cartCtrl", function ($scope, $http, $window) {
     $scope.carts = [];
     $scope.cartId = $window.cartId;
@@ -37,9 +36,4 @@ app.controller("cartCtrl", function ($scope, $http, $window) {
             }
         )
     }
-}).config(function ($interpolateProvider, $httpProvider) {
-    $interpolateProvider.startSymbol('[[');
-    $interpolateProvider.endSymbol(']]');
-    $httpProvider.defaults.xsrfCookieName = 'csrftoken';
-    $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
 });

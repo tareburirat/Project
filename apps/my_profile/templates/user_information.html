@@ -3,82 +3,85 @@
 <html lang="en">
 <script src="{% static 'js/components/jquery-3.2.1.min.js' %}"></script>
 <script src="{% static 'js/components/angular.min.js' %}"></script>
+<script src="{% static 'js/app.js' %}"></script>
 {#<script src="{% static 'js/controllers/profileCtrl.js' %}"></script>#}
-<head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>My Profile</title>
-</head>
-<body>
-<!-- header -->
-<div>{% include "header.html" %}</div>
-<!-- //header -->
-<!-- breadcrumbs -->
-<div class="breadcrumbs">
-    <div class="container">
-        <ol class="breadcrumb breadcrumb1">
-            <li class="breadcrumb-item"><a href="/"><span class="fa fa-home" aria-hidden="true"></span>หน้าแรก</a></li>
-            <li class="breadcrumb-item active">ข้อมูลของฉัน</li>
-        </ol>
+<div ng-app="app">
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>My Profile</title>
+    </head>
+    <body>
+    <!-- header -->
+    <div>{% include "header.html" %}</div>
+    <!-- //header -->
+    <!-- breadcrumbs -->
+    <div class="breadcrumbs">
+        <div class="container">
+            <ol class="breadcrumb breadcrumb1">
+                <li class="breadcrumb-item"><a href="/"><span class="fa fa-home" aria-hidden="true"></span>หน้าแรก</a></li>
+                <li class="breadcrumb-item active">ข้อมูลของฉัน</li>
+            </ol>
+        </div>
     </div>
-</div>
-<!-- //breadcrumbs -->
-<div style="background: #F7F7F9">
-    <div class="container">
-        &nbsp;
-        <div class="row profile">
-            <div class="col-md-3 shadows" style="background: #F5F5F5" align="left">
-                <div>{% include "tab_menu_profile.html" %}</div>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            </div>
-            <div class="col-md-9 shadows" >
-                <!-- profile -->
-                <div class="add">
-                    <div class="container">
-                        <h3>ข้อมูลของฉัน</h3>
-                        <br>
-                        <hr color="#212121">
-                        <div ng-app="app" ng-controller="profileCtrl">
-                            <table style="width:40%" class="profile table">
+    <!-- //breadcrumbs -->
+    <div style="background: #F7F7F9">
+        <div class="container">
+            &nbsp;
+            <div class="row profile">
+                <div class="col-md-3 shadows" style="background: #F5F5F5" align="left">
+                    <div>{% include "tab_menu_profile.html" %}</div>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </div>
+                <div class="col-md-9 shadows" >
+                    <!-- profile -->
+                    <div class="add">
+                        <div class="container">
+                            <h3>ข้อมูลของฉัน</h3>
+                            <br>
+                            <hr color="#212121">
+                            <div ng-controller="profileCtrl">
+                                <table style="width:40%" class="profile table">
 
-                                <tr>
-                                    <td align="right"><label class="col-form-label">Display Name : </label></td>
-                                    <td>{{ request.user.account.display_name }}</td>
-                                </tr>
-                                <tr>
-                                    <td align="right"><label class="col-form-label">First Name : </label></td>
-                                    <td>{{ request.user.account.first_name }} </td>
-                                </tr>
-                                <tr>
-                                    <td align="right"><label class="col-form-label">Last Name : </label></td>
-                                    <td>{{ request.user.account.last_name }}</td>
-                                </tr>
-                                <tr>
-                                    <td align="right"><label class="col-form-label">Email : </label></td>
-                                    <td>{{ request.user.account.email }} </td>
-                                </tr>
-                                <tr>
-                                    <td align="right"><label class="col-form-label">Phone : </label></td>
-                                    <td>{{ request.user.account.phone }} </td>
-                                </tr>
-                            </table>
+                                    <tr>
+                                        <td align="right"><label class="col-form-label">Display Name : </label></td>
+                                        <td>{{ request.user.account.display_name }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td align="right"><label class="col-form-label">First Name : </label></td>
+                                        <td>{{ request.user.account.first_name }} </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="right"><label class="col-form-label">Last Name : </label></td>
+                                        <td>{{ request.user.account.last_name }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td align="right"><label class="col-form-label">Email : </label></td>
+                                        <td>{{ request.user.account.email }} </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="right"><label class="col-form-label">Phone : </label></td>
+                                        <td>{{ request.user.account.phone }} </td>
+                                    </tr>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
+                &nbsp;
             </div>
-            &nbsp;
         </div>
     </div>
+    <!-- footer -->
+    <div>{% include "footer.html" %}</div>
+    <!-- //footer -->
+    <script src="{% static 'js/components/profileTab.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    </body>
 </div>
-<!-- footer -->
-<div>{% include "footer.html" %}</div>
-<!-- //footer -->
-<script src="{% static 'js/components/profileTab.js' %}"></script>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
-</body>
 </html>

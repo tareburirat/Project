@@ -1,4 +1,3 @@
-var app = angular.module("app", []);
 app.controller("productSearchCtrl", function($scope, $http, $window) {
     $scope.mama = 123;
     $scope.queryString = '?';
@@ -45,8 +44,6 @@ app.controller("productSearchCtrl", function($scope, $http, $window) {
     }
 
 
-}).config(function($interpolateProvider) {
-  $interpolateProvider.startSymbol('[[');
-  $interpolateProvider.endSymbol(']]');
+
 });
 
