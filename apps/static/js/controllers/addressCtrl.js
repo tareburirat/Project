@@ -14,7 +14,7 @@ app.controller("addressCtrl", function ($scope, $window, $http) {
             zip_code: $scope.zip_code,
             buyer: $scope.buyerId
         };
-        
+
         $http.post('http://localhost:8000/api/addresses/', data).then(
             function (response) {
                 alert(response.data);
