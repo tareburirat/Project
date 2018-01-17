@@ -1,7 +1,7 @@
 {% load i18n static %}{% get_static_prefix as STATIC_PREFIX %}
-{#<script src="{% static 'js/controllers/hearderCtrl.js' %}"></script>#}
+<script src="{% static 'js/controllers/hearderCtrl.js' %}"></script>
 
-<div class="header">
+<div class="header" ng-controller="headerCtrl">
 		<div class="container">
 			<div class="header-grid">
 				<div class="header-grid-right">
@@ -44,6 +44,7 @@
                             <div class="row">
                                 <div class="col-sm-12">
                                     <ul class="multi-column-dropdown">
+                                        <h6>[[mama]]</h6>
                                         <h6 ng-repeat="category in categories">
                                             <a href="/product_search/?id=[[category.id]]">[[category.name]]</a>
                                         </h6>
