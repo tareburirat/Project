@@ -19,40 +19,39 @@
         <tr>
             <th style="width:50%">Product</th>
             <th style="width:10%">Price</th>
-            <th style="width:8%">Quantity</th>
+{#            <th style="width:8%">Quantity</th>#}
             <th style="width:22%" class="text-center">Subtotal</th>
             <th style="width:10%"></th>
         </tr>
-        [[ products ]]
-        <tr>
+        <tr ng-repeat="cart in carts">
             <td data-th="Product">
                 <div class="row">
                     <div class="col-sm-3 hidden-xs">
-                        <img src="[[products[0].product_data.first_image_url]]" alt="[[product.first_image_url]]" class="img-responsive"/></div>
+                        <img src="[[cart.product_data.first_image_url]]" alt="[[cart.first_image_url]]" class="img-responsive" style="width: 5rem; height: 5rem;"/></div>
                     <div class="col-sm-9">
-                        <h4 class="nomargin"> ชื่อ : Product 1</h4>
-                        <p>วิธีการจัดส่ง : </p>
-                        <p>ค่าจัดส่ง : </p>
-                        <p>ร้านค้า : </p>
+                        <h4 class="nomargin"> ชื่อ : [[cart.product_data.name]]</h4>
+                        <p>วิธีการจัดส่ง : [[cart.product_data.freight_detail]]</p>
+                        <p>ค่าจัดส่ง : [[cart.product_data.freight_fee]]</p>
+                        <p>ร้านค้า : [[cart.product_data.seller_data.display_name]]</p>
                     </div>
                 </div>
             </td>
-            <td data-th="Price">[[products[0].product_data.price]]</td>
-            <td data-th="Quantity">
-                <input type="number" class="form-control text-center" value="1">
-            </td>
-            <td data-th="Subtotal" class="text-center">1.99</td>
+            <td data-th="Price">[[cart.product_data.price]]</td>
+{#            <td data-th="Quantity">#}
+{#                <input type="number" class="form-control text-center" value="1">#}
+{#            </td>#}
+            <td data-th="Subtotal" class="text-center">[[cart.product_data.sub_total]]</td>
             <td class="actions" data-th="">
-                <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>
+                <button class="btn btn-danger btn-sm" ng-click="delProduct(cart.id)"><i class="fa fa-trash-o"></i></button>
             </td>
         </tr>
-        <tr class="visible-xs">
-            <td class="text-center"><strong>Total 1.99</strong></td>
-        </tr>
+{#        <tr class="visible-xs">#}
+{#            <td class="text-center"><strong>Total 1.99</strong></td>#}
+{#        </tr>#}
         <tr>
             <td><a href="#" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
             <td colspan="2" class="hidden-xs"></td>
-            <td class="hidden-xs text-center"><strong>Total $1.99</strong></td>
+            <td class="hidden-xs text-center"><strong>[[getTotal()]]</strong></td>
             <td><a href="#" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
         </tr>
     </table>
