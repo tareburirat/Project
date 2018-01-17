@@ -25,10 +25,12 @@
 		</div>
     </div>
 <!-- //breadcrumbs -->
-    <div ng-app="app" ng-controller="addressCtrl">
+
+    <div ng-app="app" ng-controller="addressCtrl" ng-init="getBuyerId({{ request.user.account.id }})">
         [[mama]]
+        {{ request.user.account.id }}
         <div class="form-group row">
-             <label for="input" class="col-sm-3 col-form-label" align="right">Address : </label>
+             <label for="input" class="col-sm-3 col-form-label" align="right">Address : {{ request.user.account.id }}</label>
              <div class="col-sm-6">
               <input class="form-control col-sm-10" type="text" ng-model="address">
              </div>
@@ -57,7 +59,8 @@
               <input class="form-control col-sm-10" type="text" ng-model="zip_code">
              </div>
         </div>
-        <button class="btn btn-secondary btn-lg">next</button>
+
+         <button  ng-click="getAddress()" class="btn btn-secondary btn-lg" >บันทึก</button>
     </div>
 
 
