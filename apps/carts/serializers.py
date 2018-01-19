@@ -8,6 +8,7 @@ from apps.products.serializers import ProductSerializer
 class CartSerializer(serializers.ModelSerializer):
     product_data = serializers.SerializerMethodField()
 
+
     class Meta:
         model = Cart
         exclude = []

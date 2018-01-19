@@ -1,4 +1,3 @@
-var app = angular.module("app", []);
 app.controller("productCtrl", function($scope, $http, $window) {
     $scope.products = [];
     $scope.mama = 123;
@@ -17,8 +16,5 @@ app.controller("productCtrl", function($scope, $http, $window) {
         })
     }
 
-}).config(function($interpolateProvider) {
-  $interpolateProvider.startSymbol('[[');
-  $interpolateProvider.endSymbol(']]');
 });
 

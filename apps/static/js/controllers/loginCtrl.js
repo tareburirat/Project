@@ -1,4 +1,3 @@
-var app = angular.module("app", []);
 app.controller("logInCtrl", function($scope, $http, $window) {
     $scope.mama = 123;
     $scope.userLoggedIn = false;
@@ -25,7 +24,4 @@ app.controller("logInCtrl", function($scope, $http, $window) {
     };
 
 
-}).config(function($interpolateProvider) {
-  $interpolateProvider.startSymbol('[[');
-  $interpolateProvider.endSymbol(']]');
 });

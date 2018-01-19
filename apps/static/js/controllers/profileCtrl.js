@@ -1,4 +1,3 @@
-var app = angular.module("app", []);
 app.controller("profileCtrl", function($scope, $http) {
     $scope.mama = 12345;
     $scope.accounts = [];
@@ -8,7 +7,4 @@ app.controller("profileCtrl", function($scope, $http) {
         console.log($scope.accounts)
     })
 
-}).config(function($interpolateProvider) {
-  $interpolateProvider.startSymbol('[[');
-  $interpolateProvider.endSymbol(']]');
 });
