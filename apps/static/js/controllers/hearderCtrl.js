@@ -1,8 +1,6 @@
 app.controller("headerCtrl", function($scope, $http, $window, $location) {
     $scope.mama = 123;
     $scope.searchKeyWord = '';
-
-    console.log('sauhfiuyawhfiuahwelfiuhwlifuhawiufhliweuhflwehliuwehfiu');
     $http.get('http://localhost:8000/api/categories/?category_type=0')
         .then(
             function (response) {

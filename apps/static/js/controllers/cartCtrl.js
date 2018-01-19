@@ -22,7 +22,6 @@ app.controller("cartCtrl", function ($scope, $http, $window) {
         return total;
     };
 
-
     $scope.delProduct = function (cartId) {
         $http.delete('http://localhost:8000/api/carts/' + cartId).then(
             function (response) {
