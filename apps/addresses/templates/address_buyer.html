@@ -27,9 +27,12 @@
 		</div>
     </div>
 <!-- //breadcrumbs -->
-
+    <p>&nbsp;</p>
+<div class="wrapper content" form="createForm">
     <div ng-controller="addressCtrl" ng-init="getBuyerId({{ request.user.account.id }})">
         <div class="container">
+            <h4>เพิ่มที่อยู่</h4>
+            <div class="add">
         <div class="form-group row">
              <label for="input" class="col-sm-3 col-form-label" align="right">ชื่อ - นามสกุล : </label>
              <div class="col-sm-6">
@@ -78,11 +81,14 @@
               <input class="form-control col-sm-10" type="text" ng-model="zip_code">
              </div>
         </div>
-
+            </div>
+<div style="text-align-last: center">
          <button  ng-click="getAddress()" class="btn btn-secondary btn-lg" >บันทึก</button>
             </div>
+        </div>
     </div>
-
+</div>
+    <p>&nbsp;</p>
 
 
 
