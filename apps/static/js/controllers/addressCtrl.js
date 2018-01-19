@@ -16,7 +16,7 @@ app.controller("addressCtrl", function ($scope, $window, $http) {
 
         $http.post('http://localhost:8000/api/addresses/', data).then(
             function (response) {
-                alert(response.data);
+                alert('success!');
                 $window.location.href = '/address_buyer/';
             },
             function (response) {

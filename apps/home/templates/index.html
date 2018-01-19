@@ -15,7 +15,6 @@
               crossorigin="anonymous">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
         <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all"/>
-        <link href="{% static 'image/logo1.png' %}" rel="shortcut icon" />
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>2nd MakeUp</title>
@@ -116,15 +115,16 @@
                                         <p class="card-text">
                                             <small class="text-muted">[[product.date_of_sale]] [[product.id]]</small>
                                         </p>
-                                        <div class="container">
-                                            <hr>
-                                            <button class="btn btn-secondary btn-sm">ดูรายละเอียด</button>
-                                            <button class="btn btn-secondary btn-sm">เพิ่มลงตระกร้า</button>
-                                        </div>
+
                                     </div>
                                 </div>
                                 {#              <p>[[ product.name ]]</p> <img ng-repeat="image in product.images" src="[[image.image]]">#}
                             </a>
+                            <div class="container">
+                                <hr>
+                                <button class="btn btn-secondary btn-sm">ดูรายละเอียด</button>
+                                <button class="btn btn-secondary btn-sm" ng-click="addToCart()">เพิ่มลงตระกร้า</button>
+                            </div>
                         </div>
                     </div>
                     <div class="clearfix"></div>

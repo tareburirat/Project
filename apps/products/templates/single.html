@@ -30,7 +30,8 @@
     </div>
 </div>
 <!-- //breadcrumbs -->
-<div class="container" ng-controller="productCtrl" ng-init="getId({{ product_id }})">
+
+<div class="container" ng-controller="productCtrl" ng-init="getId({{ product_id }}); getOwnerId({{ request.user.account.id }});">
 
     <table width="80%" height="1101" border="0" align="center" cellpadding="2" cellspacing="2">
         <tr>
@@ -75,8 +76,7 @@
                     <tr>
                         <td style="margin-top: 50px; margin-bottom: 0px;">
                             <div class="occasion-cart">
-                                <a class="item_add">เพิ่มลงในตะกร้า</a>
-                                <a class="item_add">ซื้อสินค้า</a>
+                                <button class="btn btn-secondary btn-sm" ng-click="addToCart()">เพิ่มลงในตะกร้า</button>
                             </div>
                         </td>
                     </tr>
@@ -177,6 +177,7 @@
     </table>
 
 </div>
+
 
 <!-- footer -->
 <div>{% include "footer.html" %}</div>
