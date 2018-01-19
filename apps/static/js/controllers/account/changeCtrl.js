@@ -19,18 +19,18 @@ app.controller("passwordChangeCtrl", function ($scope, $http, $window) {
         };
         $http.post('http://localhost:8000/api/password_change/', data).then(
             function (response) {
-                alert(response.data.message);
+                alert(response.data.message + " You changed your password and have to new login again.");
 
-                var user_data = {
-                    username: $scope.username,
-                    password: $scope.newPassword
-                };
+                // var user_data = {
+                //     username: $scope.username,
+                //     password: $scope.newPassword
+                // };
+                //
+                // $http.post("http://localhost:8000/authenticate_user/", user_data).then(function (response) {
+                //     $window.location.href = '/';
+                // });
 
-                $http.post("http://localhost:8000/authenticate_user/", data).then(function (response) {
-                        $window.location.href = '/';
-                    });
-
-                $window.location.href = '/account/profile/';
+                $window.location.href = '/login/';
             },
             function (response) {
                 alert("failed: " + response.data.message)
