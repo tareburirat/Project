@@ -2,7 +2,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <script src="{% static 'js/components/angular.min.js' %}"></script>
+<script src="{% static 'js/app.js' %}"></script>
 <script src="{% static 'js/controllers/addressCtrl.js' %}"></script>
+<div ng-app="app">
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -26,35 +28,34 @@
     </div>
 <!-- //breadcrumbs -->
 
-    <div ng-app="app" ng-controller="addressCtrl" ng-init="getBuyerId({{ request.user.account.id }})">
-        [[mama]]
-        {{ request.user.account.id }}
+    <div ng-controller="addressCtrl" ng-init="getBuyerId({{ request.user.account.id }})">
+        {{ request.user.account.display_name }}
         <div class="form-group row">
-             <label for="input" class="col-sm-3 col-form-label" align="right">Address : {{ request.user.account.id }}</label>
+             <label for="input" class="col-sm-3 col-form-label" align="right">ที่อยู่ : </label>
              <div class="col-sm-6">
               <input class="form-control col-sm-10" type="text" ng-model="address">
              </div>
         </div>
         <div class="form-group row">
-             <label for="input" class="col-sm-3 col-form-label" align="right">Sub District : </label>
+             <label for="input" class="col-sm-3 col-form-label" align="right">ตำบล/แขวง : </label>
              <div class="col-sm-6">
               <input class="form-control col-sm-10" type="text" ng-model="sub_district">
              </div>
         </div>
         <div class="form-group row">
-             <label for="input" class="col-sm-3 col-form-label" align="right">District : </label>
+             <label for="input" class="col-sm-3 col-form-label" align="right">อำเภอ/เขต : </label>
              <div class="col-sm-6">
               <input class="form-control col-sm-10" type="text" ng-model="district">
              </div>
         </div>
          <div class="form-group row">
-             <label for="input" class="col-sm-3 col-form-label" align="right">Province : </label>
+             <label for="input" class="col-sm-3 col-form-label" align="right">จังหวัด : </label>
              <div class="col-sm-6">
               <input class="form-control col-sm-10" type="text" ng-model="province">
              </div>
         </div>
          <div class="form-group row">
-             <label for="input" class="col-sm-3 col-form-label" align="right">Zip Code : </label>
+             <label for="input" class="col-sm-3 col-form-label" align="right">รหัสไปรษณีย์ : </label>
              <div class="col-sm-6">
               <input class="form-control col-sm-10" type="text" ng-model="zip_code">
              </div>
@@ -75,4 +76,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 </body>
+</div>
 </html>
