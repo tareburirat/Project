@@ -42,27 +42,59 @@
 </div>
 <!-- //banner -->
 <div style="background: #F7F7F9">
-    <p>&nbsp;</p>
-    <div class="container">
-        <table width="80%" border="0" align="center" cellpadding="5" cellspacing="5">
-            <tr>
-                <td rowspan="2">
-                    <img src="{% static 'image/4.jpg' %}" width="339" height="443" class="img-responsive" />
-                </td>
-                <td><img src="{% static 'image/1.jpg' %}" width="343" height="212" /></td>
-                <td rowspan="2"><img src="{% static 'image/3.jpg' %}" width="335" height="440" /></td>
-            </tr>
-            <tr>
-                <td><img src="{% static 'image/2.jpg' %}" width="342" height="211" /></td>
-            </tr>
-        </table>
-    </div>
+    <div class="banner-bottom">
+		<div class="container">
+			<div class="banner-bottom-grids">
+				<div class="banner-bottom-grid-left animated wow slideInLeft" >
+					<div class="grid">
+							<img src="{% static 'image/4.jpg' %}" width="339" height="443" class="img-fluid" alt="Responsive image" />
+					</div>
+				</div>
+				<div class="banner-bottom-grid-left1 animated wow slideInUp" >
+					<div class="banner-bottom-grid-left-grid left1-grid grid-left-grid1">
+						<div class="banner-bottom-grid-left-grid1">
+							<img src="{% static 'image/1.jpg' %}" width="343" height="212" class="img-fluid" alt="Responsive image" />
+						</div>
+					</div>
+					<div class="banner-bottom-grid-left-grid left1-grid grid-left-grid1">
+						<div class="banner-bottom-grid-left-grid1">
+							<img src="{% static 'image/2.jpg' %}" width="343" height="212" class="img-fluid" alt="Responsive image" />
+						</div>
+					</div>
+				</div>
+				<div class="banner-bottom-grid-right animated wow slideInRight" >
+					<div class="banner-bottom-grid-left-grid grid-left-grid1">
+						<div class="banner-bottom-grid-left-grid1">
+							<img src="{% static 'image/3.jpg' %}" width="339" height="443" class="img-fluid" alt="Responsive image" />
+						</div>
+					</div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
     <!-- //banner-bottom -->
-    <div class="container"><br><br><hr color="#F7F7F9"></div>
+    &nbsp;
+    <div class="container">
+        <div class="row">
+    <div class="col-6">
+    <div class="embed-responsive embed-responsive-16by9" >
+  <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/p9DTm21Con8"  allowfullscreen></iframe>
+</div>
+    </div>
+        <div class="col-6">
+    <div class="embed-responsive embed-responsive-16by9" >
+  <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/dcXUxSphY0c" allowfullscreen></iframe>
+</div>
+    </div>
+        </div>
+    </div>
+
     <!-- collections -->
     <div class="new-collections">
         <div class="container">
             <h3>สินค้าแนะนำ</h3>
+            &nbsp;
             <div ng-app="app" ng-controller="homeCtrl">
                 <div class="row">
                     <div class="list-group card-deck col-md-3" ng-repeat="product in products">
