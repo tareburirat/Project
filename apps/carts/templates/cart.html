@@ -17,13 +17,26 @@
         <title>Cart</title>
     </head>
     <body>
+    <!-- header -->
+<div>{% include "header.html" %}</div>
+<!-- //header -->
+<!-- breadcrumbs -->
+<div class="breadcrumbs">
+    <div class="container">
+        <ol class="breadcrumb breadcrumb1">
+            <li class="breadcrumb-item"><a href="/"><span class="fa fa-home" aria-hidden="true"></span>หน้าแรก</a></li>
+            <li class="breadcrumb-item">ตระกร้าสินค้า</li>
+        </ol>
+    </div>
+</div>
+<!-- //breadcrumbs -->
     <div class="container" ng-controller="cartCtrl" ng-init="getId({{ request.user.account.id }})">
         <table id="cart" class="table table-hover table-condensed">
             <tr>
-                <th style="width:50%">Product</th>
-                <th style="width:10%">Price</th>
-    {#            <th style="width:8%">Quantity</th>#}
-                <th style="width:22%" class="text-center">Subtotal</th>
+                <th style="width:50%">สินค้า</th>
+                <th style="width:10%">ราคา</th>
+                <th style="width:8%">ค่าจัดส่ง</th>
+                <th style="width:22%" class="text-center">ราคารวม</th>
                 <th style="width:10%"></th>
             </tr>
             <tr ng-repeat="cart in carts">
@@ -34,16 +47,14 @@
                         <div class="col-sm-9">
                             <h4 class="nomargin"> ชื่อ : [[cart.product_data.name]]</h4>
                             <p>วิธีการจัดส่ง : [[cart.product_data.freight_detail]]</p>
-                            <p>ค่าจัดส่ง : [[cart.product_data.freight_fee]]</p>
+{#                            <p>ค่าจัดส่ง : [[cart.product_data.freight_fee]]</p>#}
                             <p>ร้านค้า : [[cart.product_data.seller_data.display_name]]</p>
                         </div>
                     </div>
                 </td>
-                <td data-th="Price">[[cart.product_data.price]]</td>
-    {#            <td data-th="Quantity">#}
-    {#                <input type="number" class="form-control text-center" value="1">#}
-    {#            </td>#}
-                <td data-th="Subtotal" class="text-center">[[cart.product_data.sub_total]]</td>
+                <td data-th="Price">[[cart.product_data.price]] ฿</td>
+                <td data-th="Freight">[[cart.product_data.freight_fee]] ฿</td>
+                <td data-th="Subtotal" class="text-center">[[cart.product_data.sub_total]] ฿</td>
                 <td class="actions" data-th="">
                     <button class="btn btn-danger btn-sm" ng-click="delProduct(cart.id)"><i class="fa fa-trash-o"></i></button>
                 </td>
@@ -54,11 +65,25 @@
             <tr>
                 <td><a href="#" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
                 <td colspan="2" class="hidden-xs"></td>
-                <td class="hidden-xs text-center"><strong>[[getTotal()]]</strong></td>
+                <td class="hidden-xs text-center"><strong>[[getTotal()]] ฿</strong></td>
                 <td><a href="#" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
             </tr>
         </table>
     </div>
+    <!-- footer -->
+<div>{% include "footer.html" %}</div>
+<!-- //footer -->
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+        integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+        integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+        crossorigin="anonymous"></script>
     </body>
 </div>
 </html>
