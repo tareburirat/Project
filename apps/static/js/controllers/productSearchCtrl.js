@@ -7,14 +7,14 @@ app.controller("productSearchCtrl", function($scope, $http, $window) {
             $scope.queryString += "product_name=" + queryString.product_name;
         }
 
-
-        if (queryString.id !== undefined) {
+        if (queryString.category !== undefined) {
             // this if will be entered when $scope.queryString is not '?', means the first if was entered
             if ($scope.queryString !== '?') {
                 $scope.queryString += '&'
             }
-            $scope.queryString += "id=" + queryString.id;
+            $scope.queryString += "category=" + queryString.category;
         }
+
 
         searchProduct();
     };
@@ -28,7 +28,6 @@ app.controller("productSearchCtrl", function($scope, $http, $window) {
                 $scope.categories = [];
             }
         );
-
 
     var searchProduct = function () {
         $http.get('http://localhost:8000/api/category_products/' + $scope.queryString)
