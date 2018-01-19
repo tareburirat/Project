@@ -1,4 +1,5 @@
 app.controller('accountCreateCtrl', function ($scope, $http, $window) {
+    $scope.panCardRegex = '/[A-Z]{5}\d{4}[A-Z]{1}/i';
 
     $scope.clickSignup = function () {
         if ($scope.password !== $scope.passwordAgain) {
@@ -19,10 +20,10 @@ app.controller('accountCreateCtrl', function ($scope, $http, $window) {
             phone: $scope.phone
         };
         $http.post("http://localhost:8000/api/accounts/", data, {header: 'multipart/form-data'}).then(function (response) {
-            console.log(response.data);
-            alert('success!!');
-            $window.location.href = '/login';
-        },
+                console.log(response.data);
+                alert('success!!');
+                $window.location.href = '/login';
+            },
             function (response) {
                 // console.log(response.data);
                 alert("failed: " + response.data.message)

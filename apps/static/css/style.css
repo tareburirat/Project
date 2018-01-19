@@ -4115,4 +4115,19 @@ td p b {
 	table#cart tfoot td .btn{display:block;}
 
 }
-
+/*
+ * Thanks to https://subtlepatterns.com/ for the background.
+*/
+* {
+    font-family: Verdana, monospace;
+}
+section {
+  background: #fff;
+  box-shadow: 2px 2px 0 1px rgba(0, 0, 0, .1);
+  margin: 3em auto;
+  padding: 2em;
+  width: 600px;
+}
+small{
+    color: #999999;
+}
