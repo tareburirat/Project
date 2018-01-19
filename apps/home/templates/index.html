@@ -38,60 +38,91 @@
             </ol>
         </div>
     </div>
-    <!-- //breadcrumbs -->
-    <!-- banner -->
-    <div class="d-flex flex-column">
-        {#  <div class="p-2">Flex item 1</div>#}
-        <div>{% include "banner.html" %}</div>
+</div>
+<!-- //breadcrumbs -->
+<!-- banner -->
+<div class="d-flex flex-column">
+    {#  <div class="p-2">Flex item 1</div>#}
+    <div>{% include "banner.html" %}</div>
+</div>
+<!-- //banner -->
+<div style="background: #F7F7F9">
+    <div class="banner-bottom">
+		<div class="container">
+			<div class="banner-bottom-grids">
+				<div class="banner-bottom-grid-left animated wow slideInLeft" >
+					<div class="grid">
+							<img src="{% static 'image/4.jpg' %}" width="339" height="443" class="img-fluid" alt="Responsive image" />
+					</div>
+				</div>
+				<div class="banner-bottom-grid-left1 animated wow slideInUp" >
+					<div class="banner-bottom-grid-left-grid left1-grid grid-left-grid1">
+						<div class="banner-bottom-grid-left-grid1">
+							<img src="{% static 'image/1.jpg' %}" width="343" height="212" class="img-fluid" alt="Responsive image" />
+						</div>
+					</div>
+					<div class="banner-bottom-grid-left-grid left1-grid grid-left-grid1">
+						<div class="banner-bottom-grid-left-grid1">
+							<img src="{% static 'image/2.jpg' %}" width="343" height="212" class="img-fluid" alt="Responsive image" />
+						</div>
+					</div>
+				</div>
+				<div class="banner-bottom-grid-right animated wow slideInRight" >
+					<div class="banner-bottom-grid-left-grid grid-left-grid1">
+						<div class="banner-bottom-grid-left-grid1">
+							<img src="{% static 'image/3.jpg' %}" width="339" height="443" class="img-fluid" alt="Responsive image" />
+						</div>
+					</div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+    <!-- //banner-bottom -->
+    &nbsp;
+    <div class="container">
+        <div class="row">
+    <div class="col-6">
+    <div class="embed-responsive embed-responsive-16by9" >
+  <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/p9DTm21Con8"  allowfullscreen></iframe>
+</div>
     </div>
-    <!-- //banner -->
-    <div style="background: #F7F7F9">
-        <p>&nbsp;</p>
+        <div class="col-6">
+    <div class="embed-responsive embed-responsive-16by9" >
+  <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/dcXUxSphY0c" allowfullscreen></iframe>
+</div>
+    </div>
+        </div>
+    </div>
+
+    <!-- collections -->
+    <div class="new-collections">
         <div class="container">
-            <table width="80%" border="0" align="center" cellpadding="5" cellspacing="5">
-                <tr>
-                    <td rowspan="2">
-                        <img src="{% static 'image/4.jpg' %}" width="339" height="443" class="img-responsive"/>
-                    </td>
-                    <td><img src="{% static 'image/1.jpg' %}" width="343" height="212"/></td>
-                    <td rowspan="2"><img src="{% static 'image/3.jpg' %}" width="335" height="440"/></td>
-                </tr>
-                <tr>
-                    <td><img src="{% static 'image/2.jpg' %}" width="342" height="211"/></td>
-                </tr>
-            </table>
-        </div>
-        <!-- //banner-bottom -->
-        <div class="container"><br><br>
-            <hr color="#F7F7F9">
-        </div>
-        <!-- collections -->
-        <div class="new-collections"  ng-controller="homeCtrl">
-            <div class="container">
-                <h3>สินค้าแนะนำ [[mama]]</h3>
-                <div>
-                    <div class="row">
-                        <div class="list-group card-deck col-md-3" ng-repeat="product in products">
-                            <a href="/single/[[product.id]]">
-                                <div class="list-group-item" style="max-height: 45rem;"
-                                     onclick="window.location = '/single/'">
-                                    <div>
-                                        <img class="card-img-top" src="[[product.first_image_url]]"
-                                             alt="[[product.first_image_url]]" style="width: 15rem; height: 15rem;">
-                                    </div>
-                                    <div class="card-body">
-                                        <h4 class="card-title">[[product.name]]</h4>
-                                        <p class="card-text"><b>Freight:</b> [[product.freight_detail]]</p>
-                                        <p class="card-text"><b>Freight Fee:</b> [[product.freight_fee]] ฿</p>
-                                        <p class="card-text"><b>Price:</b> [[product.price]] ฿</p>
-                                        <p class="card-text">
-                                            <small class="text-muted">[[product.date_of_sale]] [[product.id]]</small>
-                                        </p>
-                                        <div class="container">
-                                            <hr>
-                                            <button class="btn btn-secondary btn-sm">ดูรายละเอียด</button>
-                                            <button class="btn btn-secondary btn-sm">เพิ่มลงตระกร้า</button>
-                                        </div>
+            <h3>สินค้าแนะนำ</h3>
+            &nbsp;
+            <div ng-app="app" ng-controller="homeCtrl">
+                <div class="row">
+                    <div class="list-group card-deck col-md-3" ng-repeat="product in products">
+                        <a href="/single/[[product.id]]">
+                            <div class="list-group-item" style="max-height: 45rem;"
+                                 onclick="window.location = '/single/'">
+                                <div>
+                                    <img class="card-img-top" src="[[product.first_image_url]]"
+                                         alt="[[product.first_image_url]]" style="width: 15rem; height: 15rem;">
+                                </div>
+                                <div class="card-body">
+                                    <h4 class="card-title">[[product.name]]</h4>
+                                    <p class="card-text"><b>Freight:</b> [[product.freight_detail]]</p>
+                                    <p class="card-text"><b>Freight Fee:</b> [[product.freight_fee]] ฿</p>
+                                    <p class="card-text"><b>Price:</b> [[product.price]] ฿</p>
+                                    <p class="card-text">
+                                        <small class="text-muted">[[product.date_of_sale]] [[product.id]]</small>
+                                    </p>
+                                    <div class="container">
+                                        <hr>
+                                    <button class="btn btn-secondary btn-sm">ดูรายละเอียด</button>
+                                    <button class="btn btn-secondary btn-sm">เพิ่มลงตระกร้า</button>
+
                                     </div>
                                 </div>
                                 {#              <p>[[ product.name ]]</p> <img ng-repeat="image in product.images" src="[[image.image]]">#}
