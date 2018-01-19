@@ -38,15 +38,14 @@
             </ol>
         </div>
     </div>
-</div>
-<!-- //breadcrumbs -->
-<!-- banner -->
-<div class="d-flex flex-column">
-    {#  <div class="p-2">Flex item 1</div>#}
-    <div>{% include "banner.html" %}</div>
-</div>
-<!-- //banner -->
-<div style="background: #F7F7F9">
+    <!-- //breadcrumbs -->
+    <!-- banner -->
+    <div class="d-flex flex-column">
+        {#  <div class="p-2">Flex item 1</div>#}
+        <div>{% include "banner.html" %}</div>
+    </div>
+    <!-- //banner -->
+    <div style="background: #F7F7F9">
     <div class="banner-bottom">
 		<div class="container">
 			<div class="banner-bottom-grids">
@@ -94,35 +93,33 @@
     </div>
         </div>
     </div>
-
-    <!-- collections -->
-    <div class="new-collections">
-        <div class="container">
-            <h3>สินค้าแนะนำ</h3>
-            &nbsp;
-            <div ng-app="app" ng-controller="homeCtrl">
-                <div class="row">
-                    <div class="list-group card-deck col-md-3" ng-repeat="product in products">
-                        <a href="/single/[[product.id]]">
-                            <div class="list-group-item" style="max-height: 45rem;"
-                                 onclick="window.location = '/single/'">
-                                <div>
-                                    <img class="card-img-top" src="[[product.first_image_url]]"
-                                         alt="[[product.first_image_url]]" style="width: 15rem; height: 15rem;">
-                                </div>
-                                <div class="card-body">
-                                    <h4 class="card-title">[[product.name]]</h4>
-                                    <p class="card-text"><b>Freight:</b> [[product.freight_detail]]</p>
-                                    <p class="card-text"><b>Freight Fee:</b> [[product.freight_fee]] ฿</p>
-                                    <p class="card-text"><b>Price:</b> [[product.price]] ฿</p>
-                                    <p class="card-text">
-                                        <small class="text-muted">[[product.date_of_sale]] [[product.id]]</small>
-                                    </p>
-                                    <div class="container">
-                                        <hr>
-                                    <button class="btn btn-secondary btn-sm">ดูรายละเอียด</button>
-                                    <button class="btn btn-secondary btn-sm">เพิ่มลงตระกร้า</button>
-
+        <!-- collections -->
+        <div class="new-collections"  ng-controller="homeCtrl">
+            <div class="container">
+                <h3>สินค้าแนะนำ</h3>
+                <div>
+                    <div class="row">
+                        <div class="list-group card-deck col-md-3" ng-repeat="product in products">
+                            <a href="/single/[[product.id]]">
+                                <div class="list-group-item" style="max-height: 45rem;"
+                                     onclick="window.location = '/single/'">
+                                    <div>
+                                        <img class="card-img-top" src="[[product.first_image_url]]"
+                                             alt="[[product.first_image_url]]" style="width: 15rem; height: 15rem;">
+                                    </div>
+                                    <div class="card-body">
+                                        <h4 class="card-title">[[product.name]]</h4>
+                                        <p class="card-text"><b>Freight:</b> [[product.freight_detail]]</p>
+                                        <p class="card-text"><b>Freight Fee:</b> [[product.freight_fee]] ฿</p>
+                                        <p class="card-text"><b>Price:</b> [[product.price]] ฿</p>
+                                        <p class="card-text">
+                                            <small class="text-muted">[[product.date_of_sale]] [[product.id]]</small>
+                                        </p>
+                                        <div class="container">
+                                            <hr>
+                                            <button class="btn btn-secondary btn-sm">ดูรายละเอียด</button>
+                                            <button class="btn btn-secondary btn-sm">เพิ่มลงตระกร้า</button>
+                                        </div>
                                     </div>
                                 </div>
                                 {#              <p>[[ product.name ]]</p> <img ng-repeat="image in product.images" src="[[image.image]]">#}
