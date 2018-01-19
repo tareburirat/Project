@@ -1,4 +1,3 @@
-var app = angular.module("app", []);
 app.controller("accountEditCtrl", function ($scope, $http) {
     $scope.mama = 123;
     $scope.accountData = {};
@@ -34,10 +33,5 @@ app.controller("accountEditCtrl", function ($scope, $http) {
         )
     }
 
-})
-.config(function($interpolateProvider, $httpProvider) {
-    $interpolateProvider.startSymbol('[[');
-    $interpolateProvider.endSymbol(']]');
-    $httpProvider.defaults.xsrfCookieName = 'csrftoken';
-    $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
 });
+

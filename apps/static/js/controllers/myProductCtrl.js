@@ -1,4 +1,3 @@
-var app = angular.module('myProductApp', []);
 app.controller('myProductCtrl', function ($scope, $http, $window) {
     $scope.products = [];
     $scope.mama = 123;
@@ -33,9 +32,4 @@ app.controller('myProductCtrl', function ($scope, $http, $window) {
     }
 
 
-}).config(function($interpolateProvider, $httpProvider) {
-  $interpolateProvider.startSymbol('[[');
-  $interpolateProvider.endSymbol(']]');
-  $httpProvider.defaults.xsrfCookieName = 'csrftoken';
-  $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
 });

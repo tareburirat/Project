@@ -1,6 +1,7 @@
 from django.db import transaction
 from rest_framework import serializers
 
+from apps.accounts.serializers import AccountSerializer
 from apps.categories.models import Category
 from apps.category_product.models import CategoryProduct
 from apps.products.models import Product, ProductImage
@@ -24,6 +25,8 @@ class ProductSerializer(serializers.ModelSerializer):
     property = serializers.SerializerMethodField()
     first_image_url = serializers.SerializerMethodField()
     freight_detail = serializers.SerializerMethodField()
+    seller_data = serializers.SerializerMethodField()
+    sub_total = serializers.SerializerMethodField()
 
     class Meta:
         model = Product
@@ -53,3 +56,11 @@ class ProductSerializer(serializers.ModelSerializer):
             return categories[0].category.name
         else:
             return ""
+
+    @staticmethod
+    def get_seller_data(obj):
+        return AccountSerializer(obj.seller).data
+
+    @staticmethod
+    def get_sub_total(obj):
+        return obj.price + obj.freight_fee
