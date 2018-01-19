@@ -29,7 +29,25 @@
 <!-- //breadcrumbs -->
 
     <div ng-controller="addressCtrl" ng-init="getBuyerId({{ request.user.account.id }})">
-        {{ request.user.account.display_name }}
+        <div class="container">
+        <div class="form-group row">
+             <label for="input" class="col-sm-3 col-form-label" align="right">ชื่อ - นามสกุล : </label>
+             <div class="col-sm-6">
+              <input class="form-control col-sm-10" type="text" disabled value="{{ request.user.account.first_name }}  {{ request.user.account.last_name }}">
+             </div>
+        </div>
+        <div class="form-group row">
+             <label for="input" class="col-sm-3 col-form-label" align="right">เบอร์โทรศัพท์ : </label>
+             <div class="col-sm-6">
+              <input class="form-control col-sm-10" type="text" disabled value="{{ request.user.account.phone }}">
+             </div>
+        </div>
+        <div class="form-group row">
+             <label for="input" class="col-sm-3 col-form-label" align="right">อีเมล : </label>
+             <div class="col-sm-6">
+              <input class="form-control col-sm-10" type="text" disabled value="{{ request.user.account.email }}">
+             </div>
+        </div>
         <div class="form-group row">
              <label for="input" class="col-sm-3 col-form-label" align="right">ที่อยู่ : </label>
              <div class="col-sm-6">
@@ -62,6 +80,7 @@
         </div>
 
          <button  ng-click="getAddress()" class="btn btn-secondary btn-lg" >บันทึก</button>
+            </div>
     </div>
 
 
