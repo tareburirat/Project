@@ -1,4 +1,4 @@
-app.controller('productCreateCtrl', function ($scope, $http) {
+app.controller('productCreateCtrl', function ($scope, $http, $window) {
     $scope.mama = 123;
     $scope.product = {};
     $scope.fTypes = ['Register', 'EMS', 'Kerry'];
@@ -47,6 +47,7 @@ app.controller('productCreateCtrl', function ($scope, $http) {
                 };
         $http(request).then(function () {
             alert('success');
+            $window.location.href = '/';
         },
         function () {
             alert('failure');

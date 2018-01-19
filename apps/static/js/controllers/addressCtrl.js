@@ -1,4 +1,3 @@
-var app = angular.module("app", []);
 app.controller("addressCtrl", function ($scope, $window, $http) {
     $scope.mama = 123;
 
@@ -26,11 +25,4 @@ app.controller("addressCtrl", function ($scope, $window, $http) {
         )
     }
 
-})
-
-    .config(function ($interpolateProvider,$httpProvider) {
-        $interpolateProvider.startSymbol('[[');
-        $interpolateProvider.endSymbol(']]');
-        $httpProvider.defaults.xsrfCookieName = 'csrftoken';
-        $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
-    });
+});

@@ -48,7 +48,7 @@
                                 <div class="col-sm-12">
                                     <ul class="multi-column-dropdown">
                                         <h6 ng-repeat="category in categories">
-                                            <a href="/product_search/?id=[[category.id]]">[[category.name]]</a>
+                                            <a href="/product_search/?category=[[category.id]]">[[category.name]]</a>
                                         </h6>
                                     </ul>
                                     <div class="clearfix"></div>
@@ -73,7 +73,7 @@
             </nav>
             <div class="header-right">
                 <div class="cart box_1">
-						<a href="checkout.html">
+						<a href="http://localhost:8000/cart/">
 							<h3> <div class="total">
 								<span class="simpleCart_total">฿</span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
 								<img src="{% static 'image/bag.png' %}" alt="" />

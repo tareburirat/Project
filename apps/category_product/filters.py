@@ -8,4 +8,4 @@ class CategoryProductFilter(django_filters.rest_framework.FilterSet):
 
     class Meta:
         model = CategoryProduct
-        fields = ['product_name', 'id']
+        fields = ['product_name', 'category']

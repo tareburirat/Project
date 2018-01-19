@@ -1,6 +1,6 @@
 app.controller("passwordChangeCtrl", function ($scope, $http, $window) {
     $scope.mama = 123;
-
+    $scope.panCardRegex = '/[A-Z]{5}\d{4}[A-Z]{1}/i';
     $scope.getUsername = function (username) {
         $scope.username = username;
     };
@@ -37,5 +37,4 @@ app.controller("passwordChangeCtrl", function ($scope, $http, $window) {
             }
         )
     }
-
 });

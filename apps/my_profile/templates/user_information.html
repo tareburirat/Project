@@ -44,29 +44,36 @@
                             <br>
                             <hr color="#212121">
                             <div ng-controller="profileCtrl">
-                                <table style="width:40%" class="profile table">
-
-                                    <tr>
-                                        <td align="right"><label class="col-form-label">Display Name : </label></td>
-                                        <td>{{ request.user.account.display_name }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td align="right"><label class="col-form-label">First Name : </label></td>
-                                        <td>{{ request.user.account.first_name }} </td>
-                                    </tr>
-                                    <tr>
-                                        <td align="right"><label class="col-form-label">Last Name : </label></td>
-                                        <td>{{ request.user.account.last_name }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td align="right"><label class="col-form-label">Email : </label></td>
-                                        <td>{{ request.user.account.email }} </td>
-                                    </tr>
-                                    <tr>
-                                        <td align="right"><label class="col-form-label">Phone : </label></td>
-                                        <td>{{ request.user.account.phone }} </td>
-                                    </tr>
-                                </table>
+                                <div class="form-group row">
+                                    <label for="input" class="col-sm-3 col-form-label" align="right">Display Name : </label>
+                                    <div class="col-sm-6">
+                                        <label class="col-sm-10 col-form-label" style="color: #ff766d">{{ request.user.account.display_name }}</label>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="input" class="col-sm-3 col-form-label" align="right">First Name : </label>
+                                    <div class="col-sm-6">
+                                        <label class="col-sm-10 col-form-label" style="color: #ff766d">{{ request.user.account.first_name }}</label>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="input" class="col-sm-3 col-form-label" align="right">Last Name : </label>
+                                    <div class="col-sm-6">
+                                        <label class="col-sm-10 col-form-label" style="color: #ff766d">{{ request.user.account.last_name  }}</label>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="input" class="col-sm-3 col-form-label" align="right">Email :</label>
+                                    <div class="col-sm-6">
+                                        <label class="col-sm-10 col-form-label" style="color: #ff766d">{{ request.user.account.email}}</label>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="input" class="col-sm-3 col-form-label" align="right">Phone :</label>
+                                    <div class="col-sm-6">
+                                        <label class="col-sm-10 col-form-label" style="color: #ff766d">{{ request.user.account.phone }}</label>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
