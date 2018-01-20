@@ -36,13 +36,15 @@
     <table width="80%" height="1101" border="0" align="center" cellpadding="2" cellspacing="2">
         <tr>
             <td width="479" height="1097">
-                <table width="372" border="0" cellpadding="2" cellspacing="2">
+                <table width="372" border="0" cellpadding="2" cellspacing="2" class="table-hover">
                     <tr>
-                        <td height="541" colspan="5"><img src="[[product.first_image_url]]" name="i0" width="466"
-                                                          height="534" id="i0"/></td>
+                        
+                        <td height="541" colspan="5"><img src="[[displayImage]]" name="i0" width="466" height="534" id="i0" alt="[[altText]]"/></td>
                     </tr>
-                    <tr>
-                        <td width="86" height="124" ><img src="[[product.images]]" name="i1" width="86" height="120" id="i1"/></td>
+                    <tr ng-repeat="image in product.images">
+                        <td width="86" height="124">
+                            <img src="[[image.image]]" name="i1" width="86" height="120" id="i1" style="margin: 3px;" ng-click="setImage(image.image)"/>
+                        </td>
                     </tr>
                 </table>
                 <table width="474" height="367" border="0" align="center" cellpadding="2" cellspacing="2">
