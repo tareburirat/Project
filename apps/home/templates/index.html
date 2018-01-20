@@ -94,7 +94,7 @@
         </div>
     </div>
         <!-- collections -->
-        <div class="new-collections"  ng-controller="homeCtrl">
+        <div class="new-collections"  ng-controller="homeCtrl" ng-init="getAccountId({{ request.user.account.id }})">
             <div class="container">
                 <h3>สินค้าแนะนำ</h3>
                 <div>
@@ -122,8 +122,8 @@
                             </a>
                             <div class="container">
                                 <hr>
-                                <button class="btn btn-secondary btn-sm">ดูรายละเอียด</button>
-                                <button class="btn btn-secondary btn-sm" ng-click="addToCart()">เพิ่มลงตระกร้า</button>
+                                <button class="btn btn-secondary btn-sm" ng-click="viewProductDetail(product.id)">ดูรายละเอียด</button>
+                                <button class="btn btn-secondary btn-sm" ng-click="addToCart(product.id)">เพิ่มลงตระกร้า</button>
                             </div>
                         </div>
                     </div>
