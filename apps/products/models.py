@@ -35,6 +35,14 @@ class Product(models.Model):
 
     ]
 
+    new = 0
+    used = 1
+
+    product_quality_choice = [
+        (new, "New"),
+        (used, "Used"),
+    ]
+
     product_status = models.IntegerField(verbose_name="Status", choices=status_choices, default=sale)
     date_of_sale = models.DateField(verbose_name="Date of Sale", auto_now=True)
     seller = models.ForeignKey(Account)
@@ -42,6 +50,9 @@ class Product(models.Model):
     name = models.CharField(verbose_name="Name", max_length=200)
     freight_fee = models.DecimalField(verbose_name="Freight Fee", max_digits=8, decimal_places=2, default=0)
     freight = models.IntegerField(verbose_name="Freight", choices=freight_detail_choices, default=reg)
+    product_quality = models.IntegerField(verbose_name="Quality", choices=product_quality_choice, default=used)
+    detail = models.CharField(verbose_name="Details", max_length=255, blank=True)
+
 
     def __str__(self):
         return self.name

@@ -33,13 +33,17 @@ def save_product(request):
         freight = int(data['freight'])
         seller_id = int(data['seller_id'])
         cat_id = data['category_id']
+        product_quality = int(data['product_quality'])
+        detail = data['detail']
 
         product = Product.objects.create(
             name=name,
             price=price,
             freight_fee=freight_fee,
             freight=freight,
-            seller_id=seller_id
+            seller_id=seller_id,
+            product_quality=product_quality,
+            detail=detail,
         )
 
         for image in images:

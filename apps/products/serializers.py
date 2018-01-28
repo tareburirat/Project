@@ -27,6 +27,7 @@ class ProductSerializer(serializers.ModelSerializer):
     freight_detail = serializers.SerializerMethodField()
     seller_data = serializers.SerializerMethodField()
     sub_total = serializers.SerializerMethodField()
+    quality = serializers.SerializerMethodField()
 
     class Meta:
         model = Product
@@ -47,6 +48,10 @@ class ProductSerializer(serializers.ModelSerializer):
     @staticmethod
     def get_freight_detail(obj):
         return obj.get_freight_display()
+
+    @staticmethod
+    def get_quality(obj):
+        return obj.get_product_quality_display()
 
     @staticmethod
     def get_category(obj):

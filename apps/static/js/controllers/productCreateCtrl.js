@@ -6,6 +6,9 @@ app.controller('productCreateCtrl', function ($scope, $http, $window) {
     $scope.categories = [];
     $scope.selectedCategory = {};
     $scope.properties = [];
+    $scope.qTypes = ['New', 'Used'];
+    $scope.quality = $scope.qTypes[0];
+
     var formData = new FormData();
 
     $scope.getAccountId = function (accountId) {
@@ -37,6 +40,9 @@ app.controller('productCreateCtrl', function ($scope, $http, $window) {
             formData.append('propertyId[]', property.id);
         });
 
+        //get quality option
+        formData.append('product_quality', get_quality($scope.quality));
+
         var request = {
                     method: 'POST',
                     url: "/api/save_products/",
@@ -58,6 +64,10 @@ app.controller('productCreateCtrl', function ($scope, $http, $window) {
     var get_freight = function (freight) {
         return $scope.fTypes.indexOf(freight);
     };
+
+    var get_quality = function (quality) {
+        return $scope.qTypes.indexOf(quality);
+    }
 
     var categories_request = {
         method: 'GET',

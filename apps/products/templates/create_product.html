@@ -49,6 +49,11 @@
                             </div>
                         </div>
                     </div>
+
+                     <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">สภาพสินค้า : </label>
+                        <select class="form-control col-sm-10" ng-model="quality" ng-options="q for q in qTypes"></select>
+                    </div>
                 </div>
 
                 <h2>การจัดส่ง</h2>
@@ -69,6 +74,14 @@
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">ราคา : </label>
                         <input class="form-control col-sm-10" type="text" placeholder="ราคา" ng-model="product.price">
+                    </div>
+                </div>
+
+                <h2>รายละเอียดเพิ่มเติม</h2>
+                <div class="add">
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">รายละเอียด : </label>
+                        <textarea class="form-control col-sm-10" rows="4" cols="50" type="text" ng-model="product.detail">รายละเอียดเพิ่มเติม</textarea>
                     </div>
                 </div>
 
