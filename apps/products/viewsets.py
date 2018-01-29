@@ -16,9 +16,10 @@ from apps.values.models import Value
 
 class ProductViewSet(viewsets.ModelViewSet):
     serializer_class = ProductSerializer
-    queryset = Product.objects.all().order_by('-pk')
+    queryset = Product.objects.filter(product_status=Product.sale).order_by('-pk')
     filter_backends = (DjangoFilterBackend,)
     filter_fields = ['seller_id']
+
 
 @csrf_exempt
 @api_view(['post'])
