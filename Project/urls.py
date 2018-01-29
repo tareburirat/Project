@@ -50,7 +50,7 @@ urlpatterns = [
     url(r'^rating/', RatingView.as_view()),
     url(r'^property/', PropertyView.as_view()),
     url(r'^product/', ProductView.as_view()),
-    url(r'^order/', OrderView.as_view()),
+    url(r'^order/', include('apps.orders.urls')),
     url(r'^offer/', OfferView.as_view()),
     url(r'^category_product/', CategoryProductView.as_view()),
     url(r'^value/', ValueView.as_view()),

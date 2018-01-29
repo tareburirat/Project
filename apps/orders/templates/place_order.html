@@ -1,0 +1,106 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<script src="{% static 'js/components/angular.min.js' %}"></script>
+<script src="{% static 'js/app.js' %}"></script>
+<script src="{% static 'js/controllers/order/placeOrderCtrl.js' %}"></script>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+          integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Order</title>
+</head>
+<body>
+<!-- header -->
+<div>{% include "header.html" %}</div>
+<!-- //header -->
+<!-- breadcrumbs -->
+<div class="breadcrumbs">
+    <div class="container">
+        <ol class="breadcrumb breadcrumb1">
+            <li class="breadcrumb-item"><a href="/"><span class="fa fa-home" aria-hidden="true"></span>หน้าแรก</a></li>
+            <li class="breadcrumb-item active">order</li>
+        </ol>
+    </div>
+</div>
+<!-- //breadcrumbs -->
+<div class="wrapper content" form="createForm">
+    <div ng-app="app" ng-controller="placeOrderCtrl" ng-init="getAccountId({{ request.user.account.id }})">
+        <div class="container">
+            <div class="row col">
+                <h4>
+                    Selected Address [[mama]]
+                </h4>
+            </div>
+            <div>
+                <p>
+                    [[ address ]]
+                </p>
+            </div>
+            <hr>
+            <div>
+                <table id="cart" class="table table-condensed">
+                    <tr>
+                        <th style="width:50%">สินค้า</th>
+                        <th style="width:10%">ราคา</th>
+                        <th style="width:8%">ค่าจัดส่ง</th>
+                        <th style="width:22%" class="text-center">ราคารวม</th>
+                        <th style="width:10%"></th>
+                    </tr>
+                    <tr ng-repeat="cart in carts">
+                        <td data-th="Product">
+                            <div class="row">
+                                <div class="col-sm-3 hidden-xs">
+                                    <img src="[[cart.product_data.first_image_url]]" alt="[[cart.first_image_url]]"
+                                         class="img-responsive" style="width: 5rem; height: 5rem;"/></div>
+                                <div class="col-sm-9">
+                                    <h4 class="nomargin"> ชื่อ : [[cart.product_data.name]]</h4>
+                                    <p>วิธีการจัดส่ง : [[cart.product_data.freight_detail]]</p>
+                                    {#                            <p>ค่าจัดส่ง : [[cart.product_data.freight_fee]]</p>#}
+                                    <p>ร้านค้า : [[cart.product_data.seller_data.display_name]]</p>
+                                </div>
+                            </div>
+                        </td>
+                        <td data-th="Price">[[cart.product_data.price]]฿</td>
+                        <td data-th="Freight">[[cart.product_data.freight_fee]]฿</td>
+                        <td data-th="Subtotal" class="text-center">[[cart.product_data.sub_total]]฿</td>
+                    </tr>
+                    {#        <tr class="visible-xs">#}
+                    {#            <td class="text-center"><strong>Total 1.99</strong></td>#}
+                    {#        </tr>#}
+                    <tr>
+                        <td><a href="/" style="color: white" class="btn btn-warning"><i class="fa fa-angle-left"></i>
+                            Back</a></td>
+                        <td colspan="2" class="hidden-xs"></td>
+                        <td class="hidden-xs text-center"><strong>[[getTotal()]] ฿</strong></td>
+                        <td><button style="color: white" class="btn btn-success btn-block" ng-click="placeOrder()">Confirm <i
+                                class="fa fa-credit-card"></i></button></td>
+                    </tr>
+                </table>
+            </div>
+            <div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- footer -->
+<div>{% include "footer.html" %}</div>
+<!-- //footer -->
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+        integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+        integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+        crossorigin="anonymous"></script>
+</body>
+</html>

@@ -4,3 +4,7 @@ from django.views.generic import TemplateView
 # Create your views here.
 class OrderView(TemplateView):
     template_name = 'order.html'
+
+
+class PlaceOrderView(TemplateView):
+    template_name = 'place_order.html'
