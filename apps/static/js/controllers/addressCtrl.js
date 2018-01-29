@@ -1,10 +1,26 @@
 app.controller("addressCtrl", function ($scope, $window, $http) {
     $scope.mama = 123;
+    $scope.addresses = [];
 
     $scope.getBuyerId = function (buyerId) {
         $scope.buyerId = buyerId;
+        getBuyerAddresses(buyerId);
     };
-    $scope.getAddress = function () {
+
+    var getBuyerAddresses = function (buyerId) {
+        $http.get('http://localhost:8000/api/addresses/?buyer_id=' + buyerId).then(
+            function success(response) {
+                $scope.addresses = response.data;
+                console.log($scope.addresses)
+            },
+            function fail(response) {
+                console.log(response);
+                alert('Something went wrong, cannot get all addresses!')
+            }
+        );
+    };
+
+    $scope.saveAddress = function () {
         var data = {
             address: $scope.address,
             sub_district: $scope.sub_district,
@@ -16,13 +32,12 @@ app.controller("addressCtrl", function ($scope, $window, $http) {
 
         $http.post('http://localhost:8000/api/addresses/', data).then(
             function (response) {
+                getBuyerAddresses($scope.buyerId);
                 alert('success!');
-                $window.location.href = '/address_buyer/';
             },
             function (response) {
                 alert("failed: " + response.data)
             }
         )
-    }
-
+    };
 });
