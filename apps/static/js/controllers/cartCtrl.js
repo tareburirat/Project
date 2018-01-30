@@ -9,7 +9,7 @@ app.controller("cartCtrl", function ($scope, $http, $window) {
 
     console.log($scope.cartId);
     var getProduct = function () {
-        $http.get('http://localhost:8000/api/carts/?owner_id=' + $scope.cartId).then(function (response) {
+        $http.get('http://localhost:8000/api/carts/?in_cart=true&owner_id=' + $scope.cartId).then(function (response) {
             $scope.carts = response.data;
         })
     };

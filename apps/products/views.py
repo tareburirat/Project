@@ -32,4 +32,6 @@ class ProductSearchView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(ProductSearchView, self).get_context_data(**kwargs)
         context['query_string'] = dict(self.request.GET)
+        context['data_product'] = context['query_string'].get("product_name", "")
+        context['data_category'] = context['query_string'].get("category", "")
         return context

@@ -21,11 +21,14 @@
     <div>{% include "header.html" %}</div>
     <!-- //header -->
     <!-- breadcrumbs -->
+
     <div class="breadcrumbs">
         <div class="container">
             <ol class="breadcrumb breadcrumb1">
                 <li class="breadcrumb-item"><a href="/"><span class="fa fa-home" aria-hidden="true"></span>หน้าแรก </a></li>
-                <!--<li class="breadcrumb-item active"></li>-->
+                <li class="breadcrumb-item"><a href="#">ค้นหา </a></li>
+                <li class="breadcrumb-item active">{{ data_category }}</li>
+                <li class="breadcrumb-item active">{{ data_product }}</li>
             </ol>
         </div>
     </div>

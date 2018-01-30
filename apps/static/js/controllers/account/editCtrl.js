@@ -1,4 +1,4 @@
-app.controller("accountEditCtrl", function ($scope, $http) {
+app.controller("accountEditCtrl", function ($scope, $http, $window) {
     $scope.mama = 123;
     $scope.accountData = {};
     var url = "";
@@ -25,10 +25,11 @@ app.controller("accountEditCtrl", function ($scope, $http) {
         };
         $http.put(url, data).then(
             function (response) {
-                alert('success')
+                alert('แก้ไขข้อมูลสำเร็จ')
+                $window.location.href = "/account/profile/"
             },
             function (reason) {
-                alert('failed')
+                alert('แก้ไขข้อมูลไม่สำเร็จ')
             }
         )
     }

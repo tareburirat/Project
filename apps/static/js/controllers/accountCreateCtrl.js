@@ -3,7 +3,7 @@ app.controller('accountCreateCtrl', function ($scope, $http, $window) {
 
     $scope.clickSignup = function () {
         if ($scope.password !== $scope.passwordAgain) {
-            alert("Passwords do no match");
+            alert("รหัสผ่านไม่ตรงกัน");
             $scope.password = "";
             $scope.passwordAgain = "";
             return;
@@ -21,12 +21,12 @@ app.controller('accountCreateCtrl', function ($scope, $http, $window) {
         };
         $http.post("http://localhost:8000/api/accounts/", data, {header: 'multipart/form-data'}).then(function (response) {
                 console.log(response.data);
-                alert('success!!');
+                alert('สมัครสมาชิคเรียบร้อย');
                 $window.location.href = '/login';
             },
             function (response) {
                 // console.log(response.data);
-                alert("failed: " + response.data.message)
+                alert("สมัครสมาชิคไม่สำเร็จ: " + response.data.message)
 
             });
     };

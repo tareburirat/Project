@@ -24,7 +24,7 @@ app.controller("placeOrderCtrl", function ($scope, $http, $window) {
     };
 
     var getProduct = function () {
-        $http.get('http://localhost:8000/api/carts/?owner_id=' + $scope.userInfo.id).then(
+        $http.get('http://localhost:8000/api/carts/?in_cart=true&owner_id=' + $scope.userInfo.id).then(
             function success(response) {
                 $scope.carts = response.data;
             },
