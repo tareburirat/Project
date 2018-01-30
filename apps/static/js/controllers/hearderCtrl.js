@@ -1,7 +1,7 @@
-app.controller("headerCtrl", function($scope, $http, $window, $location) {
-    $scope.mama = 123;
+app.controller("headerCtrl", function($scope, $http, $window, $rootScope) {
+    $scope.mama = $rootScope.url;
     $scope.searchKeyWord = '';
-    $http.get('http://localhost:8000/api/categories/?category_type=0')
+    $http.get($scope.mama + '/api/categories/?category_type=0')
         .then(
             function (response) {
                 $scope.categories = response.data;

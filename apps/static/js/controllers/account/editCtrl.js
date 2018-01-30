@@ -1,10 +1,10 @@
-app.controller("accountEditCtrl", function ($scope, $http, $window) {
-    $scope.mama = 123;
+app.controller("accountEditCtrl", function ($scope, $http, $window, $rootScope) {
+    $scope.mama = $rootScope.url;
     $scope.accountData = {};
     var url = "";
 
     $scope.getAccountInfo = function (accountId) {
-        url = 'http://localhost:8000/api/accounts/' + accountId + '/';
+        url = $scope.mama + '/api/accounts/' + accountId + '/';
         $http.get(url).then(
             function (response) {
                 $scope.accountData = response.data;

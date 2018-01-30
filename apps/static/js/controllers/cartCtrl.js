@@ -1,6 +1,7 @@
-app.controller("cartCtrl", function ($scope, $http, $window) {
+app.controller("cartCtrl", function ($scope, $http, $window, $rootScope) {
     $scope.carts = [];
     $scope.cartId = $window.cartId;
+    $scope.mama = $rootScope.url;
 
     $scope.getId = function (id) {
         $scope.cartId = id;
@@ -9,7 +10,7 @@ app.controller("cartCtrl", function ($scope, $http, $window) {
 
     console.log($scope.cartId);
     var getProduct = function () {
-        $http.get('http://localhost:8000/api/carts/?in_cart=true&owner_id=' + $scope.cartId).then(function (response) {
+        $http.get($scope.mama + '/api/carts/?in_cart=true&owner_id=' + $scope.cartId).then(function (response) {
             $scope.carts = response.data;
         })
     };
@@ -23,7 +24,7 @@ app.controller("cartCtrl", function ($scope, $http, $window) {
     };
 
     $scope.delProduct = function (cartId) {
-        $http.delete('http://localhost:8000/api/carts/' + cartId).then(
+        $http.delete($scope.mama + '/api/carts/' + cartId).then(
             function (response) {
                 $scope.products = response;
                 alert('delete success!!')

@@ -1,8 +1,8 @@
-app.controller("profileCtrl", function($scope, $http) {
-    $scope.mama = 12345;
+app.controller("profileCtrl", function($scope, $http, $rootScope) {
+    $scope.mama = $rootScope.url;
     $scope.accounts = [];
     
-    $http.get('http://localhost:8000/api/accounts/').then(function (response) {
+    $http.get($scope.mama + '/api/accounts/').then(function (response) {
         $scope.accounts = response.data;
         console.log($scope.accounts)
     })

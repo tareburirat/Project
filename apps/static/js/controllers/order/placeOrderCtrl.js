@@ -1,5 +1,5 @@
-app.controller("placeOrderCtrl", function ($scope, $http, $window) {
-    $scope.mama = 123;
+app.controller("placeOrderCtrl", function ($scope, $http, $window, $rootScope) {
+    $scope.mama = $rootScope.url;
     var accountId = '';
     $scope.address = "";
     $scope.carts = [];
@@ -10,7 +10,7 @@ app.controller("placeOrderCtrl", function ($scope, $http, $window) {
     };
 
     var getUserInfo = function () {
-        $http.get('http://localhost:8000/api/accounts/' + accountId + '/').then(
+        $http.get($scope.mama + '/api/accounts/' + accountId + '/').then(
             function success(response) {
                 $scope.userInfo = response.data;
                 $scope.address = response.data.primary_address;
@@ -18,13 +18,13 @@ app.controller("placeOrderCtrl", function ($scope, $http, $window) {
             },
             function failure() {
                 alert('Cannot Retrieve User Information.');
-                $window.path.href = 'http://localhost:8000/'
+                $window.path.href = $scope.mama
             }
         )
     };
 
     var getProduct = function () {
-        $http.get('http://localhost:8000/api/carts/?in_cart=true&owner_id=' + $scope.userInfo.id).then(
+        $http.get($scope.mama + '/api/carts/?in_cart=true&owner_id=' + $scope.userInfo.id).then(
             function success(response) {
                 $scope.carts = response.data;
             },
@@ -61,9 +61,10 @@ app.controller("placeOrderCtrl", function ($scope, $http, $window) {
             buyer: $scope.userInfo.id,
             order_items: generateOrderItem($scope.carts)
         };
-        $http.post('http://localhost:8000/api/orders/', data).then(
+        $http.post($scope.mama + '/api/orders/', data).then(
             function success(response) {
                 alert('success')
+                $window.location.href = '/'
             },
             function () {
                 alert('fail')

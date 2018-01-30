@@ -1,5 +1,5 @@
-app.controller("addressCtrl", function ($scope, $window, $http) {
-    $scope.mama = 123;
+app.controller("addressCtrl", function ($scope, $window, $http, $rootScope) {
+    $scope.mama = $rootScope.url;
     $scope.addresses = [];
     $scope.selectedAddress = 0;
 
@@ -9,7 +9,7 @@ app.controller("addressCtrl", function ($scope, $window, $http) {
     };
 
     var getBuyerAddresses = function (buyerId) {
-        $http.get('http://localhost:8000/api/addresses/?buyer_id=' + buyerId).then(
+        $http.get($scope.mama + '/api/addresses/?buyer_id=' + buyerId).then(
             function success(response) {
                 $scope.addresses = response.data;
                 $scope.selectedAddress = $scope.addresses.findIndex(function (address) {
@@ -29,7 +29,7 @@ app.controller("addressCtrl", function ($scope, $window, $http) {
         var data = {
             primary: true
         };
-        $http.patch('http://localhost:8000/api/addresses/' + addressId + '/', data).then(
+        $http.patch($scope.mama + '/api/addresses/' + addressId + '/', data).then(
             function (response) {
                 console.log(response);
                 alert('success')
@@ -55,7 +55,7 @@ app.controller("addressCtrl", function ($scope, $window, $http) {
             buyer: $scope.buyerId
         };
 
-        $http.post('http://localhost:8000/api/addresses/', data).then(
+        $http.post($scope.mama + '/api/addresses/', data).then(
             function (response) {
                 getBuyerAddresses($scope.buyerId);
                 alert('เพิ่มที่อยู่เรียบร้อย');

@@ -1,6 +1,6 @@
-app.controller('myProductCtrl', function ($scope, $http, $window) {
+app.controller('myProductCtrl', function ($scope, $http, $window, $rootScope) {
     $scope.products = [];
-    $scope.mama = 123;
+    $scope.mama = $rootScope.url;
     $scope.sellerId = $window.sellerId;
     $scope.productId = $window.productId;
 
@@ -12,7 +12,7 @@ app.controller('myProductCtrl', function ($scope, $http, $window) {
 
     var getProduct = function() {
         // debugger;
-        $http.get('http://localhost:8000/api/products/?seller_id=' + $scope.sellerId).then(
+        $http.get($scope.mama + '/api/products/?seller_id=' + $scope.sellerId).then(
             function (response) {
                 $scope.products = response.data;
             },
@@ -22,7 +22,7 @@ app.controller('myProductCtrl', function ($scope, $http, $window) {
     }
 
     $scope.delProduct = function (productId) {
-        $http.delete('http://localhost:8000/api/products/' + productId).then(
+        $http.delete($scope.mama + '/api/products/' + productId).then(
             function (response) {
                 $scope.products = response;
                 alert('delete success!!')
