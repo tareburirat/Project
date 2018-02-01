@@ -26,6 +26,7 @@ app.controller("accountEditCtrl", function ($scope, $http) {
         $http.put(url, data).then(
             function (response) {
                 alert('success')
+
             },
             function (reason) {
                 alert('failed')
