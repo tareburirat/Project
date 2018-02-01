@@ -1,5 +1,5 @@
-app.controller('productCreateCtrl', function ($scope, $http, $window) {
-    $scope.mama = 123;
+app.controller('productCreateCtrl', function ($scope, $http, $window, $rootScope) {
+    $scope.mama = $rootScope.url;
     $scope.product = {};
     $scope.fTypes = ['Register', 'EMS', 'Kerry'];
     $scope.freight = $scope.fTypes[0];

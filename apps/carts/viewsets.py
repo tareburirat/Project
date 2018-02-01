@@ -9,4 +9,4 @@ class CartViewSet(viewsets.ModelViewSet):
     serializer_class = CartSerializer
     queryset = Cart.objects.all().filter(in_cart=True)
     filter_backends = (DjangoFilterBackend,)
-    filter_fields = ['owner_id']
+    filter_fields = ['owner_id', 'in_cart']

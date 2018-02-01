@@ -1,6 +1,7 @@
-app.controller("addressCtrl", function ($scope, $window, $http) {
-    $scope.mama = 123;
+app.controller("addressCtrl", function ($scope, $window, $http, $rootScope) {
+    $scope.mama = $rootScope.url;
     $scope.addresses = [];
+    $scope.selectedAddress = 0;
 
     $scope.getBuyerId = function (buyerId) {
         $scope.buyerId = buyerId;
@@ -8,9 +9,12 @@ app.controller("addressCtrl", function ($scope, $window, $http) {
     };
 
     var getBuyerAddresses = function (buyerId) {
-        $http.get('http://localhost:8000/api/addresses/?buyer_id=' + buyerId).then(
+        $http.get($scope.mama + '/api/addresses/?buyer_id=' + buyerId).then(
             function success(response) {
                 $scope.addresses = response.data;
+                $scope.selectedAddress = $scope.addresses.findIndex(function (address) {
+                    return address.primary === true;
+                });
                 console.log($scope.addresses)
             },
             function fail(response) {
@@ -18,6 +22,27 @@ app.controller("addressCtrl", function ($scope, $window, $http) {
                 alert('Something went wrong, cannot get all addresses!')
             }
         );
+    };
+
+    $scope.updatePrimaryAddress = function () {
+        var addressId = $scope.addresses[$scope.selectedAddress].id;
+        var data = {
+            primary: true
+        };
+        $http.patch($scope.mama + '/api/addresses/' + addressId + '/', data).then(
+            function (response) {
+                console.log(response);
+                alert('success')
+            },
+            function (response) {
+                console.log(response);
+                alert('failed');
+            }
+        );
+    };
+
+    $scope.updateSelectedAddress = function (addressId) {
+        $scope.selectedAddress = addressId;
     };
 
     $scope.saveAddress = function () {
@@ -30,10 +55,10 @@ app.controller("addressCtrl", function ($scope, $window, $http) {
             buyer: $scope.buyerId
         };
 
-        $http.post('http://localhost:8000/api/addresses/', data).then(
+        $http.post($scope.mama + '/api/addresses/', data).then(
             function (response) {
                 getBuyerAddresses($scope.buyerId);
-                alert('success!');
+                alert('เพิ่มที่อยู่เรียบร้อย');
             },
             function (response) {
                 alert("failed: " + response.data)

@@ -1,5 +1,5 @@
-app.controller("passwordChangeCtrl", function ($scope, $http, $window) {
-    $scope.mama = 123;
+app.controller("passwordChangeCtrl", function ($scope, $http, $window, $rootScope) {
+    $scope.mama = $rootScope.url;
     $scope.panCardRegex = '/[A-Z]{5}\d{4}[A-Z]{1}/i';
     $scope.getUsername = function (username) {
         $scope.username = username;
@@ -7,7 +7,7 @@ app.controller("passwordChangeCtrl", function ($scope, $http, $window) {
 
     $scope.passwordChange = function () {
         if ($scope.newPassword !== $scope.newPasswordAgain) {
-            alert("New passwords do no match");
+            alert("รหัสผ่านไม่ตรงกัน");
             $scope.newPassword = "";
             $scope.newPasswordAgain = "";
             return;
@@ -17,9 +17,9 @@ app.controller("passwordChangeCtrl", function ($scope, $http, $window) {
             newPassword1: $scope.newPassword,
             newPassword2: $scope.newPasswordAgain
         };
-        $http.post('http://localhost:8000/api/password_change/', data).then(
+        $http.post($scope.mama + '/api/password_change/', data).then(
             function (response) {
-                alert(response.data.message + " You changed your password and have to new login again.");
+                alert(response.data.message + "เปลี่ยนรหัสผ่านสำเร็จ โปรดเข้าสู่ระบบอีกครั้ง");
 
                 // var user_data = {
                 //     username: $scope.username,
@@ -33,7 +33,7 @@ app.controller("passwordChangeCtrl", function ($scope, $http, $window) {
                 $window.location.href = '/login/';
             },
             function (response) {
-                alert("failed: " + response.data.message)
+                alert("เปลี่ยนรหัสผ่านไม่สำเร็จ: " + response.data.message)
             }
         )
     }

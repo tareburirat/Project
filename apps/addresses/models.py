@@ -27,3 +27,6 @@ class Address(models.Model):
     def validate_primary_address(self):
         if self.primary is True:
             self.buyer.address_set.all().update(primary=False)
+
+    def __str__(self):
+        return "Address - {}(buyer)".format(self.buyer_id)

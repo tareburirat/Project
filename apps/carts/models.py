@@ -10,3 +10,5 @@ class Cart(models.Model):
     product = models.ForeignKey(Product)
     in_cart = models.BooleanField(verbose_name="Status", default=True)
 
+    def __str__(self):
+        return "Id:{}, product id: {}".format(self.id, self.product_id)

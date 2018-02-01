@@ -1,6 +1,6 @@
-app.controller("productCtrl", function($scope, $http, $window) {
+app.controller("productCtrl", function($scope, $http, $window, $rootScope) {
     $scope.products = [];
-    $scope.mama = 123;
+    $scope.mama = $rootScope.url;
     $scope.displayImage = "";
     $scope.altText = "1234";
 
@@ -15,7 +15,7 @@ app.controller("productCtrl", function($scope, $http, $window) {
 
     console.log($scope.productId);
     var getProduct = function() {
-        $http.get('http://localhost:8000/api/products/' + $scope.productId).then(function (response) {
+        $http.get($scope.mama + '/api/products/' + $scope.productId).then(function (response) {
             $scope.product = response.data;
             $scope.properties = Object.keys($scope.product.property);
             $scope.setImage(response.data.first_image_url);
@@ -28,7 +28,7 @@ app.controller("productCtrl", function($scope, $http, $window) {
             product: $scope.productId
         };
 
-        $http.post('http://localhost:8000/api/carts/', data).then(
+        $http.post($scope.mama + '/api/carts/', data).then(
             function (response) {
                 // alert(response.data);
                 $window.location.href = '/cart/'
