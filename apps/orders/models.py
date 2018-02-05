@@ -2,6 +2,7 @@ from django.db import models
 
 # Create your models here.
 from apps.accounts.models import Account
+from apps.carts.models import Cart
 from apps.products.models import Product
 
 
@@ -15,8 +16,9 @@ class Order(models.Model):
         return super(Order, self).save(*args, **kwargs)
 
     def update_product_not_available(self):
-        product_id_list = self.order_items.values_list('product_id', flat=True)
+        product_id_list = self.buyer.cart_set.values_list('product_id', flat=True)
         Product.objects.filter(id__in=product_id_list).update(product_status=Product.sold)
+        Cart.objects.filter(product_id__in=product_id_list).update(in_cart=False)
 
 
 class OrderItem(models.Model):
@@ -24,3 +26,6 @@ class OrderItem(models.Model):
     price = models.DecimalField(max_digits=8, decimal_places=2)
     product = models.ForeignKey(Product)
     seller = models.ForeignKey(Account, related_name='sales', related_query_name='sales')
+
+    def __str__(self):
+        return str(self.id)

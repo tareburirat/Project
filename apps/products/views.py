@@ -1,4 +1,6 @@
 from django.views.generic import TemplateView
+
+from apps.categories.models import Category
 from .models import Product
 
 
@@ -31,5 +33,13 @@ class ProductSearchView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(ProductSearchView, self).get_context_data(**kwargs)
-        context['query_string'] = dict(self.request.GET)
+        data = self.request.GET
+        context['query_string'] = dict(data)
+        product_name = data.get("product_name", "")
+        try:
+            cat_id = data.get("category", "")
+            # cat_name = Category.objects.get(id=cat_id).name
+        except Category.DoesNotExist:
+            cat_id = ""  # default value when nothing is found
+        context['bread_crumb_text'] = product_name or cat_id
         return context

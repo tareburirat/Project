@@ -1,10 +1,10 @@
-app.controller("accountEditCtrl", function ($scope, $http) {
-    $scope.mama = 123;
+app.controller("accountEditCtrl", function ($scope, $http, $window, $rootScope) {
+    $scope.mama = $rootScope.url;
     $scope.accountData = {};
     var url = "";
 
     $scope.getAccountInfo = function (accountId) {
-        url = 'http://localhost:8000/api/accounts/' + accountId + '/';
+        url = $scope.mama + '/api/accounts/' + accountId + '/';
         $http.get(url).then(
             function (response) {
                 $scope.accountData = response.data;
@@ -25,11 +25,13 @@ app.controller("accountEditCtrl", function ($scope, $http) {
         };
         $http.put(url, data).then(
             function (response) {
-                alert('success')
+                alert('แก้ไขข้อมูลสำเร็จ')
+                $window.location.href = "/account/profile/"
+
 
             },
             function (reason) {
-                alert('failed')
+                alert('แก้ไขข้อมูลไม่สำเร็จ')
             }
         )
     }

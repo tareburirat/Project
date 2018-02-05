@@ -1,9 +1,9 @@
-app.controller('accountCreateCtrl', function ($scope, $http, $window) {
+app.controller('accountCreateCtrl', function ($scope, $http, $window, $rootScope) {
     $scope.panCardRegex = '/[A-Z]{5}\d{4}[A-Z]{1}/i';
-
+    $scope.mama = $rootScope.url;
     $scope.clickSignup = function () {
         if ($scope.password !== $scope.passwordAgain) {
-            alert("Passwords do no match");
+            alert("รหัสผ่านไม่ตรงกัน");
             $scope.password = "";
             $scope.passwordAgain = "";
             return;
@@ -19,14 +19,14 @@ app.controller('accountCreateCtrl', function ($scope, $http, $window) {
             display_name: $scope.display_name,
             phone: $scope.phone
         };
-        $http.post("http://localhost:8000/api/accounts/", data, {header: 'multipart/form-data'}).then(function (response) {
+        $http.post($scope.mama + "/api/accounts/", data, {header: 'multipart/form-data'}).then(function (response) {
                 console.log(response.data);
-                alert('success!!');
+                alert('สมัครสมาชิคเรียบร้อย');
                 $window.location.href = '/login';
             },
             function (response) {
                 // console.log(response.data);
-                alert("failed: " + response.data.message)
+                alert("สมัครสมาชิคไม่สำเร็จ: " + response.data.message)
 
             });
     };
