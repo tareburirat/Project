@@ -1,5 +1,5 @@
-app.controller("productSearchCtrl", function($scope, $http, $window) {
-    $scope.mama = 123;
+app.controller("productSearchCtrl", function($scope, $http, $window, $rootScope) {
+    $scope.mama = $rootScope.url;
     $scope.queryString = '?';
 
     $scope.getQueryString = function (queryString) {
@@ -19,7 +19,7 @@ app.controller("productSearchCtrl", function($scope, $http, $window) {
         searchProduct();
     };
 
-    $http.get('http://localhost:8000/api/categories/?category_type=0')
+    $http.get($scope.mama + '/api/categories/?category_type=0')
         .then(
             function (response) {
                 $scope.categories = response.data;
@@ -30,7 +30,7 @@ app.controller("productSearchCtrl", function($scope, $http, $window) {
         );
 
     var searchProduct = function () {
-        $http.get('http://localhost:8000/api/category_products/' + $scope.queryString)
+        $http.get($scope.mama + '/api/category_products/' + $scope.queryString)
             .then(
                 function (response) {
                     $scope.categoryProducts = response.data;

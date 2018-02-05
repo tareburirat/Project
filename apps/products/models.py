@@ -53,7 +53,6 @@ class Product(models.Model):
     product_quality = models.IntegerField(verbose_name="Quality", choices=product_quality_choice, default=used)
     detail = models.CharField(verbose_name="Details", max_length=255, blank=True)
 
-
     def __str__(self):
         return self.name
 

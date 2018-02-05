@@ -38,19 +38,21 @@
                     <h4>ADDRESS</h4>
                 </div>
                 <div class="row col-md-12" ng-repeat="address in addresses" style="margin-bottom: 5px;">
-                    <input type="radio" ng-checked="address.primary" style="margin-top: 5px;">
+                    <input type="radio" ng-checked="selectedAddress==$index" name="primaryRadio" ng-click="updateSelectedAddress($index)" style="margin-top: 5px;">
                     <label>
                         <span class="padding-bottom-5">
                             [[address.address_details]]
                         </span>
                     </label>
+                    <p> - is primary = [[address.primary]]</p>
                 </div>
+
             </div>
             <div class="row">
-                <div class="col align-self-end" align="right">
-                    <a class="btn btn-secondary btn-lg" href="http://localhost:8000/order/place_order">
+                <div class="col align-self-end">
+                    <a class="btn btn-secondary btn-lg" ng-click="updatePrimaryAddress()" href="[[$root.url]]/order/place_order">
                         <i class="fa fa-arrow-right"></i>
-                        <span class="text-bold">Next</span>
+                        <span class="text-bold">Next[[selectedAddress]]</span>
                     </a>
                 </div>
             </div>

@@ -1,10 +1,10 @@
-app.controller("homeCtrl", function ($scope, $http, $window) {
-    $scope.mama = 123;
+app.controller("homeCtrl", function ($scope, $http, $window, $rootScope) {
+    $scope.mama = $rootScope.url;
     var accountId = "";
     var userInfo = {};
     $scope.products = [];
 
-    $http.get('http://localhost:8000/api/products/').then(function (response) {
+    $http.get($scope.mama + '/api/products/?product_status=1').then(function (response) {
         $scope.products = response.data;
     });
 
@@ -14,7 +14,7 @@ app.controller("homeCtrl", function ($scope, $http, $window) {
     };
 
     var getUserInfo = function (accId) {
-        $http.get('http://localhost:8000/api/accounts/' + accId + '/').then(
+        $http.get($scope.mama + '/api/accounts/' + accId + '/').then(
             function (response) {
                 userInfo = response.data;
                 console.log(userInfo);
@@ -22,7 +22,11 @@ app.controller("homeCtrl", function ($scope, $http, $window) {
         )
     };
 
-    $scope.addToCart = function (productId) {
+    $scope.addToCart = function (productId, sellerId) {
+        if (userInfo.id === sellerId || userInfo.cart_products.indexOf(productId) > -1) {
+            alert('ไม่สามารถซื้อสินค้าชิ้นนี้ลงตะกร้าได้');
+            return;
+        }
         console.log(accountId);
         if (accountId === "" || accountId === undefined) {
             alert("You must LOG IN first.");
@@ -34,7 +38,7 @@ app.controller("homeCtrl", function ($scope, $http, $window) {
             product: productId
         };
 
-        $http.post('http://localhost:8000/api/carts/', data).then(
+        $http.post($scope.mama + '/api/carts/', data).then(
             function (response) {
                 // alert(response.data);
                 $window.location.href = '/cart/'
@@ -49,7 +53,6 @@ app.controller("homeCtrl", function ($scope, $http, $window) {
     $scope.viewProductDetail = function (productId) {
         $window.location.href = '/single/' + productId;
     };
-
 
 
 });

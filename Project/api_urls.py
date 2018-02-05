@@ -1,7 +1,7 @@
 from django.conf.urls import url, include
 from rest_framework.routers import DefaultRouter
 
-from apps.accounts.viewsets import AccountViewSet, create_account, password_change
+from apps.accounts.viewsets import AccountViewSet, create_account, password_change, check_username, check_displayname
 from apps.addresses.viewsets import AddressViewSet
 from apps.carts.viewsets import CartViewSet
 from apps.categories.viewsets import CategoryViewSet
@@ -33,6 +33,8 @@ urlpatterns = [
     # account functions
     url(r'^create_account/', create_account),
     url(r'^password_change/', password_change),
+    url(r'^check_username/', check_username),
+    url(r'^check_displayname/', check_displayname),
 
     # product functions
     url(r'^save_products/', product_viewsets.save_product),
