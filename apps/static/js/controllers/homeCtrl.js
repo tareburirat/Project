@@ -4,7 +4,7 @@ app.controller("homeCtrl", function ($scope, $http, $window, $rootScope) {
     var userInfo = {};
     $scope.products = [];
 
-    $http.get($scope.mama + '/api/products/').then(function (response) {
+    $http.get($scope.mama + '/api/products/?product_status=1').then(function (response) {
         $scope.products = response.data;
     });
 
@@ -22,7 +22,11 @@ app.controller("homeCtrl", function ($scope, $http, $window, $rootScope) {
         )
     };
 
-    $scope.addToCart = function (productId) {
+    $scope.addToCart = function (productId, sellerId) {
+        if (userInfo.id === sellerId || userInfo.cart_products.indexOf(productId) > -1) {
+            alert('ไม่สามารถซื้อสินค้าชิ้นนี้ลงตะกร้าได้');
+            return;
+        }
         console.log(accountId);
         if (accountId === "" || accountId === undefined) {
             alert("You must LOG IN first.");
@@ -49,5 +53,6 @@ app.controller("homeCtrl", function ($scope, $http, $window, $rootScope) {
     $scope.viewProductDetail = function (productId) {
         $window.location.href = '/single/' + productId;
     };
+
 
 });

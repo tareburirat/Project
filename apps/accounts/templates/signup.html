@@ -38,6 +38,7 @@
                 <form>
                     <input type="text" username placeholder="username" ng-model="username">
                     <small>กรอกได้เฉพาะ A-Z a-z 0-9 _ และ - </small>
+                    <input type="submit" value="check username" ng-click="checkUsername()">
                     <input is-password="checkPassword" placeholder="password" ng-model="password">
                     <input type="checkbox" ng-model="checkPassword">
                     <small for="checkbox" ng-if="checkPassword">ซ่อนรหัสผ่าน</small>
@@ -59,6 +60,7 @@
                     <small>ตัวอย่าง example@hotmail.com </small>
                     <input type="text" username placeholder="displayname" ng-model="display_name">
                     <small>กรอกได้เฉพาะ A-Z a-z 0-9 _ และ - </small>
+                    <input type="submit" value="check displayname" ng-click="checkDisplayname()">
                     <input type="text" phone placeholder="telephone" ng-model="phone">
                     <small>ตัวอย่าง 0800000000 </small>
                     <input type="submit" value="ลงทะเบียน" ng-click="clickSignup()">

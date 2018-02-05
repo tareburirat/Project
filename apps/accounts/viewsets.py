@@ -65,3 +65,17 @@ def password_change(request):
         return Response(status=status.HTTP_400_BAD_REQUEST, data={'message': "Old password is incorrect."})
     else:
         return Response(status=status.HTTP_200_OK, data={'message': "Success!"})
+
+@api_view(['get'])
+def check_username(request):
+    username = request.GET.get('username')
+    exist = User.objects.filter(username=username).exists()
+    can_use = not exist
+    return Response(status=status.HTTP_200_OK, data={'can_use': can_use})
+
+@api_view(['get'])
+def check_displayname(request):
+    display_name = request.GET.get('display_name')
+    exist = Account.objects.filter(display_name=display_name).exists()
+    can_use = not exist
+    return Response(status=status.HTTP_200_OK, data={'can_use': can_use})
