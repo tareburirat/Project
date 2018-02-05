@@ -56,86 +56,97 @@
                     </a>
                 </div>
             </div>
-            <div>
+              <div>
                 <hr>
             </div>
-
+            <!-- add address -->
             <div class="container">
                 <p>
-                    <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" aria-expanded="false"
-                       aria-controls="collapseExample">
-                        Link with href
+                    {#                    <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" aria-expanded="false"#}
+                    {#                       aria-controls="collapseExample">#}
+                    {#                        Link with href#}
+                    {#                    </a>#}
+                    {#                    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample"#}
+                    {#                            aria-expanded="false" aria-controls="collapseExample">#}
+                    {#                        Button with data-target#}
+                    {#                    </button>#}
+                    <a data-toggle="collapse" href="#add" aria-expanded="false"
+                       aria-controls="collapseExample" >
+                        เพิ่มที่อยู่
                     </a>
-                    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample"
-                            aria-expanded="false" aria-controls="collapseExample">
-                        Button with data-target
-                    </button>
                 </p>
-                <div class="collapse" id="collapseExample">
-                    <div class="card card-block">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
-                        Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
-                        proident.
-                    </div>
-                </div>
-                <h4>เพิ่มที่อยู่</h4>
-                <div class="add">
-                    <div class="form-group row">
-                        <label for="input" class="col-sm-3 col-form-label" align="right">ชื่อ - นามสกุล : </label>
-                        <div class="col-sm-6">
-                            <input class="form-control col-sm-10" type="text" disabled
-                                   value="{{ request.user.account.first_name }}  {{ request.user.account.last_name }}">
+                {#                <div class="collapse" id="collapseExample">#}
+                {#                    <div class="card card-block">#}
+                {#                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.#}
+                {#                        Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea#}
+                {#                        proident.#}
+                {#                    </div>#}
+                {#                </div>#}
+
+                <div class="collapse" id="add">
+{#                    <div class="card card-block">#}
+                        {#                                      <h4>เพิ่มที่อยู่</h4>#}
+                        <div class="add">
+                            <div class="form-group row">
+                                <label for="input" class="col-sm-3 col-form-label" align="right">ชื่อ - นามสกุล : </label>
+                                <div class="col-sm-6">
+                                    <input class="form-control col-sm-10" type="text" disabled
+                                           value="{{ request.user.account.first_name }}  {{ request.user.account.last_name }}">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="input" class="col-sm-3 col-form-label" align="right">เบอร์โทรศัพท์ : </label>
+                                <div class="col-sm-6">
+                                    <input class="form-control col-sm-10" type="text" disabled
+                                           value="{{ request.user.account.phone }}">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="input" class="col-sm-3 col-form-label" align="right">อีเมล : </label>
+                                <div class="col-sm-6">
+                                    <input class="form-control col-sm-10" type="text" disabled
+                                           value="{{ request.user.account.email }}">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="input" class="col-sm-3 col-form-label" align="right">ที่อยู่ : </label>
+                                <div class="col-sm-6">
+                                    <input class="form-control col-sm-10" type="text" ng-model="address">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="input" class="col-sm-3 col-form-label" align="right">ตำบล/แขวง : </label>
+                                <div class="col-sm-6">
+                                    <input class="form-control col-sm-10" type="text" ng-model="sub_district">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="input" class="col-sm-3 col-form-label" align="right">อำเภอ/เขต : </label>
+                                <div class="col-sm-6">
+                                    <input class="form-control col-sm-10" type="text" ng-model="district">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="input" class="col-sm-3 col-form-label" align="right">จังหวัด : </label>
+                                <div class="col-sm-6">
+                                    <input class="form-control col-sm-10" type="text" ng-model="province">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="input" class="col-sm-3 col-form-label" align="right">รหัสไปรษณีย์ : </label>
+                                <div class="col-sm-6">
+                                    <input class="form-control col-sm-10" type="text" ng-model="zip_code">
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="input" class="col-sm-3 col-form-label" align="right">เบอร์โทรศัพท์ : </label>
-                        <div class="col-sm-6">
-                            <input class="form-control col-sm-10" type="text" disabled
-                                   value="{{ request.user.account.phone }}">
+                        <div style="text-align-last: center">
+                            <button ng-click="saveAddress()" class="btn btn-secondary btn-lg">บันทึก</button>
                         </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="input" class="col-sm-3 col-form-label" align="right">อีเมล : </label>
-                        <div class="col-sm-6">
-                            <input class="form-control col-sm-10" type="text" disabled
-                                   value="{{ request.user.account.email }}">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="input" class="col-sm-3 col-form-label" align="right">ที่อยู่ : </label>
-                        <div class="col-sm-6">
-                            <input class="form-control col-sm-10" type="text" ng-model="address">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="input" class="col-sm-3 col-form-label" align="right">ตำบล/แขวง : </label>
-                        <div class="col-sm-6">
-                            <input class="form-control col-sm-10" type="text" ng-model="sub_district">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="input" class="col-sm-3 col-form-label" align="right">อำเภอ/เขต : </label>
-                        <div class="col-sm-6">
-                            <input class="form-control col-sm-10" type="text" ng-model="district">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="input" class="col-sm-3 col-form-label" align="right">จังหวัด : </label>
-                        <div class="col-sm-6">
-                            <input class="form-control col-sm-10" type="text" ng-model="province">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="input" class="col-sm-3 col-form-label" align="right">รหัสไปรษณีย์ : </label>
-                        <div class="col-sm-6">
-                            <input class="form-control col-sm-10" type="text" ng-model="zip_code">
-                        </div>
-                    </div>
-                </div>
-                <div style="text-align-last: center">
-                    <button ng-click="saveAddress()" class="btn btn-secondary btn-lg">บันทึก</button>
+{#                    </div>#}
                 </div>
             </div>
+            <!-- end add -->
+
         </div>
     </div>
     <p>&nbsp;</p>
