@@ -37,9 +37,9 @@ class ProductSearchView(TemplateView):
         context['query_string'] = dict(data)
         product_name = data.get("product_name", "")
         try:
-            cat_id = data.get("category", "")
-            # cat_name = Category.objects.get(id=cat_id).name
+            cat_id = data.get("category", 0)
+            cat_name = Category.objects.get(id=cat_id).name
         except Category.DoesNotExist:
-            cat_id = ""  # default value when nothing is found
-        context['bread_crumb_text'] = product_name or cat_id
+            cat_name = ""  # default value when nothing is found
+        context['bread_crumb_text'] = product_name or cat_name
         return context

@@ -27,8 +27,11 @@ app.controller("accountEditCtrl", function ($scope, $http, $window, $rootScope) 
             function (response) {
                 alert('แก้ไขข้อมูลสำเร็จ')
                 $window.location.href = "/account/profile/"
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 0b4b6da79a8faae42f8f89cd01489d61cfe1481f
             },
             function (reason) {
                 alert('แก้ไขข้อมูลไม่สำเร็จ')
