@@ -43,13 +43,17 @@
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             หมวดหมู่
                         </a>
+
                         <ul class="dropdown-menu multi-column columns-3">
+
                             <div class="row">
                                 <div class="col-sm-12">
                                     <ul class="multi-column-dropdown">
+                                         <a class="nav-item">
                                         <h6 ng-repeat="category in categories">
-                                            <a href="/product_search/?category=[[category.id]]">[[category.name]]</a>
+                                            <a class="nav-link" href="/product_search/?category=[[category.id]]" >[[category.name]]</a>
                                         </h6>
+                                        </a>
                                     </ul>
                                     <div class="clearfix"></div>
                                 </div>
@@ -65,7 +69,7 @@
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"  ng-model="searchKeyWord">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" ng-click="search()">
+                    <button class="btn btn-outline my-2 my-sm-0" type="submit" ng-click="search()">
                             Search
                     </button>
                 </form>

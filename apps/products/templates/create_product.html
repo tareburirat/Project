@@ -35,7 +35,7 @@
                 <h2>ข้อมูลทั่วไป</h2>
                 <div class="add">
                     <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">ชื่อสินค้า : </label>
+                        <label class="col-sm-2 col-form-label">*ชื่อสินค้า : </label>
                         <input class="form-control col-sm-10" type="text" placeholder="ชื่อสินค้า" ng-model="product.name">
                     </div>
 
@@ -64,7 +64,7 @@
                     </div>
 
                     <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">ราคาจัดส่ง : </label>
+                        <label class="col-sm-2 col-form-label">*ราคาจัดส่ง : </label>
                         <input class="form-control col-sm-10" type="text" placeholder="ค่าจัดส่ง" ng-model="product.freight_fee">
                     </div>
                 </div>
@@ -72,7 +72,7 @@
                 <h2>ราคา</h2>
                 <div class="add">
                     <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">ราคา : </label>
+                        <label class="col-sm-2 col-form-label">*ราคา : </label>
                         <input class="form-control col-sm-10" type="text" placeholder="ราคา" ng-model="product.price">
                     </div>
                 </div>
@@ -80,7 +80,7 @@
                 <h2>รายละเอียดเพิ่มเติม</h2>
                 <div class="add">
                     <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">รายละเอียด : </label>
+                        <label class="col-sm-2 col-form-label">*รายละเอียด : </label>
                         <textarea class="form-control col-sm-10" rows="4" cols="50" type="text" ng-model="product.detail">รายละเอียดเพิ่มเติม</textarea>
                     </div>
                 </div>
@@ -88,13 +88,13 @@
                 <h2>รูปสินค้า</h2>
                 <div class="add">
                     <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">รูปสินค้า : </label>
+                        <label class="col-sm-2 col-form-label">*รูปสินค้า : </label>
                         <input class="form-control col-sm-10" type="file" multiple ng-files="getTheFiles($files)">
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <button class="btn btn-secondary btn-lg" ng-click="submitProduct()">บันทึก</button>
+                    <button class="btn btn btn-lg" ng-click="submitProduct()">บันทึก</button>
                 </div>
             </div>
         </div>
