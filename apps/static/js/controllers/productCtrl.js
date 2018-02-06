@@ -22,6 +22,7 @@ app.controller("productCtrl", function($scope, $http, $window, $rootScope) {
         })
     };
 
+
     $scope.addToCart = function () {
         var data ={
             owner: $scope.ownerId,

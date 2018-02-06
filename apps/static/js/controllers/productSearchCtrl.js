@@ -42,7 +42,5 @@ app.controller("productSearchCtrl", function($scope, $http, $window, $rootScope)
 
     }
 
-
-
 });
 
