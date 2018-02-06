@@ -7,5 +7,5 @@ var app = angular.module("app", [])
 })
     .run(function($rootScope) {
     // $rootScope.url = 'http://172.20.10.9:8000';
-    $rootScope.url = 'http://192.168.1.42:8000';
+    $rootScope.url = 'http://localhost:8000';
 });
