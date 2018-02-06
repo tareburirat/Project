@@ -28,10 +28,10 @@ class AddressSerializer(serializers.ModelSerializer):
         district = validated_data.pop('district', None)
         province = validated_data.pop('province', None)
         zip_code = validated_data.pop('zip_code', None)
-        validated_data['address_details'] = 'Address : ' + address
-        validated_data['address_details'] += ' ,Sub district : ' + sub_district
-        validated_data['address_details'] += ' ,District: ' + district
-        validated_data['address_details'] += ' ,Province: ' + province
-        validated_data['address_details'] += ' ,zip code : ' + zip_code
+        validated_data['address_details'] = 'ที่อยู่ : ' + address
+        validated_data['address_details'] += ' ,แขวง/ตำบล : ' + sub_district
+        validated_data['address_details'] += ' ,เขต/อำเภอ : ' + district
+        validated_data['address_details'] += ' ,จังหวัด : ' + province
+        validated_data['address_details'] += ' ,ไปรษณี : ' + zip_code
         print(validated_data)
         return super(AddressSerializer, self).create(validated_data)
