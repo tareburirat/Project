@@ -75,3 +75,11 @@ class ProductImage(models.Model):
         return mark_safe('<img src="/images/{}" width="200" height="150" />'.format(self.image.name))
 
     image_tag.short_description = 'Image'
+
+
+class ProductSummary(Product):
+
+    class Meta:
+        proxy = True
+        verbose_name = 'Product Summary'
+        verbose_name_plural = 'Products Summary'
