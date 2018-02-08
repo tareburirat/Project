@@ -1,7 +1,9 @@
 from django.contrib import admin
 
 # Register your models here.
-from django.db.models import Count, Sum
+from django.db.models import Count, Sum, Min, Max
+from django.db.models.functions import Trunc
+from django.db.models import DateTimeField
 
 from apps.products.models import Product, ProductImage, ProductSummary
 
@@ -46,4 +48,23 @@ class ProductSummaryAdmin(admin.ModelAdmin):
                 .order_by('-total_value')
         )
 
-        return response
+        summary_over_time = qs.annotate(
+            period=Trunc(
+                'date_of_sale',
+                'day',
+                output_field=DateTimeField(),
+            ),
+        ).values('period').annotate(total=Sum('price')).order_by('period')
+        summary_range = summary_over_time.aggregate(
+            low=Min('total'),
+            high=Max('total'),
+        )
+        high = summary_range.get('high', 0)
+        low = summary_range.get('low', 0)
+        response.context_data['summary_over_time'] = [{
+                                                          'period': x['period'],
+                                                          'total': x['total'] or 0,
+                                                          'pct': ((x['total'] or 0) - low) / (high - low) * 100 if high > low else 0,
+                                                      } for x in summary_over_time]
+        return response  # https://medium.com/@hakibenita/how-to-turn-django-admin-into-a-lightweight-dashboard-a0e0bbf609ad
+
