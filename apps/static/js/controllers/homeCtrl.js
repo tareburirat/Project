@@ -29,8 +29,8 @@ app.controller("homeCtrl", function ($scope, $http, $window, $rootScope) {
         }
         console.log(accountId);
         if (accountId === "" || accountId === undefined) {
-            alert("You must LOG IN first.");
-            return
+            alert("กรุณาเข้าสู่ระบบก่อน");
+            return;
         }
 
         var data ={

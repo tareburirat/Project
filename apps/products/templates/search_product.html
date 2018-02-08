@@ -33,7 +33,7 @@
         </div>
     </div>
     <!-- //breadcrumbs -->
-    <div ng-controller="productSearchCtrl" ng-init="getQueryString({{ query_string }})">
+    <div ng-controller="productSearchCtrl" ng-init="getQueryString({{ query_string }}); getAccountId({{ request.user.account.id }});">
         <div class="container">
         <div class="row">
                         <div class="list-group card-deck col-md-3" ng-repeat="product in categoryProducts">
@@ -58,8 +58,7 @@
                             </a>
                             <div class="container">
                                 <hr>
-
-                                <button class="btn btn-secondary btn-sm" ng-click="viewProductDetail(product.product_data.id)">ดูรายละเอียด</button>
+{#                                <button class="btn btn-secondary btn-sm" ng-click="viewProductDetail(product.product_data.id)">ดูรายละเอียด</button>#}
                                 <button class="btn btn-secondary btn-sm" ng-click="addToCart(product.id, product.seller)">เพิ่มลงตระกร้า</button>
                             </div>
                         </div>
