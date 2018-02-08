@@ -1,3 +1,4 @@
+import datetime
 from django.db import models
 
 # Create your models here.
@@ -44,7 +45,7 @@ class Product(models.Model):
     ]
 
     product_status = models.IntegerField(verbose_name="Status", choices=status_choices, default=sale)
-    date_of_sale = models.DateTimeField(verbose_name="Date of Sale", auto_now=True)
+    date_of_sale = models.DateTimeField(verbose_name="Date of Sale", default=datetime.datetime.now())
     seller = models.ForeignKey(Account)
     price = models.DecimalField(max_digits=8, decimal_places=2, default=0)
     name = models.CharField(verbose_name="Name", max_length=200)
