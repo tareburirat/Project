@@ -43,6 +43,23 @@ app.controller("productCtrl", function($scope, $http, $window, $rootScope) {
     $scope.setImage = function (imageUrl) {
         $scope.displayImage = imageUrl;
         $scope.altText += "!"
-    }
+    };
+
+    $scope.make_offer = function (price) {
+        var data = {
+            offer_price: price,
+            buyer: $scope.ownerId,
+            product: $scope.productId
+        };
+        $http.post($scope.mama + '/api/offers/', data).then(
+            function (response) {
+                alert('offer made')
+            },
+            function (response) {
+                data = response.data;
+                alert('cannot make offer: ')
+            }
+        )
+    };
 });
 

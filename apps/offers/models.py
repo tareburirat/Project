@@ -21,7 +21,10 @@ class Offer (models.Model):
         (revoked, "Revoked"),
     ]
 
-    offer_price = models.DecimalField(verbose_name="Offer Price", max_digits=8, decimal_places=2, default=0)
-    status = models.IntegerField(verbose_name="Status", choices=status_choices, default=pending)
+    offer_price = models.DecimalField(verbose_name="Price", max_digits=8, decimal_places=2, default=0)
+    offer_status = models.IntegerField(verbose_name="Status", choices=status_choices, default=pending)
     buyer = models.ForeignKey(Account)
     product = models.ForeignKey(Product)
+
+    class Meta:
+        unique_together = ['buyer', 'product']
