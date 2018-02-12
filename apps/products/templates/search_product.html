@@ -33,7 +33,7 @@
         </div>
     </div>
     <!-- //breadcrumbs -->
-    <div ng-controller="productSearchCtrl" ng-init="getQueryString({{ query_string }})">
+    <div ng-controller="productSearchCtrl" ng-init="getQueryString({{ query_string }}); getAccountId({{ request.user.account.id }});">
         <div class="container">
         <div class="row">
                         <div class="list-group card-deck col-md-3" ng-repeat="product in categoryProducts">
@@ -52,15 +52,15 @@
                                         <p class="card-text">
                                             <small class="text-muted">[[product.product_data.date_of_sale]] [[product.product_data.id]]</small>
                                         </p>
-                                        <div class="container">
-                                            <hr>
-                                        <button class="btn btn-secondary btn-sm">ดูรายละเอียด</button>
-                                        <button class="btn btn-secondary btn-sm">เพิ่มลงตระกร้า</button>
-                                        </div>
                                     </div>
                                 </div>
                                 {#              <p>[[ product.name ]]</p> <img ng-repeat="image in product.images" src="[[image.image]]">#}
                             </a>
+                            <div class="container">
+                                <hr>
+{#                                <button class="btn btn-secondary btn-sm" ng-click="viewProductDetail(product.product_data.id)">ดูรายละเอียด</button>#}
+                                <button class="btn btn-secondary btn-sm" ng-click="addToCart(product.product_data.id, product.product_data.seller)">เพิ่มลงตระกร้า [[product.product_data.id]]</button>
+                            </div>
                         </div>
                     </div>
         </div>

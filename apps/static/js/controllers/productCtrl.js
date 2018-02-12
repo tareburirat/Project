@@ -3,9 +3,20 @@ app.controller("productCtrl", function($scope, $http, $window, $rootScope) {
     $scope.mama = $rootScope.url;
     $scope.displayImage = "";
     $scope.altText = "1234";
+    var userInfo = {};
 
     $scope.getOwnerId = function (ownerId) {
         $scope.ownerId = ownerId;
+        getUserInfo(ownerId);
+    };
+
+    var getUserInfo = function (ownerId) {
+        $http.get($scope.mama + '/api/accounts/' + ownerId + '/').then(
+            function (response) {
+                userInfo = response.data;
+                console.log(userInfo);
+            }
+        )
     };
 
     $scope.getId = function (id) {
@@ -22,7 +33,18 @@ app.controller("productCtrl", function($scope, $http, $window, $rootScope) {
         })
     };
 
-    $scope.addToCart = function () {
+
+    $scope.addToCart = function (productId, sellerId) {
+        if (userInfo.id === sellerId || userInfo.cart_products.indexOf(productId) > -1){
+            alert('ไม่สามารถซื้อสินค้าชิ้นนี้ลงตะกร้าได้');
+            return;
+        }
+        console.log($scope.ownerId);
+        if ($scope.ownerId === "" || $scope.ownerId === undefined) {
+            alert("กรุณาเข้าสู่ระบบก่อน");
+            return;
+        }
+
         var data ={
             owner: $scope.ownerId,
             product: $scope.productId
