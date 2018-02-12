@@ -36,9 +36,14 @@
             <div class="login-form-grids" form="createForm" ng-controller="accountCreateCtrl">
                 <h5>ข้อมูลเข้าสู่ระบบ</h5>
                 <form>
-                    <input type="text" username placeholder="username" ng-model="username">
+                    <div class="row ">
+                        <div class="col-md-8">
+                            <input type="text" username placeholder="username" ng-model="username"></div>
+                        <div class="col-md-4">
+                            <input type="submit" value="check username" ng-click="checkUsername()"></div>
+                    </div>
                     <small>กรอกได้เฉพาะ A-Z a-z 0-9 _ และ - </small>
-                    <input type="submit" value="check username" ng-click="checkUsername()">
+
                     <input is-password="checkPassword" placeholder="password" ng-model="password">
                     <input type="checkbox" ng-model="checkPassword">
                     <small for="checkbox" ng-if="checkPassword">ซ่อนรหัสผ่าน</small>
@@ -51,16 +56,22 @@
                     <small> | กรอกได้เฉพาะ A-Z a-z และ 0-9</small>
                     <br><br>
                     <h5>ข้อมูลส่วนตัว</h5>
-
                     <input type="text" is-name placeholder="firstname" ng-model="first_name" >
                     <small>กรอกได้เฉพาะ A-Z และ a-z</small>
                     <input type="text" is-name placeholder="lastname" ng-model="last_name" >
                     <small>กรอกได้เฉพาะ A-Z และ a-z</small>
+
                     <input type="text" placeholder="email" ng-model="email" >
                     <small>ตัวอย่าง example@hotmail.com </small>
-                    <input type="text" username placeholder="displayname" ng-model="display_name">
+                    <div class="row ">
+                        <div class="col-md-8">
+                            <input type="text" username placeholder="displayname" ng-model="display_name"></div>
+                        {#                    <small>กรอกได้เฉพาะ A-Z และ a-z</small>#}
+                        <div class="col-md-4">
+                            <input type="submit" value="check displayname" ng-click="checkDisplayname()"></div>
+                    </div>
                     <small>กรอกได้เฉพาะ A-Z a-z 0-9 _ และ - </small>
-                    <input type="submit" value="check displayname" ng-click="checkDisplayname()">
+
                     <input type="text" phone placeholder="telephone" ng-model="phone">
                     <small>ตัวอย่าง 0800000000 </small>
                     <input type="submit" value="ลงทะเบียน" ng-click="clickSignup()">
