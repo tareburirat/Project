@@ -37,7 +37,7 @@ app.directive('isName', function() {
         require: 'ngModel',
         link: function (scope, element, attr, ngModelCtrl) {
             function fromUser(text) {
-                var transformedInput = text.replace(/[^A-Za-zก-๙]/g, '');
+                var transformedInput = text.replace(/[^A-Za-zก-ฮ]/g, '');
                 console.log(transformedInput);
                 if(transformedInput !== text) {
                     ngModelCtrl.$setViewValue(transformedInput);

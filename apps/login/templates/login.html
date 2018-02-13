@@ -36,9 +36,12 @@
             <h3>เข้าสู่ระบบ</h3>
             <div class="login-form-grids">
                 <form>
-                    <input class="form-control" type="text" username ng-model="username" placeholder="Enter Username">
+                    <label class="col-form-label">ชื่อผู้ใช้</label>
+                    <input class="form-control" type="text" username ng-model="username" placeholder="กรอกผู้ชื่อใช้">
                     <small>กรอกได้เฉพาะ A-Z a-z 0-9 _ และ - </small>
-                    <input class="form-control" is-password="checkPassword" ng-model="password" placeholder="Enter Password">
+                    <br>
+                    <label class="col-form-label">รหัสผ่าน</label>
+                    <input class="form-control" is-password="checkPassword" ng-model="password" placeholder="กรอกรหัสผ่าน">
                     <input type="checkbox" ng-model="checkPassword">
                     <small for="checkbox" ng-if="checkPassword">ซ่อนรหัสผ่าน</small>
                     <small for="checkbox" ng-if="!checkPassword">แสดงรหัสผ่าน</small>

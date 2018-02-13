@@ -4131,3 +4131,49 @@ section {
 small{
     color: #999999;
 }
+.center {
+    text-align: center;
+    border: 3px solid #ffa197;
+}
+.modal-header
+{
+    background: #565656;
+    color: #ffffff;
+}
+.btn-default
+{
+    background:#ff3333;
+    color:white;
+}
+modal-footer-alert {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+    padding: 15px;
+    border-top: 1px solid #e9ecef;
+}
+button.close{
+    padding: 0;
+    background: 0 0;
+    border: 0;
+    -webkit-appearance: none;
+
+}
+.close {
+    float: right;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff2fe;
+    text-shadow: 0 1px 0 #ffa197;
+
+}
+.star-rating {
+  line-height:32px;
+  font-size:1.25em;
+}
+
+.star-rating .fa-star{color: yellow;}
