@@ -8,7 +8,6 @@ app.controller("cartCtrl", function ($scope, $http, $window, $rootScope) {
         getProduct()
     };
 
-    console.log($scope.cartId);
     var getProduct = function () {
         $http.get($scope.mama + '/api/carts/?in_cart=true&owner_id=' + $scope.cartId).then(function (response) {
             $scope.carts = response.data;
@@ -18,9 +17,13 @@ app.controller("cartCtrl", function ($scope, $http, $window, $rootScope) {
     $scope.getTotal = function () {
         var total = 0;
         $scope.carts.forEach(function (cart) {
-            total += parseInt(cart.product_data.sub_total);
+            total += $scope.subTotal(cart);
         });
         return total;
+    };
+
+    $scope.subTotal = function (cart) {
+        return parseInt(cart.sale_price) + parseInt(cart.product_data.freight_fee);
     };
 
     $scope.delProduct = function (cartId) {

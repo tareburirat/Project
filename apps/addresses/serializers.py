@@ -33,5 +33,4 @@ class AddressSerializer(serializers.ModelSerializer):
         validated_data['address_details'] += ' ,เขต/อำเภอ : ' + district
         validated_data['address_details'] += ' ,จังหวัด : ' + province
         validated_data['address_details'] += ' ,ไปรษณี : ' + zip_code
-        print(validated_data)
         return super(AddressSerializer, self).create(validated_data)

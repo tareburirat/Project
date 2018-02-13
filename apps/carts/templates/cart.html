@@ -52,9 +52,9 @@
                         </div>
                     </div>
                 </td>
-                <td data-th="Price">[[cart.product_data.price]]฿</td>
+                <td data-th="Price">[[cart.sale_price]]฿</td>
                 <td data-th="Freight">[[cart.product_data.freight_fee]]฿</td>
-                <td data-th="Subtotal" class="text-center">[[cart.product_data.sub_total]]฿</td>
+                <td data-th="Subtotal" class="text-center">[[subTotal(cart)]]฿</td>
                 <td class="actions" data-th="">
                     <button class="btn btn-danger btn-sm" ng-click="delProduct(cart.id)"><i class="fa fa-trash-o"></i></button>
                 </td>
