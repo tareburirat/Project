@@ -60,6 +60,7 @@ urlpatterns = [
     url(r'^account/', include('apps.accounts.urls')),
     url(r'^cart/', CartView.as_view()),
     url(r'^product_search/', ProductSearchView.as_view()),
+    url(r'^offer/', include('apps.orders.urls')),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

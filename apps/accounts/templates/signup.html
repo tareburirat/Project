@@ -25,7 +25,7 @@
         <div class="container">
             <ol class="breadcrumb breadcrumb1">
                 <li class="breadcrumb-item"><a href="/"><span class="fa fa-home" aria-hidden="true"></span>หน้าแรก</a></li>
-                <li class="breadcrumb-item active">ละทะเบียน</li>
+                <li class="breadcrumb-item active">ลงทะเบียน</li>
             </ol>
         </div>
     </div>
@@ -36,32 +36,51 @@
             <div class="login-form-grids" form="createForm" ng-controller="accountCreateCtrl">
                 <h5>ข้อมูลเข้าสู่ระบบ</h5>
                 <form>
-                    <input type="text" username placeholder="username" ng-model="username">
+                    <p class="col-form-label">ชื่อผู้ใช้</p>
+                    <div class="row ">
+                        <div class="col-md-8">
+                            <input type="text" username placeholder="กรอกชื่อผู้ใช้" ng-model="username"></div>
+                        <div class="col-md-4">
+                            <input type="submit" value="ตรวจสอบ" ng-click="checkUsername()"></div>
+                    </div>
                     <small>กรอกได้เฉพาะ A-Z a-z 0-9 _ และ - </small>
-                    <input type="submit" value="check username" ng-click="checkUsername()">
-                    <input is-password="checkPassword" placeholder="password" ng-model="password">
+
+                    <p class="col-form-label">รหัสผ่าน</p>
+                    <input is-password="checkPassword" placeholder="รหัสผ่าน" ng-model="password">
                     <input type="checkbox" ng-model="checkPassword">
                     <small for="checkbox" ng-if="checkPassword">ซ่อนรหัสผ่าน</small>
                     <small for="checkbox" ng-if="!checkPassword">แสดงรหัสผ่าน</small>
                     <small> | กรอกได้เฉพาะ A-Z a-z และ 0-9</small>
-                    <input is-password="checkPasswordAgain" placeholder="password again" ng-model="passwordAgain">
+                    <p class="col-form-label">ยืนยันรหัสผ่าน</p>
+                    <input is-password="checkPasswordAgain" placeholder="กรอกรหัสผ่านอีกครั้ง" ng-model="passwordAgain">
                     <input type="checkbox" ng-model="checkPasswordAgain">
                     <small for="checkbox" ng-if="!checkPasswordAgain">Show password</small>
                     <small for="checkbox" ng-if="checkPasswordAgain">ซแสดงรหัสผ่าน</small>
                     <small> | กรอกได้เฉพาะ A-Z a-z และ 0-9</small>
                     <br><br>
-                    <h5>ข้อมูลส่วนตัว</h5>
 
-                    <input type="text" is-name placeholder="firstname" ng-model="first_name" >
-                    <small>กรอกได้เฉพาะ A-Z และ a-z</small>
-                    <input type="text" is-name placeholder="lastname" ng-model="last_name" >
-                    <small>กรอกได้เฉพาะ A-Z และ a-z</small>
-                    <input type="text" placeholder="email" ng-model="email" >
+                    <h5>ข้อมูลส่วนตัว</h5>
+                    <p class="col-form-label">ชื่อ - นามสกุล</p>
+                    <input type="text" is-name placeholder="ชื่อ" ng-model="first_name" >
+                    <small>กรอกได้เฉพาะ A-Z a-z และ ก-ฮ </small>
+                    <input type="text" is-name placeholder="นามสกุล" ng-model="last_name" >
+                    <small>กรอกได้เฉพาะ A-Z a-z และ ก-ฮ</small>
+
+                    <p class="col-form-label">อีเมล</p>
+                    <input type="text" placeholder="อีเมล" ng-model="email" >
                     <small>ตัวอย่าง example@hotmail.com </small>
-                    <input type="text" username placeholder="displayname" ng-model="display_name">
+                    <p class="col-form-label">Display Name</p>
+                    <div class="row ">
+                        <div class="col-md-8">
+                            <input type="text" username placeholder="displayname" ng-model="display_name"></div>
+                        {#                    <small>กรอกได้เฉพาะ A-Z และ a-z</small>#}
+                        <div class="col-md-4">
+                            <input type="submit" value="ตรวจสอบ" ng-click="checkDisplayname()"></div>
+                    </div>
                     <small>กรอกได้เฉพาะ A-Z a-z 0-9 _ และ - </small>
-                    <input type="submit" value="check displayname" ng-click="checkDisplayname()">
-                    <input type="text" phone placeholder="telephone" ng-model="phone">
+
+                    <p class="col-form-label">เบอร์โทรศัพท์</p>
+                    <input type="text" phone placeholder="เบอร์โทรศัพท์" ng-model="phone">
                     <small>ตัวอย่าง 0800000000 </small>
                     <input type="submit" value="ลงทะเบียน" ng-click="clickSignup()">
                 </form>
