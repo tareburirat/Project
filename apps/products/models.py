@@ -84,3 +84,5 @@ class ProductSummary(Product):
         proxy = True
         verbose_name = 'Product Summary'
         verbose_name_plural = 'Products Summary'
+
+

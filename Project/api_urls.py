@@ -17,8 +17,9 @@ from apps.values.viewsets import ValueViewSet
 router = DefaultRouter()
 router.register('accounts', AccountViewSet, base_name='account')
 router.register('addresses', AddressViewSet, base_name='address')
-router.register('carts', CartViewSet, base_name='cart')
 router.register('categories', CategoryViewSet, base_name='category')
+router.register('category_products', CategoryProductViewSet, base_name='categoryProduct')
+router.register('carts', CartViewSet, base_name='cart')
 router.register('offers', OfferViewSet, base_name='offer')
 router.register('orders', OrderViewSet, base_name='order')
 router.register('products', product_viewsets.ProductViewSet, base_name='product')
@@ -26,7 +27,6 @@ router.register('properties', PropertyViewSet, base_name='property')
 router.register('ratings', RatingViewSet, base_name='rating')
 router.register('transactions', TransactionViewSet, base_name='transaction')
 router.register('values', ValueViewSet, base_name='value')
-router.register('category_products', CategoryProductViewSet, base_name='categoryProduct')
 
 
 urlpatterns = [
