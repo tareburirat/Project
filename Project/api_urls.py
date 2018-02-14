@@ -6,7 +6,7 @@ from apps.addresses.viewsets import AddressViewSet
 from apps.carts.viewsets import CartViewSet
 from apps.categories.viewsets import CategoryViewSet
 from apps.category_product.viewset import CategoryProductViewSet
-from apps.offers.viewsets import OfferViewSet
+from apps.offers.viewsets import OfferViewSet, get_highest_offer_for_all_products, reject_or_accept_product_offer
 from apps.orders.viewsets import OrderViewSet
 from apps.products import viewsets as product_viewsets
 from apps.properties.viewsets import PropertyViewSet
@@ -35,6 +35,10 @@ urlpatterns = [
     url(r'^password_change/', password_change),
     url(r'^check_username/', check_username),
     url(r'^check_displayname/', check_displayname),
+
+    # offer functions
+    url(r'high_offers/', get_highest_offer_for_all_products),
+    url(r'update_offers/', reject_or_accept_product_offer),
 
     # product functions
     url(r'^save_products/', product_viewsets.save_product),
