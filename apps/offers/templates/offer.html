@@ -1,39 +1,105 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+<script src="{% static 'js/components/jquery-3.2.1.min.js' %}"></script>
 <script src="{% static 'js/components/angular.min.js' %}"></script>
-<head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Offer</title>
-</head>
-<body>
+<script src="{% static 'js/app.js' %}"></script>
+<script src="{% static 'js/controllers/product/myProductCtrl.js' %}"></script>
+<div ng-app="app">
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>My Profile</title>
+    </head>
+    <body>
     <!-- header -->
-	<div>{% include "header.html" %}</div>
-<!-- //header -->
-<!-- breadcrumbs -->
+    <div>{% include "header.html" %}</div>
+    <!-- //header -->
+    <!-- breadcrumbs -->
     <div class="breadcrumbs">
-		<div class="container">
-              <ol class="breadcrumb breadcrumb1">
+        <div class="container">
+            <ol class="breadcrumb breadcrumb1">
                 <li class="breadcrumb-item"><a href="/"><span class="fa fa-home" aria-hidden="true"></span>หน้าแรก</a></li>
-				<li class="breadcrumb-item active">offer</li>
-              </ol>
-		</div>
+                <li class="breadcrumb-item active">ข้อมูลของฉัน</li>
+            </ol>
+        </div>
     </div>
-<!-- //breadcrumbs -->
+    <!-- //breadcrumbs -->
+    <div style="background: #F7F7F9">
+        <div class="container">
+            &nbsp;
+            <div class="row profile">
+                <div class="col-md-3 shadows" style="background: #F5F5F5" align="left">
+                    <div>{% include "tab_menu_profile.html" %}</div>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </div>
+                <div class="col-md-9 shadows" >
+                    <!-- profile -->
+                    <div class="add">
+                        <div class="container">
+                            <h3>เสนอราคา</h3>
+                            <br>
+                            <hr color="#212121">
+                            <div ng-controller="myProductCtrl" ng-init="getId({{ request.user.account.id }})">
+                                <table id="cart" class="table table-hover table-condensed">
+                                    <thead>
+                                    <tr>
+                                        <th style="width:45%">สินค้า</th>
+                                        <th style="width:15%">ราคาที่เสนอ</th>
+                                        <th style="width:8%"> </th>
+                                        {#                                    <th style="width:22%" class="text-center">Subtotal</th>#}
+                                        <th style="width:10%"> </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr ng-repeat="product in products">
+                                        <td data-th="Product">
+                                            <div class="row">
+                                                <div class="col-sm-2 hidden-xs"><img src="[[product.first_image_url]]" alt="..." class="img-responsive" style="width: 5rem; height: 5rem;"/></div>
+                                                <div class="col-sm-10">
+                                                    <h4 class="nomargin">[[product.name]]</h4>
+                                                    <p><b>ราคา : </b>[[product.price]]</p>
+                                                    {#                                                    <p><b>ค่าจัดส่ง : </b>[[product.freight_fee]] บาท</p>#}
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td data-th="Price">[[product.price]] ฿</td>
+                                        <td data-th="Quantity">
+                                            <button type="button" class="btn btn btn-block" >ยอมรับ</button>
 
-    hi offer
 
-            <!-- footer -->
-           <div>{% include "footer.html" %}</div>
-            <!-- //footer -->
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+                                        </td>
+                                        {#                                    <td data-th="Subtotal" class="text-center">1.99</td>#}
+                                        <td class="actions" data-th="">
+                                            <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+                &nbsp;
+            </div>
+        </div>
+    </div>
+    <!-- footer -->
+    <div>{% include "footer.html" %}</div>
+    <!-- //footer -->
+    <script src="{% static 'js/components/profileTab.js' %}"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
-</body>
+    </body>
+</div>
 </html>

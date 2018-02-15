@@ -8,3 +8,7 @@ class OrderView(TemplateView):
 
 class PlaceOrderView(TemplateView):
     template_name = 'place_order.html'
+
+
+class PurchaseOrderView(TemplateView):
+    template_name = 'purchase_order.html'

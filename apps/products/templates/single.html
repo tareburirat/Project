@@ -3,7 +3,7 @@
 <html lang="en">
 <script src="{% static 'js/components/angular.min.js' %}"></script>
 <script src="{% static 'js/app.js' %}"></script>
-<script src="{% static 'js/controllers/productCtrl.js' %}"></script>
+<script src="{% static 'js/controllers/product/productCtrl.js' %}"></script>
 
 <div ng-app="app">
 <head>
@@ -100,8 +100,8 @@
                                 <div class="add-review">
                                     <form>
                                         <input type="text" value="" onfocus="this.value = '';"
-                                               onblur="if (this.value == '') {this.value = 'offer';}" required="">
-                                        <input type="submit" value="เสนอ">
+                                               onblur="if (this.value == '') {this.value = 'offer';}" required="" ng-model="offer">
+                                        <button ng-click="make_offer(offer)">"เสนอ"</button>
                                     </form>
                                 </div>
                                 <div class="clearfix"></div>

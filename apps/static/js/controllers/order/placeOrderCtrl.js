@@ -37,9 +37,13 @@ app.controller("placeOrderCtrl", function ($scope, $http, $window, $rootScope) {
     $scope.getTotal = function () {
         var total = 0;
         $scope.carts.forEach(function (cart) {
-            total += parseInt(cart.product_data.sub_total);
+            total += $scope.subTotal(cart);
         });
         return total;
+    };
+
+    $scope.subTotal = function (cart) {
+        return parseInt(cart.sale_price) + parseInt(cart.product_data.freight_fee);
     };
 
     $scope.placeOrder = function () {
@@ -47,7 +51,7 @@ app.controller("placeOrderCtrl", function ($scope, $http, $window, $rootScope) {
             var orderItems = [];
             carts.forEach(function (cartItem) {
                 var orderItem = {
-                    price: cartItem.product_data.price,
+                    price: cartItem.sale_price,
                     product: cartItem.product_data.id,
                     seller: cartItem.product_data.seller
                 };

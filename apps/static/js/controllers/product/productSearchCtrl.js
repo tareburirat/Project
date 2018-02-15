@@ -60,7 +60,7 @@ app.controller("productSearchCtrl", function($scope, $http, $window, $rootScope)
 
     };
 
-    $scope.addToCart = function (productId) {
+    $scope.addToCart = function (productId, sellerId) {
         console.log(accountId);
         if (accountId === "" || accountId === undefined) {
             alert("กรุณาเข้าสู่ระบบก่อน");
@@ -71,7 +71,7 @@ app.controller("productSearchCtrl", function($scope, $http, $window, $rootScope)
             owner: accountId,
             product: productId
         };
-
+        debugger;
         $http.post($scope.mama + '/api/carts/', data).then(
             function (response) {
                 // alert(response.data);

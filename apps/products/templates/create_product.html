@@ -3,7 +3,7 @@
 <html lang="en">
 <script src="{% static 'js/components/angular.min.js' %}"></script>
 <script src="{% static 'js/app.js' %}"></script>
-<script src="{% static 'js/controllers/productCreateCtrl.js' %}"></script>
+<script src="{% static 'js/controllers/product/productCreateCtrl.js' %}"></script>
 
 <div ng-app="app">
     <head>
@@ -92,6 +92,7 @@
                         <input class="form-control col-sm-10" type="file" multiple ng-files="getTheFiles($files)">
                     </div>
                 </div>
+                
 
                 <div class="form-group">
                     <button class="btn btn btn-lg" ng-click="submitProduct()">บันทึก</button>

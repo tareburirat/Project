@@ -3,6 +3,7 @@ from django.db import models
 # Create your models here.
 from apps.accounts.models import Account
 from apps.carts.models import Cart
+from apps.offers.models import Offer
 from apps.products.models import Product
 
 
@@ -29,3 +30,12 @@ class OrderItem(models.Model):
 
     def __str__(self):
         return str(self.id)
+
+    def save(self, *args, **kwargs):
+        self.check_offer()  # if the offer was accepted
+        return super(OrderItem, self).save(*args, **kwargs)
+
+    def check_offer(self):
+        offers = Offer.objects.filter(product_id=self.product_id, offer_status=Offer.accept)
+        if offers.exists():
+            self.price = offers.first().offer_price

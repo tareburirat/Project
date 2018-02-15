@@ -8,6 +8,7 @@ class Cart(models.Model):
 
     owner = models.ForeignKey(Account)
     product = models.ForeignKey(Product)
+    sale_price = models.IntegerField(default=0)
     in_cart = models.BooleanField(verbose_name="Status", default=True)
 
     def __str__(self):
