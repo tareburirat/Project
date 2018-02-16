@@ -4,7 +4,7 @@
 <script src="{% static 'js/components/jquery-3.2.1.min.js' %}"></script>
 <script src="{% static 'js/components/angular.min.js' %}"></script>
 <script src="{% static 'js/app.js' %}"></script>
-<script src="{% static 'js/controllers/product/myProductCtrl.js' %}"></script>
+<script src="{% static 'js/controllers/approveOfferCtrl.js' %}"></script>
 <div ng-app="app">
     <head>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
@@ -43,7 +43,7 @@
                             <h3>เสนอราคา</h3>
                             <br>
                             <hr color="#212121">
-                            <div ng-controller="myProductCtrl" ng-init="getId({{ request.user.account.id }})">
+                            <div ng-controller="approveOfferCtrl" ng-init="getId({{ request.user.account.id }})">
                                 <table id="cart" class="table table-hover table-condensed">
                                     <thead>
                                     <tr>
@@ -55,37 +55,29 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr ng-repeat="product in products">
+                                    <tr ng-repeat="offer in offers">
                                         <td data-th="Product">
                                             <div class="row">
-                                                <div class="col-sm-2 hidden-xs"><img src="[[product.first_image_url]]" alt="..." class="img-responsive" style="width: 5rem; height: 5rem;"/></div>
+                                                <div class="col-sm-2 hidden-xs"><img src="[[offer.product_data.first_image_url]]" alt="..." class="img-responsive" style="width: 5rem; height: 5rem;"/></div>
                                                 <div class="col-sm-10">
-                                                    <h4 class="nomargin">[[product.name]]</h4>
-                                                    <p><b>ราคา : </b>[[product.price]]</p>
+                                                    <h4 class="nomargin">[[offer.product_data.name]]</h4>
+                                                    <p><b>ราคา : </b>[[offer.product_data.price]]</p>
                                                     {#                                                    <p><b>ค่าจัดส่ง : </b>[[product.freight_fee]] บาท</p>#}
                                                 </div>
                                             </div>
                                         </td>
-                                        <td data-th="Price">[[product.price]] ฿</td>
+                                        <td data-th="Price">[[offer.offer_price]] ฿</td>
                                         <td data-th="Quantity">
-                                            <button type="button" class="btn btn btn-block" >ยอมรับ</button>
-
-
+                                            <button type="button" class="btn btn btn-block" ng-click="acceptOffer(offer.product_data.id, offer.id)">ยอมรับ</button>
                                         </td>
                                         {#                                    <td data-th="Subtotal" class="text-center">1.99</td>#}
                                         <td class="actions" data-th="">
-                                            <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>
+                                            <button class="btn btn-danger btn-sm" ng-click="rejectOffer(offer.product_data.id, offer.id)"><i class="fa fa-trash-o"></i></button>
                                         </td>
                                     </tr>
                                     </tbody>
                                 </table>
                             </div>
-
-
-
-
-
-
                         </div>
                     </div>
                 </div>
