@@ -82,5 +82,6 @@ app.controller("productCtrl", function($scope, $http, $window, $rootScope) {
             }
         )
     };
+
 });
 

@@ -5,7 +5,6 @@ from rest_framework.response import Response
 from apps.offers.models import Offer
 from apps.offers.serializers import OfferSerializer
 from apps.products.models import Product
-from apps.products.serializers import ProductSerializer
 
 
 class OfferViewSet(viewsets.ModelViewSet):
@@ -13,9 +12,9 @@ class OfferViewSet(viewsets.ModelViewSet):
     queryset = Offer.objects.all()
 
 
-@api_view(['GET'])
+@api_view(['POST'])
 def get_highest_offer_for_all_products(request):
-    highest_price_product_list = []
+    offer_list = []
     added_product_ids = set()
     try:
         seller_id = request.data['seller_id']
@@ -26,9 +25,9 @@ def get_highest_offer_for_all_products(request):
         for offer in offers:
             if offer.product_id not in added_product_ids:
                 added_product_ids.add(offer.product_id)
-                highest_price_product_list.append(offer)
+                offer_list.append(offer)
 
-        return Response(status=status.HTTP_200_OK, data={'products': ProductSerializer(highest_price_product_list).data})
+        return Response(status=status.HTTP_200_OK, data={'offers': OfferSerializer(offer_list, many=True).data})
 
     except (KeyError, ValueError):
         return Response(status=status.HTTP_400_BAD_REQUEST, data={'message': 'seller_id is invalid or missing jaa'})
@@ -39,12 +38,12 @@ def reject_or_accept_product_offer(request):
     data = request.data
     try:
         product_id = data['product_id']
-        offer_id = data['offer_id']
-        offer_accepted= data['offer_accepted']
+        offer_id = data.get('offer_id')
+        offer_accepted = data['offer_accepted']
 
         if offer_accepted is True:
             # validate product
-            if Product.objects.filter(id=product_id, status=Product.sale).exists() is not True:
+            if Product.objects.filter(id=product_id, product_status=Product.sale).exists() is not True:
                 raise Product.DoesNotExist()
 
             offer = Offer.objects.get(id=offer_id)
@@ -52,6 +51,8 @@ def reject_or_accept_product_offer(request):
             offer.save()
 
         Offer.objects.filter(product_id=product_id, offer_status=Offer.pending).update(offer_status=Offer.rejected)
+        return Response(status=status.HTTP_200_OK)
 
     except (KeyError, Product.DoesNotExist):
         return Response(status=status.HTTP_400_BAD_REQUEST, data={'message': 'request is invalid jaa'})
+

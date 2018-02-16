@@ -1,3 +1,6 @@
+import datetime
+import random
+
 from django.db import models
 
 # Create your models here.
@@ -8,18 +11,27 @@ from apps.products.models import Product
 
 
 class Order(models.Model):
+    order_number = models.CharField(max_length=30, blank=True)
     buyer = models.ForeignKey(Account)
     price = models.DecimalField(max_digits=8, decimal_places=2)
     date = models.DateField(auto_now=True)
 
     def save(self, *args, **kwargs):
         self.update_product_not_available()
+        self.gen_order_number()
         return super(Order, self).save(*args, **kwargs)
 
     def update_product_not_available(self):
         product_id_list = self.buyer.cart_set.values_list('product_id', flat=True)
         Product.objects.filter(id__in=product_id_list).update(product_status=Product.sold)
         Cart.objects.filter(product_id__in=product_id_list).update(in_cart=False)
+
+    def gen_order_number(self):
+        order_number = ""
+        random_number = random.randint(0, 999)
+        date_string = datetime.datetime.now().strftime('%d%m%Y')
+        order_number += date_string + str(0).zfill(6) + str(random_number).zfill(3)
+        self.order_number = order_number
 
 
 class OrderItem(models.Model):
