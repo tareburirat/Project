@@ -24,7 +24,17 @@ app.controller("addressCtrl", function ($scope, $window, $http, $rootScope) {
         );
     };
 
+    $scope.confirmAddress = function () {
+        if ($scope.addresses.length === 0) {
+            alert("pls select address");
+            return;
+        }
+        $scope.updatePrimaryAddress();
+
+    };
+
     $scope.updatePrimaryAddress = function () {
+
         var addressId = $scope.addresses[$scope.selectedAddress].id;
         var data = {
             primary: true
@@ -32,13 +42,17 @@ app.controller("addressCtrl", function ($scope, $window, $http, $rootScope) {
         $http.patch($scope.mama + '/api/addresses/' + addressId + '/', data).then(
             function (response) {
                 console.log(response);
-                alert('success')
+                alert('success');
+                $window.location.href =  $scope.mama + '/order/place_order/';
             },
             function (response) {
                 console.log(response);
                 alert('failed');
+
+
             }
         );
+
     };
 
     $scope.updateSelectedAddress = function (addressId) {
