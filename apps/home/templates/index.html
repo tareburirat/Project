@@ -121,7 +121,7 @@
                                 <hr>
 
                                 <button class="btn btn-secondary btn-sm" ng-click="viewProductDetail(product.id)">ดูรายละเอียด</button>
-                                <button class="btn btn-secondary btn-sm" ng-click="addToCart(product.id, product.seller)">เพิ่มลงตระกร้า</button>
+                                <button class="btn btn-secondary btn-sm" ng-disabled="product.seller_data.id == {{ request.user.account.id }}" ng-click="addToCart(product.id, product.seller)">เพิ่มลงตระกร้า</button>
                             </div>
                         </div>
                     </div>
