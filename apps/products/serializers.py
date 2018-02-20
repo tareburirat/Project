@@ -16,7 +16,7 @@ class ProductImageSerializer(serializers.ModelSerializer):
         fields = ['product', 'image']
 
     def get_image(self, obj):
-        return "http://192.168.1.113:8000/" + obj.image.url
+        return "http://localhost:8000/" + obj.image.url
 
 
 class ProductSerializer(serializers.ModelSerializer):
@@ -45,7 +45,7 @@ class ProductSerializer(serializers.ModelSerializer):
         if first_image is None:
             return ""
         else:
-            return "http://192.168.1.113:8000/" + first_image.image.url
+            return "http://localhost:8000/" + first_image.image.url
 
     @staticmethod
     def get_freight_detail(obj):
