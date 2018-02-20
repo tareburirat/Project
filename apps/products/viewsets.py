@@ -5,6 +5,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import status
 from rest_framework import viewsets
 from rest_framework.decorators import api_view
+from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
 
 from apps.category_product.models import CategoryProduct
@@ -19,6 +20,8 @@ class ProductViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.all().order_by('-pk')
     filter_backends = (DjangoFilterBackend,)
     filter_fields = ['seller_id', 'product_status']
+    pagination_class = PageNumberPagination
+
 
 
 @csrf_exempt
