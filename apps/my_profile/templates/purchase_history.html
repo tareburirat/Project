@@ -5,6 +5,7 @@
 <script src="{% static 'js/components/angular.min.js' %}"></script>
 <script src="{% static 'js/app.js' %}"></script>
 <script src="{% static 'js/controllers/order/placeOrderCtrl.js' %}"></script>
+<script src="{% static 'js/controllers/ratingCtrl.js' %}"></script>
 <div ng-app="app">
     <head>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
@@ -300,7 +301,8 @@
                     </div>
                 </div>
 
-                <div id="Confirm" class="modal fade" role="dialog">
+                <div id="Confirm" class="modal fade" role="dialog" ng-controller="ratingCtrl">
+
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -310,7 +312,7 @@
                             <div class="modal-body">
                                 <form>
                                     <div class="row">
-                                        <label class="col-md-8 col-form-label">หมายเลขคำสั่งซื้อ : 00000000 </label>
+                                        <label class="col-md-8 col-form-label">หมายเลขคำสั่งซื้อ : 00000000 [[mama]]- [[benz]]</label>
                                     </div>
                                     <div class="row form-group">
                                         <label class="col-md-4 col-form-label">ให้คะแนนร้านค้า: </label>
@@ -318,11 +320,12 @@
                                         <div class="row">
                                             <div class="col-lg-12">
                                                 <div class="star-rating">
-                                                    <span class="fa fa-star-o" data-rating="1"></span>
-                                                    <span class="fa fa-star-o" data-rating="2"></span>
-                                                    <span class="fa fa-star-o" data-rating="3"></span>
-                                                    <span class="fa fa-star-o" data-rating="4"></span>
-                                                    <span class="fa fa-star-o" data-rating="5"></span>
+                                                    <span class="fa fa-star-o" data-rating="1" ng-click="setRating(1)"></span>
+                                                    <span class="fa fa-star-o" data-rating="2" ng-click="setRating(2)"></span>
+                                                    <span class="fa fa-star-o" data-rating="3" ng-click="setRating(3)"></span>
+                                                    <span class="fa fa-star-o" data-rating="4" ng-click="setRating(4)"></span>
+                                                    <span class="fa fa-star-o" data-rating="5" ng-click="setRating(5)"></span>
+
                                                     <input type="hidden" name="whatever3" class="rating-value" value="0">
                                                 </div>
                                             </div>
@@ -334,7 +337,7 @@
                             </div>
                             <div class="modal-footer-alert" align="center">
                             <p align="center">
-                                <button type="button" class="btn" data-dismiss="modal">บันทึก</button>
+                                <button type="button" class="btn" data-dismiss="modal">บันทึก - [[rating]]</button>
                             </p>
                         </div>
                             <br>
