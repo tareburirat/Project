@@ -9,7 +9,6 @@ from apps.products.serializers import ProductSerializer
 class OrderItemSerializer(serializers.ModelSerializer):
     product = ProductSerializer()
 
-
     class Meta:
         model = OrderItem
         exclude = []
