@@ -51,7 +51,7 @@ def reject_or_accept_product_offer(request):
             offer.save()
 
         Offer.objects.filter(product_id=product_id, offer_status=Offer.pending).update(offer_status=Offer.rejected)
-        return Response(status=status.HTTP_200_OK)
+        return Response(status=True)
 
     except (KeyError, Product.DoesNotExist):
         return Response(status=status.HTTP_400_BAD_REQUEST, data={'message': 'request is invalid jaa'})
