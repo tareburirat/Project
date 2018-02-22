@@ -27,6 +27,7 @@ app.controller("placeOrderCtrl", function ($scope, $http, $window, $rootScope) {
         $http.get($scope.mama + '/api/carts/?in_cart=true&owner_id=' + $scope.userInfo.id).then(
             function success(response) {
                 $scope.carts = response.data;
+
             },
             function failure() {
                 alert('Cannot retrieve cart information.');
@@ -67,8 +68,8 @@ app.controller("placeOrderCtrl", function ($scope, $http, $window, $rootScope) {
         };
         $http.post($scope.mama + '/api/orders/', data).then(
             function success(response) {
-                alert('success')
-                $window.location.href = '/'
+                alert('success');
+                $window.location.href = $scope.mama + '/order/purchase_order/' + response.data.order_number;
             },
             function () {
                 alert('fail')

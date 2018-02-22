@@ -15,6 +15,7 @@ class Order(models.Model):
     buyer = models.ForeignKey(Account)
     price = models.DecimalField(max_digits=8, decimal_places=2)
     date = models.DateField(auto_now=True)
+    order_address = models.CharField(max_length=200, blank=True)
 
     def save(self, *args, **kwargs):
         self.update_product_not_available()
@@ -35,10 +36,17 @@ class Order(models.Model):
 
 
 class OrderItem(models.Model):
+    draft = 0
+
+    status_choices = [
+        (draft, "Draft"),
+    ]
     order = models.ForeignKey(Order, related_name='order_items')
     price = models.DecimalField(max_digits=8, decimal_places=2)
     product = models.ForeignKey(Product)
     seller = models.ForeignKey(Account, related_name='sales', related_query_name='sales')
+    order_status = models.IntegerField(verbose_name="Status", choices=status_choices, default=draft)
+    order_track = models.CharField(verbose_name="Tracking", max_length=13, blank=True)
 
     def __str__(self):
         return str(self.id)
