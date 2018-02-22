@@ -1,14 +1,28 @@
 app.controller("homeCtrl", function ($scope, $http, $window, $rootScope) {
     $scope.mama = $rootScope.url;
+    $scope.next = "";
+    $scope.previous = "";
     var accountId = "";
     var userInfo = {};
     $scope.products = [];
 
-    $http.get($scope.mama + '/api/products/?product_status=1').then(function (response) {
-        $scope.products = response.data;
-    });
+    $http.get($scope.mama + '/api/products/?product_status=1').then(
+        function (response) {
+            $scope.products = response.data.results;
+            $scope.next = response.data.next;
+            $scope.previous = response.data.previous;
+        });
 
-    $scope.getAccountId = function(accId) {
+    $scope.getProduct = function (url) {
+        $http.get(url).then(
+            function (response) {
+                $scope.products = response.data.results;
+                $scope.next = response.data.next;
+                $scope.previous = response.data.previous;
+            });
+    };
+
+    $scope.getAccountId = function (accId) {
         accountId = accId;
         getUserInfo(accId);
     };
@@ -33,7 +47,7 @@ app.controller("homeCtrl", function ($scope, $http, $window, $rootScope) {
             return;
         }
 
-        var data ={
+        var data = {
             owner: accountId,
             product: productId
         };
@@ -53,6 +67,5 @@ app.controller("homeCtrl", function ($scope, $http, $window, $rootScope) {
     $scope.viewProductDetail = function (productId) {
         $window.location.href = '/single/' + productId;
     };
-
 
 });
