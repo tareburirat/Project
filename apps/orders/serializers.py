@@ -3,9 +3,12 @@ from django.db import transaction
 from rest_framework import serializers
 
 from apps.orders.models import Order, OrderItem
+from apps.products.serializers import ProductSerializer
 
 
 class OrderItemSerializer(serializers.ModelSerializer):
+    product = ProductSerializer()
+
 
     class Meta:
         model = OrderItem
