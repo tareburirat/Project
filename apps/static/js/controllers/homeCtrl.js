@@ -6,21 +6,17 @@ app.controller("homeCtrl", function ($scope, $http, $window, $rootScope) {
     var userInfo = {};
     $scope.products = [];
 
-    $http.get($scope.mama + '/api/products/?product_status=1').then(
-        function (response) {
-            $scope.products = response.data.results;
-            $scope.next = response.data.next;
-            $scope.previous = response.data.previous;
-        });
-
-    $scope.getProduct = function (url) {
+    $scope.getProduct = function(url) {
         $http.get(url).then(
             function (response) {
-                $scope.products = response.data.results;
+                $scope.products = $scope.products.concat(response.data.results);
                 $scope.next = response.data.next;
-                $scope.previous = response.data.previous;
+                // $scope.previous = response.data.previous;
             });
     };
+    $scope.getProduct($scope.mama + '/api/products/?product_status=1');
+
+
 
     $scope.getAccountId = function (accId) {
         accountId = accId;
