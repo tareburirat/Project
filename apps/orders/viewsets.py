@@ -8,6 +8,8 @@ from apps.orders.serializers import OrderSerializer, OrderItemSerializer
 class OrderViewSet(viewsets.ModelViewSet):
     serializer_class = OrderSerializer
     queryset = Order.objects.all()
+    filter_backends = (DjangoFilterBackend,)
+    filter_fields = ['order_number', 'id']
 
 
 class OrderItemViewSet(viewsets.ModelViewSet):

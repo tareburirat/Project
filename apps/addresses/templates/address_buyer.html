@@ -35,27 +35,39 @@
         <div ng-controller="addressCtrl" ng-init="getBuyerId({{ request.user.account.id }})">
             <div class="container">
                 <div class="row col-md-12">
-                    <h4>ADDRESS</h4>
+                    <h4>ที่อยู่</h4>
                 </div>
-                <div class="row col-md-12" ng-repeat="address in addresses" style="margin-bottom: 5px;">
+                <table id="cart" class="table table-hover table-condensed">
+            <tr>
+                <th style="width:100%">เลือกที่อยู่ที่ต้องการส่ง</th>
+            </tr>
+            <tr ng-repeat="cart in carts">
+
+                </tr>
+            <tr>
+                <td>
+                    <div class="row col-md-12" ng-repeat="address in addresses" style="margin-bottom: 5px;">
                     <input type="radio" ng-checked="selectedAddress==$index" name="primaryRadio" ng-click="updateSelectedAddress($index)" style="margin-top: 5px;">
                     <label>
                         <span class="padding-bottom-5">
                             [[address.address_details]]
                         </span>
                     </label>
-{#                    <p> - is primary = [[address.primary]]</p>#}
                 </div>
+                </td>
+                <td colspan="3" class="hidden-xs"></td>
 
-            </div>
-            <div class="row">
-                <div class="col align-self-end">
-                    <button class="btn btn-secondary btn-lg" ng-click="confirmAddress()">
+                <td>
+
+               </td>
+            </tr>
+        </table>
+                <button class="btn btn-secondary btn-sm" ng-click="confirmAddress()">
                         <i class="fa fa-arrow-right"></i>
                         <span class="text-bold">Next</span>
                     </button>
-                </div>
             </div>
+
               <div>
                 <hr>
             </div>

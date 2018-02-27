@@ -19,3 +19,15 @@ SetRatingStar();
 $(document).ready(function() {
 
 });
+
+app.controller("ratingCtrl",function ($scope,$rootScope) {
+    $scope.mama = $rootScope.url;
+    $scope.benz = 123;
+    $scope.rating = 0;
+
+    $scope.setRating = function (rating) {
+        $scope.rating = rating;
+    };
+
+});
+
