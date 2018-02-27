@@ -4,6 +4,8 @@ app.controller("productSearchCtrl", function($scope, $http, $window, $rootScope)
     var accountId = "";
     var userInfo = {};
     $scope.products = [];
+    $scope.next = "";
+    $scope.categoryProducts = [];
 
     $scope.getAccountId = function(accId) {
         accountId = accId;
@@ -33,7 +35,7 @@ app.controller("productSearchCtrl", function($scope, $http, $window, $rootScope)
         }
 
 
-        searchProduct();
+        $scope.searchProduct($scope.mama + '/api/category_products/' + $scope.queryString );
     };
 
     $http.get($scope.mama + '/api/categories/?category_type=0')
@@ -47,11 +49,12 @@ app.controller("productSearchCtrl", function($scope, $http, $window, $rootScope)
         );
 
 
-    var searchProduct = function () {
-        $http.get($scope.mama + '/api/category_products/' + $scope.queryString)
+    $scope.searchProduct = function (url) {
+        $http.get(url)
             .then(
                 function (response) {
-                    $scope.categoryProducts = response.data;
+                    $scope.categoryProducts = $scope.categoryProducts.concat(response.data.results);
+                    $scope.next = response.data.next;
                 },
                 function () {
                     alert('load data fail');
