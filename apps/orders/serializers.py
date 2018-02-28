@@ -21,10 +21,6 @@ class OrderItemSerializer(serializers.ModelSerializer):
     def get_product_data(self, obj):
         return ProductSerializer(obj.product).data
 
-<<<<<<< HEAD
-
-=======
->>>>>>> pop/master
 
 class OrderSerializer(serializers.ModelSerializer):
     order_items = OrderItemSerializer(many=True)
