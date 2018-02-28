@@ -7,7 +7,7 @@ from apps.products.serializers import ProductSerializer
 
 
 class OrderItemSerializer(serializers.ModelSerializer):
-    product = ProductSerializer()
+    product_data = serializers.SerializerMethodField()
 
     class Meta:
         model = OrderItem
@@ -17,6 +17,10 @@ class OrderItemSerializer(serializers.ModelSerializer):
                 'required': False
             }
         }
+
+    def get_product_data(self, obj):
+        return ProductSerializer(obj.product).data
+
 
 
 class OrderSerializer(serializers.ModelSerializer):

@@ -37,9 +37,15 @@ class Order(models.Model):
 
 class OrderItem(models.Model):
     draft = 0
+    wait = 1
+    receive = 2
+    success = 3
 
     status_choices = [
         (draft, "Draft"),
+        (wait, "Wait"),
+        (receive, "Receive"),
+        (success, "Success"),
     ]
     order = models.ForeignKey(Order, related_name='order_items')
     price = models.DecimalField(max_digits=8, decimal_places=2)
