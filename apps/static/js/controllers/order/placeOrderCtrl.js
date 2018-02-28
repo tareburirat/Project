@@ -71,7 +71,7 @@ app.controller("placeOrderCtrl", function ($scope, $http, $window, $rootScope) {
         $http.post($scope.mama + '/api/orders/', data).then(
             function success(response) {
                 alert('success');
-                $window.location.href = $scope.mama + '/order/purchase_order/' + response.data.order_number;
+                $window.location.href = $scope.mama + '/order/purchase_order/' + response.data.id;
             },
             function () {
                 alert('fail')
