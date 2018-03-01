@@ -6,8 +6,19 @@ from apps.orders.models import Order, OrderItem
 from apps.products.serializers import ProductSerializer
 
 
+class SimpleOrderSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Order
+        fields = [
+            'id',
+            'order_number'
+        ]
+
+
 class OrderItemSerializer(serializers.ModelSerializer):
     product_data = serializers.SerializerMethodField()
+    order = SimpleOrderSerializer()
 
     class Meta:
         model = OrderItem

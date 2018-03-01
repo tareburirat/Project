@@ -47,6 +47,7 @@ class OrderItem(models.Model):
         (receive, "Receive"),
         (success, "Success"),
     ]
+
     order = models.ForeignKey(Order, related_name='order_items')
     price = models.DecimalField(max_digits=8, decimal_places=2)
     product = models.ForeignKey(Product)

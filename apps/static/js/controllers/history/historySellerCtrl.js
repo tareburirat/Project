@@ -2,12 +2,11 @@ app.controller('historySellerCtrl', function ($scope, $http, $rootScope) {
     $scope.mama = $rootScope.url;
     var accId = '';
     $scope.orderNumber = '';
-    $scope.yoyo = 0;
+    $scope.yoyo = '';
 
     $scope.getAccountId = function (accountId) {
         accId = accountId;
         getOrderItem();
-        $scope.getOrderNumber();
     };
 
     var getOrderItem = function () {
@@ -19,10 +18,11 @@ app.controller('historySellerCtrl', function ($scope, $http, $rootScope) {
             function failure() {
                 alert('fail');
             }
-                )
+        )
     };
 
-    $scope.getOrderNumber = function(orderNumber){
-        $scope.orderNumber = orderNumber;
+    $scope.setYoyo = function (orderNumber) {
+        console.log(orderNumber);
+        $scope.yoyo = orderNumber;
     }
 });
