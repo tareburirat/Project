@@ -4177,3 +4177,20 @@ button.close{
 }
 
 .star-rating .fa-star{color: yellow;}
+
+/* css in order html */
+.breadcrumb-order {
+    display: -ms-flexbox;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    padding: .75rem 1rem;
+    margin-bottom: 1rem;
+    list-style: none;
+    background-color: #ffc7b4;
+    border-radius: .25rem;
+}
+.p-center {
+    color: #212121;
+    text-align: center;
+}
+

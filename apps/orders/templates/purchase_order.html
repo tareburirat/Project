@@ -86,9 +86,11 @@
                                      class="img-responsive" style="width: 5rem; height: 5rem;"/></div>
                             <div class="col-sm-9">
                                 <h4 class="nomargin"> ชื่อ : [[orderItem.product_data.name]]</h4>
-                                <p>วิธีการจัดส่ง : [[orderItem.product_data.freight_detail]]</p>
+
                                 {#                            <p>ค่าจัดส่ง : [[cart.product_data.freight_fee]]</p>#}
                                 <p>ร้านค้า : [[orderItem.product_data.seller_data.display_name]]</p>
+                                 <p>วิธีการจัดส่ง : [[orderItem.product_data.freight_detail]]</p>
+                                <p>หมายเลขสิ่งของ : [[orderItem.order_track]]</p>
                             </div>
                         </div>
                     </td>
@@ -98,13 +100,17 @@
                 </tr>
                 <tr>
                     <td></td>
-                    <td colspan="2" class="hidden-xs"></td>
-                    <td class="hidden-xs text-center"><strong>รวมทั้งหมด ... [[getTotal()]] ฿</strong></td>
+{#                    <td colspan="2" class="hidden-xs"></td>#}
+{#                    <td class="hidden-xs text-center"><strong>รวมทั้งหมด [[order.price]] ฿</strong></td>#}
 
                     {#                    <td><button style="color: white" class="btn btn btn-block" ng-click="placeOrder()">Confirm <i#}
                     {#                            class="fa fa-credit-card"></i></button></td>#}
                 </tr>
             </table>
+            <hr>
+            <div class="breadcrumb-order">
+                <p class="p-center"><strong>ยอดชำระเงินทั้งหมด [[order.price]] บาท</strong></p>
+            </div>
 
         </div>
     </div>
