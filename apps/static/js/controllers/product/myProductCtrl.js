@@ -14,7 +14,7 @@ app.controller('myProductCtrl', function ($scope, $http, $window, $rootScope) {
         // debugger;
         $http.get($scope.mama + '/api/products/?seller_id=' + $scope.sellerId).then(
             function (response) {
-                $scope.products = response.data;
+                $scope.products = response.data.results;
             },
             function (response) {
                 console.log(response)
