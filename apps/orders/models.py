@@ -46,7 +46,7 @@ class OrderItem(models.Model):
     product = models.ForeignKey(Product)
     seller = models.ForeignKey(Account, related_name='sales', related_query_name='sales')
     order_status = models.IntegerField(verbose_name="Status", choices=status_choices, default=draft)
-    order_track = models.CharField(verbose_name="Tracking", max_length=13, blank=True)
+    order_track = models.CharField(verbose_name="Tracking", max_length=13, default="-รอการอัพเดท-")
 
     def __str__(self):
         return str(self.id)

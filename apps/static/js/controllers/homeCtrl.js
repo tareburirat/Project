@@ -61,7 +61,7 @@ app.controller("homeCtrl", function ($scope, $http, $window, $rootScope) {
     };
 
     $scope.viewProductDetail = function (productId) {
-        $window.location.href = '/single/' + productId;
+        $window.location.href = '/product/single/' + productId;
     };
 
 });

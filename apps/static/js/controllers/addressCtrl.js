@@ -79,4 +79,14 @@ app.controller("addressCtrl", function ($scope, $window, $http, $rootScope) {
             }
         )
     };
+
+    $scope.delAddress = function (addressId) {
+        $http.delete($scope.mama + '/api/addresses/' + addressId).then(
+            function (response) {
+                $scope.addresses = response;
+                alert('delete');
+                getBuyerAddresses($scope.buyerId);
+            }
+        )
+    }
 });

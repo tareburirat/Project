@@ -30,3 +30,24 @@ class Address(models.Model):
 
     def __str__(self):
         return "Address - {}(buyer)".format(self.buyer_id)
+
+    def delete(self, *args, **kwargs):
+        self.validate_primary_address_delete()
+        return super(Address, self).delete(*args, **kwargs)
+
+    def validate_primary_address_delete(self):
+        if self.primary is True:
+            try:
+                last_address = self.buyer.address_set.exclude(id=self.id).order_by('id').last()
+                last_address.primary = True
+                last_address.save()
+            except self.DoesNotExist:
+                pass
+            except AttributeError:
+                pass
+
+
+
+
+
+
