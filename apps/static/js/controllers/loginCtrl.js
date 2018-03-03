@@ -1,6 +1,5 @@
-var app = angular.module("app", []);
-app.controller("logInCtrl", function($scope, $http, $window) {
-    $scope.mama = 123;
+app.controller("logInCtrl", function($scope, $http, $window, $rootScope) {
+    $scope.mama = $rootScope.url;
     $scope.userLoggedIn = false;
 
     $scope.clicker = function () {
@@ -9,15 +8,15 @@ app.controller("logInCtrl", function($scope, $http, $window) {
             username: $scope.username,
             password: $scope.password
         };
-        $http.post("http://localhost:8000/authenticate_user/", data).then(function (response) {
+        $http.post($scope.mama + "/authenticate_user/", data).then(function (response) {
             console.log(response.data);
             $scope.userLoggedIn = true;
-            alert('success!!');
+            alert('เข้าสู่ระบบเรียบร้อย');
             $window.location.href = '/';
         },
             function (response) {
                 console.log(response.data);
-                alert('failed');
+                alert('เข้าสู่ระบบไม่สำเร็จ');
                 $scope.username = '';
                 $scope.password = '';
             });
@@ -25,7 +24,4 @@ app.controller("logInCtrl", function($scope, $http, $window) {
     };
 
 
-}).config(function($interpolateProvider) {
-  $interpolateProvider.startSymbol('[[');
-  $interpolateProvider.endSymbol(']]');
 });

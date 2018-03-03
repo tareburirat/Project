@@ -1,12 +1,14 @@
-var app = angular.module('productCreateApp', []);
-app.controller('productCreateCtrl', function ($scope, $http) {
-    $scope.mama = 123;
+app.controller('productCreateCtrl', function ($scope, $http, $window, $rootScope) {
+    $scope.mama = $rootScope.url;
     $scope.product = {};
     $scope.fTypes = ['Register', 'EMS', 'Kerry'];
     $scope.freight = $scope.fTypes[0];
     $scope.categories = [];
     $scope.selectedCategory = {};
     $scope.properties = [];
+    $scope.qTypes = ['New', 'Used'];
+    $scope.quality = $scope.qTypes[0];
+
     var formData = new FormData();
 
     $scope.getAccountId = function (accountId) {
@@ -25,6 +27,9 @@ app.controller('productCreateCtrl', function ($scope, $http) {
             formData.append(k, $scope.product[k])
         });
 
+        // get category
+        formData.append('category_id', $scope.selectedCategory.id);
+
         // get freight option
         formData.append('freight', get_freight($scope.freight));
         formData.append('seller_id', $scope.accountId);
@@ -34,6 +39,9 @@ app.controller('productCreateCtrl', function ($scope, $http) {
             formData.append('propertyValue[]', property.value);
             formData.append('propertyId[]', property.id);
         });
+
+        //get quality option
+        formData.append('product_quality', get_quality($scope.quality));
 
         var request = {
                     method: 'POST',
@@ -45,6 +53,7 @@ app.controller('productCreateCtrl', function ($scope, $http) {
                 };
         $http(request).then(function () {
             alert('success');
+            $window.location.href = '/';
         },
         function () {
             alert('failure');
@@ -55,6 +64,10 @@ app.controller('productCreateCtrl', function ($scope, $http) {
     var get_freight = function (freight) {
         return $scope.fTypes.indexOf(freight);
     };
+
+    var get_quality = function (quality) {
+        return $scope.qTypes.indexOf(quality);
+    }
 
     var categories_request = {
         method: 'GET',
@@ -77,14 +90,7 @@ app.controller('productCreateCtrl', function ($scope, $http) {
              $scope.properties = response.data;
         })
     }
-})
-.config(function ($interpolateProvider, $httpProvider) {
-    $interpolateProvider.startSymbol('[[');
-    $interpolateProvider.endSymbol(']]');
-    $httpProvider.defaults.xsrfCookieName = 'csrftoken';
-    $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
-})
-.directive('ngFiles', ['$parse', function ($parse) {
+}).directive('ngFiles', ['$parse', function ($parse) {
 
     function fn_link(scope, element, attrs) {
         var onChange = $parse(attrs.ngFiles);

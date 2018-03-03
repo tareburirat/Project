@@ -2,38 +2,182 @@
 <!DOCTYPE html>
 <html lang="en">
 <script src="{% static 'js/components/angular.min.js' %}"></script>
-<head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Address Buyer</title>
-</head>
-<body>
+<script src="{% static 'js/app.js' %}"></script>
+<script src="{% static 'js/controllers/addressCtrl.js' %}"></script>
+<div ng-app="app">
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+              integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+              crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all"/>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Address Buyer</title>
+    </head>
+    <body>
     <!-- header -->
     <div class="basic">{% include "header.html" %}</div>
     <!-- //header -->
-<!-- breadcrumbs -->
+    <!-- breadcrumbs -->
     <div class="breadcrumbs">
-		<div class="container">
-              <ol class="breadcrumb breadcrumb1">
-                <li class="breadcrumb-item"><a href="/"><span class="fa fa-home" aria-hidden="true"></span>หน้าแรก</a></li>
-				<li class="breadcrumb-item active">เพิ่มที่อยู่</li>
-              </ol>
-		</div>
+        <div class="container">
+            <ol class="breadcrumb breadcrumb1">
+                <li class="breadcrumb-item"><a href="/"><span class="fa fa-home" aria-hidden="true"></span>หน้าแรก</a>
+                </li>
+                <li class="breadcrumb-item active">เลือกที่อยู่</li>
+            </ol>
+        </div>
     </div>
-<!-- //breadcrumbs -->
+    <!-- //breadcrumbs -->
+    <p>&nbsp;</p>
+    <div class="wrapper content" form="createForm">
+        <div ng-controller="addressCtrl" ng-init="getBuyerId({{ request.user.account.id }})">
+            <div class="container">
+                <div class="row col-md-12">
+                    <h4>ที่อยู่</h4>
+                </div>
+                <table id="cart" class="table table-hover table-condensed">
+            <tr>
+                <th style="width:100%">เลือกที่อยู่ที่ต้องการส่ง</th>
+            </tr>
+            <tr ng-repeat="cart in carts">
 
-    hi address buyer
+                </tr>
+            <tr>
+                <td>
+                    <div class="row col-md-12" ng-repeat="address in addresses" style="margin-bottom: 5px;">
+                    <input type="radio" ng-checked="selectedAddress==$index" name="primaryRadio" ng-click="updateSelectedAddress($index)" style="margin-top: 5px;">
+                    <label>
+                        <span class="padding-bottom-5">
+                            [[address.address_details]]
+                        </span>
+                    </label>
+                </div>
+                </td>
+                <td colspan="3" class="hidden-xs"></td>
 
-            <!-- footer -->
-            <div>{% include "footer.html" %}</div>
-            <!-- //footer -->
+                <td>
+
+               </td>
+            </tr>
+        </table>
+                <button class="btn btn-secondary btn-sm" ng-click="confirmAddress()">
+                        <i class="fa fa-arrow-right"></i>
+                        <span class="text-bold">Next</span>
+                    </button>
+            </div>
+
+              <div>
+                <hr>
+            </div>
+            <!-- add address -->
+            <div class="container">
+                <p>
+                    {#                    <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" aria-expanded="false"#}
+                    {#                       aria-controls="collapseExample">#}
+                    {#                        Link with href#}
+                    {#                    </a>#}
+                    {#                    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample"#}
+                    {#                            aria-expanded="false" aria-controls="collapseExample">#}
+                    {#                        Button with data-target#}
+                    {#                    </button>#}
+                    <a data-toggle="collapse" href="#add" aria-expanded="false"
+                       aria-controls="collapseExample" >
+                        เพิ่มที่อยู่
+                    </a>
+                </p>
+                {#                <div class="collapse" id="collapseExample">#}
+                {#                    <div class="card card-block">#}
+                {#                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.#}
+                {#                        Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea#}
+                {#                        proident.#}
+                {#                    </div>#}
+                {#                </div>#}
+
+                <div class="collapse" id="add">
+{#                    <div class="card card-block">#}
+                        {#                                      <h4>เพิ่มที่อยู่</h4>#}
+                        <div class="add">
+                            <div class="form-group row">
+                                <label for="input" class="col-sm-3 col-form-label" align="right">ชื่อ - นามสกุล : </label>
+                                <div class="col-sm-6">
+                                    <input class="form-control col-sm-10" type="text" disabled
+                                           value="{{ request.user.account.first_name }}  {{ request.user.account.last_name }}">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="input" class="col-sm-3 col-form-label" align="right">เบอร์โทรศัพท์ : </label>
+                                <div class="col-sm-6">
+                                    <input class="form-control col-sm-10" type="text" disabled
+                                           value="{{ request.user.account.phone }}">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="input" class="col-sm-3 col-form-label" align="right">อีเมล : </label>
+                                <div class="col-sm-6">
+                                    <input class="form-control col-sm-10" type="text" disabled
+                                           value="{{ request.user.account.email }}">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="input" class="col-sm-3 col-form-label" align="right">ที่อยู่ : </label>
+                                <div class="col-sm-6">
+                                    <input class="form-control col-sm-10" type="text" ng-model="address">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="input" class="col-sm-3 col-form-label" align="right">ตำบล/แขวง : </label>
+                                <div class="col-sm-6">
+                                    <input class="form-control col-sm-10" type="text" ng-model="sub_district">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="input" class="col-sm-3 col-form-label" align="right">อำเภอ/เขต : </label>
+                                <div class="col-sm-6">
+                                    <input class="form-control col-sm-10" type="text" ng-model="district">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="input" class="col-sm-3 col-form-label" align="right">จังหวัด : </label>
+                                <div class="col-sm-6">
+                                    <input class="form-control col-sm-10" type="text" ng-model="province">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="input" class="col-sm-3 col-form-label" align="right">รหัสไปรษณีย์ : </label>
+                                <div class="col-sm-6">
+                                    <input class="form-control col-sm-10" type="text" ng-model="zip_code">
+                                </div>
+                            </div>
+                        </div>
+                        <div style="text-align-last: center">
+                            <button ng-click="saveAddress()" class="btn btn-secondary btn-lg">บันทึก</button>
+                        </div>
+{#                    </div>#}
+                </div>
+            </div>
+            <!-- end add -->
+
+        </div>
+    </div>
+    <p>&nbsp;</p>
+
+
+    <!-- footer -->
+    <div>{% include "footer.html" %}</div>
+    <!-- //footer -->
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
-</body>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+            integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+            integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+            crossorigin="anonymous"></script>
+    </body>
+</div>
 </html>

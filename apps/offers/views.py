@@ -3,4 +3,4 @@ from django.views.generic import TemplateView
 
 # Create your views here.
 class OfferView(TemplateView):
-    template_name = 'offer.html'
+    template_name = 'approve_offer.html'

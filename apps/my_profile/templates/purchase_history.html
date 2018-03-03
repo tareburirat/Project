@@ -1,0 +1,374 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<script src="{% static 'js/components/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'js/components/angular.min.js' %}"></script>
+<script src="{% static 'js/app.js' %}"></script>
+<script src="{% static 'js/controllers/order/placeOrderCtrl.js' %}"></script>
+<script src="{% static 'js/controllers/ratingCtrl.js' %}"></script>
+<div ng-app="app">
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+              integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+              crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all"/>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Purchase History</title>
+    </head>
+    <body>
+    <!-- header -->
+    <div>{% include "header.html" %}</div>
+    <!-- //header -->
+    <!-- breadcrumbs -->
+    <div class="breadcrumbs">
+        <div class="container">
+            <ol class="breadcrumb breadcrumb1">
+                <li class="breadcrumb-item"><a href="/"><span class="fa fa-home" aria-hidden="true"></span>หน้าแรก</a>
+                </li>
+                <li class="breadcrumb-item active">ประวัติการซื้อ</li>
+            </ol>
+        </div>
+    </div>
+    <!-- //breadcrumbs -->
+    <div ng-app="app" ng-controller="placeOrderCtrl" ng-init="getAccountId({{ request.user.account.id }})">
+        <div style="background: #F7F7F9">
+            <div class="container">
+                &nbsp;
+                <div class="row profile">
+                    <div class="col-md-3 shadows" style="background: #F5F5F5" align="left">
+                        <div>{% include "tab_menu_profile.html" %}</div>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </div>
+                    <div class="col-md-9 shadows">
+                        <!-- profile -->
+                        <div class="add">
+                            <div class="container">
+                                <h3>ประวัติการซื้อ</h3>
+                                <br>
+                                <hr color="#212121">
+                                <div class="bs-example bs-example-tabs" role="tabpanel"
+                                     data-example-id="togglable-tabs">
+                                    <ul id="myTab" class="nav nav-tabs" role="tablist">
+                                        <li role="presentation" class="nav-item">
+                                            <a class="nav-link active" href="#detail1" id="tab1" role="tab"
+                                               data-toggle="tab"
+                                               aria-controls="home" aria-expanded="true">ที่ต้องการชำระ</a>
+                                        </li>
+                                        <li role="presentation" class="nav-item">
+                                            <a class="nav-link" href="#detail2" role="tab" id="tab2"
+                                               data-toggle="tab" aria-controls="profile">ที่รอการจัดส่ง</a>
+                                        </li>
+                                        <li role="presentation" class="nav-item">
+                                            <a class="nav-link" href="#detail3" role="tab" id="tab3"
+                                               data-toggle="tab" aria-controls="profile">ที่ต้องได้รับ</a>
+                                        </li>
+                                        <li role="presentation" class="nav-item">
+                                            <a class="nav-link" href="#detail4" role="tab" id="tab4"
+                                               data-toggle="tab" aria-controls="profile">สำเร็จแล้ว</a>
+                                        </li>
+                                    </ul>
+                                    <div id="myTabContent" class="tab-content">
+                                        <div role="tabpanel" class="tab-pane active" id="detail1"
+                                             aria-labelledby="tab1">
+                                            1 ยังไม่ได้แจ้งโอน
+                                            <table id="cart" class="table table-condensed">
+                                                <tr align="center">
+                                                    <th style="width:45%">สินค้า</th>
+                                                    <th style="width:10%">ราคา</th>
+                                                    <th style="width:15%">ค่าจัดส่ง</th>
+                                                    <th style="width:15%" class="text-center">ราคารวม</th>
+                                                    <th style="width:15%"></th>
+                                                </tr>
+                                                <tr ng-repeat="cart in carts">
+                                                    <td data-th="Product">
+                                                        <div class="row">
+                                                            <div class="col-sm-3 hidden-xs">
+                                                                <img src="[[cart.product_data.first_image_url]]"
+                                                                     alt="[[cart.first_image_url]]"
+                                                                     class="img-responsive"
+                                                                     style="width: 5rem; height: 5rem;"/></div>
+                                                            <div class="col-sm-9">
+                                                                <h4 class="nomargin"> ชื่อ :
+                                                                    [[cart.product_data.name]]</h4>
+                                                                <p>วิธีการจัดส่ง :
+                                                                    [[cart.product_data.freight_detail]]</p>
+                                                                {#                            <p>ค่าจัดส่ง : [[cart.product_data.freight_fee]]</p>#}
+                                                                <p>ร้านค้า :
+                                                                    [[cart.product_data.seller_data.display_name]]</p>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td data-th="Price" class="text-center">
+                                                        [[cart.product_data.price]]฿
+                                                    </td>
+                                                    <td data-th="Freight" class="text-center">
+                                                        [[cart.product_data.freight_fee]]฿
+                                                    </td>
+                                                    <td data-th="Subtotal" class="text-center">
+                                                        [[cart.product_data.sub_total]]฿
+                                                    </td>
+                                                    <td class="hidden-xs text-center">
+                                                        <button type="button" class="btn btn btn-block" data-toggle="modal" data-target="#Track">แจ้งโอน</button>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                        <div role="tabpanel" class="tab-pane" id="detail2" aria-labelledby="tab2">
+                                            2 รอเลขเทรค
+                                            <table id="cart" class="table table-condensed">
+                                                <tr align="center">
+                                                    <th style="width:45%">สินค้า</th>
+                                                    <th style="width:10%">ราคา</th>
+                                                    <th style="width:15%">ค่าจัดส่ง</th>
+                                                    <th style="width:15%" class="text-center">ราคารวม</th>
+                                                    <th style="width:15%"></th>
+                                                </tr>
+                                                <tr ng-repeat="cart in carts">
+                                                    <td data-th="Product">
+                                                        <div class="row">
+                                                            <div class="col-sm-3 hidden-xs">
+                                                                <img src="[[cart.product_data.first_image_url]]"
+                                                                     alt="[[cart.first_image_url]]"
+                                                                     class="img-responsive"
+                                                                     style="width: 5rem; height: 5rem;"/></div>
+                                                            <div class="col-sm-9">
+                                                                <h4 class="nomargin"> ชื่อ :
+                                                                    [[cart.product_data.name]]</h4>
+                                                                <p>วิธีการจัดส่ง :
+                                                                    [[cart.product_data.freight_detail]]</p>
+                                                                {#                            <p>ค่าจัดส่ง : [[cart.product_data.freight_fee]]</p>#}
+                                                                <p>ร้านค้า :
+                                                                    [[cart.product_data.seller_data.display_name]]</p>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td data-th="Price" class="text-center">
+                                                        [[cart.product_data.price]]฿
+                                                    </td>
+                                                    <td data-th="Freight" class="text-center">
+                                                        [[cart.product_data.freight_fee]]฿
+                                                    </td>
+                                                    <td data-th="Subtotal" class="text-center">
+                                                        [[cart.product_data.sub_total]]฿
+                                                    </td>
+                                                    <td class="hidden-xs text-center">
+                                                        <small> รอเลข หรือมี เลข</small>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                        <div role="tabpanel" class="tab-pane" id="detail3" aria-labelledby="tab3">
+                                            3 รับของ กดยืนยันรับของ กดให้เรทติ้งร้าน
+                                            <table id="cart" class="table table-condensed">
+                                                <tr align="center">
+                                                    <th style="width:50%">สินค้า</th>
+                                                    <th style="width:10%">ราคา</th>
+                                                    <th style="width:15%">ค่าจัดส่ง</th>
+                                                    <th style="width:15%" class="text-center">ราคารวม</th>
+                                                    <th style="width:10%"></th>
+                                                </tr>
+                                                <tr ng-repeat="cart in carts">
+                                                    <td data-th="Product">
+                                                        <div class="row">
+                                                            <div class="col-sm-3 hidden-xs">
+                                                                <img src="[[cart.product_data.first_image_url]]"
+                                                                     alt="[[cart.first_image_url]]"
+                                                                     class="img-responsive"
+                                                                     style="width: 5rem; height: 5rem;"/></div>
+                                                            <div class="col-sm-9">
+                                                                <h4 class="nomargin"> ชื่อ :
+                                                                    [[cart.product_data.name]]</h4>
+                                                                <p>วิธีการจัดส่ง :
+                                                                    [[cart.product_data.freight_detail]]</p>
+                                                                {#                            <p>ค่าจัดส่ง : [[cart.product_data.freight_fee]]</p>#}
+                                                                <p>ร้านค้า :
+                                                                    [[cart.product_data.seller_data.display_name]]</p>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td data-th="Price" class="text-center">
+                                                        [[cart.product_data.price]]฿
+                                                    </td>
+                                                    <td data-th="Freight" class="text-center">
+                                                        [[cart.product_data.freight_fee]]฿
+                                                    </td>
+                                                    <td data-th="Subtotal" class="text-center">
+                                                        [[cart.product_data.sub_total]]฿
+                                                    </td>
+                                                    <td class="hidden-xs text-center">
+                                                        <button type="button" class="btn btn btn-block"
+                                                                data-toggle="modal" data-target="#Confirm">ยืนยันรับสินค้า
+                                                        </button>
+
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                        <div role="tabpanel" class="tab-pane" id="detail4" aria-labelledby="tab4">
+                                            4 เสร็จทุกอย่าง
+                                            <table id="cart" class="table table-condensed">
+                                                <tr align="center">
+                                                    <th style="width:50%">สินค้า</th>
+                                                    <th style="width:10%">ราคา</th>
+                                                    <th style="width:15%">ค่าจัดส่ง</th>
+                                                    <th style="width:15%" class="text-center">ราคารวม</th>
+                                                    <th style="width:10%"></th>
+                                                </tr>
+                                                <tr ng-repeat="cart in carts">
+                                                    <td data-th="Product">
+                                                        <div class="row">
+                                                            <div class="col-sm-3 hidden-xs">
+                                                                <img src="[[cart.product_data.first_image_url]]"
+                                                                     alt="[[cart.first_image_url]]"
+                                                                     class="img-responsive"
+                                                                     style="width: 5rem; height: 5rem;"/></div>
+                                                            <div class="col-sm-9">
+                                                                <h4 class="nomargin"> ชื่อ :
+                                                                    [[cart.product_data.name]]</h4>
+                                                                <p>วิธีการจัดส่ง :
+                                                                    [[cart.product_data.freight_detail]]</p>
+                                                                {#                            <p>ค่าจัดส่ง : [[cart.product_data.freight_fee]]</p>#}
+                                                                <p>ร้านค้า :
+                                                                    [[cart.product_data.seller_data.display_name]]</p>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td data-th="Price" class="text-center">
+                                                        [[cart.product_data.price]]฿
+                                                    </td>
+                                                    <td data-th="Freight" class="text-center">
+                                                        [[cart.product_data.freight_fee]]฿
+                                                    </td>
+                                                    <td data-th="Subtotal" class="text-center">
+                                                        [[cart.product_data.sub_total]]฿
+                                                    </td>
+                                                    <td class="hidden-xs text-center"><a href="#" style="color: white"
+                                                                                         class="btn btn"></a></td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    &nbsp;
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                {#                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#Track">Click</button>#}
+
+                <div id="Track" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">×</button>
+                                <h4 class="modal-title"></h4>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div class="row">
+                                        <label class="col-md-8 col-form-label">หมายเลขคำสั่งซื้อ : 00000000 </label>
+                                    </div>
+                                    <div class="row form-group">
+                                        <label class="col-md-3 col-form-label">เแจ้งโอนทาง: </label>
+                                        <select class ="col-md-4">
+                                            <option value="volvo">E-mail</option>
+                                            <option value="saab">Line</option>
+                                        </select>
+
+                                        <button class="btn btn col-md-2 form-control" ng-click="submitProduct()">
+                                            บันทึก
+                                        </button>
+                                    </div>
+                                </form>
+
+                            </div>
+                            <div class="modal-footer-alert" align="center">
+                                <p align="center">
+                                    <button type="button" class="btn" data-dismiss="modal">ยกเลิก</button>
+                                </p>
+                            </div>
+                            <br>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div id="Confirm" class="modal fade" role="dialog" ng-controller="ratingCtrl">
+
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">×</button>
+                                <h4 class="modal-title"></h4>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div class="row">
+                                        <label class="col-md-8 col-form-label">หมายเลขคำสั่งซื้อ : 00000000 </label>
+                                    </div>
+                                    <div class="row form-group">
+                                        <label class="col-md-4 col-form-label">ให้คะแนนร้านค้า: </label>
+
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="star-rating">
+                                                    <span class="fa fa-star-o" data-rating="1" ng-click="setRating(1)"></span>
+                                                    <span class="fa fa-star-o" data-rating="2" ng-click="setRating(2)"></span>
+                                                    <span class="fa fa-star-o" data-rating="3" ng-click="setRating(3)"></span>
+                                                    <span class="fa fa-star-o" data-rating="4" ng-click="setRating(4)"></span>
+                                                    <span class="fa fa-star-o" data-rating="5" ng-click="setRating(5)"></span>
+
+                                                    <input type="hidden" name="whatever3" class="rating-value" value="0">
+                                                </div>
+                                            </div>
+{#                                             <button class="btn btn col-md-4 form-control" ng-click="submitProduct()">บันทึก</button>#}
+                                        </div>
+                                    </div>
+
+
+                            </div>
+                            <div class="modal-footer-alert" align="center">
+                            <p align="center">
+                                <button type="button" class="btn" data-dismiss="modal">บันทึก - [[rating]]</button>
+                            </p>
+                        </div>
+                            <br>
+                            </form>
+
+                        </div>
+
+                        <br>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<!-- footer -->
+<div>{% include "footer.html" %}</div>
+<!-- //footer -->
+<script src="{% static 'js/components/profileTab.js' %}"></script>
+<script src="{% static 'js/controllers/ratingCtrl.js' %}"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+        integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+        integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+        crossorigin="anonymous"></script>
+</body>
+</div>
+</html>

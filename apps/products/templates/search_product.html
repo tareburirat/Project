@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<script src="{% static 'js/components/angular.min.js' %}"></script>
+<script src="{% static 'js/app.js' %}"></script>
+<script src="{% static 'js/controllers/product/productSearchCtrl.js' %}"></script>
+
+<div ng-app="app">
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+              integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+              crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all"/>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>2nd MakeUp</title>
+    </head>
+
+    <body>
+    <!-- header -->
+    <div>{% include "header.html" %}</div>
+    <!-- //header -->
+    <!-- breadcrumbs -->
+
+    <div class="breadcrumbs">
+        <div class="container">
+            <ol class="breadcrumb breadcrumb1">
+                <li class="breadcrumb-item"><a href="/"><span class="fa fa-home" aria-hidden="true"></span>หน้าแรก </a>
+                </li>
+                <li class="breadcrumb-item"><a href="#">ค้นหา </a></li>
+                {#                <li class="breadcrumb-item active">{{ data_category }}</li>#}
+                <li class="breadcrumb-item active">{{ bread_crumb_text }}</li>
+            </ol>
+        </div>
+    </div>
+    <!-- //breadcrumbs -->
+    <div ng-controller="productSearchCtrl"
+         ng-init="getQueryString({{ query_string }}); getAccountId({{ request.user.account.id }});">
+        <div class="container">
+            <div class="row">
+                <div class="list-group card-deck col-md-3" ng-repeat="product in categoryProducts">
+                    <a href="/single/[[product.product_data.id]]">
+                        <div class="list-group-item" style="max-height: 45rem;"
+                             onclick="window.location = '/single/'">
+                            <div>
+                                <img class="card-img-top" src="[[product.product_data.first_image_url]]"
+                                     alt="[[product.product_data.first_image_url]]"
+                                     style="width: 15rem; height: 15rem;">
+                            </div>
+                            <div class="card-body">
+                                <h4 class="card-title">[[product.product_data.name]]</h4>
+                                <p class="card-text"><b>Freight:</b> [[product.product_data.freight_detail]]</p>
+                                <p class="card-text"><b>Freight Fee:</b> [[product.product_data.freight_fee]] ฿</p>
+                                <p class="card-text"><b>Price:</b> [[product.product_data.price]] ฿</p>
+                                <p class="card-text">
+                                    <small class="text-muted">[[product.product_data.date_of_sale]]
+                                        [[product.product_data.id]]
+                                    </small>
+                                </p>
+                            </div>
+                        </div>
+                        {#              <p>[[ product.name ]]</p> <img ng-repeat="image in product.images" src="[[image.image]]">#}
+                    </a>
+                    <div class="container">
+                        <hr>
+                        {#                                <button class="btn btn-secondary btn-sm" ng-click="viewProductDetail(product.product_data.id)">ดูรายละเอียด</button>#}
+                        <button class="btn btn-secondary btn-sm"
+                                ng-click="addToCart(product.product_data.id, product.product_data.seller)">
+                            เพิ่มลงตระกร้า
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <ul class="pagination">
+                <div class="container" style="width:50%" >
+                    <li class="page-item"><a class="page-link center" ng-click="searchProduct(next)">More <i class="fa fa-angle-right"></i></a></li>
+                </div>
+            </ul>
+        </div>
+    </div>
+    <!-- footer -->
+    <div>{% include "footer.html" %}</div>
+    <!-- //footer -->
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+            integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+            integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+            crossorigin="anonymous"></script>
+    </body>
+</div>
+</html>

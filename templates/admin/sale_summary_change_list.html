@@ -1,0 +1,122 @@
+{% extends "admin/change_list.html" %}
+
+{% load humanize %}
+
+{% block content_title %}
+    <h1> Sales Summary </h1>
+{% endblock %}
+
+{% block result_list %}
+    <style>
+        .bar-chart {
+            display: flex;
+            justify-content: space-around;
+            height: 160px;
+            padding-top: 60px;
+            overflow: hidden;
+        }
+
+        .bar-chart .bar {
+            flex: 100%;
+            align-self: flex-end;
+            margin-right: 2px;
+            position: relative;
+            background-color: #79aec8;
+        }
+
+        .bar-chart .bar:last-child {
+            margin: 0;
+        }
+
+        .bar-chart .bar:hover {
+            background-color: #417690;
+        }
+
+        .bar-chart .bar .bar-tooltip {
+            position: relative;
+            z-index: 999;
+        }
+
+        .bar-chart .bar .bar-tooltip {
+            position: absolute;
+            top: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            font-weight: bold;
+            opacity: 0;
+        }
+
+        .bar-chart .bar:hover .bar-tooltip {
+            opacity: 1;
+        }
+
+    </style>
+    <div class="results">
+        <table>
+
+            <thead>
+            <tr>
+                <th>
+                    <div class="text">
+                        <a href="#">Category</a>
+                    </div>
+                </th>
+                <th>
+                    <div class="text">
+                        <a href="#">Total</a>
+                    </div>
+                </th>
+                <th>
+                    <div class="text">
+                        <a href="#">Total Value</a>
+                    </div>
+                </th>
+                <th>
+                    <div class="text">
+                        <a href="#">
+                            <strong>% Of Total Sales</strong>
+                        </a>
+                    </div>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for row in summary %}
+                <tr class="{% cycle "row1" "row2" %}">
+                    <td> {{ row.categoryproduct__category__name }} </td>
+                    <td> {{ row.total | intcomma }} </td>
+                    <td> {{ row.total_value | default:0 | intcomma }} baht</td>
+                    <td>
+                        <!--
+          <strong>
+{#          {{ row.total_sales | default:0 | percentof:summary_total.total_sales }}#}
+          </strong> -->
+                        0
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+
+        </table>
+
+        <h2> Sales over time </h2>
+
+        <div class="results">
+{#            {{ summary_over_time }}#}
+            <div class="bar-chart">
+                {% for x in summary_over_time %}
+                    <div class="bar" style="height:{{ x.pct }}%">
+                        <div class="bar-tooltip">
+                            {{ x.total | default:0 | intcomma }}<br>
+                            {{ x.period | date:"d/m/Y" }}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    ...
+{% endblock %}
+
+{% block pagination %}{% endblock %}

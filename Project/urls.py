@@ -19,6 +19,7 @@ from django.conf.urls import url, include
 from django.conf.urls.static import static
 from django.contrib import admin
 
+from apps.carts.views import CartView
 from apps.login.views import log_in_user, LoginView, log_out
 from apps.addresses.views import AddressBuyerView
 from apps.categories.views import CategoryView
@@ -26,13 +27,12 @@ from apps.transactions.views import TransactionView
 from apps.category_product.views import CategoryProductView
 from apps.offers.views import OfferView
 from apps.orders.views import OrderView
-from apps.products.views import ProductView, AddProductView, SingleProductView
+from apps.products.views import ProductView, AddProductView, SingleProductView, ProductSearchView
 from apps.properties.views import PropertyView
 from apps.ratings.views import RatingView
-from apps.accounts.views import SignUpView
+from apps.accounts.views import SignUpView, EditProfileView
 from apps.values.views import ValueView
 from apps.home.views import HomeView
-
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -50,12 +50,18 @@ urlpatterns = [
     url(r'^rating/', RatingView.as_view()),
     url(r'^property/', PropertyView.as_view()),
     url(r'^product/', ProductView.as_view()),
-    url(r'^order/', OrderView.as_view()),
+    url(r'^order/', include('apps.orders.urls')),
     url(r'^offer/', OfferView.as_view()),
     url(r'^category_product/', CategoryProductView.as_view()),
     url(r'^value/', ValueView.as_view()),
     url(r'^create_product/', AddProductView.as_view()),
     url(r'^single/(?P<pk>\d+)', SingleProductView.as_view()),
+    url(r'^edit_profile/', EditProfileView.as_view()),
+    url(r'^account/', include('apps.accounts.urls')),
+    url(r'^cart/', CartView.as_view()),
+    url(r'^product_search/', ProductSearchView.as_view()),
+    url(r'^approve_offer/', include('apps.orders.urls')),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 

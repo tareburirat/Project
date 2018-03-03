@@ -2,94 +2,113 @@
 <!DOCTYPE html>
 <html lang="en">
 <script src="{% static 'js/components/angular.min.js' %}"></script>
-<script src="{% static 'js/controllers/productCreateCtrl.js' %}"></script>
-<head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Add Product</title>
-</head>
-<body>
-<!-- header -->
+<script src="{% static 'js/app.js' %}"></script>
+<script src="{% static 'js/controllers/product/productCreateCtrl.js' %}"></script>
+
+<div ng-app="app">
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Add Product</title>
+    </head>
+    <body>
+    <!-- header -->
     <div>{% include "header.html" %}</div>
     <!-- //header -->
-<!-- breadcrumbs -->
+    <!-- breadcrumbs -->
     <div class="breadcrumbs">
-		<div class="container">
-              <ol class="breadcrumb breadcrumb1">
+        <div class="container">
+            <ol class="breadcrumb breadcrumb1">
                 <li class="breadcrumb-item"><a href="/"><span class="fa fa-home" aria-hidden="true"></span>หน้าแรก</a></li>
-				<li class="breadcrumb-item active">product</li>
-              </ol>
-		</div>
+                <li class="breadcrumb-item active">เพิ่มสินค้า</li>
+            </ol>
+        </div>
     </div>
-<!-- //breadcrumbs -->
-
-
-        <div class="wrapper content" form="createForm" ng-app="productCreateApp" ng-controller="productCreateCtrl" ng-init="getAccountId({{ request.user.account.id }})">
+    <!-- //breadcrumbs -->
+    <div style="background: #F7F7F9">
+        <p>&nbsp;</p>
+        <div class="wrapper content" form="createForm" ng-controller="productCreateCtrl" ng-init="getAccountId({{ request.user.account.id }})">
             <div class="container">
                 <h2>ข้อมูลทั่วไป</h2>
                 <div class="add">
-                <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">ชื่อสินค้า : </label>
-                    <input class="form-control col-sm-10" type="text" placeholder="ชื่อสินค้า" ng-model="product.name">
-                </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">*ชื่อสินค้า : </label>
+                        <input class="form-control col-sm-10" type="text" placeholder="ชื่อสินค้า" ng-model="product.name">
+                    </div>
 
-                <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">หมวดหมู่ : </label>
-                    <select class="form-control col-sm-10" ng-model="selectedCategory" ng-options="cat as cat.name for cat in categories" ng-change="getProperties(selectedCategory.id)"></select>
-                        <div ng-repeat="(i, property) in properties track by $index">
-                            [[property.text]]
-                            <input class="form-control" type="text" ng-model="properties[i].value">
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">หมวดหมู่ : </label>
+                        <select class="form-control col-sm-10" ng-model="selectedCategory" ng-options="cat as cat.name for cat in categories" ng-change="getProperties(selectedCategory.id)"></select>
+                        <div class="list-group" >
+                            <div class="list-group-item" ng-repeat="(i, property) in properties track by $index">
+                                [[property.text]]
+                                <input class="form-control" type="text" ng-model="properties[i].value">
+                            </div>
                         </div>
-                </div>
+                    </div>
+
+                     <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">สภาพสินค้า : </label>
+                        <select class="form-control col-sm-10" ng-model="quality" ng-options="q for q in qTypes"></select>
+                    </div>
                 </div>
 
                 <h2>การจัดส่ง</h2>
                 <div class="add">
                     <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">การจัดส่ง : </label>
-                    <select class="form-control col-sm-10" ng-model="freight" ng-options="f for f in fTypes"></select>
+                        <label class="col-sm-2 col-form-label">การจัดส่ง : </label>
+                        <select class="form-control col-sm-10" ng-model="freight" ng-options="f for f in fTypes"></select>
                     </div>
 
                     <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">ราคาจัดส่ง : </label>
-                    <input class="form-control col-sm-10" type="text" placeholder="ค่าจัดส่ง" ng-model="product.freight_fee">
+                        <label class="col-sm-2 col-form-label">*ราคาจัดส่ง : </label>
+                        <input class="form-control col-sm-10" type="text" placeholder="ค่าจัดส่ง" ng-model="product.freight_fee">
                     </div>
                 </div>
 
                 <h2>ราคา</h2>
                 <div class="add">
                     <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">ราคา : </label>
+                        <label class="col-sm-2 col-form-label">*ราคา : </label>
                         <input class="form-control col-sm-10" type="text" placeholder="ราคา" ng-model="product.price">
+                    </div>
+                </div>
+
+                <h2>รายละเอียดเพิ่มเติม</h2>
+                <div class="add">
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">*รายละเอียด : </label>
+                        <textarea class="form-control col-sm-10" rows="4" cols="50" type="text" ng-model="product.detail">รายละเอียดเพิ่มเติม</textarea>
                     </div>
                 </div>
 
                 <h2>รูปสินค้า</h2>
                 <div class="add">
                     <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">รูปสินค้า : </label>
+                        <label class="col-sm-2 col-form-label">*รูปสินค้า : </label>
                         <input class="form-control col-sm-10" type="file" multiple ng-files="getTheFiles($files)">
                     </div>
                 </div>
+                
 
-
-            <input type="text" placeholder="seller_id" ng-model="product.seller_id">
-            [[ accountId ]]
-            <div class="form-group">
-            <button class="btn-primary" ng-click="submitProduct()">บันทึก</button>
+                <div class="form-group">
+                    <button class="btn btn btn-lg" ng-click="submitProduct()">บันทึก</button>
+                </div>
             </div>
-            </div>
+        </div>
+        <p>&nbsp;</p>
     </div>
-<!-- footer -->
-        <div>{% include "footer.html" %}</div>
+    <!-- footer -->
+    <div>{% include "footer.html" %}</div>
     <!-- //footer -->
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
-</body>
+    </body>
+</div>
 </html>

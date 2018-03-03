@@ -2,51 +2,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <script src="{% static 'js/components/angular.min.js' %}"></script>
-<script src="{% static 'js/controllers/accountCreateCtrl.js' %}"></script>
+<script src="{% static 'js/app.js' %}"></script>
+<script src="{% static 'js/controllers/account/accountCreateCtrl.js' %}"></script>
+<script src="{% static 'js/controllers/inputCtrl.js' %}"></script>
 
-<head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta charset="UTF-8">
-    <title>Signup</title>
-</head>
-<body>
+<div ng-app="app">
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta charset="UTF-8">
+        <title>Signup</title>
+    </head>
+    <body>
     <!-- header -->
-        <div>{% include "header.html" %}</div>
+    <div>{% include "header.html" %}</div>
     <!-- //header -->
 
     <!-- breadcrumbs -->
-        <div class="breadcrumbs">
-            <div class="container">
-                  <ol class="breadcrumb breadcrumb1">
-                    <li class="breadcrumb-item"><a href="/"><span class="fa fa-home" aria-hidden="true"></span>หน้าแรก</a></li>
-                    <li class="breadcrumb-item active">ละทะเบียน</li>
-                  </ol>
-            </div>
+    <div class="breadcrumbs">
+        <div class="container">
+            <ol class="breadcrumb breadcrumb1">
+                <li class="breadcrumb-item"><a href="/"><span class="fa fa-home" aria-hidden="true"></span>หน้าแรก</a></li>
+                <li class="breadcrumb-item active">ลงทะเบียน</li>
+            </ol>
         </div>
+    </div>
     <!-- //breadcrumbs -->
     <div class="register">
         <div class="container">
             <h3>ลงทะเบียน</h3>
-            <div class="login-form-grids" form="createForm" ng-app="accountCreateApp" ng-controller="accountCreateCtrl">
+            <div class="login-form-grids" form="createForm" ng-controller="accountCreateCtrl">
                 <h5>ข้อมูลเข้าสู่ระบบ</h5>
                 <form>
-                <input type="text" placeholder="username" ng-model="username" >
-                <input type="text" placeholder="password" ng-model="password" >
+                    <p class="col-form-label">ชื่อผู้ใช้</p>
+                    <div class="row ">
+                        <div class="col-md-8">
+                            <input type="text" username placeholder="กรอกชื่อผู้ใช้" ng-model="username"></div>
+                        <div class="col-md-4">
+                            <input type="submit" value="ตรวจสอบ" ng-click="checkUsername()"></div>
+                    </div>
+                    <small>กรอกได้เฉพาะ A-Z a-z 0-9 _ และ - </small>
 
-                <h5>ข้อมูลส่วนตัว</h5>
+                    <p class="col-form-label">รหัสผ่าน</p>
+                    <input is-password="checkPassword" placeholder="รหัสผ่าน" ng-model="password">
+                    <input type="checkbox" ng-model="checkPassword">
+                    <small for="checkbox" ng-if="checkPassword">ซ่อนรหัสผ่าน</small>
+                    <small for="checkbox" ng-if="!checkPassword">แสดงรหัสผ่าน</small>
+                    <small> | กรอกได้เฉพาะ A-Z a-z และ 0-9</small>
+                    <p class="col-form-label">ยืนยันรหัสผ่าน</p>
+                    <input is-password="checkPasswordAgain" placeholder="กรอกรหัสผ่านอีกครั้ง" ng-model="passwordAgain">
+                    <input type="checkbox" ng-model="checkPasswordAgain">
+                    <small for="checkbox" ng-if="!checkPasswordAgain">Show password</small>
+                    <small for="checkbox" ng-if="checkPasswordAgain">ซแสดงรหัสผ่าน</small>
+                    <small> | กรอกได้เฉพาะ A-Z a-z และ 0-9</small>
+                    <br><br>
 
-                <input type="text" placeholder="firstname" ng-model="first_name" >
-                <input type="text" placeholder="lastname" ng-model="last_name" >
-                <input type="text" placeholder="email" ng-model="email" >
-                <input type="text" placeholder="displayname" ng-model="display_name">
-                <input type="text" placeholder="telephone" ng-model="phone">
-                <input type="submit" value="ลงทะเบียน" ng-click="clickSignup()">
+                    <h5>ข้อมูลส่วนตัว</h5>
+                    <p class="col-form-label">ชื่อ - นามสกุล</p>
+                    <input type="text" is-name placeholder="ชื่อ" ng-model="first_name" >
+                    <small>กรอกได้เฉพาะ A-Z a-z และ ก-ฮ </small>
+                    <input type="text" is-name placeholder="นามสกุล" ng-model="last_name" >
+                    <small>กรอกได้เฉพาะ A-Z a-z และ ก-ฮ</small>
+
+                    <p class="col-form-label">อีเมล</p>
+                    <input type="text" placeholder="อีเมล" ng-model="email" >
+                    <small>ตัวอย่าง example@hotmail.com </small>
+                    <p class="col-form-label">Display Name</p>
+                    <div class="row ">
+                        <div class="col-md-8">
+                            <input type="text" username placeholder="displayname" ng-model="display_name"></div>
+                        {#                    <small>กรอกได้เฉพาะ A-Z และ a-z</small>#}
+                        <div class="col-md-4">
+                            <input type="submit" value="ตรวจสอบ" ng-click="checkDisplayname()"></div>
+                    </div>
+                    <small>กรอกได้เฉพาะ A-Z a-z 0-9 _ และ - </small>
+
+                    <p class="col-form-label">เบอร์โทรศัพท์</p>
+                    <input type="text" phone placeholder="เบอร์โทรศัพท์" ng-model="phone">
+                    <small>ตัวอย่าง 0800000000 </small>
+                    <input type="submit" value="ลงทะเบียน" ng-click="clickSignup()">
                 </form>
             </div>
         </div>
     </div>
-</body>
+
+
+    <!-- footer -->
+    <div>{% include "footer.html" %}</div>
+    <!-- //footer -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    </body>
+</div>
 </html>

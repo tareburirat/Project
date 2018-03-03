@@ -1,6 +1,6 @@
-from django.db import transaction
 from rest_framework import serializers
 
+from apps.accounts.serializers import AccountSerializer
 from apps.categories.models import Category
 from apps.category_product.models import CategoryProduct
 from apps.products.models import Product, ProductImage
@@ -24,11 +24,15 @@ class ProductSerializer(serializers.ModelSerializer):
     property = serializers.SerializerMethodField()
     first_image_url = serializers.SerializerMethodField()
     freight_detail = serializers.SerializerMethodField()
+    seller_data = serializers.SerializerMethodField()
+    sub_total = serializers.SerializerMethodField()
+    quality = serializers.SerializerMethodField()
+    price = serializers.IntegerField()
+    freight_fee = serializers.IntegerField()
 
     class Meta:
         model = Product
         exclude = []
-
 
     @staticmethod
     def get_property(obj):
@@ -47,9 +51,21 @@ class ProductSerializer(serializers.ModelSerializer):
         return obj.get_freight_display()
 
     @staticmethod
+    def get_quality(obj):
+        return obj.get_product_quality_display()
+
+    @staticmethod
     def get_category(obj):
-        categories = CategoryProduct.objects.filter(product_id=1, category__category_type=Category.normal)
+        categories = CategoryProduct.objects.filter(product_id=obj.id, category__category_type=Category.normal)
         if categories.count() > 0:
             return categories[0].category.name
         else:
             return ""
+
+    @staticmethod
+    def get_seller_data(obj):
+        return AccountSerializer(obj.seller).data
+
+    @staticmethod
+    def get_sub_total(obj):
+        return obj.price + obj.freight_fee

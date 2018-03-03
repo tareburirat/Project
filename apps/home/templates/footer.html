@@ -1,71 +1,43 @@
 {% load i18n static %}{% get_static_prefix as STATIC_PREFIX %}
-<div class="footer">
-                <div class="container">
-                    <div class="row footer-grid">
-                        <div class="clearfix"> </div>
-                        <div class="col-md-3">
-                            <h3>เกี่ยวกับเรา</h3>
-                            <p>“เรื่องเครื่องสำอางมือสองไว้ใจเรา 2nd MakeUp เพราะเราคือสังคมการแชร์ส่งต่อเครื่องอำสางของคุณให้ถึงมือคนที่ต้องการ
-                                เหมาะสำหรับการซื้อ-ขาย เครื่องสำอางมือสอง 2nd MakeUp จะรวบรวมเครื่องสำอางมือสองจากทุกคนไว้วางจำหน่าย และคุณสามารถร่วมเป็นส่วนหนึ่งกับเรา
-                                โดยนำเครื่องสำอางบนโต๊ะเครื่องแป้งมาส่งต่อให้กับเพื่อนๆในนี้ได้เลย”</p>
-                        </div>
-                        <div class="col-md-3">
-                            <h3>ติดต่อ</h3>
-                            <ul>
-                                <li><i class="fa fa-map-marker" aria-hidden="true"></i>1234k Avenue, 4th block,<span>Bangkok City.</span></li>
-                                <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:info@example.com">info@2ndMakeUp.com</a></li>
-                                <li><i class="fa fa-phone" aria-hidden="true"></i>+1234 567 567</li>
-                            </ul>
-                        </div>
-                        <div class="col-md-6">
-                            <h3>หมวดหมู่</h3>
-                                <a href="index.html"><b>ผลิตภัณฑ์ดูแลผิวหน้า</b></a>
-                                <p><a href="index.html">ทำความสะอาดผิวหน้า</a><a> | </a><a href="index.html">โทนเนอร์</a>
-                                <a> | </a><a href="index.html">ล้างเครื่องสำอาง</a><a> | </a><a href="index.html">บำรุงผิวหน้า</a>
-                                <a> | </a><a href="index.html">บำรุงดวงตา</a><a> | </a><a href="index.html">ทรีทเม้น&เซรั่ม</a>
-                                <a> | </a><a href="index.html">มาร์กหน้า</a><a> | </a><a href="index.html">กันแดด</a>
-                                <a> | </a><a href="index.html">อื่นๆ</a></p>
+<!-- footer -->
+	<div class="footer">
+		<div class="container">
+			<div class="row footer-grids">
+				<div class="clearfix"> </div>
+				<div class="col-md-5 footer-grid animated wow slideInLeft" >
+					<h3>เกี่ยวกับเรา</h3>
+					<p>“เรื่องเครื่องสำอางมือสองไว้ใจเรา 2nd MakeUp เพราะเราคือสังคมการแชร์ส่งต่อเครื่องอำสางของคุณให้ถึงมือคนที่ต้องการ เหมาะสำหรับการซื้อ-ขาย
+						เครื่องสำอางมือสอง 2nd MakeUp จะรวบรวมเครื่องสำอางมือสองจากทุกคนไว้วางจำหน่าย และคุณสามารถร่วมเป็นส่วนหนึ่งกับเรา โดยนำเครื่องสำอางบนโต๊ะเครื่องแป้งมาส่งต่อให้กับเพื่อนๆในนี้ได้เลย”
+					</p>
+				</div>
+				<div class="col-md-3 footer-grid animated wow slideInLeft" >
+					<h3>ติดต่อ</h3>
+					<ul>
+						<li><i class="fa fa-map-marker" aria-hidden="true"></i>1234k Avenue, 4th block,<span>Bangkok City.</span></li>
+                        <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:info@example.com">info@2ndMakeUp.com</a></li>
+                        <li><i class="fa fa-phone" aria-hidden="true"></i>+1234 567 567</li>
+					</ul>
+				</div>
+				<div class="col-md-4 footer-grid animated wow slideInLeft" >
+					<h3>หมวดหมู่</h3>
+					<a href="/product/"><b>ผลิตภัณฑ์ดูแลผิวหน้า</b></a><br>
+                               <a href="/product/"><b>เครื่องสำอางสำหรับผิวหน้า</b></a><br>
+                               <a href="/product/"><b>เครื่องสำอางสำหรับดวงตา</b></a><br>
+                                <a href="/product/"><b>ผลิตภัณฑ์สำหรับริมฝีปาก</b></a><br>
+                               <a href="/product/"><b>อุปกรณ์เสริมความงาม</b></a><br>
+                                <a href="/product/"><b>น้ำหอม</b></a><br>
+                                <a href="/product/"><b>ผลิตภัณฑ์สำหรับผู้ชาย</b></a><br>
+                            <a href="/product/"><b>อื่นๆ</b></a><br>
 
-                                <a href="index.html"><b>เครื่องสำอางสำหรับผิวหน้า</b></a>
-                                <p><a href="index.html">แป้งฝุ่นและแป้งอัดแข็ง</a><a> | </a><a href="index.html">รองพื้น</a>
-                                <a> | </a><a href="index.html">บลัชออน</a><a> | </a><a href="index.html">คอนซีลเลอร์</a>
-                                <a> | </a><a href="index.html">ไพรเมอร์</a><a> | </a><a href="index.html">เฉดดิ้ง&ไฮไลท์</a>
-                                <a> | </a><a href="index.html">อื่นๆ</a></p>
-
-                                <a href="index.html"><b>เครื่องสำอางสำหรับดวงตา</b></a>
-                                <p><a href="index.html">อายแชโดว์</a><a> | </a><a href="index.html">อายไลเนอร์</a>
-                                <a> | </a><a href="index.html">ที่เขียนคิ้ว</a><a> | </a><a href="index.html">มาสคาร่า</a>
-                                <a> | </a><a href="index.html">ขนตาปลอม</a><a> | </a><a href="index.html">เทปกาวตาสองชั้น</a>
-                                <a> | </a><a href="index.html">อื่นๆ</a></p>
-
-                                <a href="index.html"><b>ผลิตภัณฑ์สำหรับริมฝีปาก</b></a>
-                                <p><a href="index.html">ลิปสติก</a><a> | </a><a href="index.html">ลิปบาล์ม</a>
-                                <a> | </a><a href="index.html">ลิปกลอส</a><a> | </a><a href="index.html">ดินสอเขียนขอบปาก</a>
-                                <a> | </a><a href="index.html">ลิปทินท์</a><a> | </a><a href="index.html">อื่นๆ</a></p>
-
-                                <a href="index.html"><b>อุปกรณ์เสริมความงาม</b></a>
-                                <p><a href="index.html">อุปกรณ์ทำผม</a><a> | </a><a href="index.html">อุปกรณ์แต่งหน้า</a>
-                                <a> | </a><a href="index.html">อุปกรณ์กำจัดขน</a><a> | </a><a href="index.html">กล่องกระเป๋าเครื่องสำอาง</a>
-                                <a> | </a><a href="index.html">อื่นๆ</a></p>
-
-                                <a href="index.html"><b>น้ำหอม</b></a>
-                                <p><a href="index.html">น้ำหอมผู้หญิง</a><a> | </a><a href="index.html">อื่นๆ</a></p>
-
-                                <a href="index.html"><b>ผลิตภัณฑ์สำหรับผู้ชาย</b></a>
-                                <p><a href="index.html">ผลิตภัณฑ์ดูแลผิวหน้า</a><a> | </a><a href="index.html">น้ำหอมสำหรับผู้ชาย</a>
-                                <a> | </a><a href="index.html">อื่นๆ</a></p>
-
-                                <a href="index.html"><b>อื่นๆ</b></a>
-                                <p><a href="index.html">อื่นๆ</a></p>
-
-                        </div>
-                            <div class="clearfix"> </div>
-                        </div>
-                    <div class="footer-logo">
-                        <h2><a href="index.html">2nd MakeUp <span>shop anywhere</span></a></h2>
-                    </div>
-                    <div class="copy-right">
-                        <p>&copy 2017 2ndMakeUp. All rights reserved.</p>
-                    </div>
-                </div>
-            </div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<div class="footer-logo animated wow slideInUp" >
+				<h2><a href="index.html">2nd MakeUp <span>shop anywhere</span></a></h2>
+			</div>
+			<div class="copy-right animated wow slideInUp" >
+				<p>&copy 2018 2ndMakeUp. All rights reserved.</p>
+			</div>
+		</div>
+	</div>
+	<!-- //footer -->

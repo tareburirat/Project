@@ -10,4 +10,4 @@ class CategoryViewSet(viewsets.ModelViewSet):
     serializer_class = CategorySerializer
     queryset = Category.objects.all()
     filter_backends = (DjangoFilterBackend,)
-    filter_fields = ['category_type']
+    filter_fields = ['category_type', 'id']
