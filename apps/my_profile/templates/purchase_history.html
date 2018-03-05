@@ -5,6 +5,7 @@
 <script src="{% static 'js/components/angular.min.js' %}"></script>
 <script src="{% static 'js/app.js' %}"></script>
 <script src="{% static 'js/controllers/history/historySellerCtrl.js' %}"></script>
+<script src="{% static 'js/controllers/history/historyBuyerCtrl.js' %}"></script>
 <script src="{% static 'js/controllers/ratingCtrl.js' %}"></script>
 <div ng-app="app">
     <head>
@@ -206,7 +207,6 @@
                                                                 data-toggle="modal" data-target="#Confirm">
                                                             ยืนยันรับสินค้า
                                                         </button>
-
                                                     </td>
                                                 </tr>
                                             </table>
@@ -256,8 +256,6 @@
                                         </div>
                                     </div>
                                 </div>
-
-
                             </div>
                         </div>
                     </div>
@@ -307,7 +305,6 @@
                             </div>
                             <br>
                         </div>
-
                     </div>
                 </div>
 
@@ -322,7 +319,12 @@
                             <div class="modal-body">
 
                                 <div class="row">
-                                    <label class="col-md-8 col-form-label">หมายเลขคำสั่งซื้อ : 00000000 </label>
+                                     <div class="col-md-4">
+                                            <span class="col-form-label" style="text-align: center">หมายเลขคำสั่งซื้อ :</span>
+                                        </div>
+                                        <div class="col-md-4" style="text-align: center">
+                                            <span ng-bind="yoyo"></span>
+                                        </div>
                                 </div>
                                 <div class="row form-group">
                                     <label class="col-md-4 col-form-label">ให้คะแนนร้านค้า: </label>
@@ -368,8 +370,6 @@
         </div>
     </div>
 
-
-</div>
 <!-- footer -->
 <div>{% include "footer.html" %}</div>
 <!-- //footer -->
