@@ -35,9 +35,9 @@
             <div ng-controller="homeCtrl">
                 <div class="row">
                     <div class="list-group card-deck col-md-3" ng-repeat="product in products">
-                        <a href="/single/[[product.id]]">
+                        <a href="/product/single/[[product.id]]">
                             <div class="list-group-item" style="max-height: 45rem;"
-                                 onclick="window.location = '/single/'">
+                                 onclick="window.location = '/product/single/'">
                                 <div>
                                     <img class="card-img-top" src="[[product.first_image_url]]"
                                          alt="[[product.first_image_url]]" style="width: 15rem; height: 15rem;">

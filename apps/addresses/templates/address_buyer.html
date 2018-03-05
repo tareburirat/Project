@@ -34,139 +34,139 @@
     <div class="wrapper content" form="createForm">
         <div ng-controller="addressCtrl" ng-init="getBuyerId({{ request.user.account.id }})">
             <div class="container">
-                <div class="row col-md-12">
-                    <h4>ที่อยู่</h4>
+                <div class="row">
+                    <div class="col-md-10">
+                        <h4>ที่อยู่ของฉัน</h4>
+                    </div>
+                    <div class="col-md-2">
+                        <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#myModal">
+                            + เพิ่มที่อยู่
+                        </button>
+                    </div>
                 </div>
+                   <div style="margin: 10px">
+                        <p> ชื่อ {{ request.user.account.first_name }} {{ request.user.account.last_name }}</p>
+                        <p> เบอร์โทรศัพท์ {{ request.user.account.phone }}</p>
+                    </div>
+                <hr>
+                <p style="color: #999999">เลือกที่อยู่ในการจัดส่ง</p>
                 <table id="cart" class="table table-hover table-condensed">
                     <tr>
-                        <th style="width:100%">เลือกที่อยู่ที่ต้องการส่ง</th>
                     </tr>
-                    <tr ng-repeat="cart in carts">
-
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="row col-md-12" ng-repeat="address in addresses" style="margin-bottom: 5px;">
+                    <tr ng-repeat="address in addresses">
+                        <div class="row col-md-12" style="margin-bottom: 5px;">
+                            <td valign="center">
                                 <input type="radio" ng-checked="selectedAddress==$index" name="primaryRadio"
                                        ng-click="updateSelectedAddress($index)" style="margin-top: 5px;">
+                            </td>
+                            <td valign="center">
                                 <label>
                                     <span class="padding-bottom-5">
                                         [[address.address_details]]
                                     </span>
                                 </label>
-                                <button ng-click="delAddress(address.id)">
-                                    Delete
+                            </td>
+                            <td valign="center">
+                                <button class="btn btn-danger btn-sm" ng-click="delAddress(address.id)">
+                                    <i class="fa fa-trash-o"></i>
                                 </button>
-                            </div>
-                        </td>
+                            </td>
+                        </div>
                         <td colspan="3" class="hidden-xs"></td>
                         <td>
                         </td>
                     </tr>
                 </table>
+                <hr>
                 <button class="btn btn-secondary btn-sm" ng-click="confirmAddress()">
                     <i class="fa fa-arrow-right"></i>
                     <span class="text-bold">Next</span>
                 </button>
             </div>
-
-            <div>
-                <hr>
-            </div>
-            <!-- add address -->
+            <!-- เพิ่มที่อยู่ popup -->
             <div class="container">
-                <p>
-                    {#                    <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" aria-expanded="false"#}
-                    {#                       aria-controls="collapseExample">#}
-                    {#                        Link with href#}
-                    {#                    </a>#}
-                    {#                    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample"#}
-                    {#                            aria-expanded="false" aria-controls="collapseExample">#}
-                    {#                        Button with data-target#}
-                    {#                    </button>#}
-                    <a data-toggle="collapse" href="#add" aria-expanded="false"
-                       aria-controls="collapseExample">
-                        เพิ่มที่อยู่
-                    </a>
-                </p>
-                {#                <div class="collapse" id="collapseExample">#}
-                {#                    <div class="card card-block">#}
-                {#                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.#}
-                {#                        Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea#}
-                {#                        proident.#}
-                {#                    </div>#}
-                {#                </div>#}
-
-                <div class="collapse" id="add">
-                    {#                    <div class="card card-block">#}
-                    {#                                      <h4>เพิ่มที่อยู่</h4>#}
-                    <div class="add">
-                        <div class="form-group row">
-                            <label for="input" class="col-sm-3 col-form-label" align="right">ชื่อ - นามสกุล : </label>
-                            <div class="col-sm-6">
-                                <input class="form-control col-sm-10" type="text" disabled
-                                       value="{{ request.user.account.first_name }}  {{ request.user.account.last_name }}">
+                <!-- The Modal -->
+                <div class="modal fade" id="myModal">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 style="color: #FFFFFF">เพิ่มที่อยู่</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
                             </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="input" class="col-sm-3 col-form-label" align="right">เบอร์โทรศัพท์ : </label>
-                            <div class="col-sm-6">
-                                <input class="form-control col-sm-10" type="text" disabled
-                                       value="{{ request.user.account.phone }}">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="input" class="col-sm-3 col-form-label" align="right">อีเมล : </label>
-                            <div class="col-sm-6">
-                                <input class="form-control col-sm-10" type="text" disabled
-                                       value="{{ request.user.account.email }}">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="input" class="col-sm-3 col-form-label" align="right">ที่อยู่ : </label>
-                            <div class="col-sm-6">
-                                <input class="form-control col-sm-10" type="text" ng-model="address">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="input" class="col-sm-3 col-form-label" align="right">ตำบล/แขวง : </label>
-                            <div class="col-sm-6">
-                                <input class="form-control col-sm-10" type="text" ng-model="sub_district">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="input" class="col-sm-3 col-form-label" align="right">อำเภอ/เขต : </label>
-                            <div class="col-sm-6">
-                                <input class="form-control col-sm-10" type="text" ng-model="district">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="input" class="col-sm-3 col-form-label" align="right">จังหวัด : </label>
-                            <div class="col-sm-6">
-                                <input class="form-control col-sm-10" type="text" ng-model="province">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="input" class="col-sm-3 col-form-label" align="right">รหัสไปรษณีย์ : </label>
-                            <div class="col-sm-6">
-                                <input class="form-control col-sm-10" type="text" ng-model="zip_code">
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                                <div class="add">
+                                    <div class="form-group row">
+                                        <label for="input" class="col-sm-3 col-form-label" align="right">ชื่อ - นามสกุล : </label>
+                                        <div class="col-sm-6">
+                                            <input class="form-control col-sm-10" type="text" disabled
+                                                   value="{{ request.user.account.first_name }}  {{ request.user.account.last_name }}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="input" class="col-sm-3 col-form-label" align="right">เบอร์โทรศัพท์ : </label>
+                                        <div class="col-sm-6">
+                                            <input class="form-control col-sm-10" type="text" disabled
+                                                   value="{{ request.user.account.phone }}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="input" class="col-sm-3 col-form-label" align="right">อีเมล : </label>
+                                        <div class="col-sm-6">
+                                            <input class="form-control col-sm-10" type="text" disabled
+                                                   value="{{ request.user.account.email }}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="input" class="col-sm-3 col-form-label" align="right">ที่อยู่ : </label>
+                                        <div class="col-sm-6">
+                                            <input class="form-control col-sm-10" type="text" ng-model="address">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="input" class="col-sm-3 col-form-label" align="right">ตำบล/แขวง : </label>
+                                        <div class="col-sm-6">
+                                            <input class="form-control col-sm-10" type="text" ng-model="sub_district">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="input" class="col-sm-3 col-form-label" align="right">อำเภอ/เขต : </label>
+                                        <div class="col-sm-6">
+                                            <input class="form-control col-sm-10" type="text" ng-model="district">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="input" class="col-sm-3 col-form-label" align="right">จังหวัด : </label>
+                                        <div class="col-sm-6">
+                                            <input class="form-control col-sm-10" type="text" ng-model="province">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="input" class="col-sm-3 col-form-label" align="right">รหัสไปรษณีย์ : </label>
+                                        <div class="col-sm-6">
+                                            <input class="form-control col-sm-10" type="text" ng-model="zip_code">
+                                        </div>
+                                    </div>
+                                    <div style="text-align-last: center">
+                                        <button ng-click="saveAddress()" class="btn btn-secondary btn-sm">
+                                            บันทึก
+                                        </button>
+                                        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">
+                                            Close
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div style="text-align-last: center">
-                        <button ng-click="saveAddress()" class="btn btn-secondary btn-lg">บันทึก</button>
-                    </div>
-                    {#                    </div>#}
                 </div>
-            </div>
-            <!-- end add -->
 
+            </div>
 
         </div>
     </div>
     <p>&nbsp;</p>
-
-
     <!-- footer -->
     <div>{% include "footer.html" %}</div>
     <!-- //footer -->

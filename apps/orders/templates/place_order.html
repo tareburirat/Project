@@ -27,18 +27,20 @@
     </div>
 </div>
 <!-- //breadcrumbs -->
+<p>&nbsp;</p>
 <div class="wrapper content" form="createForm">
     <div ng-app="app" ng-controller="placeOrderCtrl" ng-init="getAccountId({{ request.user.account.id }})">
+
         <div class="container">
             <div class="row col">
                 <h4>
-                    Selected Address
+                   ที่อยู่ในการจัดส่ง
                 </h4>
             </div>
-            <div>
-                <p>
-                    [[ address ]]
-                </p>
+            <div style="margin: 10px">
+                <p> {{ request.user.account.first_name }}  {{ request.user.account.last_name }}</p>
+                <p> {{ request.user.account.phone }}</p>
+                <p> [[ address ]] </p>
             </div>
             <hr>
             <div>
@@ -72,7 +74,7 @@
                     {#            <td class="text-center"><strong>Total 1.99</strong></td>#}
                     {#        </tr>#}
                     <tr>
-                        <td><a href="/" style="color: white" class="btn btn"><i class="fa fa-angle-left"></i>
+                        <td><a href="/account/address_buyer/" style="color: white" class="btn btn"><i class="fa fa-angle-left"></i>
                             Back</a></td>
                         <td colspan="2" class="hidden-xs"></td>
                         <td class="hidden-xs text-center"><strong>[[getTotal()]] ฿</strong></td>
@@ -87,7 +89,7 @@
         </div>
     </div>
 </div>
-
+<p>&nbsp;</p>
 <!-- footer -->
 <div>{% include "footer.html" %}</div>
 <!-- //footer -->

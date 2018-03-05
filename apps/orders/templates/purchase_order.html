@@ -50,7 +50,7 @@
                 <hr style=" border: 0; height: 2px;  background: linear-gradient(to right, #8b82ff, #f392ff, #ff768c);">
                 <div class="row">
                     <label class="col-sm-2 col-form-label" style="color: #999">ที่อยู่ในการจัดส่ง</label>
-                    <div class="col-sm-8 col-form-label">
+                    <div class="col-sm-5 col-form-label">
                         <p> {{ request.user.account.first_name }}  {{ request.user.account.last_name }}</p>
                         <p> {{ request.user.account.phone }}</p>
                         <p> [[ order.order_address ]]</p>
@@ -76,7 +76,7 @@
                     <th style="width:10%">ราคา</th>
                     <th style="width:20%">ค่าจัดส่ง</th>
                     <th style="width:20%" class="text-center">ราคารวม</th>
-{#                    <th style="width:10%"></th>#}
+                    {#                    <th style="width:10%"></th>#}
                 </tr>
                 <tr ng-repeat="orderItem in order.order_items">
                     <td data-th="Product">
@@ -89,7 +89,7 @@
 
                                 {#                            <p>ค่าจัดส่ง : [[cart.product_data.freight_fee]]</p>#}
                                 <p>ร้านค้า : [[orderItem.product_data.seller_data.display_name]]</p>
-                                 <p>วิธีการจัดส่ง : [[orderItem.product_data.freight_detail]]</p>
+                                <p>วิธีการจัดส่ง : [[orderItem.product_data.freight_detail]]</p>
                                 <p>หมายเลขสิ่งของ : [[orderItem.order_track]]</p>
                             </div>
                         </div>
@@ -100,8 +100,8 @@
                 </tr>
                 <tr>
                     <td></td>
-{#                    <td colspan="2" class="hidden-xs"></td>#}
-{#                    <td class="hidden-xs text-center"><strong>รวมทั้งหมด [[order.price]] ฿</strong></td>#}
+                    {#                    <td colspan="2" class="hidden-xs"></td>#}
+                    {#                    <td class="hidden-xs text-center"><strong>รวมทั้งหมด [[order.price]] ฿</strong></td>#}
 
                     {#                    <td><button style="color: white" class="btn btn btn-block" ng-click="placeOrder()">Confirm <i#}
                     {#                            class="fa fa-credit-card"></i></button></td>#}
@@ -115,20 +115,27 @@
         </div>
     </div>
     <br>
-    <div class="wrapper content">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <h2>ช่องทางการชำเงิน</h2>
-                </div>
-            </div>
-            <hr style=" border: 0; height: 2px;  background: linear-gradient(to right, #8b82ff, #f392ff, #ff768c);">
-            <div class="container">
-                pic
-            </div>
-        </div>
+{#    <div class="wrapper content">#}
+{#        <div class="container">#}
+{#            <div class="row">#}
+{#                <div class="col-md-6">#}
+{#                    <h2>ช่องทางการชำเงิน</h2>#}
+{#                </div>#}
+{#            </div>#}
+{#            <hr style=" border: 0; height: 2px;  background: linear-gradient(to right, #8b82ff, #f392ff, #ff768c);">#}
+            {#            <div class="container">#}
+            {#                pic#}
+            {#            </div>#}
+{#        </div>#}
+{#    </div>#}
+       <div style="text-align-last: center">
 
-    </div>
+                <a href="/">
+                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">
+                        หน้าแรก
+                    </button>
+              </a>
+            </div>
     <br>
     {#   <div class="container">#}
     {#       <a href="/" style="color: white" class="btn btn"><i class="fa fa-angle-left"></i>Back</a>#}
