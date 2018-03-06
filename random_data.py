@@ -1,6 +1,7 @@
 import random
 
 from django.db import transaction
+from django.utils import timezone
 
 from apps.categories.models import Category
 from apps.category_product.models import CategoryProduct
@@ -21,6 +22,7 @@ def random_d(val):
                 print('new price:', product.price)
                 product.seller_id = random.randint(1, 53)
                 print('new user id:', product.seller_id)
+                product.exp_date_promotion =  timezone.now()
                 product.save()
 
                 # product image
