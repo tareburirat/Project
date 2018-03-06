@@ -7,7 +7,7 @@ from apps.carts.viewsets import CartViewSet
 from apps.categories.viewsets import CategoryViewSet
 from apps.category_product.viewset import CategoryProductViewSet
 from apps.offers.viewsets import OfferViewSet, get_highest_offer_for_all_products, reject_or_accept_product_offer
-from apps.orders.viewsets import OrderViewSet
+from apps.orders.viewsets import OrderViewSet, OrderItemViewSet
 from apps.products import viewsets as product_viewsets
 from apps.properties.viewsets import PropertyViewSet
 from apps.ratings.viewsets import RatingViewSet
@@ -22,6 +22,7 @@ router.register('category_products', CategoryProductViewSet, base_name='category
 router.register('carts', CartViewSet, base_name='cart')
 router.register('offers', OfferViewSet, base_name='offer')
 router.register('orders', OrderViewSet, base_name='order')
+router.register('order_items', OrderItemViewSet, base_name='order_items')
 router.register('products', product_viewsets.ProductViewSet, base_name='product')
 router.register('properties', PropertyViewSet, base_name='property')
 router.register('ratings', RatingViewSet, base_name='rating')
