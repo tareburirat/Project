@@ -4,7 +4,8 @@
 <script src="{% static 'js/components/jquery-3.2.1.min.js' %}"></script>
 <script src="{% static 'js/components/angular.min.js' %}"></script>
 <script src="{% static 'js/app.js' %}"></script>
-<script src="{% static 'js/controllers/order/placeOrderCtrl.js' %}"></script>
+<script src="{% static 'js/controllers/history/historySellerCtrl.js' %}"></script>
+<script src="{% static 'js/controllers/history/historyBuyerCtrl.js' %}"></script>
 <script src="{% static 'js/controllers/ratingCtrl.js' %}"></script>
 <div ng-app="app">
     <head>
@@ -32,7 +33,7 @@
         </div>
     </div>
     <!-- //breadcrumbs -->
-    <div ng-app="app" ng-controller="placeOrderCtrl" ng-init="getAccountId({{ request.user.account.id }})">
+    <div ng-app="app" ng-controller="historySellerCtrl" ng-init="getAccountId({{ request.user.account.id }})">
         <div style="background: #F7F7F9">
             <div class="container">
                 &nbsp;
@@ -81,36 +82,40 @@
                                                     <th style="width:15%" class="text-center">ราคารวม</th>
                                                     <th style="width:15%"></th>
                                                 </tr>
-                                                <tr ng-repeat="cart in carts">
+                                                <tr ng-repeat="order_item in order_items">
                                                     <td data-th="Product">
                                                         <div class="row">
                                                             <div class="col-sm-3 hidden-xs">
-                                                                <img src="[[cart.product_data.first_image_url]]"
-                                                                     alt="[[cart.first_image_url]]"
+                                                                <img src="[[order_item.product_data.first_image_url]]"
+                                                                     alt="img"
                                                                      class="img-responsive"
                                                                      style="width: 5rem; height: 5rem;"/></div>
                                                             <div class="col-sm-9">
                                                                 <h4 class="nomargin"> ชื่อ :
-                                                                    [[cart.product_data.name]]</h4>
+                                                                    [[order_item.product_data.name]]</h4>
                                                                 <p>วิธีการจัดส่ง :
-                                                                    [[cart.product_data.freight_detail]]</p>
+                                                                    [[order_item.product_data.freight_detail]]</p>
                                                                 {#                            <p>ค่าจัดส่ง : [[cart.product_data.freight_fee]]</p>#}
                                                                 <p>ร้านค้า :
-                                                                    [[cart.product_data.seller_data.display_name]]</p>
+                                                                    [[order_item.product_data.seller_data.display_name]]</p>
                                                             </div>
                                                         </div>
                                                     </td>
                                                     <td data-th="Price" class="text-center">
-                                                        [[cart.product_data.price]]฿
+                                                        [[order_item.product_data.price]]฿
                                                     </td>
                                                     <td data-th="Freight" class="text-center">
-                                                        [[cart.product_data.freight_fee]]฿
+                                                        [[order_item.product_data.freight_fee]]฿
                                                     </td>
                                                     <td data-th="Subtotal" class="text-center">
-                                                        [[cart.product_data.sub_total]]฿
+                                                        [[order_item.product_data.sub_total]]฿
                                                     </td>
                                                     <td class="hidden-xs text-center">
-                                                        <button type="button" class="btn btn btn-block" data-toggle="modal" data-target="#Track">แจ้งโอน</button>
+                                                        <button type="button" class="btn btn btn-block"
+                                                                data-toggle="modal"
+                                                                ng-click="setYoyo(order_item.order.order_number)"
+                                                                data-target="#Track">แจ้งโอน
+                                                        </button>
                                                     </td>
                                                 </tr>
                                             </table>
@@ -199,9 +204,9 @@
                                                     </td>
                                                     <td class="hidden-xs text-center">
                                                         <button type="button" class="btn btn btn-block"
-                                                                data-toggle="modal" data-target="#Confirm">ยืนยันรับสินค้า
+                                                                data-toggle="modal" data-target="#Confirm">
+                                                            ยืนยันรับสินค้า
                                                         </button>
-
                                                     </td>
                                                 </tr>
                                             </table>
@@ -251,8 +256,6 @@
                                         </div>
                                     </div>
                                 </div>
-
-
                             </div>
                         </div>
                     </div>
@@ -274,16 +277,21 @@
                             <div class="modal-body">
                                 <form>
                                     <div class="row">
-                                        <label class="col-md-8 col-form-label">หมายเลขคำสั่งซื้อ : 00000000 </label>
+                                        <div class="col-md-4">
+                                            <span class="col-form-label" style="text-align: center">หมายเลขคำสั่งซื้อ :</span>
+                                        </div>
+                                        <div class="col-md-4" style="text-align: center">
+                                            <span ng-bind="yoyo"></span>
+                                        </div>
                                     </div>
                                     <div class="row form-group">
-                                        <label class="col-md-3 col-form-label">เแจ้งโอนทาง: </label>
-                                        <select class ="col-md-4">
+                                        <label class="col-md-3 col-form-label">แจ้งโอนทาง: </label>
+                                        <select class="col-md-4">
                                             <option value="volvo">E-mail</option>
                                             <option value="saab">Line</option>
                                         </select>
 
-                                        <button class="btn btn col-md-2 form-control" ng-click="submitProduct()">
+                                        <button class="btn btn col-md-2 form-control" ng-click="">
                                             บันทึก
                                         </button>
                                     </div>
@@ -297,7 +305,6 @@
                             </div>
                             <br>
                         </div>
-
                     </div>
                 </div>
 
@@ -310,36 +317,46 @@
                                 <h4 class="modal-title"></h4>
                             </div>
                             <div class="modal-body">
-                                <form>
-                                    <div class="row">
-                                        <label class="col-md-8 col-form-label">หมายเลขคำสั่งซื้อ : 00000000 </label>
-                                    </div>
-                                    <div class="row form-group">
-                                        <label class="col-md-4 col-form-label">ให้คะแนนร้านค้า: </label>
 
-                                        <div class="row">
-                                            <div class="col-lg-12">
-                                                <div class="star-rating">
-                                                    <span class="fa fa-star-o" data-rating="1" ng-click="setRating(1)"></span>
-                                                    <span class="fa fa-star-o" data-rating="2" ng-click="setRating(2)"></span>
-                                                    <span class="fa fa-star-o" data-rating="3" ng-click="setRating(3)"></span>
-                                                    <span class="fa fa-star-o" data-rating="4" ng-click="setRating(4)"></span>
-                                                    <span class="fa fa-star-o" data-rating="5" ng-click="setRating(5)"></span>
-
-                                                    <input type="hidden" name="whatever3" class="rating-value" value="0">
-                                                </div>
-                                            </div>
-{#                                             <button class="btn btn col-md-4 form-control" ng-click="submitProduct()">บันทึก</button>#}
+                                <div class="row">
+                                     <div class="col-md-4">
+                                            <span class="col-form-label" style="text-align: center">หมายเลขคำสั่งซื้อ :</span>
                                         </div>
+                                        <div class="col-md-4" style="text-align: center">
+                                            <span ng-bind="yoyo"></span>
+                                        </div>
+                                </div>
+                                <div class="row form-group">
+                                    <label class="col-md-4 col-form-label">ให้คะแนนร้านค้า: </label>
+
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="star-rating">
+                                                <span class="fa fa-star-o" data-rating="1"
+                                                      ng-click="setRating(1)"></span>
+                                                <span class="fa fa-star-o" data-rating="2"
+                                                      ng-click="setRating(2)"></span>
+                                                <span class="fa fa-star-o" data-rating="3"
+                                                      ng-click="setRating(3)"></span>
+                                                <span class="fa fa-star-o" data-rating="4"
+                                                      ng-click="setRating(4)"></span>
+                                                <span class="fa fa-star-o" data-rating="5"
+                                                      ng-click="setRating(5)"></span>
+
+                                                <input type="hidden" name="whatever3" class="rating-value" value="0">
+                                            </div>
+                                        </div>
+                                        {#                                             <button class="btn btn col-md-4 form-control" ng-click="submitProduct()">บันทึก</button>#}
                                     </div>
+                                </div>
 
 
                             </div>
                             <div class="modal-footer-alert" align="center">
-                            <p align="center">
-                                <button type="button" class="btn" data-dismiss="modal">บันทึก - [[rating]]</button>
-                            </p>
-                        </div>
+                                <p align="center">
+                                    <button type="button" class="btn" data-dismiss="modal">บันทึก - [[rating]]</button>
+                                </p>
+                            </div>
                             <br>
                             </form>
 
@@ -353,13 +370,10 @@
         </div>
     </div>
 
-
-</div>
 <!-- footer -->
 <div>{% include "footer.html" %}</div>
 <!-- //footer -->
 <script src="{% static 'js/components/profileTab.js' %}"></script>
-<script src="{% static 'js/controllers/ratingCtrl.js' %}"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
