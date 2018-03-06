@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 from apps.accounts.models import Account
 from apps.products.models import Product
@@ -24,10 +25,20 @@ class CoinTransaction(models.Model):
                                                   self.amount, self.promoted_product_id)
 
     def save(self, *args, **kwargs):
+        self.update_account_accordingly()
+        self.append_promotion_time()
+
+        return super(CoinTransaction, self).save(*args, **kwargs)
+
+    def update_account_accordingly(self):
         account = self.account
         if self.transaction_type is self.deposit:
             account.coin += int(self.amount)
         elif self.transaction_type in [self.withdraw, self.usage]:
             account.coin -= int(self.amount)
         account.save()
-        return super(CoinTransaction, self).save(*args, **kwargs)
+
+    def append_promotion_time(self):
+        product = self.promoted_product
+        product.exp_date_promotion = timezone.now() + timezone.timedelta(hours=12)
+        product.save()

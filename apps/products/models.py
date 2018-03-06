@@ -1,13 +1,13 @@
 from django.utils import timezone
 from django.db import models
-
-# Create your models here.
 from django.utils.safestring import mark_safe
 
 from apps.accounts.models import Account
 
+
 def one_day_hence():
-    return timezone.now() + timezone.timedelta(hours=12)
+    return timezone.now()
+
 
 class Product(models.Model):
     banned = -2
@@ -56,7 +56,7 @@ class Product(models.Model):
     freight = models.IntegerField(verbose_name="Freight", choices=freight_detail_choices, default=reg)
     product_quality = models.IntegerField(verbose_name="Quality", choices=product_quality_choice, default=used)
     detail = models.CharField(verbose_name="Details", max_length=255, blank=True)
-    exp_date_promotion = models.DateTimeField(verbose_name="Expire Date", default=one_day_hence)
+    exp_date_promotion = models.DateTimeField(verbose_name="Expire Date", default=timezone.now, null=True)
 
     def __str__(self):
         return self.name
