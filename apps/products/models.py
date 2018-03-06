@@ -6,6 +6,8 @@ from django.utils.safestring import mark_safe
 
 from apps.accounts.models import Account
 
+def one_day_hence():
+    return timezone.now() + timezone.timedelta(hours=12)
 
 class Product(models.Model):
     banned = -2
@@ -54,6 +56,7 @@ class Product(models.Model):
     freight = models.IntegerField(verbose_name="Freight", choices=freight_detail_choices, default=reg)
     product_quality = models.IntegerField(verbose_name="Quality", choices=product_quality_choice, default=used)
     detail = models.CharField(verbose_name="Details", max_length=255, blank=True)
+    exp_date_promotion = models.DateTimeField(verbose_name="Expire Date", default=one_day_hence)
 
     def __str__(self):
         return self.name
@@ -63,7 +66,6 @@ class Product(models.Model):
         values = self.value_set.all()
         properties_and_values = dict([(x.properties_string, x.value_product) for x in values])
         return properties_and_values
-
 
 class ProductImage(models.Model):
     product = models.ForeignKey(Product, related_name="images")
