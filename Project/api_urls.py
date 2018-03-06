@@ -6,6 +6,7 @@ from apps.addresses.viewsets import AddressViewSet
 from apps.carts.viewsets import CartViewSet
 from apps.categories.viewsets import CategoryViewSet
 from apps.category_product.viewset import CategoryProductViewSet
+from apps.coin_transactions.viewsets import CoinTransactionViewSet
 from apps.offers.viewsets import OfferViewSet, get_highest_offer_for_all_products, reject_or_accept_product_offer
 from apps.orders.viewsets import OrderViewSet, OrderItemViewSet
 from apps.products import viewsets as product_viewsets
@@ -18,11 +19,12 @@ router = DefaultRouter()
 router.register('accounts', AccountViewSet, base_name='account')
 router.register('addresses', AddressViewSet, base_name='address')
 router.register('categories', CategoryViewSet, base_name='category')
-router.register('category_products', CategoryProductViewSet, base_name='categoryProduct')
+router.register('category_products', CategoryProductViewSet, base_name='category_product')
+router.register('coin_transactions', CoinTransactionViewSet, base_name='coin_transaction')
 router.register('carts', CartViewSet, base_name='cart')
 router.register('offers', OfferViewSet, base_name='offer')
 router.register('orders', OrderViewSet, base_name='order')
-router.register('order_items', OrderItemViewSet, base_name='order_items')
+router.register('order_items', OrderItemViewSet, base_name='order_item')
 router.register('products', product_viewsets.ProductViewSet, base_name='product')
 router.register('properties', PropertyViewSet, base_name='property')
 router.register('ratings', RatingViewSet, base_name='rating')

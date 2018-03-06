@@ -69,3 +69,10 @@ class ProductSerializer(serializers.ModelSerializer):
     @staticmethod
     def get_sub_total(obj):
         return obj.price + obj.freight_fee
+
+
+class SimpleProductSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Product
+        exclude = []
