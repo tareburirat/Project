@@ -44,6 +44,7 @@ class Product(models.Model):
         (used, "Used"),
     ]
 
+    promote = models.BooleanField(verbose_name="Currently Promoted", default=False)
     product_status = models.IntegerField(verbose_name="Status", choices=status_choices, default=sale)
     date_of_sale = models.DateTimeField(verbose_name="Date of Sale", default=timezone.now)
     seller = models.ForeignKey(Account)
