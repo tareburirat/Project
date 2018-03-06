@@ -52,9 +52,10 @@
                                     <tr>
                                         <th style="width:50%">สินค้า</th>
                                         <th style="width:10%">ราคา</th>
-                                        <th style="width:8%">ค่าจัดส่ง</th>
+                                        <th style="width:10%">ค่าจัดส่ง</th>
                                         {#                                    <th style="width:22%" class="text-center">Subtotal</th>#}
-                                        <th style="width:10%"></th>
+                                        <th style="width:3%"></th>
+                                        <th style="width:5%"></th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -71,9 +72,13 @@
                                         </td>
                                         <td data-th="Price">[[product.price]] ฿</td>
                                         <td data-th="Quantity">[[product.freight_fee]] ฿</td>
-                                        {#                                    <td data-th="Subtotal" class="text-center">1.99</td>#}
+                                        {#<td data-th="Subtotal" class="text-center">1.99</td>#}
                                         <td class="actions" data-th="">
+                                            <button class="btn btn-danger btn-sm" >โปรโมท</button>
+                                        </td>
+                                        <td>
                                             <button class="btn btn-danger btn-sm" ng-click="delProduct(product.id)"><i class="fa fa-trash-o"></i></button>
+
                                         </td>
                                     </tr>
                                     </tbody>
