@@ -26,7 +26,6 @@ class CoinTransaction(models.Model):
 
     def save(self, *args, **kwargs):
         self.update_account_accordingly()
-        self.append_promotion_time()
 
         return super(CoinTransaction, self).save(*args, **kwargs)
 
@@ -34,8 +33,13 @@ class CoinTransaction(models.Model):
         account = self.account
         if self.transaction_type is self.deposit:
             account.coin += int(self.amount)
-        elif self.transaction_type in [self.withdraw, self.usage]:
+            self.promoted_product = None
+        elif self.transaction_type is self.withdraw:
             account.coin -= int(self.amount)
+            self.promoted_product = None
+        elif self.transaction_type is self.usage:
+            account.coin -= int(self.amount)
+            self.append_promotion_time()
         account.save()
 
     def append_promotion_time(self):
