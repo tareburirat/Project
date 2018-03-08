@@ -3,6 +3,9 @@ app.controller('myProductCtrl', function ($scope, $http, $window, $rootScope) {
     $scope.mama = $rootScope.url;
     $scope.sellerId = $window.sellerId;
     $scope.productId = $window.productId;
+    var transactionTypeUsage = 2;
+    var amount = 10;
+
 
     $scope.getId = function (id) {
         $scope.sellerId = id;
@@ -29,7 +32,27 @@ app.controller('myProductCtrl', function ($scope, $http, $window, $rootScope) {
                 getProduct();
             }
         )
-    }
+    };
+
+    $scope.promoteProduct = function (){
+        var data = {
+            account : $scope.sellerId,
+            transaction_type : transactionTypeUsage,
+            amount : amount,
+            promoted_product : $scope.productId
+        };
+
+
+        $http.post($scope.mama + '/api/coin_transactions/', data).then(
+            function success(response) {
+                alert('สินค้าชิ้นนี้ถูกโปรโมทแล้ว')
+            },
+            function () {
+                alert('fail')
+            }
+
+        )
+    };
 
 
 });
