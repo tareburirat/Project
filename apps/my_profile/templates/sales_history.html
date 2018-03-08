@@ -50,16 +50,13 @@
                                             <a class="nav-link active" href="#detail1" id="tab1" role="tab" data-toggle="tab"
                                                aria-controls="home" aria-expanded="true">รอการชำระ</a>
                                         </li>
+
                                         <li role="presentation" class="nav-item">
-                                            <a class="nav-link" href="#detail2" role="tab" id="tab2"
-                                               data-toggle="tab" aria-controls="profile">รอการจัดส่ง</a>
-                                        </li>
-                                        <li role="presentation" class="nav-item">
-                                            <a class="nav-link" href="#detail3" role="tab" id="tab3"
+                                            <a class="nav-link" href="#detail2" role="tab" id="tab3"
                                                data-toggle="tab" aria-controls="profile">การจัดส่ง</a>
                                         </li>
                                         <li role="presentation" class="nav-item">
-                                            <a class="nav-link" href="#detail4" role="tab" id="tab4"
+                                            <a class="nav-link" href="#detail3" role="tab" id="tab4"
                                                data-toggle="tab" aria-controls="profile">สำเร็จแล้ว</a>
                                         </li>
                                     </ul>
@@ -95,41 +92,9 @@
                                                 </tr>
                                             </table>
                                         </div>
-                                        <div role="tabpanel" class="tab-pane" id="detail2" aria-labelledby="tab2">
-                                            2 แจ้งแล้วรออัพเดทเทรคกิ้ง
-                                            <table id="cart" class="table table-condensed">
-                                                <tr align="center">
-                                                    <th style="width:50%">สินค้า</th>
-                                                    <th style="width:10%">ราคา</th>
-                                                    <th style="width:15%">ค่าจัดส่ง</th>
-                                                    <th style="width:15%" class="text-center">ราคารวม</th>
-                                                    <th style="width:10%"></th>
-                                                </tr>
-                                                <tr ng-repeat="cart in carts">
-                                                    <td data-th="Product">
-                                                        <div class="row">
-                                                            <div class="col-sm-3 hidden-xs">
-                                                                <img src="[[cart.product_data.first_image_url]]" alt="[[cart.first_image_url]]"
-                                                                     class="img-responsive" style="width: 5rem; height: 5rem;"/></div>
-                                                            <div class="col-sm-9">
-                                                                <h4 class="nomargin"> ชื่อ : [[cart.product_data.name]]</h4>
-                                                                <p>วิธีการจัดส่ง : [[cart.product_data.freight_detail]]</p>
-                                                                {#                            <p>ค่าจัดส่ง : [[cart.product_data.freight_fee]]</p>#}
-                                                                <p>ร้านค้า : [[cart.product_data.seller_data.display_name]]</p>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td data-th="Price" class="text-center">[[cart.product_data.price]]฿</td>
-                                                    <td data-th="Freight" class="text-center">[[cart.product_data.freight_fee]]฿</td>
-                                                    <td data-th="Subtotal" class="text-center">[[cart.product_data.sub_total]]฿</td>
-                                                    <td class="hidden-xs text-center">
-                                                        <button type="button" class="btn btn btn-block" data-toggle="modal" data-target="#Track">อัพเดทเทรคกิ้ง</button>
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                        <div role="tabpanel" class="tab-pane" id="detail3" aria-labelledby="tab3">
-                                            3 ที่กรอกเลขเทรคกิ้งเรียบร้อย
+
+                                        <div role="tabpanel" class="tab-pane" id="detail2" aria-labelledby="tab3">
+                                            2 ที่กรอกเลขเทรคกิ้งเรียบร้อย
                                             <table id="cart" class="table table-condensed">
                                                 <tr align="center">
                                                     <th style="width:45%">สินค้า</th>
@@ -159,8 +124,8 @@
                                                 </tr>
                                             </table>
                                         </div>
-                                        <div role="tabpanel" class="tab-pane" id="detail4" aria-labelledby="tab4">
-                                            4 เสร็จทุกอย่าง
+                                        <div role="tabpanel" class="tab-pane" id="detail3" aria-labelledby="tab4">
+                                            3 เสร็จทุกอย่าง
                                             <table id="cart" class="table table-condensed">
                                                 <tr align="center">
                                                     <th style="width:50%">สินค้า</th>
