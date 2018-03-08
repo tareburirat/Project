@@ -37,13 +37,11 @@ class Order(models.Model):
 
 class OrderItem(models.Model):
     draft = 0
-    wait = 1
-    receive = 2
-    success = 3
+    receive = 1
+    success = 2
 
     status_choices = [
         (draft, "Draft"),
-        (wait, "Wait"),
         (receive, "Receive"),
         (success, "Success"),
     ]
