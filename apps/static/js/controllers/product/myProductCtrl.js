@@ -28,20 +28,19 @@ app.controller('myProductCtrl', function ($scope, $http, $window, $rootScope) {
         $http.delete($scope.mama + '/api/products/' + productId).then(
             function (response) {
                 $scope.products = response;
-                alert('delete success!!')
+                alert('delete success!!');
                 getProduct();
             }
         )
     };
 
-    $scope.promoteProduct = function (){
+    $scope.promoteProduct = function (product){
         var data = {
-            account : $scope.sellerId,
+            account : product.seller_data.id,
             transaction_type : transactionTypeUsage,
             amount : amount,
-            promoted_product : $scope.productId
+            promoted_product : product.id
         };
-
 
         $http.post($scope.mama + '/api/coin_transactions/', data).then(
             function success(response) {
