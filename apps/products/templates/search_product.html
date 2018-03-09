@@ -37,7 +37,50 @@
     <!-- //breadcrumbs -->
     <div ng-controller="productSearchCtrl"
          ng-init="getQueryString({{ query_string }}); getAccountId({{ request.user.account.id }});">
+       <div class="new-collections">
         <div class="container">
+            <h3>สินค้าแนะนำ</h3>
+                <div>
+                    <div class="row">
+                       <div class="list-group card-deck col-md-3" ng-repeat="product in promote">
+                             <a href="/product/single/[[product.product_data.id]]">
+                                <div class="list-group-item" style="max-height: 45rem;"
+                                     onclick="window.location = '/product/single/'">
+                                    <div>
+                                        <img class="card-img-top" src="[[product.product_data.first_image_url]]"
+                                     alt="[[product.product_data.first_image_url]]"
+                                     style="width: 15rem; height: 15rem;">
+                                    </div>
+                                    <div class="card-body">
+                                        <h4 class="card-title">[[product.product_data.name]]</h4>
+                                <p class="card-text"><b>Freight:</b> [[product.product_data.freight_detail]]</p>
+                                <p class="card-text"><b>Freight Fee:</b> [[product.product_data.freight_fee]] ฿</p>
+                                <p class="card-text"><b>Price:</b> [[product.product_data.price]] ฿</p>
+                                <p class="card-text">
+                                    <small class="text-muted">[[product.product_data.date_of_sale]]
+                                        [[product.product_data.id]]
+                                    </small>
+                                </p>
+
+                                    </div>
+                                </div>
+                                {#              <p>[[ product.name ]]</p> <img ng-repeat="image in product.images" src="[[image.image]]">#}
+                            </a>
+                            <div class="container">
+                                <hr>
+
+                                <button class="btn btn-secondary btn-sm" ng-click="viewProductDetail(product.id)">ดูรายละเอียด</button>
+                                <button class="btn btn-secondary btn-sm" ng-disabled="product.seller_data.id == {{ request.user.account.id }}" ng-click="addToCart(product.id, product.seller)">เพิ่มลงตระกร้า</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <ul class="pagination">
+                <div class="container" style="width:50%" >
+                    <li class="page-item"><a class="page-link center" ng-click="getPromote(next)">Next <i class="fa fa-angle-right"></i></a></li>
+                </div>
+            </ul>
             <div class="row">
                 <div class="list-group card-deck col-md-3" ng-repeat="product in categoryProducts">
                     <a href="/product/single/[[product.product_data.id]]">
@@ -79,6 +122,8 @@
             </ul>
         </div>
     </div>
+    </div>
+    &nbsp;
     <!-- footer -->
     <div>{% include "footer.html" %}</div>
     <!-- //footer -->
