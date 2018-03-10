@@ -34,7 +34,6 @@ app.controller("productSearchCtrl", function($scope, $http, $window, $rootScope)
             $scope.queryString += "category=" + queryString.category;
         }
 
-
         $scope.searchProduct($scope.mama + '/api/category_products/' + $scope.queryString );
     };
 

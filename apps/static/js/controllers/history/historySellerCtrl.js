@@ -3,6 +3,7 @@ app.controller('historySellerCtrl', function ($scope, $http, $rootScope) {
     var accId = '';
     $scope.orderNumber = '';
     $scope.yoyo = '';
+    $scope.orderItemId = '';
 
     $scope.getAccountId = function (accountId) {
         accId = accountId;
@@ -24,5 +25,22 @@ app.controller('historySellerCtrl', function ($scope, $http, $rootScope) {
     $scope.setYoyo = function (orderNumber) {
         console.log(orderNumber);
         $scope.yoyo = orderNumber;
+    }
+
+    $scope.updateStatusOrder = function (orderItemId) {
+        var data = {
+            order_status: 1
+        };
+        $http.patch($scope.mama + '/api/order_items/' + orderItemId + '/', data).then(
+            function (response) {
+                console.log(response);
+                alert('success');
+                $window.location.href =  $scope.mama + 'account/purchase_history/';
+            },
+            function (response) {
+                console.log(response);
+                alert('failed');
+            }
+        );
     }
 });

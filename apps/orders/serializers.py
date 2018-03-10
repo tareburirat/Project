@@ -18,7 +18,7 @@ class SimpleOrderSerializer(serializers.ModelSerializer):
 
 class OrderItemSerializer(serializers.ModelSerializer):
     product_data = serializers.SerializerMethodField()
-    order = SimpleOrderSerializer()
+    order = SimpleOrderSerializer(read_only=True)
 
     class Meta:
         model = OrderItem

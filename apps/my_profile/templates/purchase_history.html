@@ -110,7 +110,8 @@
                                                     <td class="hidden-xs text-center">
                                                         <button type="button" class="btn btn btn-block"
                                                                 data-toggle="modal"
-                                                                ng-click="setYoyo(order_item.order.order_number)"
+                                                                ng-click="updateStatusOrder(order_item.id)"
+{#                                                                setYoyo(order_item.order.order_number)#}
                                                                 data-target="#Track">แจ้งโอน
                                                         </button>
                                                     </td>
@@ -221,7 +222,7 @@
             <div class="row">
                 {#                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#Track">Click</button>#}
 
-                <div id="Track" class="modal fade" role="dialog">
+                <!-- <div id="Track" class="modal fade" role="dialog">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -238,29 +239,21 @@
                                             <span ng-bind="yoyo"></span>
                                         </div>
                                     </div>
-                                    <div class="row form-group">
-                                        <label class="col-md-3 col-form-label">แจ้งโอนทาง: </label>
-                                        <select class="col-md-4">
-                                            <option value="volvo">E-mail</option>
-                                            <option value="saab">Line</option>
-                                        </select>
 
-                                        <button class="btn btn col-md-2 form-control" ng-click="">
-                                            บันทึก
-                                        </button>
-                                    </div>
                                 </form>
 
                             </div>
                             <div class="modal-footer-alert" align="center">
                                 <p align="center">
+                                    <button class="btn btn col-md-2 form-control" ng-click="updateStatusOrder(order_items.id
+                                    )">บันทึก</button>
                                     <button type="button" class="btn" data-dismiss="modal">ยกเลิก</button>
                                 </p>
                             </div>
                             <br>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <div id="Confirm" class="modal fade" role="dialog" ng-controller="ratingCtrl">
 
