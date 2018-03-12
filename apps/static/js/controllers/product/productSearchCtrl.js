@@ -67,7 +67,7 @@ app.controller("productSearchCtrl", function($scope, $http, $window, $rootScope)
     $scope.getPromote = function(url) {
         $http.get(url).then(
             function (response) {
-                 $scope.promote = $scope.promotes.concat(response.data.results);
+                $scope.promote = $scope.promotes.concat(response.data.results);
                 $scope.next = response.data.next;
                 // $scope.previous = response.data.previous;
             });

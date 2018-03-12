@@ -69,7 +69,7 @@
                                     </ul>
                                     <div id="myTabContent" class="tab-content">
                                         <div role="tabpanel" class="tab-pane active" id="detail1"
-                                             aria-labelledby="tab1">
+                                             aria-labelledby="tab1" ng-init="getAcceptOrder0()">
                                             1 ยังไม่ได้แจ้งโอน
                                             <table id="cart" class="table table-condensed">
                                                 <tr align="center">
@@ -79,7 +79,7 @@
                                                     <th style="width:15%" class="text-center">ราคารวม</th>
                                                     <th style="width:15%"></th>
                                                 </tr>
-                                                <tr ng-repeat="order_item in order_items">
+                                                <tr ng-repeat="order_item in accept_order_0">
                                                     <td data-th="Product">
                                                         <div class="row">
                                                             <div class="col-sm-3 hidden-xs">
@@ -119,7 +119,8 @@
                                             </table>
                                         </div>
 
-                                        <div role="tabpanel" class="tab-pane" id="detail2" aria-labelledby="tab3">
+                                        <div role="tabpanel" class="tab-pane" id="detail2" aria-labelledby="tab3"
+                                             ng-init="getAcceptOrder1()">
                                             2 รับของ กดยืนยันรับของ กดให้เรทติ้งร้าน
                                             <table id="cart" class="table table-condensed">
                                                 <tr align="center">
@@ -129,33 +130,33 @@
                                                     <th style="width:15%" class="text-center">ราคารวม</th>
                                                     <th style="width:10%"></th>
                                                 </tr>
-                                                <tr ng-repeat="cart in carts">
+                                                <tr ng-repeat="order_item in accept_order_1">
                                                     <td data-th="Product">
                                                         <div class="row">
                                                             <div class="col-sm-3 hidden-xs">
-                                                                <img src="[[cart.product_data.first_image_url]]"
-                                                                     alt="[[cart.first_image_url]]"
+                                                                <img src="[[order_item.product_data.first_image_url]]"
+                                                                     alt="[[order_item.first_image_url]]"
                                                                      class="img-responsive"
                                                                      style="width: 5rem; height: 5rem;"/></div>
                                                             <div class="col-sm-9">
                                                                 <h4 class="nomargin"> ชื่อ :
-                                                                    [[cart.product_data.name]]</h4>
+                                                                    [[order_item.product_data.name]]</h4>
                                                                 <p>วิธีการจัดส่ง :
-                                                                    [[cart.product_data.freight_detail]]</p>
+                                                                    [[order_item.product_data.freight_detail]]</p>
                                                                 {#                            <p>ค่าจัดส่ง : [[cart.product_data.freight_fee]]</p>#}
                                                                 <p>ร้านค้า :
-                                                                    [[cart.product_data.seller_data.display_name]]</p>
+                                                                    [[order_item.product_data.seller_data.display_name]]</p>
                                                             </div>
                                                         </div>
                                                     </td>
                                                     <td data-th="Price" class="text-center">
-                                                        [[cart.product_data.price]]฿
+                                                        [[order_item.product_data.price]]฿
                                                     </td>
                                                     <td data-th="Freight" class="text-center">
-                                                        [[cart.product_data.freight_fee]]฿
+                                                        [[order_item.product_data.freight_fee]]฿
                                                     </td>
                                                     <td data-th="Subtotal" class="text-center">
-                                                        [[cart.product_data.sub_total]]฿
+                                                        [[order_item.product_data.sub_total]]฿
                                                     </td>
                                                     <td class="hidden-xs text-center">
                                                         <button type="button" class="btn btn btn-block"

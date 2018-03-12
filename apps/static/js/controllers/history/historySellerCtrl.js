@@ -35,11 +35,27 @@ app.controller('historySellerCtrl', function ($scope, $http, $rootScope) {
             function (response) {
                 console.log(response);
                 alert('success');
-                $window.location.href =  $scope.mama + 'account/purchase_history/';
+                $window.location.href =  $scope.mama + '/account/purchase_history/';
             },
             function (response) {
                 console.log(response);
                 alert('failed');
+            }
+        );
+    };
+
+    $scope.getAcceptOrder0 = function () {
+        $http.get($scope.mama + '/api/order_items/?order__buyer_id=' + accId +'&order_status=0').then(
+            function (response) {
+                $scope.accept_order_0 = response.data;
+            }
+        );
+    }
+
+    $scope.getAcceptOrder1 = function () {
+        $http.get($scope.mama + '/api/order_items/?order__buyer_id=' + accId +'&order_status=1').then(
+            function (response) {
+                $scope.accept_order_1 = response.data;
             }
         );
     }
