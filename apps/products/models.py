@@ -67,6 +67,7 @@ class Product(models.Model):
         properties_and_values = dict([(x.properties_string, x.value_product) for x in values])
         return properties_and_values
 
+
 class ProductImage(models.Model):
     product = models.ForeignKey(Product, related_name="images")
     image = models.ImageField(upload_to="product_images")

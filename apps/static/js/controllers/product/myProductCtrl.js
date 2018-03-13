@@ -45,12 +45,17 @@ app.controller('myProductCtrl', function ($scope, $http, $window, $rootScope) {
         $http.post($scope.mama + '/api/coin_transactions/', data).then(
             function success(response) {
                 alert('สินค้าชิ้นนี้ถูกโปรโมทแล้ว')
+                $window.location.href =  $scope.mama + '/account/my_product/';
             },
             function () {
                 alert('fail')
             }
 
         )
+    };
+
+    $scope.countdownTimer = function (product) {
+
     };
 
 

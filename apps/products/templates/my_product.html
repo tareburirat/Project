@@ -67,7 +67,8 @@
                                                     <h4 class="nomargin">[[product.name]]</h4>
                                                     <p><b>วิธีการจัดส่ง : </b>[[product.freight_detail]]</p>
                                                     <p><b>id : </b>[[product.id]]</p>
-                                                    <p><b>seller_data : </b>[[product.seller_data.id]]</p>
+                                                    <p><b>เวลา promote : </b>[[product.exp_date_promotion]]</p>
+                                                    <p>เวลาที่ต่าง : </p>
                                                 </div>
                                             </div>
                                         </td>
@@ -78,11 +79,9 @@
                                             <button class="btn btn-danger btn-sm"
                                                     ng-click="promoteProduct(product)">โปรโมท</button>
                                         </td>
-{#                                        ng-disabled="promoted == 2"#}
                                         <td>
                                             <button class="btn btn-danger btn-sm" ng-click="delProduct(product.id)">
                                                 <i class="fa fa-trash-o"></i></button>
-
                                         </td>
                                     </tr>
                                     </tbody>
