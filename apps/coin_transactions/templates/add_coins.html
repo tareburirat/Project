@@ -4,7 +4,7 @@
 <script src="{% static 'js/components/jquery-3.2.1.min.js' %}"></script>
 <script src="{% static 'js/components/angular.min.js' %}"></script>
 <script src="{% static 'js/app.js' %}"></script>
-{#<script src="{% static 'js/controllers/profileCtrl.js' %}"></script>#}
+<script src="{% static 'js/controllers/coins/addCoinsCtrl.js' %}"></script>
 <div ng-app="app">
     <head>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
@@ -37,14 +37,15 @@
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 </div>
                 <div class="col-md-9 shadows" >
-                    <!-- profile -->
+                    <!-- profile add coins -->
                     <div class="add">
                         <div class="container">
                             <h3>เหรียญ</h3>
 
-                            <h1 align="center">10 coins</h1>
+                            <h1 align="center">{{ request.user.account.coin }} coins</h1>
 
                             <br>
+
                             <button type="button" class="btn btn btn-block" data-toggle="modal"
                                     ng-click="" data-target="#addcoins">เติมเหรียญ
                             </button>
@@ -56,46 +57,47 @@
                     </div>
                 </div>
                 <!-- add coins -->
-                <div id="addcoins" class="modal fade" role="dialog">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal">×</button>
-                                <h4 class="modal-title"></h4>
-                            </div>
-                            <div class="modal-body">
-                                <form>
-                                    <div class="row">
-                                        <div class="col-md-8">
-                                            <span class="col-form-label" style="text-align: center">กรุณาระบุจำนวนเหรียญที่ต้องการ</span>
+                <div ng-controller="addCoinsCtrl" ng-init="getId({{ request.user.account.id }})">
+                    <div id="addcoins" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">×</button>
+                                    <h4 class="modal-title"></h4>
+                                </div>
+                                <div class="modal-body">
+                                    <form>
+                                        <div class="row">
+                                            <div class="col-md-8">
+                                                <span class="col-form-label" style="text-align: center">กรุณาระบุจำนวนเหรียญที่ต้องการ</span>
+                                                [[ mama12 ]]
+                                            </div>
+                                            <div class="col-md-4" style="text-align: center">
+                                            </div>
                                         </div>
-                                        <div class="col-md-4" style="text-align: center">
-
+                                        <div class="row form-group">
+                                            <label class="col-md-3 col-form-label">จำนวนเหรีญ : </label>
+                                            <input class="form-control col-md-8" type="text"
+                                                   placeholder="ระบุจำนวนเหรียญ" ng-model="amount">
                                         </div>
-                                    </div>
-                                    <div class="row form-group" ng-controller="addCoinsCtrl" ng-init="getId({{ request.user.account.id }})>
-                                        <label class="col-md-3 col-form-label">จำนวนเหรีญ : </label>
-                                        <input class="form-control col-md-8" type="text"
-                                               placeholder="ระบุจำนวนเหรียญ" ng-model="amount">
-                                    </div>
-                                </form>
-
-                            </div>
-                            <div class="modal-footer-alert" align="center">
-                                <p align="center">
-                                    <button class="btn btn col-md-2 form-control" ng-click="saveAddCoins()">
+                                    </form>
+                                </div>
+                                <div class="modal-footer-alert" align="center">
+                                    <p align="center">
+                                        <button class="btn btn col-md-2 form-control" ng-click="saveAddCoins()">
                                             บันทึก
                                         </button>
-                                    <button type="button" class="btn" data-dismiss="modal">ยกเลิก</button>
-                                </p>
+                                        <button type="button" class="btn" data-dismiss="modal">ยกเลิก</button>
+                                    </p>
+                                </div>
+                                <br>
                             </div>
-                            <br>
                         </div>
                     </div>
-                </div>
+                </div><!-- end ng-controller-->
                 &nbsp;
             </div>
-    <!-- end ng-controller-->
+
         </div>
     </div>
     <!-- footer -->
