@@ -48,8 +48,6 @@ app.controller("addressCtrl", function ($scope, $window, $http, $rootScope) {
             function (response) {
                 console.log(response);
                 alert('failed');
-
-
             }
         );
 
