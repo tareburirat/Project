@@ -1,0 +1,110 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<script src="{% static 'js/components/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'js/components/angular.min.js' %}"></script>
+<script src="{% static 'js/app.js' %}"></script>
+{#<script src="{% static 'js/controllers/profileCtrl.js' %}"></script>#}
+<div ng-app="app">
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Add coins</title>
+    </head>
+    <body>
+    <!-- header -->
+    <div>{% include "header.html" %}</div>
+    <!-- //header -->
+    <!-- breadcrumbs -->
+    <div class="breadcrumbs">
+        <div class="container">
+            <ol class="breadcrumb breadcrumb1">
+                <li class="breadcrumb-item"><a href="/"><span class="fa fa-home" aria-hidden="true"></span>หน้าแรก</a></li>
+                <li class="breadcrumb-item active">ข้อมูลของฉัน</li>
+            </ol>
+        </div>
+    </div>
+    <!-- //breadcrumbs -->
+    <div style="background: #F7F7F9">
+        <div class="container" >
+            &nbsp;
+            <div class="row profile">
+                <div class="col-md-3 shadows" style="background: #F5F5F5" align="left">
+                    <div>{% include "tab_menu_profile.html" %}</div>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </div>
+                <div class="col-md-9 shadows" >
+                    <!-- profile -->
+                    <div class="add">
+                        <div class="container">
+                            <h3>เหรียญ</h3>
+
+                            <h1 align="center">10 coins</h1>
+
+                            <br>
+                            <button type="button" class="btn btn btn-block" data-toggle="modal"
+                                    ng-click="" data-target="#addcoins">เติมเหรียญ
+                            </button>
+
+                            <hr color="#212121">
+                            ประวัติ
+
+                        </div>
+                    </div>
+                </div>
+                <!-- add coins -->
+                <div id="addcoins" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">×</button>
+                                <h4 class="modal-title"></h4>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <span class="col-form-label" style="text-align: center">กรุณาระบุจำนวนเหรียญที่ต้องการ</span>
+                                        </div>
+                                        <div class="col-md-4" style="text-align: center">
+
+                                        </div>
+                                    </div>
+                                    <div class="row form-group" ng-controller="addCoinsCtrl" ng-init="getId({{ request.user.account.id }})>
+                                        <label class="col-md-3 col-form-label">จำนวนเหรีญ : </label>
+                                        <input class="form-control col-md-8" type="text"
+                                               placeholder="ระบุจำนวนเหรียญ" ng-model="amount">
+                                    </div>
+                                </form>
+
+                            </div>
+                            <div class="modal-footer-alert" align="center">
+                                <p align="center">
+                                    <button class="btn btn col-md-2 form-control" ng-click="saveAddCoins()">
+                                            บันทึก
+                                        </button>
+                                    <button type="button" class="btn" data-dismiss="modal">ยกเลิก</button>
+                                </p>
+                            </div>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+                &nbsp;
+            </div>
+    <!-- end ng-controller-->
+        </div>
+    </div>
+    <!-- footer -->
+    <div>{% include "footer.html" %}</div>
+    <!-- //footer -->
+    <script src="{% static 'js/components/profileTab.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    </body>
+</div>
+</html>
