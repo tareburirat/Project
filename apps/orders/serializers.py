@@ -4,6 +4,7 @@ from rest_framework import serializers
 
 from apps.orders.models import Order, OrderItem
 from apps.products.serializers import ProductSerializer
+from apps.ratings.models import Rating
 
 
 class SimpleOrderSerializer(serializers.ModelSerializer):
@@ -19,6 +20,7 @@ class SimpleOrderSerializer(serializers.ModelSerializer):
 class OrderItemSerializer(serializers.ModelSerializer):
     product_data = serializers.SerializerMethodField()
     order = SimpleOrderSerializer(read_only=True)
+    rating = serializers.IntegerField(required=False, write_only=True)
 
     class Meta:
         model = OrderItem
@@ -31,6 +33,16 @@ class OrderItemSerializer(serializers.ModelSerializer):
 
     def get_product_data(self, obj):
         return ProductSerializer(obj.product).data
+
+    def update(self, instance, validated_data):
+        if str(validated_data.get('rating', '')).isdigit():
+            Rating.objects.create(
+                rating=int(validated_data.get('rating')),
+                seller_id=instance.product.seller_id,
+                buyer_id=instance.order.buyer_id,
+                order_item_id=instance.id
+            )
+        return super(OrderItemSerializer, self).update(instance, validated_data)
 
 
 class OrderSerializer(serializers.ModelSerializer):
