@@ -7,8 +7,9 @@ app.controller('myProductCtrl', function ($scope, $http, $window, $rootScope) {
     var amount = 10;
 
 
-    $scope.getId = function (id) {
+    $scope.getId = function (id,coin) {
         $scope.sellerId = id;
+        $scope.coin = coin;
         getProduct();
     };
 
@@ -35,6 +36,11 @@ app.controller('myProductCtrl', function ($scope, $http, $window, $rootScope) {
     };
 
     $scope.promoteProduct = function (product){
+        debugger;
+        if ($scope.coin < amount){
+            alert('จำนวนเหียญไม่พอ');
+            return;
+        }
         var data = {
             account : product.seller_data.id,
             transaction_type : transactionTypeUsage,
@@ -44,8 +50,10 @@ app.controller('myProductCtrl', function ($scope, $http, $window, $rootScope) {
 
         $http.post($scope.mama + '/api/coin_transactions/', data).then(
             function success(response) {
-                alert('สินค้าชิ้นนี้ถูกโปรโมทแล้ว')
+
+                alert('สินค้าชิ้นนี้ถูกโปรโมทแล้ว');
                 $window.location.href =  $scope.mama + '/account/my_product/';
+
             },
             function () {
                 alert('fail')
@@ -57,6 +65,5 @@ app.controller('myProductCtrl', function ($scope, $http, $window, $rootScope) {
     $scope.countdownTimer = function (product) {
 
     };
-
 
 });

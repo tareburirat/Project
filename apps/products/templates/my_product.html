@@ -43,10 +43,13 @@
                 <div class="col-md-9 shadows" >
                     <div class="add">
                         <div class="container">
+                             <h3>เหรียญ</h3>
+                            <h1 align="center">{{ request.user.account.coin }} coins</h1>
+                            <br><hr>
                             <h3>สินค้าของฉัน</h3>
                             <br>
                             <hr color="#212121">
-                            <div ng-controller="myProductCtrl" ng-init="getId({{ request.user.account.id }})">
+                            <div ng-controller="myProductCtrl" ng-init="getId({{ request.user.account.id }},{{ request.user.account.coin }})">
                                 <table id="cart" class="table table-hover table-condensed">
                                     <thead>
                                     <tr>
