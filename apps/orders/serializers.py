@@ -6,7 +6,6 @@ from apps.orders.models import Order, OrderItem
 from apps.products.serializers import ProductSerializer
 from apps.ratings.models import Rating
 
-
 class SimpleOrderSerializer(serializers.ModelSerializer):
 
     class Meta:
@@ -21,6 +20,7 @@ class OrderItemSerializer(serializers.ModelSerializer):
     product_data = serializers.SerializerMethodField()
     order = SimpleOrderSerializer(read_only=True)
     rating = serializers.IntegerField(required=False, write_only=True)
+
 
     class Meta:
         model = OrderItem

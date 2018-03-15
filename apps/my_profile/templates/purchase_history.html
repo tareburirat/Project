@@ -4,8 +4,8 @@
 <script src="{% static 'js/components/jquery-3.2.1.min.js' %}"></script>
 <script src="{% static 'js/components/angular.min.js' %}"></script>
 <script src="{% static 'js/app.js' %}"></script>
+<script src="{% static 'js/controllers/history/historyPurchaseCtrl.js' %}"></script>
 <script src="{% static 'js/controllers/history/historySaleCtrl.js' %}"></script>
-<script src="{% static 'js/controllers/history/historyBuyCtrl.js' %}"></script>
 <script src="{% static 'js/controllers/ratingCtrl.js' %}"></script>
 <div ng-app="app">
     <head>
@@ -33,7 +33,7 @@
         </div>
     </div>
     <!-- //breadcrumbs -->
-    <div ng-app="app" ng-controller="historySellerCtrl" ng-init="getAccountId({{ request.user.account.id }})">
+    <div ng-app="app" ng-controller="historyPurchaseCtrl" ng-init="getAccountId({{ request.user.account.id }})">
         <div style="background: #F7F7F9">
             <div class="container">
                 &nbsp;
@@ -55,7 +55,7 @@
                                         <li role="presentation" class="nav-item">
                                             <a class="nav-link active" href="#detail1" id="tab1" role="tab"
                                                data-toggle="tab"
-                                               aria-controls="home" aria-expanded="true">ที่ต้องจจัดส่ง</a>
+                                               aria-controls="home" aria-expanded="true">ที่ต้องจัดส่ง</a>
                                         </li>
 
                                         <li role="presentation" class="nav-item">
@@ -107,14 +107,14 @@
                                                     <td data-th="Subtotal" class="text-center">
                                                         [[order_item.product_data.sub_total]]฿
                                                     </td>
-                                                    <td class="hidden-xs text-center">
+                                                    <!--<td class="hidden-xs text-center">
                                                         <button type="button" class="btn btn btn-block"
                                                                 data-toggle="modal"
                                                                 ng-click="updateStatusOrder(order_item.id)"
 {#                                                                setYoyo(order_item.order.order_number)#}
                                                                 data-target="#Track">แจ้งโอน
                                                         </button>
-                                                    </td>
+                                                    </td>-->
                                                 </tr>
                                             </table>
                                         </div>
@@ -223,43 +223,7 @@
         </div>
         <div class="container">
             <div class="row">
-                {#                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#Track">Click</button>#}
-
-                <!-- <div id="Track" class="modal fade" role="dialog">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal">×</button>
-                                <h4 class="modal-title"></h4>
-                            </div>
-                            <div class="modal-body">
-                                <form>
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <span class="col-form-label" style="text-align: center">หมายเลขคำสั่งซื้อ :</span>
-                                        </div>
-                                        <div class="col-md-4" style="text-align: center">
-                                            <span ng-bind="yoyo"></span>
-                                        </div>
-                                    </div>
-
-                                </form>
-
-                            </div>
-                            <div class="modal-footer-alert" align="center">
-                                <p align="center">
-                                    <button class="btn btn col-md-2 form-control" ng-click="updateStatusOrder(order_items.id
-                                    )">บันทึก</button>
-                                    <button type="button" class="btn" data-dismiss="modal">ยกเลิก</button>
-                                </p>
-                            </div>
-                            <br>
-                        </div>
-                    </div>
-                </div> -->
-
                 <div id="Confirm" class="modal fade" role="dialog" ng-controller="ratingCtrl">
-
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -278,7 +242,6 @@
                                 </div>
                                 <div class="row form-group">
                                     <label class="col-md-4 col-form-label">ให้คะแนนร้านค้า: </label>
-
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="star-rating">
