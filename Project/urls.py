@@ -51,6 +51,7 @@ urlpatterns = [
     url(r'^account/', include('apps.accounts.urls')),
     url(r'^cart/', include('apps.carts.urls')),
     url(r'^approve_offer/', include('apps.offers.urls')),
+    url(r'^dashboard/', include('apps.admin_dashboard.urls'))
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

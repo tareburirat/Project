@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     'apps.my_profile',
     'apps.carts',
     'apps.coin_transactions',
+    'apps.admin_dashboard'
 ]
 
 MIDDLEWARE = [
