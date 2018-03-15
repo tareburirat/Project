@@ -1,9 +1,9 @@
-app.controller('historySaleCtrl', function ($scope, $http, $rootScope) {
+app.controller('historyPurchaseCtrl', function ($scope, $http, $rootScope) {
     $scope.mama = $rootScope.url;
     var accId = '';
     $scope.orderNumber = '';
     $scope.yoyo = '';
-    $scope.orderItemId = 0;
+    $scope.orderItemId = '';
 
     $scope.getAccountId = function (accountId) {
         accId = accountId;
@@ -11,9 +11,10 @@ app.controller('historySaleCtrl', function ($scope, $http, $rootScope) {
     };
 
     var getOrderItem = function () {
-        $http.get($scope.mama + '/api/order_items/?seller_id=' + accId).then(
+        $http.get($scope.mama + '/api/order_items/?order__buyer_id=' + accId).then(
             function success(response) {
                 $scope.order_items = response.data;
+
             },
             function failure() {
                 alert('fail');
@@ -21,14 +22,18 @@ app.controller('historySaleCtrl', function ($scope, $http, $rootScope) {
         )
     };
 
+    $scope.setYoyo = function (orderNumber) {
+        console.log(orderNumber);
+        $scope.yoyo = orderNumber;
+    };
+
     $scope.setOrderItemId = function (id) {
         $scope.orderItemId = id;
     };
 
-    $scope.updateTrackOrder = function (orderItemId) {
+    $scope.updateStatusOrder = function (orderItemId) {
         var data = {
-            order_status: 1,
-            order_track: $scope.tracking
+            order_status: 1
         };
         $http.patch($scope.mama + '/api/order_items/' + orderItemId + '/', data).then(
             function (response) {
@@ -50,8 +55,34 @@ app.controller('historySaleCtrl', function ($scope, $http, $rootScope) {
         );
     };
 
+    $scope.saveRating = function (orderItemId, rating) {
+        var data = {
+            order_status: 2,
+            rating: rating
+        };
+        $http.patch($scope.mama + '/api/order_items/' + orderItemId + '/', data).then(
+            function (response) {
+                console.log(response);
+                alert('success');
+                var found = $scope.accept_order_1.find(function (element) {
+                    return element.id === orderItemId;
+                });
+
+                var index = $scope.accept_order_1.indexOf(found);
+                $scope.accept_order_1.splice(index, 1);
+                $scope.accept_order_2.push(found);
+
+            },
+            function (response) {
+                console.log(response);
+                alert('failed');
+            }
+        );
+
+    };
+
     $scope.getAcceptOrder0 = function () {
-        $http.get($scope.mama + '/api/order_items/?seller_id=' + accId + '&order_status=0').then(
+        $http.get($scope.mama + '/api/order_items/?order__buyer_id=' + accId + '&order_status=0').then(
             function (response) {
                 $scope.accept_order_0 = response.data;
                 console.log(response.data[0]);
@@ -60,7 +91,7 @@ app.controller('historySaleCtrl', function ($scope, $http, $rootScope) {
     };
 
     $scope.getAcceptOrder1 = function () {
-        $http.get($scope.mama + '/api/order_items/?seller_id=' + accId + '&order_status=1').then(
+        $http.get($scope.mama + '/api/order_items/?order__buyer_id=' + accId + '&order_status=1').then(
             function (response) {
                 $scope.accept_order_1 = response.data;
             }
@@ -68,11 +99,10 @@ app.controller('historySaleCtrl', function ($scope, $http, $rootScope) {
     };
 
     $scope.getAcceptOrder2 = function () {
-        $http.get($scope.mama + '/api/order_items/?seller_id=' + accId + '&order_status=2').then(
+        $http.get($scope.mama + '/api/order_items/?order__buyer_id=' + accId + '&order_status=2').then(
             function (response) {
                 $scope.accept_order_2 = response.data;
             }
         );
-    }
-
+    };
 });
