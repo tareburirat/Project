@@ -7,6 +7,7 @@
 <script src="{% static 'js/controllers/account/editCtrl.js' %}"></script>
 <script src="{% static 'js/controllers/product/myProductCtrl.js' %}"></script>
 
+
 <div ng-app="app">
     <head>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
@@ -43,10 +44,15 @@
                 <div class="col-md-9 shadows" >
                     <div class="add">
                         <div class="container">
+                             <h3>เหรียญ</h3>
+                            <h1 align="center">{{ request.user.account.coin }} coins</h1>
+                            <br><hr>
                             <h3>สินค้าของฉัน</h3>
                             <br>
                             <hr color="#212121">
-                            <div ng-controller="myProductCtrl" ng-init="getId({{ request.user.account.id }})">
+                            <div ng-controller="myProductCtrl" ng-init="getId({{ request.user.account.id }},{{ request.user.account.coin }})">
+                                [[counter]]
+                                [[product.x]]
                                 <table id="cart" class="table table-hover table-condensed">
                                     <thead>
                                     <tr>
@@ -68,7 +74,7 @@
                                                     <p><b>วิธีการจัดส่ง : </b>[[product.freight_detail]]</p>
                                                     <p><b>id : </b>[[product.id]]</p>
                                                     <p><b>เวลา promote : </b>[[product.exp_date_promotion]]</p>
-                                                    <p>เวลาที่ต่าง : </p>
+                                                    <p>เวลาที่ต่าง : [[product.x]]</p>
                                                 </div>
                                             </div>
                                         </td>

@@ -5,6 +5,8 @@
 <script src="{% static 'js/components/angular.min.js' %}"></script>
 <script src="{% static 'js/app.js' %}"></script>
 <script src="{% static 'js/controllers/order/placeOrderCtrl.js' %}"></script>
+<script src="{% static 'js/controllers/history/historySaleCtrl.js' %}"></script>
+
 <div ng-app="app">
     <head>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
@@ -28,7 +30,7 @@
         </div>
     </div>
     <!-- //breadcrumbs -->
-    <div ng-app="app" ng-controller="placeOrderCtrl" ng-init="getAccountId({{ request.user.account.id }})">
+    <div ng-app="app" ng-controller="historySaleCtrl" ng-init="getAccountId({{ request.user.account.id }})">
         <div style="background: #F7F7F9">
             <div class="container">
                 &nbsp;
@@ -61,7 +63,8 @@
                                         </li>
                                     </ul>
                                     <div id="myTabContent" class="tab-content">
-                                        <div role="tabpanel" class="tab-pane active" id="detail1" aria-labelledby="tab1">
+                                        <div role="tabpanel" class="tab-pane active" id="detail1" aria-labelledby="tab1"
+                                             ng-init="getAcceptOrder0()">
                                             1 ยังไม่ได้แจ้งโอน
                                             <table id="cart" class="table table-condensed">
                                                 <tr align="center">
@@ -71,7 +74,7 @@
                                                     <th style="width:15%" class="text-center">ราคารวม</th>
                                                     <th style="width:10%"></th>
                                                 </tr>
-                                                <tr ng-repeat="cart in carts">
+                                                <tr ng-repeat="cart in accept_order_0">
                                                     <td data-th="Product">
                                                         <div class="row">
                                                             <div class="col-sm-3 hidden-xs">
@@ -89,11 +92,19 @@
                                                     <td data-th="Freight" class="text-center">[[cart.product_data.freight_fee]]฿</td>
                                                     <td data-th="Subtotal" class="text-center">[[cart.product_data.sub_total]]฿</td>
 {#                                                    <td class="hidden-xs text-center"> <a href="#" style="color: white" class="btn btn">แจ้งโอน</a></td>#}
+                                                    <td class="hidden-xs text-center">
+                                                        <button type="button" class="btn btn btn-block"
+                                                                data-toggle="modal"
+                                                                ng-click="setOrderItemId(cart.id)"
+                                                                data-target="#Track">ยืนยันการโอนเงิน [[orderItemId]]
+                                                        </button>
+                                                    </td>
                                                 </tr>
                                             </table>
                                         </div>
 
-                                        <div role="tabpanel" class="tab-pane" id="detail2" aria-labelledby="tab3">
+                                        <div role="tabpanel" class="tab-pane" id="detail2" aria-labelledby="tab3"
+                                             ng-init="getAcceptOrder1()">
                                             2 ที่กรอกเลขเทรคกิ้งเรียบร้อย
                                             <table id="cart" class="table table-condensed">
                                                 <tr align="center">
@@ -103,7 +114,7 @@
                                                     <th style="width:15%" class="text-center">ราคารวม</th>
                                                     <th style="width:15%"></th>
                                                 </tr>
-                                                <tr ng-repeat="cart in carts">
+                                                <tr ng-repeat="cart in accept_order_1">
                                                     <td data-th="Product">
                                                         <div class="row">
                                                             <div class="col-sm-3 hidden-xs">
@@ -120,11 +131,12 @@
                                                     <td data-th="Price" class="text-center">[[cart.product_data.price]]฿</td>
                                                     <td data-th="Freight" class="text-center">[[cart.product_data.freight_fee]]฿</td>
                                                     <td data-th="Subtotal" class="text-center">[[cart.product_data.sub_total]]฿</td>
-                                                    <td data-th="Subtotal" class="text-center"><small>เลขเทรคกิ้งที่อัพแล้ว</small></td>
+                                                    <td data-th="Subtotal" class="text-center"><small>[[cart.order_track]]</small></td>
                                                 </tr>
                                             </table>
                                         </div>
-                                        <div role="tabpanel" class="tab-pane" id="detail3" aria-labelledby="tab4">
+                                        <div role="tabpanel" class="tab-pane" id="detail3" aria-labelledby="tab4"
+                                             ng-init="getAcceptOrder2()">
                                             3 เสร็จทุกอย่าง
                                             <table id="cart" class="table table-condensed">
                                                 <tr align="center">
@@ -134,7 +146,7 @@
                                                     <th style="width:15%" class="text-center">ราคารวม</th>
                                                     <th style="width:10%"></th>
                                                 </tr>
-                                                <tr ng-repeat="cart in carts">
+                                                <tr ng-repeat="cart in accept_order_2">
                                                     <td data-th="Product">
                                                         <div class="row">
                                                             <div class="col-sm-3 hidden-xs">
@@ -169,9 +181,7 @@
 
         <div class="container">
             <div class="row">
-                {#                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#Track">Click</button>#}
-
-                <div id="Track" class="modal fade" role="dialog">
+                <div id="Track" class="modal fade" role="dialog" >
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -182,14 +192,13 @@
                                 <form >
                                     <div class="row form-group">
                                         <label class="col-md-3 col-form-label">เลขเทรคกิ้ง: </label>
-                                        <input class="form-control col-md-6" type="text" placeholder="เลขเทรคกิ้ง" ng-model="product.name">
-                                        <button class="btn btn col-md-2 form-control" ng-click="submitProduct()">บันทึก</button>
+                                        <input class="form-control col-md-6" type="text" placeholder="เลขเทรคกิ้ง" ng-model="tracking">
                                     </div>
                                 </form>
-
                             </div>
                             <div class="modal-footer-alert" align="center">
                                <p align="center">
+                                   <button class="btn btn col-md-2 form-control" data-dismiss="modal" ng-click="updateTrackOrder(orderItemId)">บันทึก</button>
                                    <button type="button" class="btn" data-dismiss="modal">ยกเลิก</button></p>
                             </div>
                             <br>
@@ -199,9 +208,6 @@
                 </div>
             </div>
         </div>
-
-
-
     </div>
     <!-- footer -->
     <div>{% include "footer.html" %}</div>
