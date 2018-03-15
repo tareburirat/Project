@@ -46,3 +46,4 @@ class CoinTransaction(models.Model):
         product = self.promoted_product
         product.exp_date_promotion = timezone.now() + timezone.timedelta(hours=12)
         product.save()
+

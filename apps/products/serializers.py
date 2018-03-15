@@ -1,3 +1,4 @@
+from django.utils import timezone
 from rest_framework import serializers
 
 from apps.accounts.serializers import AccountSerializer
@@ -29,6 +30,7 @@ class ProductSerializer(serializers.ModelSerializer):
     quality = serializers.SerializerMethodField()
     price = serializers.IntegerField()
     freight_fee = serializers.IntegerField()
+    x = serializers.SerializerMethodField()
 
     class Meta:
         model = Product
@@ -69,6 +71,12 @@ class ProductSerializer(serializers.ModelSerializer):
     @staticmethod
     def get_sub_total(obj):
         return obj.price + obj.freight_fee
+
+    @staticmethod
+    def get_x(obj):
+        delta_time = obj.exp_date_promotion - timezone.now()
+        x = round(delta_time.total_seconds())
+        return x
 
 
 class SimpleProductSerializer(serializers.ModelSerializer):

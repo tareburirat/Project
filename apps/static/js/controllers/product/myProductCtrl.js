@@ -1,17 +1,19 @@
-app.controller('myProductCtrl', function ($scope, $http, $window, $rootScope) {
+app.controller('myProductCtrl', function ($scope, $http, $window, $rootScope,$timeout) {
     $scope.products = [];
     $scope.mama = $rootScope.url;
     $scope.sellerId = $window.sellerId;
     $scope.productId = $window.productId;
     var transactionTypeUsage = 2;
     var amount = 10;
-
+    $scope.counter = 100;
 
     $scope.getId = function (id,coin) {
         $scope.sellerId = id;
         $scope.coin = coin;
         getProduct();
     };
+
+
 
 
     var getProduct = function() {
@@ -65,5 +67,30 @@ app.controller('myProductCtrl', function ($scope, $http, $window, $rootScope) {
     $scope.countdownTimer = function (product) {
 
     };
+
+
+    $scope.onTimeout = function(){
+        $scope.counter--;
+        mytimeout = $timeout($scope.onTimeout,1000);
+    }
+    var mytimeout = $timeout($scope.onTimeout,1000);
+
+
+//     $scope.countDownDate = new Date("Sep 5, 2018 15:00:00").getTime();
+//     $scope.setInterval = (function() {
+//     $scope.now = new Date().getTime();
+//     var distance = countDownDate - now;
+//     var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+//     var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+//     var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+//     document.getElementById("demo").innerHTML = hours + "h " + minutes + "m " + seconds + "s ";
+//     if (distance < 0) {
+//         clearInterval(x);
+//         document.getElementById("demo").innerHTML = "EXPIRED";
+//     }
+// }, 1000);
+
+
+
 
 });
