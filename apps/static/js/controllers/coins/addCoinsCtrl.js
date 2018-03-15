@@ -6,10 +6,22 @@ app.controller("addCoinsCtrl", function ($scope, $window, $http, $rootScope) {
 
     $scope.getId = function (id) {
         $scope.sellerId = id;
-        getProduct();
+        getCoinsTransactions();
     };
 
-     $scope.saveAddCoins = function (){
+    var getCoinsTransactions = function() {
+        $http.get($scope.mama + '/api/coin_transactions/?account=' + $scope.sellerId).then(
+            function (response) {
+                $scope.products = response.data.results;
+            },
+            function (response) {
+                console.log(response)
+            })
+    }
+
+
+
+    $scope.saveAddCoins = function (){
         var data = {
             account : $scope.sellerId,
             transaction_type : transactionTypeUsage,
