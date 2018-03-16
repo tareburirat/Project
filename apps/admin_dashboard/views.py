@@ -13,6 +13,8 @@ class CategoryDashBoardView(TemplateView):
 
 @api_view(http_method_names=['get'])
 def category_summary(request):
+    request_data = request.data
+    data = request_data
     data = Category.objects.filter(category_type=Category.normal) \
         .annotate(product_count=Count('categoryproduct__product_id'),
                   total_price=Sum('categoryproduct__product__price')) \
