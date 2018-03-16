@@ -10,3 +10,6 @@ class Rating(models.Model):
     seller = models.ForeignKey(Account, related_name='shop_ratings', related_query_name='shop_ratings')
     order_item = models.ForeignKey(OrderItem, related_name='order_items', related_query_name='order_items')
     rating = models.PositiveSmallIntegerField(verbose_name="Rating", default=0)
+
+    def __str__(self):
+        return str(self.rating)

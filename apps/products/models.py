@@ -67,6 +67,8 @@ class Product(models.Model):
         properties_and_values = dict([(x.properties_string, x.value_product) for x in values])
         return properties_and_values
 
+
+
 class ProductImage(models.Model):
     product = models.ForeignKey(Product, related_name="images")
     image = models.ImageField(upload_to="product_images")
@@ -79,6 +81,8 @@ class ProductImage(models.Model):
         return mark_safe('<img src="/images/{}" width="200" height="150" />'.format(self.image.name))
 
     image_tag.short_description = 'Image'
+
+
 
 
 class ProductSummary(Product):

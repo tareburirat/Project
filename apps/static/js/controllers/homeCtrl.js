@@ -5,6 +5,7 @@ app.controller("homeCtrl", function ($scope, $http, $window, $rootScope) {
     var accountId = "";
     var userInfo = {};
     $scope.products = [];
+    $scope.promotes = [];
 
     $scope.getProduct = function(url) {
         $http.get(url).then(
@@ -16,7 +17,15 @@ app.controller("homeCtrl", function ($scope, $http, $window, $rootScope) {
     };
     $scope.getProduct($scope.mama + '/api/products/?product_status=1');
 
-
+    $scope.getPromote = function(url) {
+        $http.get(url).then(
+            function (response) {
+                $scope.promote = $scope.promotes.concat(response.data.results);
+                $scope.next = response.data.next;
+                // $scope.previous = response.data.previous;
+            });
+    };
+    $scope.getPromote($scope.mama + '/api/products/?product_status=1&promoted=2');
 
     $scope.getAccountId = function (accId) {
         accountId = accId;

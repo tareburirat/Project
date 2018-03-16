@@ -9,6 +9,7 @@ from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
 
 from apps.category_product.models import CategoryProduct
+from apps.products.filter import ProductFilter
 from apps.products.models import Product, ProductImage
 from apps.products.serializers import ProductSerializer
 from apps.properties.models import Property
@@ -18,9 +19,9 @@ from apps.values.models import Value
 class ProductViewSet(viewsets.ModelViewSet):
     serializer_class = ProductSerializer
     queryset = Product.objects.all().order_by('-pk')
-    filter_backends = (DjangoFilterBackend,)
-    filter_fields = ['seller_id', 'product_status']
+    filter_class = ProductFilter
     pagination_class = PageNumberPagination
+
 
 
 

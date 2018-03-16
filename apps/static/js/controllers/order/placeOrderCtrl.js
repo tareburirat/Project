@@ -55,7 +55,6 @@ app.controller("placeOrderCtrl", function ($scope, $http, $window, $rootScope) {
                     price: cartItem.sale_price,
                     product: cartItem.product_data.id,
                     seller: cartItem.product_data.seller
-
                 };
                 orderItems.push(orderItem);
             });

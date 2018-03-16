@@ -90,28 +90,27 @@
     </div>
         </div>
     </div>
-
         <!-- collections -->
         <div class="new-collections"  ng-controller="homeCtrl" ng-init="getAccountId({{ request.user.account.id }})">
             <div class="container">
                 <h3>สินค้าแนะนำ</h3>
                 <div>
                     <div class="row">
-                        <div class="list-group card-deck col-md-3" ">
+                        <div class="list-group card-deck col-md-3" ng-repeat="product in promote">
                             <a href="/product/single/[[product.id]]">
                                 <div class="list-group-item" style="max-height: 45rem;"
                                      onclick="window.location = '/product/single/'">
                                     <div>
-                                        <img class="card-img-top" src="[[]]"
-                                             alt="[[]]" style="width: 15rem; height: 15rem;">
+                                        <img class="card-img-top" src="[[product.first_image_url]]"
+                                             alt="[[product.first_image_url]]" style="width: 15rem; height: 15rem;">
                                     </div>
                                     <div class="card-body">
-                                        <h4 class="card-title">[[]]</h4>
-                                        <p class="card-text"><b>Freight:</b> [[]]</p>
-                                        <p class="card-text"><b>Freight Fee:</b> [[]] ฿</p>
-                                        <p class="card-text"><b>Price:</b> [[]] ฿</p>
+                                        <h4 class="card-title">[[product.name]]</h4>
+                                        <p class="card-text"><b>Freight:</b> [[product.freight_detail]]</p>
+                                        <p class="card-text"><b>Freight Fee:</b> [[product.freight_fee]] ฿</p>
+                                        <p class="card-text"><b>Price:</b> [[product.price]] ฿</p>
                                         <p class="card-text">
-                                            <small class="text-muted">[[]] [[]]</small>
+                                            <small class="text-muted">[[product.date_of_sale]] [[product.id]]</small>
                                         </p>
 
                                     </div>
@@ -128,6 +127,11 @@
                     </div>
                     <div class="clearfix"></div>
                 </div>
+                <ul class="pagination">
+                <div class="container" style="width:50%" >
+                    <li class="page-item"><a class="page-link center" ng-click="getPromote(next)">Next <i class="fa fa-angle-right"></i></a></li>
+                </div>
+            </ul>
                 <h3>สินค้าทั้งหมด</h3>
                 <div>
                     <div class="row">
