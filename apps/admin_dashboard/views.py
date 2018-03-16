@@ -13,9 +13,19 @@ class CategoryDashBoardView(TemplateView):
 
 @api_view(http_method_names=['get'])
 def category_summary(request):
+    queryset = Category.objects.all()
     request_data = request.data
-    data = request_data
-    data = Category.objects.filter(category_type=Category.normal) \
+    cat_table = Category.objects.all()
+    if request_data.get('mode') == 'Year':
+        queryset.filter(categoryproduct__product__date_of_sale__year=request_data['year'])
+    if request_data.get('mode') == 'Month':
+        queryset.filter(
+            categoryproduct__product__date_of_sale__year=request_data['year'],
+            categoryproduct__product__date_of_sale=request_data['month']
+        )
+    if request_data.get('mode') == 'Day':
+        queryset.filter(categoryproduct__product__date_of_sale__year=request_data['day'])
+    data = cat_table.filter(category_type=Category.normal) \
         .annotate(product_count=Count('categoryproduct__product_id'),
                   total_price=Sum('categoryproduct__product__price')) \
         .order_by('-product_count').values('id', 'name', 'product_count', 'total_price')

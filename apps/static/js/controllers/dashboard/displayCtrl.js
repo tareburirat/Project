@@ -56,7 +56,7 @@ app.controller("displayCtrl", function ($scope, $window, $http, $rootScope) {
     };
 
     vm.getData = function () {
-        paramString = 'mode=' +  vm.selectedMode + '&&day' + vm.currentMonth + '&&day' + vm.currentDay;
+        paramString = 'mode=' +  vm.selectedMode + '&&year=' + vm.currentYears+ '&&day=' + vm.currentDay+ '&&day=' + vm.currentDay;
         var queryString = "http://localhost:8000/dashboard/cat_summary?" + paramString;
         $http.get(queryString).then(
             function success(response) {
