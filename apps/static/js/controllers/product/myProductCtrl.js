@@ -64,11 +64,6 @@ app.controller('myProductCtrl', function ($scope, $http, $window, $rootScope,$ti
         )
     };
 
-    $scope.countdownTimer = function (product) {
-
-    };
-
-
     $scope.onTimeout = function(){
         $scope.counter--;
         mytimeout = $timeout($scope.onTimeout,1000);
