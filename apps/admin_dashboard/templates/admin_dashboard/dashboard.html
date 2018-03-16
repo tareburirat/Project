@@ -43,33 +43,45 @@
     </div>
     <!-- //banner -->
     <div style="background: #F7F7F9" ng-controller="displayCtrl as ctrl">
-        [[ ctrl.yoyo ]]
-        <div class="col-8" style="margin-left: 40px;">
-            <table class="table table-dark">
-                <thead>
-                <tr>
-                    <th>Category Name</th>
-                    <th>Product Amount</th>
-                    <th>Total Price</th>
-                </tr>
-                </thead>
-                <tbody>
-                <!--
-{#                {% for p in top_categories %}#}
-{#                    <tr>#}
-{#                        <td>{{ p.name }}</td>#}
-{#                        <td>{{ p.product_count }}</td>#}
-{#                        <td>{{ p.total_price }}</td>#}
-{#                    </tr>#}
-{#                {% endfor %}#}
-                -->
-                <tr ng-repeat="cat in ctrl.categories">
-                    <td>[[ cat.name ]]</td>
-                    <td>[[ cat.product_count ]]</td>
-                    <td>[[ cat.total_price ]]</td>
-                </tr>
-                </tbody>
-            </table>
+        <div class="row">
+            <div class="row col-6" style="margin-left: 40px; margin-top: 40px;">
+                <table class="table table-dark">
+                    <thead>
+                    <tr>
+                        <th>Category Name</th>
+                        <th>Product Amount</th>
+                        <th>Total Price</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="cat in ctrl.categories">
+                        <td>[[ cat.name ]]</td>
+                        <td>[[ cat.product_count ]]</td>
+                        <td>[[ cat.total_price ]]</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="row col-6" style="padding: 40px;">
+                <select ng-model="ctrl.selectedMode" ng-options="x for x in ctrl.searchMode" class="row">
+                </select>
+                <div class="row" style="margin-top: 40px;">
+                    <select ng-model="ctrl.currentDay" ng-options="x for x in ctrl.range(1, ctrl.days)"
+                            ng-show="ctrl.selectedMode in ctrl.searchMode">
+                    </select>
+                    <select ng-model="ctrl.currentMonth" ng-options="x for x in ctrl.monthMapper"
+                            style="margin-left: 10px;"
+                            ng-show="ctrl.selectedMode in ctrl.searchMode">
+                    </select>
+                    <select ng-model="ctrl.currentYear" ng-options="x for x in ctrl.range(1990, 2018)"
+                            style="margin-left: 10px;"
+                            ng-show="ctrl.selectedMode in ctrl.searchMode">
+                    </select>
+                    <div>
+                        <button >Search</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -78,15 +90,17 @@
     <!-- //footer -->
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-            crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
-            integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
-            crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
-            integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
-            crossorigin="anonymous"></script>
+    <script src=" https://code.jquery.com/jquery-3.2.1.slim.min.js"
+                    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+                    crossorigin="anonymous"></script>
+                    <
+                    script
+                    src = "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+                    integrity = "sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+                    crossorigin = "anonymous" ></script>
+                    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+                            integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+                            crossorigin="anonymous"></script>
     </body>
 </div>
 
