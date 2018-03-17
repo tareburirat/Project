@@ -1,0 +1,109 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<script src="{% static 'js/components/angular.min.js' %}"></script>
+<script src="{% static 'js/app.js' %}"></script>
+<script src="{% static 'js/controllers/dashboard/displayCtrl.js' %}"></script>
+
+<div ng-app="app">
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+              integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+              crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all"/>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>2nd MakeUp</title>
+        <!-- script banner -->
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <!-- script banner -->
+    </head>
+    <body>
+    <!-- header -->
+    <div>{% include "header.html" %}</div>
+    <!-- //header -->
+    <!-- breadcrumbs -->
+    <div class="breadcrumbs">
+        <div class="container">
+            <ol class="breadcrumb breadcrumb1">
+                <li class="breadcrumb-item"><a href="/"><span class="fa fa-home" aria-hidden="true"></span>หน้าแรก </a>
+                </li>
+                <!--<li class="breadcrumb-item active"></li>-->
+            </ol>
+        </div>
+    </div>
+    <!-- //breadcrumbs -->
+    <!-- banner -->
+    <div class="d-flex flex-column">
+        {#  <div class="p-2">Flex item 1</div>#}
+        <div>{% include "banner.html" %}</div>
+    </div>
+    <!-- //banner -->
+    <div style="background: #F7F7F9" ng-controller="displayCtrl as ctrl">
+        <div class="row">
+            <div class="row col-6" style="margin-left: 40px; margin-top: 40px;">
+                <table class="table table-dark">
+                    <thead>
+                    <tr>
+                        <th>Category Name</th>
+                        <th>Product Amount</th>
+                        <th>Total Price</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="cat in ctrl.categories">
+                        <td>[[ cat.name ]]</td>
+                        <td>[[ cat.product_count ]]</td>
+                        <td>[[ cat.total_price ]]</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="row col-6" style="padding: 40px;">
+                <select ng-model="ctrl.selectedMode" ng-options="x for x in ctrl.searchMode" class="row">
+                </select>
+                [[ctrl.selectedMode]]
+                <div class="row" style="margin-top: 40px;">
+                    <select ng-model="ctrl.currentDay" ng-options="x for x in ctrl.range(1, ctrl.days)"
+                            ng-show="ctrl.selectedMode in ctrl.searchMode">
+                    </select>
+                    <select ng-model="ctrl.currentMonth" ng-options="x for x in ctrl.monthMapper"
+                            style="margin-left: 10px;"
+                            ng-show="ctrl.selectedMode in ctrl.searchMode">
+                    </select>
+                    <select ng-model="ctrl.currentYear" ng-options="x for x in ctrl.range(1990, 2018)"
+                            style="margin-left: 10px;"
+                            ng-show="ctrl.selectedMode in ctrl.searchMode">
+                    </select>
+                    <div style="padding-left: 20px;">
+                        <button class="btn btn-dark" ng-click="ctrl.search()">Search</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- footer -->
+    <div>{% include "footer.html" %}</div>
+    <!-- //footer -->
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src=" https://code.jquery.com/jquery-3.2.1.slim.min.js"
+                    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+                    crossorigin="anonymous"></script>
+                    <
+                    script
+                    src = "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+                    integrity = "sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+                    crossorigin = "anonymous" ></script>
+                    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+                            integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+                            crossorigin="anonymous"></script>
+    </body>
+</div>
+
+
+</html>
