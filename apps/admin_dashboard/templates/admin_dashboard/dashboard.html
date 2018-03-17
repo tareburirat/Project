@@ -45,8 +45,10 @@
     <div style="background: #F7F7F9" ng-controller="displayCtrl as ctrl">
         <div class="row">
             <div class="row col-6" style="margin-left: 40px; margin-top: 40px;">
-                <select ng-model="ctrl.table" ng-options="x for x in ctrl.tables" ng-change="ctrl.updateTable(ctrl.table)"></select>
+                {#                <select ng-model="ctrl.table" ng-options="x for x in ctrl.tables"#}
+                {#                        ng-change="ctrl.updateTable(ctrl.table)"></select>#}
                 <!--products table -->
+                <br>
                 <table class="table table-dark" ng-show="ctrl.table === 'Products'">
                     <thead>
                     <tr>
@@ -81,21 +83,73 @@
                     </tbody>
                 </table>
             </div>
-            <div class="row col-6" style="padding: 40px;">
-                <select ng-model="ctrl.selectedMode" ng-options="x for x in ctrl.searchMode" class="row">
-                </select>
-                <div class="row" style="margin-top: 40px;">
-                    <select ng-model="ctrl.currentDay" ng-options="x for x in ctrl.range(1, ctrl.days)"
-                            ng-show="ctrl.selectedMode in ctrl.searchMode">
-                    </select>
-                    <select ng-model="ctrl.currentMonth" ng-options="x for x in ctrl.monthMapper"
-                            style="margin-left: 10px;"
-                            ng-show="ctrl.selectedMode in ctrl.searchMode">
-                    </select>
-                    <select ng-model="ctrl.currentYear" ng-options="x for x in ctrl.range(1990, 2018)"
-                            style="margin-left: 10px;"
-                            ng-show="ctrl.selectedMode in ctrl.searchMode">
-                    </select>
+            <!-- ช่อง -->
+            <div class="row" style="padding: 30px;">
+                <div class="col-md-6">
+                    <table style="width:100%" >
+                        <tr>
+                            <th>เลือกรายการ</th>
+                            <th>เลือกช่วง</th>
+                        </tr>
+                        <tr>
+                            <td> <select ng-model="ctrl.table" ng-options="x for x in ctrl.tables"
+                                         ng-change="ctrl.updateTable(ctrl.table)"></select></td>
+                            <td>
+                                <select ng-model="ctrl.selectedMode" ng-options="x for x in ctrl.searchMode" class="row">
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+                    {#                    <select ng-model="ctrl.selectedMode" ng-options="x for x in ctrl.searchMode" class="row">#}
+                    {#                    </select>#}
+                </div>
+                <div class="col-md-6">
+                    {#                    <div class="row" style="margin-top: 40px;">#}
+                    {#                        <div class="col-md-1">#}
+                    {#                            <select ng-model="ctrl.currentDay" ng-options="x for x in ctrl.range(1, ctrl.days)"#}
+                    {#                                    ng-show="ctrl.selectedMode in ctrl.searchMode">#}
+                    {#                            </select>#}
+                    {#                        </div>#}
+                    {#                        <div class="col-md-5">#}
+                    {#                            <select ng-model="ctrl.currentMonth" ng-options="x for x in ctrl.monthMapper"#}
+                    {#                                    style="margin-left: 10px;"#}
+                    {#                                    ng-show="ctrl.selectedMode in ctrl.searchMode">#}
+                    {#                            </select>#}
+                    {#                        </div>#}
+                    {#                        <div class="col-md-2">#}
+                    {#                            <select ng-model="ctrl.currentYear" ng-options="x for x in ctrl.range(1990, 2018)"#}
+                    {#                                    style="margin-left: 10px;"#}
+                    {#                                    ng-show="ctrl.selectedMode in ctrl.searchMode">#}
+                    {#                            </select>#}
+                    {#                        </div>#}
+                    {#                    </div>#}
+                    <table style="width:100%" >
+                        <tr>
+                            <th>วัน</th>
+                            <th>เดือน</th>
+                            <th>ปี</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <select ng-model="ctrl.currentDay" ng-options="x for x in ctrl.range(1, ctrl.days)"
+                                        ng-show="ctrl.selectedMode in ctrl.searchMode">
+                                </select>
+                            </td>
+                            <td>
+                                <select ng-model="ctrl.currentMonth" ng-options="x for x in ctrl.monthMapper"
+                                        style="margin-left: 10px;"
+                                        ng-show="ctrl.selectedMode in ctrl.searchMode">
+                                </select>
+                            </td>
+                            <td>
+                                <select ng-model="ctrl.currentYear" ng-options="x for x in ctrl.range(1990, 2018)"
+                                        style="margin-left: 10px;"
+                                        ng-show="ctrl.selectedMode in ctrl.searchMode">
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+                    <br>
                     <div style="padding-left: 20px;">
                         <button class="btn btn-dark" ng-click="ctrl.search()">Search</button>
                     </div>
