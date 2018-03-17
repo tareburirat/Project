@@ -1,7 +1,8 @@
 from django.conf.urls import url, include
 from rest_framework.routers import DefaultRouter
 
-from apps.accounts.viewsets import AccountViewSet, create_account, password_change, check_username, check_displayname
+from apps.accounts.viewsets import AccountViewSet, create_account, password_change, check_username, check_displayname, \
+    get_best_rating
 from apps.addresses.viewsets import AddressViewSet
 from apps.carts.viewsets import CartViewSet
 from apps.categories.viewsets import CategoryViewSet
@@ -46,5 +47,8 @@ urlpatterns = [
     # product functions
     url(r'^save_products/', product_viewsets.save_product),
     url(r'^get_product_properties/', product_viewsets.get_product_properties),
+
+    # dashboard urls
+    url(r'^best_ratings_data/?', get_best_rating)
 ]
 urlpatterns += router.urls

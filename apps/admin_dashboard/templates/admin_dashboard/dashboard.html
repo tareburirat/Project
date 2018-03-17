@@ -45,7 +45,9 @@
     <div style="background: #F7F7F9" ng-controller="displayCtrl as ctrl">
         <div class="row">
             <div class="row col-6" style="margin-left: 40px; margin-top: 40px;">
-                <table class="table table-dark">
+                <select ng-model="ctrl.table" ng-options="x for x in ctrl.tables" ng-change="ctrl.updateTable(ctrl.table)"></select>
+                <!--products table -->
+                <table class="table table-dark" ng-show="ctrl.table === 'Products'">
                     <thead>
                     <tr>
                         <th>Category Name</th>
@@ -58,6 +60,23 @@
                         <td>[[ cat.name ]]</td>
                         <td>[[ cat.product_count ]]</td>
                         <td>[[ cat.total_price ]]</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <!--rating table -->
+                <table class="table table-dark" ng-show="ctrl.table === 'Rating'">
+                    <thead>
+                    <tr>
+                        <th>Display Name</th>
+                        <th>Average Rating</th>
+                        <th>Rating Count</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="shop in ctrl.shops">
+                        <td>[[ shop.display_name ]]</td>
+                        <td>[[ shop.average_rating ]]</td>
+                        <td>[[ shop.rating_count ]]</td>
                     </tr>
                     </tbody>
                 </table>

@@ -8,6 +8,8 @@ app.controller("displayCtrl", function ($scope, $window, $http, $rootScope) {
     vm.days = 30;
     vm.searchMode = ['Date', 'Month', 'Year'];
     vm.selectedMode = 'Year';
+    vm.tables = ['Products', 'Rating'];
+    vm.table = 'Products';
 
     vm.updateYear = function (currentYear) {
         vm.currentYears = [currentYear - 1, currentYear, currentYear + 1];
@@ -38,19 +40,18 @@ app.controller("displayCtrl", function ($scope, $window, $http, $rootScope) {
     vm.updateYear(now.getFullYear());
     vm.currentYear = now.getFullYear();
     vm.currentMonth = vm.monthMapper[now.getMonth()];
-    console.log(vm.currentMonths);
     vm.updateDay(now.getDate());
     vm.currentDay = now.getDate();
 
     vm.search = function () {
-        if(vm.selectedMode === 'Year') {
+        if (vm.selectedMode === 'Year') {
             paramString = 'mode=year&year=' + vm.currentYear;
         }
-        else if(vm.selectedMode === 'Month') {
+        else if (vm.selectedMode === 'Month') {
             paramString = 'mode=month&year=' + vm.currentYear;
             paramString = paramString + '&month=' + vm.monthMapper.indexOf(vm.currentMonth);
         }
-        else if(vm.selectedMode === 'Date') {
+        else if (vm.selectedMode === 'Date') {
             paramString = 'mode=day&year=' + vm.currentYear;
             paramString = paramString + '&month=' + vm.monthMapper.indexOf(vm.currentMonth);
             paramString = paramString + '&day=' + vm.days;
@@ -81,11 +82,25 @@ app.controller("displayCtrl", function ($scope, $window, $http, $rootScope) {
     };
     vm.getData();
 
-    vm.range = function(min, max, step){
-    step = step || 1;
-    var input = [];
-    for (var i = min; i <= max; i += step) input.push(i);
-    return input;
-  };
+    vm.range = function (min, max, step) {
+        step = step || 1;
+        var input = [];
+        for (var i = min; i <= max; i += step) input.push(i);
+        return input;
+    };
+
+    vm.updateTable = function (table) {
+        if(table==='Rating') {
+            getRating();
+        }
+    };
+
+    var getRating = function () {
+        $http.get('http://localhost:8000/api/best_ratings_data/').then(
+            function (response) {
+                vm.shops = response.data;
+            }
+        )
+    }
 
 });
