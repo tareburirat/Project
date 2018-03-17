@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
+from django.db.models import Avg, Sum
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework import viewsets, status
 from rest_framework.decorators import api_view
@@ -66,6 +67,7 @@ def password_change(request):
     else:
         return Response(status=status.HTTP_200_OK, data={'message': "Success!"})
 
+
 @api_view(['get'])
 def check_username(request):
     username = request.GET.get('username')
@@ -73,9 +75,18 @@ def check_username(request):
     can_use = not exist
     return Response(status=status.HTTP_200_OK, data={'can_use': can_use})
 
+
 @api_view(['get'])
 def check_displayname(request):
     display_name = request.GET.get('display_name')
     exist = Account.objects.filter(display_name=display_name).exists()
     can_use = not exist
     return Response(status=status.HTTP_200_OK, data={'can_use': can_use})
+
+
+@api_view(['get'])
+def get_best_rating(request):
+    accounts = Account.objects.all().annotate(average_rating=Avg('shop_ratings__rating'),
+                                              rating_count=Sum('shop_ratings')).order_by('average_rating').values(
+        'display_name', 'id', 'average_rating', 'rating_count')[:10]
+    return Response(status=status.HTTP_200_OK, data=accounts)
