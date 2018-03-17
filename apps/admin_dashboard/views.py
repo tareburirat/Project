@@ -13,18 +13,22 @@ class CategoryDashBoardView(TemplateView):
 
 @api_view(http_method_names=['get'])
 def category_summary(request):
-    queryset = Category.objects.all()
-    request_data = request.data
+    print('here!!!!!!!!!!!!!')
+    request_data = request.GET
     cat_table = Category.objects.all()
     if request_data.get('mode') == 'Year':
-        queryset.filter(categoryproduct__product__date_of_sale__year=request_data['year'])
-    if request_data.get('mode') == 'Month':
-        queryset.filter(
+        cat_table = cat_table.filter(categoryproduct__product__date_of_sale__year=request_data['year'])
+    elif request_data.get('mode') == 'Month':
+        cat_table = cat_table.filter(
             categoryproduct__product__date_of_sale__year=request_data['year'],
-            categoryproduct__product__date_of_sale=request_data['month']
+            categoryproduct__product__date_of_sale__month=request_data['month']
         )
-    if request_data.get('mode') == 'Day':
-        queryset.filter(categoryproduct__product__date_of_sale__year=request_data['day'])
+    elif request_data.get('mode') == 'Day':
+        cat_table = cat_table.filter(
+            categoryproduct__product__date_of_sale__year=request_data['year'],
+            categoryproduct__product__date_of_sale__month=request_data['month'],
+            categoryproduct__product__date_of_sale__day=request_data['day']
+        )
     data = cat_table.filter(category_type=Category.normal) \
         .annotate(product_count=Count('categoryproduct__product_id'),
                   total_price=Sum('categoryproduct__product__price')) \
