@@ -139,13 +139,15 @@
                                                                      class="img-responsive"
                                                                      style="width: 5rem; height: 5rem;"/></div>
                                                             <div class="col-sm-9">
-                                                                <h4 class="nomargin"> ชื่อ :
+                                                                <h4 class="nomargin">
                                                                     [[order_item.product_data.name]]</h4>
-                                                                <p>วิธีการจัดส่ง :
-                                                                    [[order_item.product_data.freight_detail]]</p>
+                                                                <p><small>วิธีการจัดส่ง :
+                                                                    [[order_item.product_data.freight_detail]]</small></p>
                                                                 {#                            <p>ค่าจัดส่ง : [[cart.product_data.freight_fee]]</p>#}
-                                                                <p>ร้านค้า :
-                                                                    [[order_item.product_data.seller_data.display_name]]</p>
+                                                                <p><small>ร้านค้า :
+                                                                    [[order_item.product_data.seller_data.display_name]]</small></p>
+                                                                <p>เลขแทรคกิ้ง :
+                                                                    [[order_item.order_track]]</p>
                                                             </div>
                                                         </div>
                                                     </td>
