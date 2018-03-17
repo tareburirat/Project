@@ -17,7 +17,6 @@ app.controller("displayCtrl", function ($scope, $window, $http, $rootScope) {
     };
     vm.monthMapper = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     vm.updateMonth = function (currentMonth) {
-        console.log(vm.currentMonths);
         if (currentMonth in ['January', 'March', 'May', 'July', 'August', 'October', 'December']) {
             vm.days = 31;
         }
@@ -44,6 +43,19 @@ app.controller("displayCtrl", function ($scope, $window, $http, $rootScope) {
     vm.currentDay = now.getDate();
 
     vm.search = function () {
+        if(vm.selectedMode === 'Year') {
+            paramString = 'mode=year&year=' + vm.currentYear;
+        }
+        else if(vm.selectedMode === 'Month') {
+            paramString = 'mode=month&year=' + vm.currentYear;
+            paramString = paramString + '&month=' + vm.monthMapper.indexOf(vm.currentMonth);
+        }
+        else if(vm.selectedMode === 'Date') {
+            paramString = 'mode=day&year=' + vm.currentYear;
+            paramString = paramString + '&month=' + vm.monthMapper.indexOf(vm.currentMonth);
+            paramString = paramString + '&day=' + vm.days;
+        }
+
         var queryString = "http://localhost:8000/dashboard/cat_summary?" + paramString;
         $http.get(queryString).then(
             function success(response) {
@@ -56,8 +68,8 @@ app.controller("displayCtrl", function ($scope, $window, $http, $rootScope) {
     };
 
     vm.getData = function () {
-        paramString = 'mode=' +  vm.selectedMode + '&&year=' + vm.currentYears+ '&&day=' + vm.currentDay+ '&&day=' + vm.currentDay;
-        var queryString = "http://localhost:8000/dashboard/cat_summary?" + paramString;
+        // paramString = 'mode=' +  vm.selectedMode + '&&year=' + vm.currentYears+ '&&day=' + vm.currentDay+ '&&day=' + vm.currentDay;
+        var queryString = "http://localhost:8000/dashboard/cat_summary?";
         $http.get(queryString).then(
             function success(response) {
                 vm.categories = response.data;

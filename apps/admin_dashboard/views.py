@@ -13,17 +13,16 @@ class CategoryDashBoardView(TemplateView):
 
 @api_view(http_method_names=['get'])
 def category_summary(request):
-    print('here!!!!!!!!!!!!!')
     request_data = request.GET
     cat_table = Category.objects.all()
-    if request_data.get('mode') == 'Year':
+    if request_data.get('mode') == 'year':
         cat_table = cat_table.filter(categoryproduct__product__date_of_sale__year=request_data['year'])
-    elif request_data.get('mode') == 'Month':
+    elif request_data.get('mode') == 'month':
         cat_table = cat_table.filter(
             categoryproduct__product__date_of_sale__year=request_data['year'],
             categoryproduct__product__date_of_sale__month=request_data['month']
         )
-    elif request_data.get('mode') == 'Day':
+    elif request_data.get('mode') == 'day':
         cat_table = cat_table.filter(
             categoryproduct__product__date_of_sale__year=request_data['year'],
             categoryproduct__product__date_of_sale__month=request_data['month'],

@@ -65,6 +65,7 @@
             <div class="row col-6" style="padding: 40px;">
                 <select ng-model="ctrl.selectedMode" ng-options="x for x in ctrl.searchMode" class="row">
                 </select>
+                [[ctrl.selectedMode]]
                 <div class="row" style="margin-top: 40px;">
                     <select ng-model="ctrl.currentDay" ng-options="x for x in ctrl.range(1, ctrl.days)"
                             ng-show="ctrl.selectedMode in ctrl.searchMode">
@@ -77,8 +78,8 @@
                             style="margin-left: 10px;"
                             ng-show="ctrl.selectedMode in ctrl.searchMode">
                     </select>
-                    <div>
-                        <button ng-click="getData()">Search</button>
+                    <div style="padding-left: 20px;">
+                        <button class="btn btn-dark" ng-click="ctrl.search()">Search</button>
                     </div>
                 </div>
             </div>
