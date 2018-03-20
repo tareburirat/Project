@@ -1,14 +1,14 @@
 app.controller("displayCtrl", function ($scope, $window, $http, $rootScope) {
+    var hostUrl = $rootScope.url;
     var vm = this;
     vm.yoyo = 123;
-    var paramString = "";
     vm.categories = [];
     var now = new Date();
     vm.currentYears = [];
     vm.days = 30;
     vm.searchMode = ['Date', 'Month', 'Year'];
     vm.selectedMode = 'Year';
-    vm.tables = ['Products', 'Rating'];
+    vm.tables = ['Products', 'Rating', 'Purchased Products'];
     vm.table = 'Products';
 
     vm.updateYear = function (currentYear) {
@@ -43,7 +43,9 @@ app.controller("displayCtrl", function ($scope, $window, $http, $rootScope) {
     vm.updateDay(now.getDate());
     vm.currentDay = now.getDate();
 
-    vm.search = function () {
+
+    var getParamString = function () {
+        var paramString = "";
         if (vm.selectedMode === 'Year') {
             paramString = 'mode=year&year=' + vm.currentYear;
         }
@@ -56,21 +58,28 @@ app.controller("displayCtrl", function ($scope, $window, $http, $rootScope) {
             paramString = paramString + '&month=' + vm.monthMapper.indexOf(vm.currentMonth);
             paramString = paramString + '&day=' + vm.days;
         }
-
-        var queryString = "http://localhost:8000/dashboard/cat_summary?" + paramString;
-        $http.get(queryString).then(
-            function success(response) {
-                vm.categories = response.data;
-            },
-            function (response) {
-                alert('Failed');
-            }
-        )
+        return paramString
+    };
+    vm.search = function (table) {
+        if(table==='Products'){
+            var queryString = hostUrl + "/dashboard/cat_summary?" + getParamString();
+            $http.get(queryString).then(
+                function success(response) {
+                    vm.categories = response.data;
+                },
+                function (response) {
+                    alert('Failed');
+                }
+            )
+        }
+        else if(table==='Purchased Products') {
+            getPurchasedProduct();
+        }
     };
 
     vm.getData = function () {
         // paramString = 'mode=' +  vm.selectedMode + '&&year=' + vm.currentYears+ '&&day=' + vm.currentDay+ '&&day=' + vm.currentDay;
-        var queryString = "http://localhost:8000/dashboard/cat_summary?";
+        var queryString = hostUrl + "/dashboard/cat_summary?";
         $http.get(queryString).then(
             function success(response) {
                 vm.categories = response.data;
@@ -93,12 +102,23 @@ app.controller("displayCtrl", function ($scope, $window, $http, $rootScope) {
         if(table==='Rating') {
             getRating();
         }
+        else if(table==='Purchased Products') {
+            getPurchasedProduct();
+        }
     };
 
     var getRating = function () {
-        $http.get('http://localhost:8000/api/best_ratings_data/').then(
+        $http.get(hostUrl + '/api/best_ratings_data/').then(
             function (response) {
                 vm.shops = response.data;
+            }
+        )
+    };
+
+    var getPurchasedProduct = function () {
+        $http.get(hostUrl + '/dashboard/purchased_summary/?' + getParamString()).then(
+            function (response) {
+                vm.purchasedProductSummary = response.data;
             }
         )
     }
