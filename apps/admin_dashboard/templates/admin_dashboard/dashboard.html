@@ -82,14 +82,31 @@
                     </tr>
                     </tbody>
                 </table>
+                <!--purchased table -->
+                <table class="table table-dark" ng-show="ctrl.table === 'Purchased Products'">
+                    <thead>
+                    <tr>
+                        <th>Category Name</th>
+                        <th>Product Amount</th>
+                        <th>Total Price</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="cat in ctrl.purchasedProductSummary">
+                        <td>[[ cat.name ]]</td>
+                        <td>[[ cat.product_count ]]</td>
+                        <td>[[ cat.total_price ]]</td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
             <!-- ช่อง -->
             <div class="row" style="padding: 30px;">
                 <div class="col-md-6">
                     <table style="width:100%" >
                         <tr>
-                            <th>เลือกรายการ</th>
-                            <th>เลือกช่วง</th>
+                            <th style="width:70%">เลือกรายการ</th>
+                            <th style="width:30%">เลือกช่วง</th>
                         </tr>
                         <tr>
                             <td> <select ng-model="ctrl.table" ng-options="x for x in ctrl.tables"
@@ -151,7 +168,7 @@
                     </table>
                     <br>
                     <div style="padding-left: 20px;">
-                        <button class="btn btn-dark" ng-click="ctrl.search()">Search</button>
+                        <button class="btn btn-dark" ng-click="ctrl.search(ctrl.table)">Search</button>
                     </div>
                 </div>
             </div>
