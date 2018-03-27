@@ -16,6 +16,7 @@ class Order(models.Model):
     price = models.DecimalField(max_digits=8, decimal_places=2)
     date = models.DateField(auto_now=True)
     order_address = models.CharField(max_length=200, blank=True)
+    payment_slip = models.ImageField(upload_to="payment_slips", null=True, blank=True)
 
     def save(self, *args, **kwargs):
         self.update_product_not_available()
