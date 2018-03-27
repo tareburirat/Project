@@ -1,3 +1,6 @@
-from django.shortcuts import render
+from django.views.generic import TemplateView
 
-# Create your views here.
+
+class BankAccountPickOrCreate(TemplateView):
+    template_name = "bank_accounts/pick_or_create.html"
+

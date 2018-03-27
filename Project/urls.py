@@ -46,13 +46,11 @@ urlpatterns = [
     url(r'^authenticate_user/', log_in_user),
     url(r'^product_search/', ProductSearchView.as_view()),
 
+    url(r'^bank_accounts/', include('apps.bank_accounts.urls')),
     url(r'^product/', include('apps.products.urls')),
     url(r'^order/', include('apps.orders.urls')),
     url(r'^account/', include('apps.accounts.urls')),
     url(r'^cart/', include('apps.carts.urls')),
     url(r'^approve_offer/', include('apps.offers.urls')),
     url(r'^dashboard/', include('apps.admin_dashboard.urls'))
-
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-
