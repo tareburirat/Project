@@ -34,6 +34,7 @@ class BankAccount(models.Model):
     ]
     bank = models.IntegerField(default=other, choices=bank_choices)
     account_number = models.CharField(max_length=50, blank=True)
+    security_number = models.CharField(max_length=10, blank=True)
     account_owner = models.ForeignKey(Account)
 
     promptpay_phone_number = models.CharField(max_length=20, blank=True)
@@ -47,3 +48,13 @@ class BankAccount(models.Model):
     ]
     card_type = models.IntegerField(default=visa, choices=card_type_choices)
     is_active = models.BooleanField(default=True, blank=True)
+    is_primary = models.BooleanField(default=False)
+
+    def save(self, *args, **kwargs):
+        self.validate_primary()
+        return super(BankAccount, self).save(*args, **kwargs)
+
+    def validate_primary(self):
+        if self.is_primary is True:
+            self.account_owner.bankaccount_set.all().update(is_primary=False)
+            self.is_primary = True
