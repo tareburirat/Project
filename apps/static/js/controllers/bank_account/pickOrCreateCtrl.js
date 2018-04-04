@@ -70,6 +70,7 @@ app.controller("bankAccountPickOrCreateCtrl", function ($scope, $http, $window, 
                     }
                 ];
     vm.selectedBankType = vm.bankTypeChoices[0].display_name;
+    vm.addCardBoolean = false;
 
     vm.getAccountId = function (accountId) {
         vm.accountId = accountId;
@@ -93,4 +94,7 @@ app.controller("bankAccountPickOrCreateCtrl", function ($scope, $http, $window, 
     vm.delBank = function (index) {
         vm.accounts.splice(index, 1);
     };
+    vm.addCard = function () {
+        vm.addCardBoolean = true;
+    }
 });
