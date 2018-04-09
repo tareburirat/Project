@@ -108,7 +108,7 @@ app.controller("displayCtrl", function ($scope, $window, $http, $rootScope) {
     };
 
     var getRating = function () {
-        $http.get('http://localhost:8000/api/best_ratings_data/').then(
+        $http.get(hostUrl + '/api/best_ratings_data/').then(
             function (response) {
                 vm.shops = response.data;
             }
@@ -116,7 +116,7 @@ app.controller("displayCtrl", function ($scope, $window, $http, $rootScope) {
     };
 
     var getPurchasedProduct = function () {
-        $http.get('http://localhost:8000/dashboard/purchased_summary/?' + getParamString()).then(
+        $http.get(hostUrl + '/dashboard/purchased_summary/?' + getParamString()).then(
             function (response) {
                 vm.purchasedProductSummary = response.data;
             }
