@@ -47,6 +47,8 @@
         <canvas id="bar-chart" width="800" height="450"></canvas>
         <div class="row">
             <div class="row col-6" style="margin-left: 40px; margin-top: 40px;">
+                {#                <select ng-model="ctrl.table" ng-options="x for x in ctrl.tables"#}
+                {#                        ng-change="ctrl.updateTable(ctrl.table)"></select>#}
                 <!--products table -->
                 <br>
                 <table class="table table-dark" ng-show="ctrl.table === 'Products'">
@@ -105,8 +107,8 @@
                 <div class="col-md-6">
                     <table style="width:100%" >
                         <tr>
-                            <th>เลือกรายการ</th>
-                            <th>เลือกช่วง</th>
+                            <th style="width:70%">เลือกรายการ</th>
+                            <th style="width:30%">เลือกช่วง</th>
                         </tr>
                         <tr>
                             <td> <select ng-model="ctrl.table" ng-options="x for x in ctrl.tables"
