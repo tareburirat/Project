@@ -1,0 +1,156 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<script src="{% static 'js/components/angular.min.js' %}"></script>
+<script src="{% static 'js/app.js' %}"></script>
+<script src="{% static 'js/controllers/bank_account/pickOrCreateCtrl.js' %}"></script>
+
+1234
+
+<div ng-app="app">
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+              integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+              crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all"/>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>2nd MakeUp</title>
+        <!-- script banner -->
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <!-- script banner -->
+    </head>
+    <body>
+    <!-- header -->
+
+    <div style="background: #F7F7F9">
+        <div>{% include "header.html" %}</div>
+        <!-- //header -->
+        <!-- breadcrumbs -->
+        <div class="breadcrumbs">
+            <div class="container">
+                <ol class="breadcrumb breadcrumb1">
+                    <li class="breadcrumb-item"><a href="/"><span class="fa fa-home" aria-hidden="true"></span>หน้าแรก
+                    </a>
+                    </li>
+                    <!--<li class="breadcrumb-item active"></li>-->
+                </ol>
+            </div>
+        </div>
+        <!-- //breadcrumbs -->
+        <!-- banner -->
+        <div class="d-flex flex-column">
+            {#  <div class="p-2">Flex item 1</div>#}
+            <div>{% include "banner.html" %}</div>
+        </div>
+        <!-- //banner -->
+        <div class="container-fluid col-12" ng-controller="bankAccountPickOrCreateCtrl as ctrl"
+             ng-init="ctrl.getAccountId({{ request.user.account.id }})">
+            <button class="btn btn-primary pull-right" ng-click="ctrl.addCard()">Add Card</button>
+            <button class="btn btn-primary pull-right" ng-click="ctrl.nextForPaymentSlip()">โอนเอา</button>
+            [[ctrl.accountId]]
+            <div>
+                <h2>Bank Account - [[ctrl.selectBank]]</h2>
+            </div>
+            <div>
+                <table id="cart" class="table table-hover table-condensed">
+                    <tr>
+                    </tr>
+                    <tr ng-repeat="account in ctrl.accounts">
+                        <div class="row col-md-12 pull-left" style="margin-bottom: 5px;">
+                            <td valign="center" ng-click="updateSelectedBank($index)">
+                                <input type="radio" ng-checked="ctrl.selectBank==$index" name="primaryRadio"
+                                       ng-click="ctrl.updateSelectedBank($index)" style="margin-top: 5px;">
+                            </td>
+                            <td valign="left">
+                                <label>
+                                    <span class="padding-bottom-5">
+                                        [[account.bank_name]] - [[account.account_number_display]] - [[$index]]
+                                    </span>
+                                </label>
+                            </td>
+                            <td valign="left">
+                                <button class="btn btn-danger btn-sm" ng-click="delBank(account.id)">
+                                    <i class="fa fa-trash-o"></i>
+                                </button>
+                            </td>
+                        </div>
+                        <td colspan="3" class="hidden-xs"></td>
+                        <td>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            [[!ctrl.addCardBoolean]]
+            <div ng-hide="!ctrl.addCardBoolean">
+                <h2>
+                    New Bank Account
+                </h2>
+                <div class="row col-12">
+                    <label>
+                        Bank :
+                    </label>
+                    <select ng-model="ctrl.selectedBanking"
+                            ng-options="bank as bank.display_name for bank in ctrl.bankChoices">
+                    </select>
+                    [[ctrl.selectedBanking]]
+                </div>
+                <div class="row col-12">
+                    <label>
+                        Account Number
+                    </label>
+                    <input type="text" ng-model="ctrl.accountNumber">
+                </div>
+                <div class="row col-12">
+                    <label>
+                        Card Type :
+                    </label>
+                    <select ng-model="ctrl.selectedBankType"
+                            ng-options="bankType as bankType.display_name for bankType in ctrl.bankTypeChoices">
+                    </select>
+                </div>
+                <div class="row col-12">
+                    <label>
+                        Promptpay Phone Number :
+                    </label>
+                    <input type="text" ng-model="ctrl.promptpayPhoneNumber">
+                </div>
+                <div class="row col-12">
+                    <label>
+                        Promptpay Citizen Id :
+                    </label>
+                    <input type="text" ng-model="ctrl.promptpayCitizenId">
+                </div>
+                <div>
+                    <button class="btn btn-success" ng-click="ctrl.saveNewBankAccount()">Save</button>
+                </div>
+            </div>
+            <div>
+                <button class="btn btn-success" ng-click="ctrl.nextPage()">Next</button>
+            </div>
+        </div>
+        <!-- //banner-bottom -->
+
+
+        <!-- footer -->
+        <div>{% include "footer.html" %}</div>
+        <!-- //footer -->
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+                integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+                crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+                integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+                crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+                integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+                crossorigin="anonymous"></script>
+    </body>
+</div>
+
+</html>

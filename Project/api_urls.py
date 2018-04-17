@@ -4,6 +4,7 @@ from rest_framework.routers import DefaultRouter
 from apps.accounts.viewsets import AccountViewSet, create_account, password_change, check_username, check_displayname, \
     get_best_rating
 from apps.addresses.viewsets import AddressViewSet
+from apps.bank_accounts.viewsets import BankAccountViewSet
 from apps.carts.viewsets import CartViewSet
 from apps.categories.viewsets import CategoryViewSet
 from apps.category_product.viewset import CategoryProductViewSet
@@ -19,6 +20,7 @@ from apps.values.viewsets import ValueViewSet
 router = DefaultRouter()
 router.register('accounts', AccountViewSet, base_name='account')
 router.register('addresses', AddressViewSet, base_name='address')
+router.register('bank_accounts', BankAccountViewSet, base_name='bank_accounts')
 router.register('categories', CategoryViewSet, base_name='category')
 router.register('category_products', CategoryProductViewSet, base_name='category_product')
 router.register('coin_transactions', CoinTransactionViewSet, base_name='coin_transaction')

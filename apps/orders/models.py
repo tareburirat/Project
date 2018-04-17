@@ -5,6 +5,7 @@ from django.db import models
 
 # Create your models here.
 from apps.accounts.models import Account
+from apps.bank_accounts.models import BankAccount
 from apps.carts.models import Cart
 from apps.offers.models import Offer
 from apps.products.models import Product
@@ -13,13 +14,16 @@ from apps.products.models import Product
 class Order(models.Model):
     order_number = models.CharField(max_length=30, blank=True)
     buyer = models.ForeignKey(Account)
+    selected_card = models.ForeignKey(BankAccount, null=True, blank=True)
     price = models.DecimalField(max_digits=8, decimal_places=2)
     date = models.DateField(auto_now=True)
     order_address = models.CharField(max_length=200, blank=True)
+    payment_slip = models.ImageField(upload_to="payment_slips", null=True, blank=True)
 
     def save(self, *args, **kwargs):
         self.update_product_not_available()
-        self.gen_order_number()
+        self.gen_order_number()  # store generated order number
+        self.snapshot_account()  # store bank account in order
         return super(Order, self).save(*args, **kwargs)
 
     def update_product_not_available(self):
@@ -33,6 +37,11 @@ class Order(models.Model):
         date_string = datetime.datetime.now().strftime('%d%m%Y')
         order_number += date_string + str(0).zfill(6) + str(random_number).zfill(3)
         self.order_number = order_number
+
+    def snapshot_account(self):
+        selected_card = self.buyer.bankaccount_set.filter(primary=True).first()
+        if selected_card is not None:
+            self.selected_card = selected_card
 
 
 class OrderItem(models.Model):
@@ -52,6 +61,7 @@ class OrderItem(models.Model):
     seller = models.ForeignKey(Account, related_name='sales', related_query_name='sales')
     order_status = models.IntegerField(verbose_name="Status", choices=status_choices, default=draft)
     order_track = models.CharField(verbose_name="Tracking", max_length=13, default="-รอการอัพเดท-")
+    payment_slip = models.ImageField(upload_to="payment_slips", null=True, blank=True)
 
     def __str__(self):
         return str(self.id)

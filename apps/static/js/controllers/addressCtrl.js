@@ -43,7 +43,7 @@ app.controller("addressCtrl", function ($scope, $window, $http, $rootScope) {
             function (response) {
                 console.log(response);
                 alert('success');
-                $window.location.href =  $scope.mama + '/order/place_order/';
+                $window.location.href = $scope.mama + '/bank_accounts/pick_or_create/';
             },
             function (response) {
                 console.log(response);

@@ -20,7 +20,7 @@ class OrderItemSerializer(serializers.ModelSerializer):
     product_data = serializers.SerializerMethodField()
     order = SimpleOrderSerializer(read_only=True)
     rating = serializers.IntegerField(required=False, write_only=True)
-
+    upload_slip = serializers.SerializerMethodField()
 
     class Meta:
         model = OrderItem
@@ -31,7 +31,8 @@ class OrderItemSerializer(serializers.ModelSerializer):
             }
         }
 
-    def get_product_data(self, obj):
+    @staticmethod
+    def get_product_data(obj):
         return ProductSerializer(obj.product).data
 
     def update(self, instance, validated_data):
@@ -43,6 +44,10 @@ class OrderItemSerializer(serializers.ModelSerializer):
                 order_item_id=instance.id
             )
         return super(OrderItemSerializer, self).update(instance, validated_data)
+
+    @staticmethod
+    def get_upload_slip(obj):
+        return obj.order.selected_card is None
 
 
 class OrderSerializer(serializers.ModelSerializer):
