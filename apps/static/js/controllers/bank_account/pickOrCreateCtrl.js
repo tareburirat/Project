@@ -80,6 +80,10 @@ app.controller("bankAccountPickOrCreateCtrl", function ($scope, $http, $window, 
         $http.get(vm.url + '/api/bank_accounts/?account_owner=' + vm.accountId).then(
             function success(response) {
                 vm.accounts = response.data;
+                vm.selectBank = vm.accounts.findIndex(function (account) {
+                    return account.is_primary === true;
+                });
+                console.log(vm.selectBank);
             },
             function failure() {
                 alert("Failed");
@@ -109,12 +113,42 @@ app.controller("bankAccountPickOrCreateCtrl", function ($scope, $http, $window, 
             account_owner: vm.accountId
         };
         $http.post(vm.url + '/api/bank_accounts/', data).then(
-            function success(response) {
-                alert("created");
+            function success() {
+                vm.getBankAccounts();
             },
             function fail(response) {
-
+                alert("failed");
             }
         )
+    };
+    $scope.updateSelectedAccount = function (accountId) {
+        $scope.selectedAccount = accountId;
+    };
+
+    vm.updatePrimaryAccount = function () {
+
+        var accountId = vm.accounts[vm.selectBank].id;
+        var data = {
+            primary: true
+        };
+        $http.patch(vm.url + '/api/bank_accounts/' + accountId + '/', data).then(
+            function (response) {
+                console.log(response);
+                alert('success');
+                $window.location.href =  vm.url + '/order/place_order/';
+            },
+            function (response) {
+                console.log(response);
+                alert('failed');
+            }
+        );
+    };
+
+    vm.nextPage = function () {
+        if ($scope.selectedAccount === "") {
+            alert("pls select choose or add a card");
+            return;
+        }
+        vm.updatePrimaryAccount();
     }
 });

@@ -52,7 +52,7 @@
             <button class="btn btn-primary pull-right" ng-click="ctrl.addCard()">Add Card</button>
             [[ctrl.accountId]]
             <div>
-                <h2>Bank Account</h2>
+                <h2>Bank Account - [[ctrl.selectBank]]</h2>
             </div>
             <div>
                 <table id="cart" class="table table-hover table-condensed">
@@ -60,14 +60,14 @@
                     </tr>
                     <tr ng-repeat="account in ctrl.accounts">
                         <div class="row col-md-12 pull-left" style="margin-bottom: 5px;">
-                            <td valign="center">
+                            <td valign="center" ng-click="updateSelectedBank($index)" >
                                 <input type="radio" ng-checked="ctrl.selectBank==$index" name="primaryRadio"
-                                       ng-click="updateSelectedBank($index)" style="margin-top: 5px;">
+                                       ng-click="ctrl.updateSelectedBank($index)" style="margin-top: 5px;">
                             </td>
                             <td valign="left">
                                 <label>
                                     <span class="padding-bottom-5">
-                                        [[account.bank_name]] - [[account.account_number_display]]
+                                        [[account.bank_name]] - [[account.account_number_display]] - [[$index]]
                                     </span>
                                 </label>
                             </td>
@@ -127,6 +127,9 @@
                 <div>
                     <button class="btn btn-success" ng-click="ctrl.saveNewBankAccount()">Save</button>
                 </div>
+            </div>
+            <div>
+                <button class="btn btn-success" ng-click="ctrl.nextPage()">Next</button>
             </div>
         </div>
         <!-- //banner-bottom -->
