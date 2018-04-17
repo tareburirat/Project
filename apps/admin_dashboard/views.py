@@ -33,7 +33,7 @@ def category_summary(request):
         .annotate(product_count=Count('categoryproduct__product_id'),
                   total_price=Sum('categoryproduct__product__price')) \
         .order_by('-product_count').values('id', 'name', 'product_count', 'total_price')
-    return Response(status=status.HTTP_200_OK, data=data)
+    return Response(status=status.HTTP_200_OK, data=data[:5])
 
 
 @api_view(http_method_names=['get'])

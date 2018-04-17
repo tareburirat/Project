@@ -10,6 +10,8 @@ app.controller("displayCtrl", function ($scope, $window, $http, $rootScope) {
     vm.selectedMode = 'Year';
     vm.tables = ['Products', 'Rating', 'Purchased Products'];
     vm.table = 'Products';
+    var graphData = [];
+    var graphHeader = [];
 
     vm.updateYear = function (currentYear) {
         vm.currentYears = [currentYear - 1, currentYear, currentYear + 1];
@@ -56,23 +58,24 @@ app.controller("displayCtrl", function ($scope, $window, $http, $rootScope) {
         else if (vm.selectedMode === 'Date') {
             paramString = 'mode=day&year=' + vm.currentYear;
             paramString = paramString + '&month=' + vm.monthMapper.indexOf(vm.currentMonth);
-            paramString = paramString + '&day=' + vm.days;
+            paramString = paramString + '&day=' + vm.currentDay;
         }
         return paramString
     };
     vm.search = function (table) {
-        if(table==='Products'){
+        if (table === 'Products') {
             var queryString = hostUrl + "/dashboard/cat_summary?" + getParamString();
             $http.get(queryString).then(
                 function success(response) {
                     vm.categories = response.data;
+                    buildGraph();
                 },
                 function (response) {
                     alert('Failed');
                 }
             )
         }
-        else if(table==='Purchased Products') {
+        else if (table === 'Purchased Products') {
             getPurchasedProduct();
         }
     };
@@ -83,6 +86,7 @@ app.controller("displayCtrl", function ($scope, $window, $http, $rootScope) {
         $http.get(queryString).then(
             function success(response) {
                 vm.categories = response.data;
+                buildGraph();
             },
             function (response) {
                 alert('Failed');
@@ -99,10 +103,10 @@ app.controller("displayCtrl", function ($scope, $window, $http, $rootScope) {
     };
 
     vm.updateTable = function (table) {
-        if(table==='Rating') {
+        if (table === 'Rating') {
             getRating();
         }
-        else if(table==='Purchased Products') {
+        else if (table === 'Purchased Products') {
             getPurchasedProduct();
         }
     };
@@ -121,6 +125,37 @@ app.controller("displayCtrl", function ($scope, $window, $http, $rootScope) {
                 vm.purchasedProductSummary = response.data;
             }
         )
+    };
+
+    var buildGraph = function () {
+        graphHeader = [];
+        graphData = [];
+        angular.forEach(vm.categories.slice(0, 5), function (category) {
+            graphHeader.push(category.name);
+            graphData.push(category.product_count);
+        });
+        new Chart(document.getElementById("bar-chart"), {
+            type: 'bar',
+            data: {
+                // labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
+                labels: graphHeader,
+                datasets: [
+                    {
+                        label: "Population (millions)",
+                        backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
+                        // data: [2478,5267,734,784,433]
+                        data: graphData
+                    }
+                ]
+            },
+            options: {
+                legend: {display: false},
+                title: {
+                    display: true,
+                    text: 'Predicted world population (millions) in 2050'
+                }
+            }
+        });
     }
 
 });

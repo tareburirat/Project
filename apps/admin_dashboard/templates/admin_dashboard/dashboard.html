@@ -16,10 +16,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>2nd MakeUp</title>
         <!-- script banner -->
-
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <!-- script banner -->
+        <!-- script chart -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     </head>
     <body>
     <!-- header -->
@@ -43,6 +44,7 @@
     </div>
     <!-- //banner -->
     <div style="background: #F7F7F9" ng-controller="displayCtrl as ctrl">
+        <canvas id="bar-chart" width="800" height="450"></canvas>
         <div class="row">
             <div class="row col-6" style="margin-left: 40px; margin-top: 40px;">
                 <!--products table -->
@@ -85,8 +87,8 @@
                     <thead>
                     <tr>
                         <th>Category Name</th>
-                        <th>Product Amount</th>
-                        <th>Total Price</th>
+                        <th>จำนวนสินค้าทั้งหมด (ชิ้น)</th>
+                        <th>ราคารวมทั้งหมด (บาท)</th>
                     </tr>
                     </thead>
                     <tbody>
