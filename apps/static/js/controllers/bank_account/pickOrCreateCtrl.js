@@ -58,7 +58,7 @@ app.controller("bankAccountPickOrCreateCtrl", function ($scope, $http, $window, 
             "display_name": "Gsb"
         }
     ];
-    vm.selectedBanking = vm.bankChoices[0].display_name;
+    vm.selectedBanking = vm.bankChoices[0];
     vm.bankTypeChoices = [
                     {
                         "value": 0,
@@ -69,7 +69,7 @@ app.controller("bankAccountPickOrCreateCtrl", function ($scope, $http, $window, 
                         "display_name": "Mastercard"
                     }
                 ];
-    vm.selectedBankType = vm.bankTypeChoices[0].display_name;
+    vm.selectedBankType = vm.bankTypeChoices[0];
     vm.addCardBoolean = false;
 
     vm.getAccountId = function (accountId) {
@@ -96,5 +96,25 @@ app.controller("bankAccountPickOrCreateCtrl", function ($scope, $http, $window, 
     };
     vm.addCard = function () {
         vm.addCardBoolean = true;
+    };
+    vm.saveNewBankAccount = function () {
+        var data = {
+            bank: vm.selectBank.value,
+            account_number: vm.accountNumber,
+            promptpay_phone_number: vm.promptpayPhoneNumber,
+            promptpay_citizen_id: vm.promptpayCitizenId,
+            card_type: vm.selectedBankType.value,
+            is_active: true,
+            is_primary: true,
+            account_owner: vm.accountId
+        };
+        $http.post(vm.url + '/api/bank_accounts/', data).then(
+            function success(response) {
+                alert("created");
+            },
+            function fail(response) {
+
+            }
+        )
     }
 });

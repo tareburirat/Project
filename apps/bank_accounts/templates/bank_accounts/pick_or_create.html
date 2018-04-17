@@ -49,7 +49,7 @@
         <!-- //banner -->
         <div class="container-fluid col-12" ng-controller="bankAccountPickOrCreateCtrl as ctrl"
              ng-init="ctrl.getAccountId({{ request.user.account.id }})">
-            <button class="btn btn-primary pull-right">Add Card</button>
+            <button class="btn btn-primary pull-right" ng-click="ctrl.addCard()">Add Card</button>
             [[ctrl.accountId]]
             <div>
                 <h2>Bank Account</h2>
@@ -84,45 +84,49 @@
                 </table>
             </div>
 
-            <div ng-hide="true">
-                [[ctrl.addCardBoolean]]
+            [[!ctrl.addCardBoolean]]
+            <div ng-hide="!ctrl.addCardBoolean">
                 <h2>
                     New Bank Account
                 </h2>
-                    <div class="row col-12">
-                        <label>
-                            Bank :
-                        </label>
-                        <select ng-model="ctrl.selectedBanking"
-                                ng-options="bank.display_name as bank.display_name for bank in ctrl.bankChoices">
-                        </select>
-                    </div>
-                    <div class="row col-12">
-                        <label>
-                            Account Number
-                        </label>
-                        <input type="text" ng-model="ctrl.accountNumber">
-                    </div>
-                    <div class="row col-12">
-                        <label>
-                            Card Type :
-                        </label>
-                        <select ng-model="ctrl.selectedBankType"
-                                ng-options="bankType.display_name as bankType.display_name for bankType in ctrl.bankTypeChoices">
-                        </select>
-                    </div>
-                    <div class="row col-12">
-                        <label>
-                            Promptpay Phone Number :
-                        </label>
-                        <input type="text" ng-model="ctrl.">
-                    </div>
-                    <div class="row col-12">
-                        <label>
-                            Promptpay Citizen Id :
-                        </label>
-                        <input type="text" ng-model="ctrl.promptpayCitizenId">
-                    </div>
+                <div class="row col-12">
+                    <label>
+                        Bank :
+                    </label>
+                    <select ng-model="ctrl.selectedBanking"
+                            ng-options="bank as bank.display_name for bank in ctrl.bankChoices">
+                    </select>
+                    [[ctrl.selectedBanking]]
+                </div>
+                <div class="row col-12">
+                    <label>
+                        Account Number
+                    </label>
+                    <input type="text" ng-model="ctrl.accountNumber">
+                </div>
+                <div class="row col-12">
+                    <label>
+                        Card Type :
+                    </label>
+                    <select ng-model="ctrl.selectedBankType"
+                            ng-options="bankType as bankType.display_name for bankType in ctrl.bankTypeChoices">
+                    </select>
+                </div>
+                <div class="row col-12">
+                    <label>
+                        Promptpay Phone Number :
+                    </label>
+                    <input type="text" ng-model="ctrl.promptpayPhoneNumber">
+                </div>
+                <div class="row col-12">
+                    <label>
+                        Promptpay Citizen Id :
+                    </label>
+                    <input type="text" ng-model="ctrl.promptpayCitizenId">
+                </div>
+                <div>
+                    <button class="btn btn-success" ng-click="ctrl.saveNewBankAccount()">Save</button>
+                </div>
             </div>
         </div>
         <!-- //banner-bottom -->
