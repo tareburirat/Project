@@ -150,5 +150,9 @@ app.controller("bankAccountPickOrCreateCtrl", function ($scope, $http, $window, 
             return;
         }
         vm.updatePrimaryAccount();
-    }
+    };
+
+    vm.nextForPaymentSlip = function () {
+        $window.location.href =  vm.url + '/order/place_order/';
+    };
 });

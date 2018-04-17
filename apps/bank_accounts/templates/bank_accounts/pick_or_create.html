@@ -50,6 +50,7 @@
         <div class="container-fluid col-12" ng-controller="bankAccountPickOrCreateCtrl as ctrl"
              ng-init="ctrl.getAccountId({{ request.user.account.id }})">
             <button class="btn btn-primary pull-right" ng-click="ctrl.addCard()">Add Card</button>
+            <button class="btn btn-primary pull-right" ng-click="ctrl.nextForPaymentSlip()">โอนเอา</button>
             [[ctrl.accountId]]
             <div>
                 <h2>Bank Account - [[ctrl.selectBank]]</h2>
@@ -60,7 +61,7 @@
                     </tr>
                     <tr ng-repeat="account in ctrl.accounts">
                         <div class="row col-md-12 pull-left" style="margin-bottom: 5px;">
-                            <td valign="center" ng-click="updateSelectedBank($index)" >
+                            <td valign="center" ng-click="updateSelectedBank($index)">
                                 <input type="radio" ng-checked="ctrl.selectBank==$index" name="primaryRadio"
                                        ng-click="ctrl.updateSelectedBank($index)" style="margin-top: 5px;">
                             </td>
