@@ -77,9 +77,10 @@
                                                     <th style="width:10%">ราคา</th>
                                                     <th style="width:15%">ค่าจัดส่ง</th>
                                                     <th style="width:15%" class="text-center">ราคารวม</th>
+                                                    <th style="width:15%" class="text-center">อัพสลิป</th>
                                                     <th style="width:15%"></th>
                                                 </tr>
-                                                <tr ng-repeat="order_item in accept_order_0">
+                                                <tr ng-repeat="order_item in accept_order_0 track by $index">
                                                     <td data-th="Product">
                                                         <div class="row">
                                                             <div class="col-sm-3 hidden-xs">
@@ -107,6 +108,18 @@
                                                     <td data-th="Subtotal" class="text-center">
                                                         [[order_item.product_data.sub_total]]฿
                                                     </td>
+
+                                                    <td data-th="Image" class="text-center" ng-hide="!order_item.upload_slip" ng-model="image">
+                                                        <input type="file">
+                                                        <button class="btn btn-primary" ng-click="uploadImage(order_item.id)">
+                                                            <i class="fa fa-save"></i>
+                                                        </button>
+                                                    </td>
+                                                    <td data-th="Nothing" class="text-center" ng-hide="order_item.upload_slip">
+                                                        -
+                                                    </td>
+
+
                                                     <!--<td class="hidden-xs text-center">
                                                         <button type="button" class="btn btn btn-block"
                                                                 data-toggle="modal"

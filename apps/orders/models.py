@@ -39,7 +39,7 @@ class Order(models.Model):
         self.order_number = order_number
 
     def snapshot_account(self):
-        selected_card = self.buyer.bankaccount_set.filter(primary=True).first()
+        selected_card = self.buyer.bankaccount_set.filter(is_primary=True).first()
         if selected_card is not None:
             self.selected_card = selected_card
 
