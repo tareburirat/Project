@@ -4,6 +4,7 @@ app.controller('historyPurchaseCtrl', function ($scope, $http, $rootScope) {
     $scope.orderNumber = '';
     $scope.yoyo = '';
     $scope.orderItemId = '';
+    $scope.image = "";
 
     $scope.getAccountId = function (accountId) {
         accId = accountId;
@@ -104,5 +105,9 @@ app.controller('historyPurchaseCtrl', function ($scope, $http, $rootScope) {
                 $scope.accept_order_2 = response.data;
             }
         );
+    };
+
+    $scope.uploadImage = function (orderItemId) {
+        alert("yoyo " + orderItemId);
     };
 });
